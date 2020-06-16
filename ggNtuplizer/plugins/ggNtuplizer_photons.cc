@@ -289,6 +289,12 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
     phoIDbit_.push_back(tmpphoIDbit);
 
+    // if(isPassMedium){
+    //   if(std::abs(iPho->et()/iPho->pt()-1.) > 0.000001){
+    //     std::cout<<" "<<iPho->eta()<<" "<<iPho->phi()<<" "<<iPho->et()<<" "<<iPho->pt()<<std::endl;
+    //   }
+    // }
+
 
     // systematics for energy scale and resolution
     phoScale_stat_up_.push_back(iPho->userFloat("energyScaleStatUp"));
