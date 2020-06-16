@@ -7,6 +7,7 @@ options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_data.root'
 options.inputFiles = 'file:F8DDFDC7-8AD6-E711-BCA2-4C79BA1811CB.root'
 options.maxEvents = 2000
+options.parseArguments()
 
 options.register('LumiMask',
                 'Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt',

@@ -4,8 +4,8 @@ using namespace std;
 using namespace edm;
 
 void ggNtuplizer::endJob() {
-  tree_->BuildIndex("run", "event");
-  std::cout<<"\tTTree "<<tree_->GetName()<<" indexed on run and event."<<std::endl<<" Complete!"<<std::endl;
+  // tree_->BuildIndex("run", "event");
+  // std::cout<<"\tTTree "<<tree_->GetName()<<" indexed on run and event."<<std::endl<<" Complete!"<<std::endl;
 };
 
 
