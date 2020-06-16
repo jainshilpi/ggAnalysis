@@ -260,6 +260,7 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
     if(iEle->passConversionVeto()) setbit(tmpeleQualityBits, 0);
     if(iEle->ecalDrivenSeed()) setbit(tmpeleQualityBits, 1);
     if(iEle->isGsfCtfScPixChargeConsistent()) setbit(tmpeleQualityBits, 2);
+    if(iEle->trackerDrivenSeed()) setbit(tmpeleQualityBits, 3);
     eleQualityBits_.push_back(tmpeleQualityBits);
 
     eleMissHits_        .push_back(iEle->gsfTrack()->hitPattern().numberOfAllHits(reco::HitPattern::MISSING_INNER_HITS));

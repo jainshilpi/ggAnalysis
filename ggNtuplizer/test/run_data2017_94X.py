@@ -5,7 +5,7 @@ process = cms.Process('ggKit')
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_data.root'
-options.inputFiles = 'file:F8DDFDC7-8AD6-E711-BCA2-4C79BA1811CB.root'
+options.inputFiles = 'root://cmsxrootd.fnal.gov//store/data/Run2017F/SinglePhoton/MINIAOD/09May2018-v1/100000/9C45E45B-A1C5-E811-98DE-FE770ABDA957.root'
 options.maxEvents = 2000
 options.parseArguments()
 
@@ -32,8 +32,8 @@ process.source = cms.Source("PoolSource",
 
 ##########################################################################################################################
 ################################### lumi mask if running locally (not CRAB) ##############################################
-# import FWCore.PythonUtilities.LumiList as LumiList
-# process.source.lumisToProcess = LumiList.LumiList(filename = options.LumiMask).getVLuminosityBlockRange()
+import FWCore.PythonUtilities.LumiList as LumiList
+process.source.lumisToProcess = LumiList.LumiList(filename = options.LumiMask).getVLuminosityBlockRange()
 ##########################################################################################################################
 
 

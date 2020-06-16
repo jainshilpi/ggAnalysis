@@ -1,5 +1,7 @@
 #include "ggAnalysis/ggNtuplizer/interface/ggNtuplizer.h"
 #include "RecoEcal/EgammaCoreTools/interface/EcalClusterLazyTools.h"
+#include "DataFormats/EcalDetId/interface/EBDetId.h"
+#include "DataFormats/EcalDetId/interface/EEDetId.h"
 
 UShort_t necalSC_;
 std::vector<Float_t> ecalSCeta_;
@@ -18,6 +20,10 @@ std::vector<UChar_t> ecalSC_nXtals_;
 std::vector<Float_t> ecalSC_maxEnXtalTime_;
 std::vector<Float_t> ecalSC_maxEnXtalSwissCross_;
 std::vector<UChar_t> ecalSC_maxEnXtalBits_;
+
+std::vector<Char_t> ecalSCseedIx_;
+std::vector<Char_t> ecalSCseedIy_;
+std::vector<Char_t> ecalSCseedIz_;
 
 
 
@@ -82,6 +88,10 @@ void ggNtuplizer::branchesECALSC(TTree* tree) {
   tree->Branch("ecalSC_maxEnXtalTime",      &ecalSC_maxEnXtalTime_);
   tree->Branch("ecalSC_maxEnXtalSwissCross",    &ecalSC_maxEnXtalSwissCross_);
   tree->Branch("ecalSC_maxEnXtalBits",      &ecalSC_maxEnXtalBits_);
+
+  tree->Branch("ecalSCseedIx",      &ecalSCseedIx_);
+  tree->Branch("ecalSCseedIy",      &ecalSCseedIy_);
+  tree->Branch("ecalSCseedIz",      &ecalSCseedIz_);
 };
 
 
@@ -139,18 +149,21 @@ Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLaz
       if(!_xtalHit) continue;
 
       // skip xtal if energy deposit is < 1 GeV
-      if(_xtalHit->energy() > 1.) {
+      // if(_xtalHit->energy() > 1.) {
+      if(_xtalHit->energy() > _xtalHit->energyError()) {
         // Get time range
         if(_xtalHit->time() > maxTime_) maxTime_ = _xtalHit->time();
         if(_xtalHit->time() < minTime_) minTime_ = _xtalHit->time();
         _timeValid = 1.;
+
+        // Get max energy xtal
+        if(_xtalHit->energy() > maxEnergyXtal_){
+          maxEnergyXtal_ = _xtalHit->energy();
+          maxEnergyXtalRecHit_ = _xtalHit;
+        }
       }
 
-      // Get max energy xtal
-      if(_xtalHit->energy() > maxEnergyXtal_){
-        maxEnergyXtal_ = _xtalHit->energy();
-        maxEnergyXtalRecHit_ = _xtalHit;
-      }
+
 
       uint32_t _xtalDetID = _xtal.first.rawId();
       if(_xtalHit->checkFlag(EcalRecHit::kL1SpikeFlag) && (std::find(_detIDs_nL1Spike.begin(), _detIDs_nL1Spike.end(), _xtalDetID) == _detIDs_nL1Spike.end())){
@@ -218,6 +231,10 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
   ecalSC_maxEnXtalSwissCross_.clear();
   ecalSC_maxEnXtalBits_.clear();
 
+  ecalSCseedIx_.clear();
+  ecalSCseedIy_.clear();
+  ecalSCseedIz_.clear();
+
 
   edm::Handle<std::vector<reco::SuperCluster>> ecalSChandle;
   e.getByToken(ecalSCcollection_, ecalSChandle);
@@ -261,6 +278,24 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
       ecalSC_maxEnXtalTime_.push_back(maxEnXtalTime);
       ecalSC_maxEnXtalSwissCross_.push_back(tmpmaxEnXtalSwissCross);
       ecalSC_maxEnXtalBits_.push_back(tmpmaxEnXtalBits);
+
+
+      DetId seedDetID = iSC->seed()->seed();
+      if(seedDetID.subdetId() == EcalBarrel){
+        EBDetId seedEB = iSC->seed()->seed();
+        ecalSCseedIx_.push_back(seedEB.ieta());
+        ecalSCseedIy_.push_back(seedEB.iphi());
+        ecalSCseedIz_.push_back(0);
+      } else if (seedDetID.subdetId() == EcalEndcap){
+        EEDetId seedEE = iSC->seed()->seed();
+        ecalSCseedIx_.push_back(seedEE.ix());
+        ecalSCseedIy_.push_back(seedEE.iy());
+        ecalSCseedIz_.push_back(seedEE.zside());
+      } else{
+        ecalSCseedIx_.push_back(-116);
+        ecalSCseedIy_.push_back(-116);
+        ecalSCseedIz_.push_back(-116);
+      }
     }
   }
 };
@@ -288,6 +323,10 @@ std::vector<Float_t> ecalootSC_maxEnXtalTime_;
 std::vector<Float_t> ecalootSC_maxEnXtalSwissCross_;
 std::vector<UChar_t> ecalootSC_maxEnXtalBits_;
 
+std::vector<Char_t> ecalootSC_seedIx_;
+std::vector<Char_t> ecalootSC_seedIy_;
+std::vector<Char_t> ecalootSC_seedIz_;
+
 
 
 void ggNtuplizer::branchesECALOOTSC(TTree* tree) {
@@ -309,6 +348,9 @@ void ggNtuplizer::branchesECALOOTSC(TTree* tree) {
   tree->Branch("ecalootSC_maxEnXtalTime",     &ecalootSC_maxEnXtalTime_);
   tree->Branch("ecalootSC_maxEnXtalSwissCross",   &ecalootSC_maxEnXtalSwissCross_);
   tree->Branch("ecalootSC_maxEnXtalBits",     &ecalootSC_maxEnXtalBits_);
+  tree->Branch("ecalootSC_seedIx",     &ecalootSC_seedIx_);
+  tree->Branch("ecalootSC_seedIy",     &ecalootSC_seedIy_);
+  tree->Branch("ecalootSC_seedIz",     &ecalootSC_seedIz_);
 };
 
 
@@ -331,6 +373,10 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
   ecalootSC_maxEnXtalTime_.clear();
   ecalootSC_maxEnXtalSwissCross_.clear();
   ecalootSC_maxEnXtalBits_.clear();
+
+  ecalootSC_seedIx_.clear();
+  ecalootSC_seedIy_.clear();
+  ecalootSC_seedIz_.clear();
 
 
   edm::Handle<std::vector<reco::SuperCluster>> ecalootSChandle;
@@ -375,6 +421,24 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
       ecalootSC_maxEnXtalTime_.push_back(maxEnXtalTime);
       ecalootSC_maxEnXtalSwissCross_.push_back(tmpmaxEnXtalSwissCross);
       ecalootSC_maxEnXtalBits_.push_back(tmpmaxEnXtalBits);
+
+
+      DetId seedDetID = iSC->seed()->seed();
+      if(seedDetID.subdetId() == EcalBarrel){
+        EBDetId seedEB = iSC->seed()->seed();
+        ecalootSC_seedIx_.push_back(seedEB.ieta());
+        ecalootSC_seedIy_.push_back(seedEB.iphi());
+        ecalootSC_seedIz_.push_back(0);
+      } else if (seedDetID.subdetId() == EcalEndcap){
+        EEDetId seedEE = iSC->seed()->seed();
+        ecalootSC_seedIx_.push_back(seedEE.ix());
+        ecalootSC_seedIy_.push_back(seedEE.iy());
+        ecalootSC_seedIz_.push_back(seedEE.zside());
+      } else{
+        ecalootSC_seedIx_.push_back(-116);
+        ecalootSC_seedIy_.push_back(-116);
+        ecalootSC_seedIz_.push_back(-116);
+      }
     }
   }
 };
