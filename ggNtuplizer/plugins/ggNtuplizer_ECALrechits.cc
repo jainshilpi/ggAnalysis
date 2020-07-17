@@ -150,7 +150,7 @@ Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLaz
 
       // skip xtal if energy deposit is < 1 GeV
       // if(_xtalHit->energy() > 1.) {
-      if(_xtalHit->energy() > _xtalHit->energyError()) {
+      if(_xtalHit->energy() > 2*_xtalHit->energyError() && _xtalHit->energy() > 1.) {
         // Get time range
         if(_xtalHit->time() > maxTime_) maxTime_ = _xtalHit->time();
         if(_xtalHit->time() < minTime_) minTime_ = _xtalHit->time();

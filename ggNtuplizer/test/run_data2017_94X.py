@@ -5,14 +5,9 @@ process = cms.Process('ggKit')
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_data.root'
-<<<<<<< HEAD
-options.inputFiles = 'file:F8DDFDC7-8AD6-E711-BCA2-4C79BA1811CB.root'
-options.maxEvents = 1000
-=======
-options.inputFiles = 'root://cmsxrootd.fnal.gov//store/data/Run2017F/SinglePhoton/MINIAOD/09May2018-v1/100000/9C45E45B-A1C5-E811-98DE-FE770ABDA957.root'
-options.maxEvents = 2000
+options.inputFiles = 'file:Data2017sample.root'#'root://cmsxrootd.fnal.gov//store/data/Run2017F/SinglePhoton/MINIAOD/09May2018-v1/100000/9C45E45B-A1C5-E811-98DE-FE770ABDA957.root'
+options.maxEvents = 200
 options.parseArguments()
->>>>>>> a45e79500f8d7a402cab02a236e07623f9b90a58
 
 options.register('LumiMask',
                 'Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt',
@@ -35,11 +30,11 @@ process.source = cms.Source("PoolSource",
                             )
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
 
-##########################################################################################################################
-################################### lumi mask if running locally (not CRAB) ##############################################
-import FWCore.PythonUtilities.LumiList as LumiList
-process.source.lumisToProcess = LumiList.LumiList(filename = options.LumiMask).getVLuminosityBlockRange()
-##########################################################################################################################
+# ##########################################################################################################################
+# ################################### lumi mask if running locally (not CRAB) ##############################################
+# import FWCore.PythonUtilities.LumiList as LumiList
+# process.source.lumisToProcess = LumiList.LumiList(filename = options.LumiMask).getVLuminosityBlockRange()
+# ##########################################################################################################################
 
 
 ##########################################################################################################################
@@ -95,14 +90,14 @@ jetToolbox( process, 'ak4', 'ak4JetSubs', 'noOutput',
         postFix='updated'
         )
 
-### ak 0.8 PUPPI jets
-jetToolbox( process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
-            runOnMC=False,
-            PUMethod='PUPPI',
-            updateCollection='slimmedJetsAK8',
-            updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
-            JETCorrPayload = 'AK8PFPuppi'
-            )
+# ### ak 0.8 PUPPI jets
+# jetToolbox( process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
+#             runOnMC=False,
+#             PUMethod='PUPPI',
+#             updateCollection='slimmedJetsAK8',
+#             updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
+#             JETCorrPayload = 'AK8PFPuppi'
+#             )
 ##########################################################################################################################
 
 
@@ -113,7 +108,7 @@ process.ggNtuplizer.doGenParticles=cms.bool(False)
 process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
 process.ggNtuplizer.dumpJets=cms.bool(True)
-process.ggNtuplizer.dumpAK8Jets=cms.bool(True)
+# process.ggNtuplizer.dumpAK8Jets=cms.bool(True)
 process.ggNtuplizer.dumpSoftDrop= cms.bool(True)
 process.ggNtuplizer.dumpTaus=cms.bool(False)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
@@ -128,15 +123,13 @@ process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger")
 process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
 
 baddetEcallist = cms.vuint32(
-    [872439604,872422825,872420274,872423218,
-     872423215,872416066,872435036,872439336,
-     872420273,872436907,872420147,872439731,
-     872436657,872420397,872439732,872439339,
-     872439603,872422436,872439861,872437051,
-     872437052,872420649,872422436,872421950,
-     872437185,872422564,872421566,872421695,
-     872421955,872421567,872437184,872421951,
-     872421694,872437056,872437057,872437313])
+    [872439604,872422825,872420274,872423218,872423215,872416066,872435036,872439336,
+    872420273,872436907,872420147,872439731,872436657,872420397,872439732,872439339,
+    872439603,872422436,872439861,872437051,872437052,872420649,872421950,872437185,
+    872422564,872421566,872421695,872421955,872421567,872437184,872421951,872421694,
+    872437056,872437057,872437313,872438182,872438951,872439990,872439864,872439609,
+    872437181,872437182,872437053,872436794,872436667,872436536,872421541,872421413,
+    872421414,872421031,872423083,872421439])
 
 process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     "EcalBadCalibFilter",

@@ -251,6 +251,8 @@ private:
   TH1F    *hEvents_;
   TH1F    *hPU_;
   TH1F    *hPUTrue_;
+  TH1F    *hPUw_;
+  TH1F    *hPUTruew_;
   TH1F    *hGenWeightSign_;
   TH1F    *hSumGenWeightSign_;
   TH1F    *hSumGenWeight_;

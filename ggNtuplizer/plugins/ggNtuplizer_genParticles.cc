@@ -128,9 +128,9 @@ Float_t getGenTrkIso(edm::Handle<reco::GenParticleCollection> handle,
 	  if (dR > dRMax) continue;
 
 	  ptSum += p->pt();
-  }
+	}
 
-  return ptSum;
+	return ptSum;
 }
 
 void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
@@ -154,7 +154,11 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 	tree->Branch("puTrue",        &puTrue_);
 
 	hPU_        = fs->make<TH1F>("hPU",        "number of pileup",      1000,  0., 1000.);
-	hPUTrue_    = fs->make<TH1F>("hPUTrue",    "number of true pilepu", 1000, 0., 1000.);
+	hPUTrue_    = fs->make<TH1F>("hPUTrue",    "number of true pileup", 1000, 0., 1000.);
+
+	hPUw_ = fs->make<TH1F>("hPUw",        "number of pileup (weighted)",      1000,  0., 1000.);;
+	hPUTruew_= fs->make<TH1F>("hPUTruew",    "number of true pileup  (weighted)", 1000, 0., 1000.);;
+
 	hGenWeightSign_ = fs->make<TH1F>("hGenWeightSign", "Gen weight signs",           2,    -1, 1);
 	hSumGenWeightSign_ = fs->make<TH1F>("hSumGenWeightSign", "Sum of Gen weight signs",1,  0, 1);
 	hSumGenWeight_ = fs->make<TH1F>("hSumGenWeight", "Sum of Gen weights",1,  0, 1);
@@ -222,16 +226,16 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.first);  // PDF weight for parton #1
 	  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.second); // PDF weight for parton #2
 	  pdf_.push_back(genEventInfoHandle->pdf()->scalePDF);    // scale of the hard interaction
-  }
+	}
 
   // if (genEventInfoHandle->hasBinningValues()) pthat_ = genEventInfoHandle->binningValues()[0];
   // processID_ = genEventInfoHandle->signalProcessID();
-  genWeight_ = genEventInfoHandle->weight();
-  if (genWeight_ >= 0) hGenWeightSign_->Fill(0.5);
-  else hGenWeightSign_->Fill(-0.5);
-  if (abs(genWeight_)>1) hSumGenWeightSign_->Fill(0.5,genWeight_/abs(genWeight_));
-  else hSumGenWeightSign_->Fill(0.5,genWeight_);
-  hSumGenWeight_->Fill(0.5,genWeight_);
+	genWeight_ = genEventInfoHandle->weight();
+	if (genWeight_ >= 0) hGenWeightSign_->Fill(0.5);
+	else hGenWeightSign_->Fill(-0.5);
+	if (abs(genWeight_)>1) hSumGenWeightSign_->Fill(0.5,genWeight_/abs(genWeight_));
+	else hSumGenWeightSign_->Fill(0.5,genWeight_);
+	hSumGenWeight_->Fill(0.5,genWeight_);
 } else edm::LogWarning("ggNtuplizer") << "no GenEventInfoProduct in event";
 
   // access generator level HT
@@ -275,14 +279,14 @@ if (lheEventProduct.isValid()){
 	 //   }
 	 // }
 	 // EventTag_ = model_params;
-  }
+	}
 
-  if (dumpPDFSystWeight_) {
+	if (dumpPDFSystWeight_) {
 	  pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
 	  for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
 		pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
 	  }
-  }
+	}
 }
 genHT_   = lheHt;
 genPho1_ = lhePho1;
@@ -294,8 +298,11 @@ e.getByToken(puCollection_, genPileupHandle);
 if (genPileupHandle.isValid()) {
 	for (vector<PileupSummaryInfo>::const_iterator pu = genPileupHandle->begin(); pu != genPileupHandle->end(); ++pu) {
 		if (pu->getBunchCrossing() == 0) {
-			hPU_->Fill(pu->getPU_NumInteractions() + 0.1, genWeight_);
-			hPUTrue_->Fill(pu->getTrueNumInteractions() + 0.1, genWeight_);
+			hPU_->Fill(pu->getPU_NumInteractions() + 0.1);
+			hPUTrue_->Fill(pu->getTrueNumInteractions() + 0.1);
+
+			hPUw_->Fill(pu->getPU_NumInteractions() + 0.1, genWeight_);
+			hPUTruew_->Fill(pu->getTrueNumInteractions() + 0.1, genWeight_);
 
 			nPU_= pu->getPU_NumInteractions();
 			puTrue_ = pu->getTrueNumInteractions();

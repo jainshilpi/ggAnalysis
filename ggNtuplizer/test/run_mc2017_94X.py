@@ -25,8 +25,8 @@ process.maxEvents = cms.untracked.PSet(
 process.MessageLogger.cerr.FwkReport.reportEvery = 200
 process.source = cms.Source("PoolSource",
                             fileNames=cms.untracked.vstring(
-                                options.inputFiles
-                                #'file:/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/ZNuNuGJets_MonoPhoton_PtG-130.root'
+                                # options.inputFiles
+                                'file:/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/ZNuNuGJets_MonoPhoton_PtG-130.root'
                                 #'file:/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/Configuration/Generator/generateGJets4ID/miniaodsimfile_PythiaFilterGammaGamma.root'
                                 # 'file:/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/Configuration/Generator/generateGJets4ID/batch/test/GJetsEMenriched_1/GJetsEMenriched_1_MINIAODSIM.root'
                             ),
@@ -92,22 +92,22 @@ jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
            postFix='updated'
            )
 
-jetToolbox(process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
-           PUMethod='PUPPI',
-           updateCollection='slimmedJetsAK8',
-           updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
-           JETCorrPayload='AK8PFPuppi'
-           # subJETCorrPayload='AK4PFPuppi'
-           # addPruning=True,
-           # addSoftDrop=True
-           # addTrimming=True,
-           # addFiltering=True,
-           # addNsub=True,
-           # maxTau=3,
-           # addQGTagger=True,
-           # addPUJetID=True,
-           # addEnergyCorrFunc=True
-           )
+# jetToolbox(process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
+#            PUMethod='PUPPI',
+#            updateCollection='slimmedJetsAK8',
+#            updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
+#            JETCorrPayload='AK8PFPuppi'
+#            # subJETCorrPayload='AK4PFPuppi'
+#            # addPruning=True,
+#            # addSoftDrop=True
+#            # addTrimming=True,
+#            # addFiltering=True,
+#            # addNsub=True,
+#            # maxTau=3,
+#            # addQGTagger=True,
+#            # addPUJetID=True,
+#            # addEnergyCorrFunc=True
+#            )
 ##########################################################################
 
 
@@ -118,7 +118,7 @@ process.ggNtuplizer.doGenParticles = cms.bool(True)
 process.ggNtuplizer.dumpPFPhotons = cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons = cms.bool(False)
 process.ggNtuplizer.dumpJets = cms.bool(True)
-process.ggNtuplizer.dumpAK8Jets = cms.bool(True)
+# process.ggNtuplizer.dumpAK8Jets = cms.bool(True)
 process.ggNtuplizer.dumpSoftDrop = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(False)
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
@@ -142,15 +142,13 @@ process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
 process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
 
 baddetEcallist = cms.vuint32(
-    [872439604, 872422825, 872420274, 872423218,
-     872423215, 872416066, 872435036, 872439336,
-     872420273, 872436907, 872420147, 872439731,
-     872436657, 872420397, 872439732, 872439339,
-     872439603, 872422436, 872439861, 872437051,
-     872437052, 872420649, 872422436, 872421950,
-     872437185, 872422564, 872421566, 872421695,
-     872421955, 872421567, 872437184, 872421951,
-     872421694, 872437056, 872437057, 872437313])
+    [872439604,872422825,872420274,872423218,872423215,872416066,872435036,872439336,
+    872420273,872436907,872420147,872439731,872436657,872420397,872439732,872439339,
+    872439603,872422436,872439861,872437051,872437052,872420649,872421950,872437185,
+    872422564,872421566,872421695,872421955,872421567,872437184,872421951,872421694,
+    872437056,872437057,872437313,872438182,872438951,872439990,872439864,872439609,
+    872437181,872437182,872437053,872436794,872436667,872436536,872421541,872421413,
+    872421414,872421031,872423083,872421439])
 
 process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     "EcalBadCalibFilter",

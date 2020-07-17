@@ -41,7 +41,7 @@ vector<float>  eleSigmaIEtaIEtaFull5x5_;
 vector<float>  eleSigmaIPhiIPhiFull5x5_;
 // vector<Bool_t>    eleConvVeto_;
 // vector<Bool_t>    eleEcalDrivenSeed_;
-vector<UChar_t>   eleQualityBits_;
+vector<UShort_t>   eleQualityBits_;
 vector<UChar_t>    eleMissHits_;
 vector<float>  eleESEffSigmaRR_;
 vector<float>  elePFChIso_;
@@ -256,11 +256,14 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
     eledPhiAtVtx_       .push_back(iEle->deltaPhiSuperClusterTrackAtVtx());
     // eleConvVeto_        .push_back(iEle->passConversionVeto()); // ConvVtxFit || missHit == 0
     // eleEcalDrivenSeed_      .push_back(iEle->ecalDrivenSeed());
-    UChar_t tmpeleQualityBits = 0;
+    UShort_t tmpeleQualityBits = 0;
     if(iEle->passConversionVeto()) setbit(tmpeleQualityBits, 0);
     if(iEle->ecalDrivenSeed()) setbit(tmpeleQualityBits, 1);
-    if(iEle->isGsfCtfScPixChargeConsistent()) setbit(tmpeleQualityBits, 2);
-    if(iEle->trackerDrivenSeed()) setbit(tmpeleQualityBits, 3);
+    if(iEle->ecalDriven()) setbit(tmpeleQualityBits, 2);
+    if(iEle->trackerDrivenSeed()) setbit(tmpeleQualityBits, 4);
+    if(iEle->isGsfCtfScPixChargeConsistent()) setbit(tmpeleQualityBits, 6);
+    
+
     eleQualityBits_.push_back(tmpeleQualityBits);
 
     eleMissHits_        .push_back(iEle->gsfTrack()->hitPattern().numberOfAllHits(reco::HitPattern::MISSING_INNER_HITS));
