@@ -23,7 +23,7 @@ def submit(config):
 
 workarea='/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/jobsMETv4//ZLLGJetsMonoPhotonPtG40to130TuneCP513TeVmadgraphpythia8/'
 
-mainOutputDir = '/store/user/mwadud/aNTGCmet/ntuplesMETv4/'
+mainOutputDir = '/store/user/mwadud/aNTGCmet/ggNtuplizerMETv4/'
 
 
 config.General.requestName = 'ZLLGJetsMonoPhotonPtG40to130TuneCP513TeVmadgraphpythia8'

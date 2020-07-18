@@ -30,10 +30,11 @@ vector<Float_t>  phoPFChIso_;
 vector<Float_t>  phoPFPhoIso_;
 vector<Float_t>  phoPFNeuIso_;
 vector<Float_t>  phoPFChWorstIso_;
-
 vector<Float_t>  phoPFClusEcalIso_;
 vector<Float_t>  phoPFClusHcalIso_;
-
+vector<Float_t>  phoTkrIso_;
+vector<Float_t>  phoECALIso_;
+vector<Float_t>  phoHCALIso_;
 vector<Float_t>  phoSeedBCE_;
 vector<Float_t>  phoSeedBCEta_;
 vector<Float_t>  phoSeedBCPhi_;
@@ -113,6 +114,10 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 
   tree->Branch("phoPFClusEcalIso",         &phoPFClusEcalIso_);
   tree->Branch("phoPFClusHcalIso",         &phoPFClusHcalIso_);
+  tree->Branch("phoTkrIso",         &phoTkrIso_);
+
+  tree->Branch("phoECALIso",         &phoECALIso_);
+  tree->Branch("phoHCALIso",         &phoHCALIso_);
 
   tree->Branch("phoIDMVA",                &phoIDMVA_);
   tree->Branch("phoFiredSingleTrgs",      &phoFiredSingleTrgs_);
@@ -180,6 +185,10 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
   phoPFClusEcalIso_        .clear();
   phoPFClusHcalIso_        .clear();
+  phoTkrIso_       .clear();
+
+  phoECALIso_   .clear();
+  phoHCALIso_   .clear();
 
   phoSeedBCE_           .clear();
   phoSeedBCEta_         .clear();
@@ -309,6 +318,9 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
     phoPFClusEcalIso_        .push_back(iPho->ecalPFClusterIso());
     phoPFClusHcalIso_        .push_back(iPho->hcalPFClusterIso());
+    phoTkrIso_        .push_back(iPho->trackIso());
+    phoECALIso_        .push_back(iPho->ecalIso());
+    phoHCALIso_        .push_back(iPho->hcalIso());
 
     phoIDMVA_         .push_back(iPho->userFloat("PhotonMVAEstimatorRunIIFall17v2Values"));
 
@@ -507,15 +519,16 @@ vector<Float_t>  ootPhoESEnP2_;
 vector<Float_t>  ootPhoE2x2Full5x5_;
 vector<Float_t>  ootPhoE5x5Full5x5_;
 vector<Float_t>  ootPhoPFChIso_;
-vector<Float_t>  ootPhoPFootPhoIso_;
+vector<Float_t>  ootPhoPFPhoIso_;
 vector<Float_t>  ootPhoPFNeuIso_;
-vector<Float_t>  ootPhoPFChWorstIso_;
 vector<Float_t>  ootPhoPFClusEcalIso_;
 vector<Float_t>  ootPhoPFClusHcalIso_;
+vector<Float_t>  ootPhoTkrIso_;
+vector<Float_t>  ootPhoECALIso_;
+vector<Float_t>  ootPhoHCALIso_;
 vector<Float_t>  ootPhoSeedBCE_;
 vector<Float_t>  ootPhoSeedBCEta_;
 vector<Float_t>  ootPhoSeedBCPhi_;
-
 
 
 void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
@@ -537,11 +550,13 @@ void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
   tree->Branch("ootPho_SigmaIPhiIPhiFull5x5", &ootPho_SigmaIPhiIPhiFull5x5_);
   tree->Branch("ootPho_R9Full5x5",            &ootPho_R9Full5x5_);
   tree->Branch("ootPhoPFChIso",              &ootPhoPFChIso_);
-  tree->Branch("ootPhoPFootPhoIso",              &ootPhoPFootPhoIso_);
+  tree->Branch("ootPhoPFPhoIso",              &ootPhoPFPhoIso_);
   tree->Branch("ootPhoPFNeuIso",              &ootPhoPFNeuIso_);
-  // tree->Branch("ootPhoPFChWorstIso",              &ootPhoPFChWorstIso_);
   tree->Branch("ootPhoPFClusEcalIso",              &ootPhoPFClusEcalIso_);
   tree->Branch("ootPhoPFClusHcalIso",              &ootPhoPFClusHcalIso_);
+  tree->Branch("ootPhoTkrIso",              &ootPhoTkrIso_);
+  tree->Branch("ootPhoECALIso",         &ootPhoECALIso_);
+  tree->Branch("ootPhoHCALIso",         &ootPhoHCALIso_);  
   tree->Branch("ootPhoE2x2Full5x5",              &ootPhoE2x2Full5x5_);
   tree->Branch("ootPhoE5x5Full5x5",              &ootPhoE5x5Full5x5_);
   tree->Branch("ootPhoSeedBCE",              &ootPhoSeedBCE_);
@@ -596,11 +611,13 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
   ootPhoE2x2Full5x5_.clear();
   ootPhoE5x5Full5x5_.clear();
   ootPhoPFChIso_.clear();
-  ootPhoPFootPhoIso_.clear();
+  ootPhoPFPhoIso_.clear();
   ootPhoPFNeuIso_.clear();
-  // ootPhoPFChWorstIso_.clear();
   ootPhoPFClusEcalIso_.clear();
   ootPhoPFClusHcalIso_.clear();
+  ootPhoTkrIso_.clear();
+  ootPhoECALIso_   .clear();
+  ootPhoHCALIso_   .clear();
   ootPhoSeedBCE_.clear();
   ootPhoSeedBCEta_.clear();
   ootPhoSeedBCPhi_.clear();
@@ -735,7 +752,7 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
     ootPhoE2x2Full5x5_.push_back(lazyToolnoZS.e2x2(*(iootPho_->superCluster()->seed())));
     ootPhoE5x5Full5x5_.push_back(iootPho_->full5x5_e5x5());
     ootPhoPFChIso_.push_back(iootPho_->chargedHadronIso());
-    ootPhoPFootPhoIso_.push_back(iootPho_->photonIso());
+    ootPhoPFPhoIso_.push_back(iootPho_->photonIso());
     ootPhoPFNeuIso_.push_back(iootPho_->neutralHadronIso());
 
 
@@ -744,6 +761,12 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 
     ootPhoPFClusEcalIso_.push_back(iootPho_->ecalPFClusterIso());
     ootPhoPFClusHcalIso_.push_back(iootPho_->hcalPFClusterIso());
+    ootPhoTkrIso_        .push_back(iootPho_->trackIso());
+
+
+    ootPhoECALIso_        .push_back(iootPho_->ecalIso());
+    ootPhoHCALIso_        .push_back(iootPho_->hcalIso());
+
     ootPhoSeedBCE_.push_back(iootPho_->superCluster()->seed()->energy());
     ootPhoSeedBCEta_.push_back(iootPho_->superCluster()->seed()->eta());
     ootPhoSeedBCPhi_.push_back(iootPho_->superCluster()->seed()->phi());
