@@ -8,21 +8,23 @@
 # input_datasets="beamHalo2017.txt"
 # input_datasets="2016_mc_samples.txt"
 #input_datasets="DoubleEG2017.txt"
-#input_datasets="mcBG2017.txt"
-input_datasets="newMCbg.txt"
-writedir="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/xsecJobs/"
+# input_datasets="mcBG2017.txt"
+# input_datasets="GJets0p4.txt"
+input_datasets="extraZG.txt"
+# input_datasets="newMCbg.txt"
+writedir="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/jobsMETv4/"
 # writedir="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/jobsMETv3/"
 # writedir="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/jobsMET2016v1/"
 # writedir="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/jobsMETxSecs/"
 # psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit//XsecAna.py"
 # psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/run_data2016_94X.py"
-# psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/run_mc2017_94X.py"
+psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/run_mc2017_94X.py"
 # psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/run_data2017_94X.py"
-psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/XsecAna.py"
+# psetname="/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/crab_submit/XsecAna.py"
 writeSite="T2_US_Wisconsin"
 # mainOutputDir='/store/user/mwadud/aNTGCmet/ggNtuplizerMETv3/'
 # mainOutputDir='/store/user/mwadud/aNTGCmet/ggNtuplizerMET2016v1/'
-mainOutputDir='/store/user/mwadud/aNTGCmet/xsecsMET/'
+mainOutputDir='/store/user/mwadud/aNTGCmet/ntuplesMETv4/'
 
 
 # lumiMaskFile="https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions16/13TeV/Final/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON.txt"
@@ -63,10 +65,8 @@ echo "*************************************************************************"
 for dataset in `sed '/^$/d' ${input_datasets}`;
 do
 	jobName=$(echo ${dataset} | cut -f1,2 -d'/')
-	jobName=${jobName#"/"}
-
 	# jobName=$(echo ${dataset////_})
-	# jobName=${jobName#"_"}
+	jobName=${jobName#"_"}
 	jobName=$(echo ${jobName} | sed 's/[^a-zA-Z0-9]//g')
 
 	jobDir=${writedir}/${jobName}/

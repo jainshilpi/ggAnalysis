@@ -12,9 +12,9 @@ inputFile=$2
 
 while IFS= read -r line
 do
-	if [[ $line == *"Please use 'crab status"* ]]; then
-		crab_dir=${line//"Please use 'crab status -d "/}
-		crab_dir=${crab_dir//"' to check how the submission process proceeds."/}
+	if [[ $line == *"Please use ' crab status -d "* ]]; then
+		crab_dir=${line//"Please use ' crab status -d "/}
+		crab_dir=${crab_dir//" ' to check how the submission process proceeds."/}
 
 		if [ ! -d "$crab_dir" ]; then
 			echo "Error! Directory "${crab_dir} "does not exist!"
@@ -22,5 +22,6 @@ do
 		fi
 		echo "Resubmitting "${crab_dir}
 		crab $commandval -d ${crab_dir}
+		# crab status -d ${crab_dir}
 	fi
 done < ${inputFile}

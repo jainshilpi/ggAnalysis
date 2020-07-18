@@ -3,8 +3,8 @@ import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_mc.root'
-options.inputFiles = 'file:/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/Configuration/Generator/generateGJets4ID/batch/test/GJetsEMenriched_1/GJetsEMenriched_1_MINIAODSIM.root'
-options.maxEvents = -1
+options.inputFiles = 'file:ZNuNuGJets_MonoPhoton_PtG-130.root'
+options.maxEvents = 100
 options.parseArguments()
 
 process = cms.Process('ggKit')
@@ -122,17 +122,13 @@ process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpSoftDrop = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(False)
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
-process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag(
-    "selectedPatJetsAK4PFCHSupdated")
-process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag(
-    "selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
-process.ggNtuplizer.ak8GenJetLabel = cms.InputTag(
-    "selectedPatJetsAK8PFPUPPI", "genJets", "ggKit")
+process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
+process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
+process.ggNtuplizer.ak8GenJetLabel = cms.InputTag("selectedPatJetsAK8PFPUPPI", "genJets", "ggKit")
 process.ggNtuplizer.ak8JetsPUPPISrc = cms.InputTag("selectedPatJetsAK8PFPUPPI")
 process.ggNtuplizer.runOnSherpa = cms.bool(False)
 # process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
-process.ggNtuplizer.patTriggerResults = cms.InputTag(
-    "TriggerResults", "", "RECO")
+process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
 # process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "RECO")
 process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
 ##########################################################################
@@ -159,8 +155,7 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     debug=cms.bool(False)
 )
 
-process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag(
-    "ecalBadCalibReducedMINIAODFilter")
+process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAODFilter")
 ##########################################################################
 
 ##########################################################################

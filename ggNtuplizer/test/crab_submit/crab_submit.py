@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from CRABClient.UserUtilities import config, getUsernameFromSiteDB
+from CRABClient.UserUtilities import config
+# from CRABClient.ClientUtilities import getUsernameFromSiteDB
 import sys
 
 config = config()
