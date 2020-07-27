@@ -12,6 +12,7 @@ git cms-addpkg RecoBTag/Combined <br>
 git cms-addpkg JetMETCorrections/Type1MET <br>
 git cms-addpkg RecoMET/METFilters <br>
 git cms-addpkg RecoEgamma/PostRecoTools <br>
+OR git cms-merge-topic cms-egamma:EgammaPostRecoTools  <br>
 git cms-addpkg RecoEgamma/PhotonIdentification/ <br>
 git cms-addpkg RecoEgamma/ElectronIdentification/ <br>
 git cms-addpkg CommonTools/PileupAlgos <br>
