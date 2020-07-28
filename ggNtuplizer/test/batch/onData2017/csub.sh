@@ -19,8 +19,8 @@ jobsDir=$2
 # testmatch    = 3 days
 # nextweek     = 1 week
 
-jobflavor=tomorrow
-splitfiles=20
+jobflavor=workday
+splitfiles=5
 
 
 ############################################################################

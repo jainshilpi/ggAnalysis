@@ -15,7 +15,13 @@ options.register('InputFileList',
                 VarParsing.VarParsing.varType.string,
                 "InputFileList")
 
-options.loadFromFile ('inputFiles', options.InputFileList)
+options.register('InFileList',
+                '',
+                VarParsing.VarParsing.multiplicity.list,
+                VarParsing.VarParsing.varType.string,
+                "InFileList")
+
+options.loadFromFile ('InFileList', options.InputFileList)
 
 options.register('LumiMask',
                 'Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt',
@@ -24,6 +30,7 @@ options.register('LumiMask',
                 "LumiMask")
 
 options.parseArguments()
+
 ##########################################################################################################################
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.options = cms.untracked.PSet( allowUnscheduled = cms.untracked.bool(True) )
@@ -35,10 +42,11 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '94X_dataRun2_v11', '')
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(options.maxEvents) )
 process.MessageLogger.cerr.FwkReport.reportEvery = 100
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(options.inputFiles)
+                            fileNames = cms.untracked.vstring(options.InFileList)
                             )
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
 
+print process.source
 # ##########################################################################################################################
 # ################################### lumi mask if running locally (not CRAB) ##############################################
 import FWCore.PythonUtilities.LumiList as LumiList
