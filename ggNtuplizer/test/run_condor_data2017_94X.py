@@ -71,7 +71,8 @@ process.TFileService = cms.Service("TFileService", fileName = cms.string(options
 
 ##########################################################################################################################
 ### fix a bug in the ECAL-Tracker momentum combination when applying the scale and smearing
-from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+# from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
                        era='2017-Nov17ReReco',
@@ -111,7 +112,8 @@ jetToolbox( process, 'ak4', 'ak4JetSubs', 'noOutput',
         runOnMC=False,
         updateCollection='slimmedJets',
         JETCorrPayload='AK4PFchs',
-        postFix='updated'
+        postFix='updated',
+        dataTier='miniAOD'
         )
 
 # ### ak 0.8 PUPPI jets
