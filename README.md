@@ -7,18 +7,18 @@ cd CMSSW_9_4_13/src <br>
 cmsenv <br>
 git cms-init
 git cms-addpkg CondFormats/JetMETObjects
-git cms-addpkg JetMETCorrections/Modules; 
-git cms-addpkg RecoBTag/Combined; 
-git cms-addpkg JetMETCorrections/Type1MET; 
-git cms-addpkg RecoMET/METFilters; 
-git cms-addpkg RecoEgamma/PhotonIdentification/; 
-git cms-addpkg RecoEgamma/ElectronIdentification/; 
-git cms-addpkg CommonTools/PileupAlgos;
-git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_102X_v3;
-git cms-merge-topic cms-egamma:PhotonIDValueMapSpeedup1029;
-scram b -j 16;
-git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPostRecoTools;
-cd  EgammaUser/EgammaPostRecoTools; git checkout master; cd -;
+git cms-addpkg JetMETCorrections/Modules;  <br> 
+git cms-addpkg RecoBTag/Combined;  <br> 
+git cms-addpkg JetMETCorrections/Type1MET;  <br> 
+git cms-addpkg RecoMET/METFilters;  <br> 
+git cms-addpkg RecoEgamma/PhotonIdentification/;  <br> 
+git cms-addpkg RecoEgamma/ElectronIdentification/;  <br> 
+git cms-addpkg CommonTools/PileupAlgos;  <br>
+git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_102X_v3;  <br>
+git cms-merge-topic cms-egamma:PhotonIDValueMapSpeedup1029;  <br>
+scram b -j 16;  <br>
+git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPostRecoTools;  <br>
+cd  EgammaUser/EgammaPostRecoTools;  git checkout master;  cd -;  <br>
 
 git clone -b METv4 git@github.com:wadud001/aNTGC_gggNtuplizer.git
 mv aNTGC_gggNtuplizer ggAnalysis
