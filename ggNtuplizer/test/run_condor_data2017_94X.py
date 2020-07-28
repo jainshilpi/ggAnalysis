@@ -10,18 +10,11 @@ options.maxEvents = 200
 
 
 options.register('InputFileList',
-                'testList.txt',
+                'file:testList.txt',
                 VarParsing.VarParsing.multiplicity.singleton,
                 VarParsing.VarParsing.varType.string,
                 "InputFileList")
 
-options.register('InFileList',
-                '',
-                VarParsing.VarParsing.multiplicity.list,
-                VarParsing.VarParsing.varType.string,
-                "InFileList")
-
-options.loadFromFile ('InFileList', options.InputFileList)
 
 options.register('LumiMask',
                 'Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt',
@@ -29,7 +22,20 @@ options.register('LumiMask',
                 VarParsing.VarParsing.varType.string,
                 "LumiMask")
 
+
 options.parseArguments()
+
+options.register('InFileList',
+                '',
+                VarParsing.VarParsing.multiplicity.list,
+                VarParsing.VarParsing.varType.string,
+                "InFileList")
+
+
+options.loadFromFile ('InFileList', options.InputFileList)
+
+
+
 
 ##########################################################################################################################
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
@@ -40,9 +46,10 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condD
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '94X_dataRun2_v11', '')
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(options.maxEvents) )
-process.MessageLogger.cerr.FwkReport.reportEvery = 100
+process.MessageLogger.cerr.FwkReport.reportEvery = 1
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring(options.InFileList)
+                            fileNames = cms.untracked.vstring(options.InFileList),
+                            # eventsToProcess = cms.untracked.VEventRange("302163:507:461728992-303000:507:462728992")
                             )
 #process.load("PhysicsTools.PatAlgos.patSequences_cff")
 
