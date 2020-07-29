@@ -20,8 +20,10 @@ do
 			echo "Error! Directory "${crab_dir} "does not exist!"
 			continue;
 		fi
-		echo "Resubmitting "${crab_dir}
+		#commandval=${commandval%\'}
+		#commandval=${commandval#\'}
+		echo -e "\n\n\n\n\t\t crab $commandval -d $crab_dir $3"
 		crab $commandval -d ${crab_dir}
-		# crab status -d ${crab_dir}
+		#crab resubmit -d ${crab_dir} --maxmemory 2500
 	fi
 done < ${inputFile}
