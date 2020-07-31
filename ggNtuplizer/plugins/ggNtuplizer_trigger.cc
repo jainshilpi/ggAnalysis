@@ -307,6 +307,9 @@ if (eleSingleFilters.size() == 0) {
         l1Filters["hltL1sSingleEG18IorSingleEG24"] = 29;
         l1Filters["hltL1sSingleEG10IorSingleEG15"] = 30;
         l1Filters["hltL1sSingleAndDoubleEGNonIsoOrWithEG26WithJetAndTau"] = 31;
+        l1Filters["hltEGL1SingleEGNonIsoOrWithJetAndTauFilter"] = 32;
+
+        
     }
 
     edm::Handle<pat::TriggerObjectStandAloneCollection> triggerHandleMiniAOD;
