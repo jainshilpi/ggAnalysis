@@ -1,0 +1,4290 @@
+<FrameworkJobReport>
+<AnalysisFile>
+  <FileName>/data/cmszfs1/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test//local/cms/user/wadud/aNTGCmet/ntuples/METv5data//Run2017D//Run2017D_002.root</FileName>
+  <Source  Value="TFileService" />
+</AnalysisFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/548B6388-7737-E811-8AB7-B083FED046D8.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>548B6388-7737-E811-8AB7-B083FED046D8</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>97562</EventsRead>
+<Runs>
+<Run ID="302163">
+   <LumiSection ID="34"/>
+   <LumiSection ID="35"/>
+   <LumiSection ID="36"/>
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="49"/>
+   <LumiSection ID="316"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="326"/>
+   <LumiSection ID="327"/>
+   <LumiSection ID="328"/>
+   <LumiSection ID="329"/>
+   <LumiSection ID="330"/>
+   <LumiSection ID="331"/>
+   <LumiSection ID="411"/>
+   <LumiSection ID="412"/>
+   <LumiSection ID="413"/>
+   <LumiSection ID="414"/>
+   <LumiSection ID="415"/>
+   <LumiSection ID="424"/>
+   <LumiSection ID="425"/>
+   <LumiSection ID="426"/>
+   <LumiSection ID="427"/>
+   <LumiSection ID="428"/>
+   <LumiSection ID="429"/>
+   <LumiSection ID="430"/>
+   <LumiSection ID="431"/>
+   <LumiSection ID="432"/>
+   <LumiSection ID="433"/>
+   <LumiSection ID="1178"/>
+   <LumiSection ID="1179"/>
+   <LumiSection ID="1180"/>
+   <LumiSection ID="1181"/>
+   <LumiSection ID="1182"/>
+   <LumiSection ID="1183"/>
+   <LumiSection ID="1193"/>
+   <LumiSection ID="1194"/>
+   <LumiSection ID="1195"/>
+   <LumiSection ID="1196"/>
+   <LumiSection ID="1197"/>
+   <LumiSection ID="1198"/>
+   <LumiSection ID="1199"/>
+   <LumiSection ID="1200"/>
+   <LumiSection ID="1201"/>
+   <LumiSection ID="1202"/>
+   <LumiSection ID="1203"/>
+   <LumiSection ID="1204"/>
+   <LumiSection ID="1205"/>
+   <LumiSection ID="1206"/>
+</Run>
+
+<Run ID="302448">
+   <LumiSection ID="31"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="49"/>
+   <LumiSection ID="60"/>
+   <LumiSection ID="61"/>
+   <LumiSection ID="62"/>
+   <LumiSection ID="63"/>
+   <LumiSection ID="65"/>
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="78"/>
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+   <LumiSection ID="81"/>
+   <LumiSection ID="82"/>
+   <LumiSection ID="83"/>
+   <LumiSection ID="84"/>
+   <LumiSection ID="85"/>
+   <LumiSection ID="86"/>
+   <LumiSection ID="87"/>
+   <LumiSection ID="88"/>
+   <LumiSection ID="96"/>
+   <LumiSection ID="97"/>
+   <LumiSection ID="98"/>
+   <LumiSection ID="99"/>
+   <LumiSection ID="104"/>
+   <LumiSection ID="105"/>
+   <LumiSection ID="106"/>
+   <LumiSection ID="107"/>
+   <LumiSection ID="108"/>
+   <LumiSection ID="109"/>
+   <LumiSection ID="110"/>
+   <LumiSection ID="111"/>
+   <LumiSection ID="112"/>
+   <LumiSection ID="113"/>
+   <LumiSection ID="114"/>
+   <LumiSection ID="126"/>
+   <LumiSection ID="128"/>
+   <LumiSection ID="129"/>
+   <LumiSection ID="130"/>
+   <LumiSection ID="131"/>
+   <LumiSection ID="132"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="170"/>
+   <LumiSection ID="171"/>
+   <LumiSection ID="172"/>
+   <LumiSection ID="173"/>
+   <LumiSection ID="174"/>
+   <LumiSection ID="175"/>
+   <LumiSection ID="176"/>
+   <LumiSection ID="177"/>
+   <LumiSection ID="178"/>
+   <LumiSection ID="179"/>
+   <LumiSection ID="192"/>
+   <LumiSection ID="214"/>
+   <LumiSection ID="215"/>
+   <LumiSection ID="216"/>
+   <LumiSection ID="217"/>
+   <LumiSection ID="218"/>
+   <LumiSection ID="224"/>
+   <LumiSection ID="225"/>
+   <LumiSection ID="226"/>
+   <LumiSection ID="227"/>
+   <LumiSection ID="228"/>
+   <LumiSection ID="229"/>
+   <LumiSection ID="230"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="271"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="275"/>
+   <LumiSection ID="276"/>
+   <LumiSection ID="277"/>
+   <LumiSection ID="278"/>
+   <LumiSection ID="279"/>
+   <LumiSection ID="280"/>
+   <LumiSection ID="281"/>
+   <LumiSection ID="282"/>
+   <LumiSection ID="283"/>
+   <LumiSection ID="284"/>
+   <LumiSection ID="285"/>
+   <LumiSection ID="286"/>
+   <LumiSection ID="287"/>
+   <LumiSection ID="288"/>
+   <LumiSection ID="289"/>
+   <LumiSection ID="290"/>
+   <LumiSection ID="291"/>
+   <LumiSection ID="292"/>
+   <LumiSection ID="293"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+   <LumiSection ID="299"/>
+   <LumiSection ID="300"/>
+   <LumiSection ID="301"/>
+   <LumiSection ID="302"/>
+   <LumiSection ID="303"/>
+   <LumiSection ID="304"/>
+   <LumiSection ID="305"/>
+   <LumiSection ID="306"/>
+   <LumiSection ID="307"/>
+   <LumiSection ID="308"/>
+   <LumiSection ID="309"/>
+   <LumiSection ID="310"/>
+   <LumiSection ID="311"/>
+   <LumiSection ID="312"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="320"/>
+   <LumiSection ID="321"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="326"/>
+   <LumiSection ID="327"/>
+   <LumiSection ID="328"/>
+   <LumiSection ID="329"/>
+   <LumiSection ID="330"/>
+   <LumiSection ID="331"/>
+   <LumiSection ID="332"/>
+   <LumiSection ID="333"/>
+   <LumiSection ID="344"/>
+   <LumiSection ID="345"/>
+   <LumiSection ID="346"/>
+   <LumiSection ID="347"/>
+   <LumiSection ID="348"/>
+   <LumiSection ID="349"/>
+   <LumiSection ID="350"/>
+   <LumiSection ID="414"/>
+   <LumiSection ID="415"/>
+   <LumiSection ID="420"/>
+   <LumiSection ID="421"/>
+   <LumiSection ID="422"/>
+   <LumiSection ID="423"/>
+   <LumiSection ID="424"/>
+   <LumiSection ID="425"/>
+   <LumiSection ID="426"/>
+   <LumiSection ID="427"/>
+   <LumiSection ID="428"/>
+   <LumiSection ID="429"/>
+   <LumiSection ID="687"/>
+   <LumiSection ID="688"/>
+   <LumiSection ID="689"/>
+   <LumiSection ID="690"/>
+   <LumiSection ID="691"/>
+   <LumiSection ID="692"/>
+   <LumiSection ID="693"/>
+   <LumiSection ID="694"/>
+   <LumiSection ID="695"/>
+   <LumiSection ID="704"/>
+   <LumiSection ID="705"/>
+   <LumiSection ID="706"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/ACDC5538-5E37-E811-8F79-1418774108DF.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>ACDC5538-5E37-E811-8F79-1418774108DF</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>90599</EventsRead>
+<Runs>
+<Run ID="302573">
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="31"/>
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="49"/>
+   <LumiSection ID="50"/>
+   <LumiSection ID="51"/>
+   <LumiSection ID="52"/>
+   <LumiSection ID="53"/>
+   <LumiSection ID="54"/>
+   <LumiSection ID="64"/>
+   <LumiSection ID="65"/>
+   <LumiSection ID="66"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="257"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="259"/>
+   <LumiSection ID="260"/>
+   <LumiSection ID="261"/>
+   <LumiSection ID="262"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="375"/>
+   <LumiSection ID="376"/>
+   <LumiSection ID="377"/>
+   <LumiSection ID="378"/>
+   <LumiSection ID="379"/>
+   <LumiSection ID="380"/>
+   <LumiSection ID="381"/>
+   <LumiSection ID="382"/>
+   <LumiSection ID="383"/>
+   <LumiSection ID="393"/>
+   <LumiSection ID="394"/>
+   <LumiSection ID="395"/>
+   <LumiSection ID="396"/>
+   <LumiSection ID="730"/>
+   <LumiSection ID="731"/>
+   <LumiSection ID="732"/>
+   <LumiSection ID="733"/>
+   <LumiSection ID="734"/>
+   <LumiSection ID="735"/>
+   <LumiSection ID="748"/>
+   <LumiSection ID="749"/>
+   <LumiSection ID="750"/>
+   <LumiSection ID="751"/>
+   <LumiSection ID="752"/>
+   <LumiSection ID="753"/>
+   <LumiSection ID="754"/>
+   <LumiSection ID="755"/>
+   <LumiSection ID="756"/>
+   <LumiSection ID="794"/>
+   <LumiSection ID="795"/>
+   <LumiSection ID="796"/>
+   <LumiSection ID="797"/>
+   <LumiSection ID="798"/>
+   <LumiSection ID="799"/>
+   <LumiSection ID="808"/>
+   <LumiSection ID="809"/>
+   <LumiSection ID="810"/>
+   <LumiSection ID="811"/>
+   <LumiSection ID="812"/>
+   <LumiSection ID="813"/>
+   <LumiSection ID="814"/>
+   <LumiSection ID="815"/>
+   <LumiSection ID="816"/>
+   <LumiSection ID="847"/>
+   <LumiSection ID="848"/>
+   <LumiSection ID="849"/>
+   <LumiSection ID="850"/>
+   <LumiSection ID="851"/>
+   <LumiSection ID="852"/>
+   <LumiSection ID="853"/>
+   <LumiSection ID="854"/>
+   <LumiSection ID="855"/>
+   <LumiSection ID="856"/>
+   <LumiSection ID="857"/>
+   <LumiSection ID="858"/>
+   <LumiSection ID="859"/>
+   <LumiSection ID="860"/>
+   <LumiSection ID="861"/>
+   <LumiSection ID="883"/>
+   <LumiSection ID="884"/>
+   <LumiSection ID="885"/>
+   <LumiSection ID="886"/>
+   <LumiSection ID="887"/>
+   <LumiSection ID="888"/>
+   <LumiSection ID="889"/>
+   <LumiSection ID="890"/>
+   <LumiSection ID="891"/>
+   <LumiSection ID="892"/>
+   <LumiSection ID="893"/>
+   <LumiSection ID="894"/>
+   <LumiSection ID="905"/>
+   <LumiSection ID="906"/>
+   <LumiSection ID="907"/>
+   <LumiSection ID="1237"/>
+   <LumiSection ID="1238"/>
+   <LumiSection ID="1239"/>
+   <LumiSection ID="1240"/>
+   <LumiSection ID="1241"/>
+   <LumiSection ID="1242"/>
+   <LumiSection ID="1243"/>
+   <LumiSection ID="1244"/>
+   <LumiSection ID="1245"/>
+   <LumiSection ID="1246"/>
+   <LumiSection ID="1247"/>
+   <LumiSection ID="1248"/>
+   <LumiSection ID="1249"/>
+   <LumiSection ID="1250"/>
+   <LumiSection ID="1251"/>
+   <LumiSection ID="1252"/>
+   <LumiSection ID="1263"/>
+   <LumiSection ID="1264"/>
+   <LumiSection ID="1265"/>
+   <LumiSection ID="1266"/>
+   <LumiSection ID="1267"/>
+   <LumiSection ID="1268"/>
+   <LumiSection ID="1269"/>
+   <LumiSection ID="1270"/>
+   <LumiSection ID="1271"/>
+   <LumiSection ID="1272"/>
+   <LumiSection ID="1273"/>
+   <LumiSection ID="1274"/>
+   <LumiSection ID="1285"/>
+</Run>
+
+<Run ID="302596">
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="78"/>
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+   <LumiSection ID="81"/>
+   <LumiSection ID="82"/>
+   <LumiSection ID="83"/>
+   <LumiSection ID="84"/>
+   <LumiSection ID="85"/>
+   <LumiSection ID="228"/>
+   <LumiSection ID="229"/>
+   <LumiSection ID="230"/>
+   <LumiSection ID="231"/>
+   <LumiSection ID="232"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="275"/>
+   <LumiSection ID="276"/>
+   <LumiSection ID="277"/>
+   <LumiSection ID="278"/>
+   <LumiSection ID="279"/>
+   <LumiSection ID="280"/>
+   <LumiSection ID="281"/>
+   <LumiSection ID="282"/>
+   <LumiSection ID="283"/>
+   <LumiSection ID="284"/>
+   <LumiSection ID="285"/>
+   <LumiSection ID="288"/>
+   <LumiSection ID="431"/>
+   <LumiSection ID="432"/>
+   <LumiSection ID="433"/>
+   <LumiSection ID="434"/>
+   <LumiSection ID="435"/>
+   <LumiSection ID="436"/>
+   <LumiSection ID="437"/>
+   <LumiSection ID="438"/>
+   <LumiSection ID="439"/>
+   <LumiSection ID="448"/>
+   <LumiSection ID="449"/>
+   <LumiSection ID="450"/>
+</Run>
+
+<Run ID="302634">
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+   <LumiSection ID="206"/>
+   <LumiSection ID="207"/>
+   <LumiSection ID="208"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+</Run>
+
+<Run ID="302651">
+   <LumiSection ID="123"/>
+   <LumiSection ID="124"/>
+   <LumiSection ID="125"/>
+   <LumiSection ID="126"/>
+   <LumiSection ID="127"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="144"/>
+   <LumiSection ID="145"/>
+   <LumiSection ID="146"/>
+</Run>
+
+<Run ID="302661">
+   <LumiSection ID="26"/>
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="31"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+</Run>
+
+<Run ID="302663">
+   <LumiSection ID="688"/>
+   <LumiSection ID="689"/>
+   <LumiSection ID="690"/>
+   <LumiSection ID="691"/>
+   <LumiSection ID="692"/>
+   <LumiSection ID="693"/>
+   <LumiSection ID="694"/>
+   <LumiSection ID="695"/>
+   <LumiSection ID="696"/>
+   <LumiSection ID="697"/>
+   <LumiSection ID="698"/>
+   <LumiSection ID="699"/>
+   <LumiSection ID="700"/>
+   <LumiSection ID="701"/>
+   <LumiSection ID="702"/>
+   <LumiSection ID="703"/>
+   <LumiSection ID="704"/>
+   <LumiSection ID="705"/>
+   <LumiSection ID="706"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/40BF73D9-8C37-E811-AF81-1866DAEA79D0.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>40BF73D9-8C37-E811-AF81-1866DAEA79D0</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>112569</EventsRead>
+<Runs>
+<Run ID="302392">
+   <LumiSection ID="59"/>
+   <LumiSection ID="60"/>
+   <LumiSection ID="61"/>
+   <LumiSection ID="62"/>
+   <LumiSection ID="63"/>
+   <LumiSection ID="65"/>
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="144"/>
+   <LumiSection ID="145"/>
+   <LumiSection ID="146"/>
+   <LumiSection ID="147"/>
+   <LumiSection ID="148"/>
+   <LumiSection ID="149"/>
+   <LumiSection ID="150"/>
+   <LumiSection ID="151"/>
+   <LumiSection ID="174"/>
+   <LumiSection ID="175"/>
+   <LumiSection ID="176"/>
+   <LumiSection ID="177"/>
+   <LumiSection ID="178"/>
+   <LumiSection ID="179"/>
+   <LumiSection ID="180"/>
+   <LumiSection ID="181"/>
+   <LumiSection ID="182"/>
+   <LumiSection ID="183"/>
+   <LumiSection ID="184"/>
+   <LumiSection ID="185"/>
+   <LumiSection ID="186"/>
+   <LumiSection ID="187"/>
+   <LumiSection ID="188"/>
+   <LumiSection ID="189"/>
+   <LumiSection ID="190"/>
+   <LumiSection ID="191"/>
+   <LumiSection ID="192"/>
+   <LumiSection ID="193"/>
+   <LumiSection ID="194"/>
+   <LumiSection ID="195"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+   <LumiSection ID="206"/>
+   <LumiSection ID="229"/>
+   <LumiSection ID="230"/>
+   <LumiSection ID="231"/>
+   <LumiSection ID="232"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="257"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="259"/>
+   <LumiSection ID="260"/>
+   <LumiSection ID="261"/>
+   <LumiSection ID="262"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="271"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="287"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+   <LumiSection ID="299"/>
+   <LumiSection ID="300"/>
+   <LumiSection ID="301"/>
+   <LumiSection ID="302"/>
+   <LumiSection ID="303"/>
+   <LumiSection ID="304"/>
+   <LumiSection ID="305"/>
+   <LumiSection ID="306"/>
+   <LumiSection ID="307"/>
+   <LumiSection ID="308"/>
+   <LumiSection ID="309"/>
+   <LumiSection ID="310"/>
+   <LumiSection ID="311"/>
+   <LumiSection ID="312"/>
+   <LumiSection ID="313"/>
+   <LumiSection ID="314"/>
+   <LumiSection ID="315"/>
+   <LumiSection ID="316"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="320"/>
+   <LumiSection ID="321"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="338"/>
+   <LumiSection ID="339"/>
+</Run>
+
+<Run ID="302448">
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+   <LumiSection ID="206"/>
+   <LumiSection ID="207"/>
+   <LumiSection ID="208"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+   <LumiSection ID="211"/>
+   <LumiSection ID="212"/>
+   <LumiSection ID="213"/>
+   <LumiSection ID="430"/>
+   <LumiSection ID="431"/>
+   <LumiSection ID="432"/>
+   <LumiSection ID="433"/>
+   <LumiSection ID="434"/>
+   <LumiSection ID="435"/>
+   <LumiSection ID="436"/>
+   <LumiSection ID="437"/>
+   <LumiSection ID="438"/>
+   <LumiSection ID="439"/>
+   <LumiSection ID="440"/>
+   <LumiSection ID="441"/>
+   <LumiSection ID="442"/>
+   <LumiSection ID="586"/>
+   <LumiSection ID="587"/>
+   <LumiSection ID="588"/>
+   <LumiSection ID="589"/>
+   <LumiSection ID="590"/>
+   <LumiSection ID="591"/>
+   <LumiSection ID="592"/>
+   <LumiSection ID="593"/>
+   <LumiSection ID="594"/>
+   <LumiSection ID="608"/>
+   <LumiSection ID="609"/>
+   <LumiSection ID="610"/>
+   <LumiSection ID="611"/>
+   <LumiSection ID="612"/>
+   <LumiSection ID="732"/>
+   <LumiSection ID="733"/>
+   <LumiSection ID="734"/>
+   <LumiSection ID="735"/>
+   <LumiSection ID="739"/>
+   <LumiSection ID="740"/>
+   <LumiSection ID="741"/>
+   <LumiSection ID="742"/>
+   <LumiSection ID="743"/>
+   <LumiSection ID="744"/>
+   <LumiSection ID="745"/>
+   <LumiSection ID="746"/>
+   <LumiSection ID="859"/>
+   <LumiSection ID="860"/>
+   <LumiSection ID="861"/>
+   <LumiSection ID="862"/>
+   <LumiSection ID="863"/>
+   <LumiSection ID="867"/>
+   <LumiSection ID="868"/>
+   <LumiSection ID="869"/>
+   <LumiSection ID="870"/>
+   <LumiSection ID="871"/>
+   <LumiSection ID="872"/>
+   <LumiSection ID="873"/>
+   <LumiSection ID="874"/>
+   <LumiSection ID="875"/>
+   <LumiSection ID="916"/>
+   <LumiSection ID="917"/>
+   <LumiSection ID="918"/>
+   <LumiSection ID="919"/>
+   <LumiSection ID="928"/>
+   <LumiSection ID="929"/>
+   <LumiSection ID="930"/>
+   <LumiSection ID="931"/>
+   <LumiSection ID="932"/>
+   <LumiSection ID="933"/>
+   <LumiSection ID="934"/>
+   <LumiSection ID="935"/>
+   <LumiSection ID="936"/>
+   <LumiSection ID="989"/>
+   <LumiSection ID="990"/>
+   <LumiSection ID="991"/>
+   <LumiSection ID="1001"/>
+   <LumiSection ID="1002"/>
+   <LumiSection ID="1003"/>
+   <LumiSection ID="1004"/>
+   <LumiSection ID="1005"/>
+   <LumiSection ID="1006"/>
+   <LumiSection ID="1007"/>
+   <LumiSection ID="1008"/>
+   <LumiSection ID="1009"/>
+   <LumiSection ID="1010"/>
+   <LumiSection ID="1011"/>
+   <LumiSection ID="1022"/>
+   <LumiSection ID="1023"/>
+   <LumiSection ID="1042"/>
+   <LumiSection ID="1043"/>
+   <LumiSection ID="1044"/>
+   <LumiSection ID="1045"/>
+   <LumiSection ID="1046"/>
+   <LumiSection ID="1047"/>
+   <LumiSection ID="1048"/>
+   <LumiSection ID="1049"/>
+   <LumiSection ID="1050"/>
+   <LumiSection ID="1051"/>
+   <LumiSection ID="1052"/>
+   <LumiSection ID="1053"/>
+   <LumiSection ID="1054"/>
+   <LumiSection ID="1055"/>
+   <LumiSection ID="1056"/>
+   <LumiSection ID="1057"/>
+   <LumiSection ID="1058"/>
+   <LumiSection ID="1059"/>
+   <LumiSection ID="1060"/>
+   <LumiSection ID="1061"/>
+   <LumiSection ID="1062"/>
+   <LumiSection ID="1063"/>
+   <LumiSection ID="1064"/>
+   <LumiSection ID="1065"/>
+   <LumiSection ID="1066"/>
+   <LumiSection ID="1067"/>
+   <LumiSection ID="1068"/>
+   <LumiSection ID="1069"/>
+   <LumiSection ID="1070"/>
+   <LumiSection ID="1071"/>
+   <LumiSection ID="1072"/>
+   <LumiSection ID="1073"/>
+   <LumiSection ID="1074"/>
+   <LumiSection ID="1075"/>
+   <LumiSection ID="1076"/>
+   <LumiSection ID="1077"/>
+   <LumiSection ID="1078"/>
+   <LumiSection ID="1079"/>
+   <LumiSection ID="1080"/>
+   <LumiSection ID="1088"/>
+   <LumiSection ID="1089"/>
+   <LumiSection ID="1090"/>
+   <LumiSection ID="1559"/>
+   <LumiSection ID="1560"/>
+   <LumiSection ID="1561"/>
+   <LumiSection ID="1562"/>
+   <LumiSection ID="1563"/>
+   <LumiSection ID="1564"/>
+   <LumiSection ID="1568"/>
+   <LumiSection ID="1569"/>
+   <LumiSection ID="1570"/>
+   <LumiSection ID="1571"/>
+   <LumiSection ID="1572"/>
+   <LumiSection ID="1573"/>
+   <LumiSection ID="1574"/>
+   <LumiSection ID="1575"/>
+   <LumiSection ID="1902"/>
+   <LumiSection ID="1903"/>
+   <LumiSection ID="1904"/>
+   <LumiSection ID="1905"/>
+   <LumiSection ID="1906"/>
+   <LumiSection ID="1907"/>
+   <LumiSection ID="1908"/>
+   <LumiSection ID="1909"/>
+   <LumiSection ID="1910"/>
+   <LumiSection ID="1911"/>
+   <LumiSection ID="1912"/>
+   <LumiSection ID="1913"/>
+   <LumiSection ID="1920"/>
+   <LumiSection ID="1921"/>
+   <LumiSection ID="1922"/>
+   <LumiSection ID="1923"/>
+   <LumiSection ID="1924"/>
+   <LumiSection ID="1925"/>
+   <LumiSection ID="1926"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/84C16AB9-7937-E811-9182-1866DAEB1FCC.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>84C16AB9-7937-E811-9182-1866DAEB1FCC</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>90810</EventsRead>
+<Runs>
+<Run ID="302472">
+   <LumiSection ID="57"/>
+   <LumiSection ID="58"/>
+   <LumiSection ID="59"/>
+   <LumiSection ID="60"/>
+   <LumiSection ID="61"/>
+   <LumiSection ID="62"/>
+   <LumiSection ID="63"/>
+   <LumiSection ID="65"/>
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="125"/>
+   <LumiSection ID="126"/>
+   <LumiSection ID="127"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="271"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="275"/>
+   <LumiSection ID="276"/>
+   <LumiSection ID="277"/>
+   <LumiSection ID="290"/>
+   <LumiSection ID="291"/>
+   <LumiSection ID="292"/>
+   <LumiSection ID="293"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+   <LumiSection ID="299"/>
+   <LumiSection ID="300"/>
+   <LumiSection ID="301"/>
+   <LumiSection ID="313"/>
+   <LumiSection ID="314"/>
+   <LumiSection ID="315"/>
+   <LumiSection ID="316"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="321"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="363"/>
+   <LumiSection ID="364"/>
+   <LumiSection ID="365"/>
+   <LumiSection ID="366"/>
+   <LumiSection ID="367"/>
+   <LumiSection ID="368"/>
+   <LumiSection ID="369"/>
+   <LumiSection ID="370"/>
+   <LumiSection ID="371"/>
+   <LumiSection ID="372"/>
+   <LumiSection ID="373"/>
+   <LumiSection ID="374"/>
+   <LumiSection ID="375"/>
+   <LumiSection ID="383"/>
+   <LumiSection ID="389"/>
+   <LumiSection ID="390"/>
+   <LumiSection ID="391"/>
+   <LumiSection ID="392"/>
+   <LumiSection ID="393"/>
+   <LumiSection ID="394"/>
+   <LumiSection ID="395"/>
+   <LumiSection ID="396"/>
+   <LumiSection ID="397"/>
+   <LumiSection ID="398"/>
+   <LumiSection ID="399"/>
+   <LumiSection ID="443"/>
+   <LumiSection ID="444"/>
+   <LumiSection ID="445"/>
+   <LumiSection ID="453"/>
+   <LumiSection ID="454"/>
+   <LumiSection ID="455"/>
+   <LumiSection ID="456"/>
+   <LumiSection ID="457"/>
+   <LumiSection ID="458"/>
+   <LumiSection ID="459"/>
+   <LumiSection ID="477"/>
+   <LumiSection ID="478"/>
+   <LumiSection ID="479"/>
+   <LumiSection ID="488"/>
+   <LumiSection ID="489"/>
+   <LumiSection ID="490"/>
+   <LumiSection ID="491"/>
+   <LumiSection ID="492"/>
+   <LumiSection ID="493"/>
+   <LumiSection ID="494"/>
+   <LumiSection ID="495"/>
+   <LumiSection ID="496"/>
+   <LumiSection ID="497"/>
+   <LumiSection ID="563"/>
+   <LumiSection ID="564"/>
+   <LumiSection ID="565"/>
+   <LumiSection ID="566"/>
+   <LumiSection ID="567"/>
+   <LumiSection ID="568"/>
+   <LumiSection ID="569"/>
+   <LumiSection ID="570"/>
+   <LumiSection ID="571"/>
+   <LumiSection ID="572"/>
+   <LumiSection ID="573"/>
+   <LumiSection ID="574"/>
+   <LumiSection ID="575"/>
+   <LumiSection ID="576"/>
+   <LumiSection ID="577"/>
+   <LumiSection ID="578"/>
+   <LumiSection ID="579"/>
+   <LumiSection ID="580"/>
+   <LumiSection ID="581"/>
+   <LumiSection ID="582"/>
+   <LumiSection ID="583"/>
+   <LumiSection ID="584"/>
+   <LumiSection ID="585"/>
+   <LumiSection ID="588"/>
+   <LumiSection ID="682"/>
+   <LumiSection ID="683"/>
+   <LumiSection ID="684"/>
+   <LumiSection ID="685"/>
+   <LumiSection ID="686"/>
+   <LumiSection ID="687"/>
+   <LumiSection ID="688"/>
+   <LumiSection ID="689"/>
+   <LumiSection ID="690"/>
+   <LumiSection ID="691"/>
+   <LumiSection ID="692"/>
+   <LumiSection ID="693"/>
+   <LumiSection ID="694"/>
+</Run>
+
+<Run ID="302473">
+   <LumiSection ID="14"/>
+   <LumiSection ID="15"/>
+   <LumiSection ID="16"/>
+   <LumiSection ID="17"/>
+   <LumiSection ID="18"/>
+   <LumiSection ID="19"/>
+   <LumiSection ID="20"/>
+   <LumiSection ID="21"/>
+   <LumiSection ID="22"/>
+   <LumiSection ID="23"/>
+   <LumiSection ID="24"/>
+   <LumiSection ID="25"/>
+   <LumiSection ID="32"/>
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+   <LumiSection ID="81"/>
+   <LumiSection ID="82"/>
+   <LumiSection ID="83"/>
+   <LumiSection ID="84"/>
+   <LumiSection ID="85"/>
+   <LumiSection ID="86"/>
+   <LumiSection ID="87"/>
+   <LumiSection ID="88"/>
+   <LumiSection ID="89"/>
+   <LumiSection ID="90"/>
+   <LumiSection ID="96"/>
+   <LumiSection ID="105"/>
+   <LumiSection ID="106"/>
+   <LumiSection ID="107"/>
+   <LumiSection ID="108"/>
+   <LumiSection ID="109"/>
+   <LumiSection ID="110"/>
+   <LumiSection ID="111"/>
+   <LumiSection ID="112"/>
+   <LumiSection ID="113"/>
+   <LumiSection ID="114"/>
+   <LumiSection ID="115"/>
+   <LumiSection ID="116"/>
+   <LumiSection ID="128"/>
+   <LumiSection ID="131"/>
+   <LumiSection ID="132"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="218"/>
+   <LumiSection ID="219"/>
+   <LumiSection ID="220"/>
+   <LumiSection ID="221"/>
+   <LumiSection ID="222"/>
+   <LumiSection ID="223"/>
+   <LumiSection ID="230"/>
+   <LumiSection ID="231"/>
+   <LumiSection ID="232"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="259"/>
+   <LumiSection ID="260"/>
+   <LumiSection ID="261"/>
+   <LumiSection ID="262"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="326"/>
+   <LumiSection ID="327"/>
+   <LumiSection ID="328"/>
+   <LumiSection ID="329"/>
+   <LumiSection ID="330"/>
+   <LumiSection ID="331"/>
+   <LumiSection ID="332"/>
+   <LumiSection ID="333"/>
+   <LumiSection ID="334"/>
+   <LumiSection ID="335"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/80657F0D-6C37-E811-8518-1866DAEA6BC4.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>80657F0D-6C37-E811-8518-1866DAEA6BC4</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>98045</EventsRead>
+<Runs>
+<Run ID="302263">
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="271"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="527"/>
+   <LumiSection ID="528"/>
+   <LumiSection ID="529"/>
+   <LumiSection ID="530"/>
+   <LumiSection ID="531"/>
+   <LumiSection ID="532"/>
+   <LumiSection ID="533"/>
+   <LumiSection ID="534"/>
+   <LumiSection ID="535"/>
+   <LumiSection ID="544"/>
+   <LumiSection ID="545"/>
+   <LumiSection ID="546"/>
+   <LumiSection ID="547"/>
+   <LumiSection ID="548"/>
+   <LumiSection ID="553"/>
+   <LumiSection ID="554"/>
+   <LumiSection ID="555"/>
+   <LumiSection ID="556"/>
+   <LumiSection ID="557"/>
+   <LumiSection ID="558"/>
+   <LumiSection ID="559"/>
+   <LumiSection ID="560"/>
+   <LumiSection ID="561"/>
+   <LumiSection ID="562"/>
+   <LumiSection ID="563"/>
+   <LumiSection ID="564"/>
+   <LumiSection ID="565"/>
+   <LumiSection ID="662"/>
+   <LumiSection ID="663"/>
+   <LumiSection ID="664"/>
+   <LumiSection ID="665"/>
+   <LumiSection ID="666"/>
+   <LumiSection ID="667"/>
+   <LumiSection ID="668"/>
+   <LumiSection ID="669"/>
+   <LumiSection ID="670"/>
+   <LumiSection ID="671"/>
+   <LumiSection ID="677"/>
+   <LumiSection ID="678"/>
+   <LumiSection ID="679"/>
+   <LumiSection ID="1019"/>
+   <LumiSection ID="1020"/>
+   <LumiSection ID="1021"/>
+   <LumiSection ID="1022"/>
+   <LumiSection ID="1023"/>
+   <LumiSection ID="1036"/>
+   <LumiSection ID="1037"/>
+   <LumiSection ID="1038"/>
+   <LumiSection ID="1039"/>
+   <LumiSection ID="1040"/>
+   <LumiSection ID="1041"/>
+   <LumiSection ID="1042"/>
+   <LumiSection ID="1043"/>
+   <LumiSection ID="1044"/>
+   <LumiSection ID="1090"/>
+   <LumiSection ID="1091"/>
+   <LumiSection ID="1092"/>
+   <LumiSection ID="1093"/>
+   <LumiSection ID="1094"/>
+   <LumiSection ID="1095"/>
+   <LumiSection ID="1096"/>
+   <LumiSection ID="1097"/>
+   <LumiSection ID="1098"/>
+   <LumiSection ID="1099"/>
+   <LumiSection ID="1100"/>
+   <LumiSection ID="1101"/>
+   <LumiSection ID="1102"/>
+   <LumiSection ID="1103"/>
+   <LumiSection ID="1104"/>
+   <LumiSection ID="1120"/>
+   <LumiSection ID="1121"/>
+   <LumiSection ID="1122"/>
+   <LumiSection ID="1123"/>
+   <LumiSection ID="1124"/>
+   <LumiSection ID="1125"/>
+   <LumiSection ID="1126"/>
+   <LumiSection ID="1127"/>
+   <LumiSection ID="1128"/>
+   <LumiSection ID="1129"/>
+   <LumiSection ID="1130"/>
+   <LumiSection ID="1131"/>
+   <LumiSection ID="1132"/>
+   <LumiSection ID="1133"/>
+   <LumiSection ID="1134"/>
+</Run>
+
+<Run ID="302474">
+   <LumiSection ID="1"/>
+   <LumiSection ID="2"/>
+   <LumiSection ID="3"/>
+   <LumiSection ID="4"/>
+   <LumiSection ID="5"/>
+   <LumiSection ID="6"/>
+   <LumiSection ID="7"/>
+   <LumiSection ID="8"/>
+   <LumiSection ID="9"/>
+   <LumiSection ID="10"/>
+   <LumiSection ID="11"/>
+   <LumiSection ID="12"/>
+   <LumiSection ID="13"/>
+   <LumiSection ID="14"/>
+   <LumiSection ID="15"/>
+   <LumiSection ID="106"/>
+   <LumiSection ID="107"/>
+   <LumiSection ID="108"/>
+   <LumiSection ID="109"/>
+   <LumiSection ID="110"/>
+   <LumiSection ID="111"/>
+   <LumiSection ID="112"/>
+   <LumiSection ID="113"/>
+   <LumiSection ID="114"/>
+   <LumiSection ID="115"/>
+   <LumiSection ID="116"/>
+   <LumiSection ID="117"/>
+   <LumiSection ID="118"/>
+   <LumiSection ID="119"/>
+   <LumiSection ID="120"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+   <LumiSection ID="206"/>
+   <LumiSection ID="207"/>
+   <LumiSection ID="208"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+</Run>
+
+<Run ID="302525">
+   <LumiSection ID="155"/>
+   <LumiSection ID="156"/>
+   <LumiSection ID="157"/>
+   <LumiSection ID="158"/>
+   <LumiSection ID="159"/>
+   <LumiSection ID="169"/>
+   <LumiSection ID="170"/>
+   <LumiSection ID="171"/>
+   <LumiSection ID="172"/>
+   <LumiSection ID="173"/>
+   <LumiSection ID="174"/>
+   <LumiSection ID="175"/>
+   <LumiSection ID="308"/>
+   <LumiSection ID="309"/>
+   <LumiSection ID="310"/>
+   <LumiSection ID="311"/>
+   <LumiSection ID="312"/>
+   <LumiSection ID="313"/>
+   <LumiSection ID="314"/>
+   <LumiSection ID="320"/>
+   <LumiSection ID="321"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="323"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="598"/>
+   <LumiSection ID="599"/>
+   <LumiSection ID="600"/>
+   <LumiSection ID="601"/>
+   <LumiSection ID="602"/>
+   <LumiSection ID="603"/>
+   <LumiSection ID="604"/>
+   <LumiSection ID="605"/>
+   <LumiSection ID="606"/>
+   <LumiSection ID="607"/>
+   <LumiSection ID="608"/>
+   <LumiSection ID="609"/>
+   <LumiSection ID="610"/>
+   <LumiSection ID="611"/>
+   <LumiSection ID="612"/>
+   <LumiSection ID="613"/>
+   <LumiSection ID="614"/>
+   <LumiSection ID="615"/>
+   <LumiSection ID="616"/>
+   <LumiSection ID="617"/>
+   <LumiSection ID="618"/>
+   <LumiSection ID="619"/>
+   <LumiSection ID="620"/>
+   <LumiSection ID="621"/>
+   <LumiSection ID="622"/>
+   <LumiSection ID="623"/>
+   <LumiSection ID="624"/>
+   <LumiSection ID="625"/>
+   <LumiSection ID="626"/>
+   <LumiSection ID="627"/>
+   <LumiSection ID="628"/>
+   <LumiSection ID="629"/>
+   <LumiSection ID="630"/>
+   <LumiSection ID="631"/>
+   <LumiSection ID="632"/>
+   <LumiSection ID="633"/>
+   <LumiSection ID="634"/>
+   <LumiSection ID="635"/>
+   <LumiSection ID="636"/>
+   <LumiSection ID="637"/>
+   <LumiSection ID="638"/>
+   <LumiSection ID="639"/>
+   <LumiSection ID="640"/>
+   <LumiSection ID="641"/>
+   <LumiSection ID="642"/>
+   <LumiSection ID="643"/>
+   <LumiSection ID="644"/>
+   <LumiSection ID="645"/>
+   <LumiSection ID="646"/>
+   <LumiSection ID="647"/>
+   <LumiSection ID="648"/>
+   <LumiSection ID="649"/>
+   <LumiSection ID="650"/>
+   <LumiSection ID="651"/>
+   <LumiSection ID="652"/>
+   <LumiSection ID="653"/>
+   <LumiSection ID="654"/>
+   <LumiSection ID="655"/>
+   <LumiSection ID="656"/>
+   <LumiSection ID="657"/>
+   <LumiSection ID="658"/>
+   <LumiSection ID="659"/>
+   <LumiSection ID="660"/>
+   <LumiSection ID="661"/>
+   <LumiSection ID="662"/>
+   <LumiSection ID="663"/>
+   <LumiSection ID="664"/>
+   <LumiSection ID="665"/>
+   <LumiSection ID="666"/>
+   <LumiSection ID="667"/>
+   <LumiSection ID="668"/>
+   <LumiSection ID="669"/>
+   <LumiSection ID="670"/>
+   <LumiSection ID="671"/>
+   <LumiSection ID="672"/>
+   <LumiSection ID="673"/>
+   <LumiSection ID="674"/>
+   <LumiSection ID="675"/>
+   <LumiSection ID="676"/>
+   <LumiSection ID="677"/>
+   <LumiSection ID="747"/>
+   <LumiSection ID="748"/>
+   <LumiSection ID="749"/>
+   <LumiSection ID="750"/>
+   <LumiSection ID="751"/>
+   <LumiSection ID="752"/>
+   <LumiSection ID="753"/>
+   <LumiSection ID="754"/>
+   <LumiSection ID="755"/>
+   <LumiSection ID="756"/>
+   <LumiSection ID="757"/>
+   <LumiSection ID="758"/>
+   <LumiSection ID="759"/>
+   <LumiSection ID="760"/>
+   <LumiSection ID="761"/>
+   <LumiSection ID="762"/>
+   <LumiSection ID="763"/>
+   <LumiSection ID="764"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/2C074BFE-5237-E811-BF53-B083FECFF296.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>2C074BFE-5237-E811-BF53-B083FECFF296</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>109973</EventsRead>
+<Runs>
+<Run ID="302033">
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+</Run>
+
+<Run ID="302042">
+   <LumiSection ID="436"/>
+   <LumiSection ID="437"/>
+   <LumiSection ID="438"/>
+</Run>
+
+<Run ID="302043">
+   <LumiSection ID="155"/>
+   <LumiSection ID="156"/>
+   <LumiSection ID="157"/>
+   <LumiSection ID="158"/>
+   <LumiSection ID="159"/>
+   <LumiSection ID="172"/>
+</Run>
+
+<Run ID="302131">
+   <LumiSection ID="193"/>
+   <LumiSection ID="419"/>
+   <LumiSection ID="420"/>
+   <LumiSection ID="421"/>
+   <LumiSection ID="422"/>
+   <LumiSection ID="423"/>
+   <LumiSection ID="424"/>
+   <LumiSection ID="425"/>
+   <LumiSection ID="426"/>
+   <LumiSection ID="427"/>
+   <LumiSection ID="428"/>
+   <LumiSection ID="429"/>
+   <LumiSection ID="617"/>
+   <LumiSection ID="733"/>
+   <LumiSection ID="734"/>
+   <LumiSection ID="735"/>
+   <LumiSection ID="738"/>
+   <LumiSection ID="739"/>
+   <LumiSection ID="740"/>
+   <LumiSection ID="741"/>
+   <LumiSection ID="742"/>
+   <LumiSection ID="743"/>
+   <LumiSection ID="744"/>
+   <LumiSection ID="745"/>
+   <LumiSection ID="746"/>
+   <LumiSection ID="747"/>
+</Run>
+
+<Run ID="302159">
+   <LumiSection ID="130"/>
+   <LumiSection ID="131"/>
+   <LumiSection ID="132"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+</Run>
+
+<Run ID="302163">
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="434"/>
+   <LumiSection ID="435"/>
+   <LumiSection ID="436"/>
+   <LumiSection ID="638"/>
+   <LumiSection ID="767"/>
+   <LumiSection ID="854"/>
+   <LumiSection ID="856"/>
+   <LumiSection ID="857"/>
+   <LumiSection ID="858"/>
+   <LumiSection ID="1058"/>
+   <LumiSection ID="1059"/>
+</Run>
+
+<Run ID="302165">
+   <LumiSection ID="24"/>
+   <LumiSection ID="25"/>
+   <LumiSection ID="26"/>
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="31"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+</Run>
+
+<Run ID="302225">
+   <LumiSection ID="369"/>
+   <LumiSection ID="370"/>
+   <LumiSection ID="371"/>
+   <LumiSection ID="372"/>
+   <LumiSection ID="373"/>
+   <LumiSection ID="374"/>
+   <LumiSection ID="375"/>
+   <LumiSection ID="376"/>
+   <LumiSection ID="377"/>
+   <LumiSection ID="378"/>
+   <LumiSection ID="379"/>
+   <LumiSection ID="380"/>
+   <LumiSection ID="381"/>
+   <LumiSection ID="382"/>
+   <LumiSection ID="383"/>
+   <LumiSection ID="385"/>
+   <LumiSection ID="386"/>
+   <LumiSection ID="387"/>
+   <LumiSection ID="388"/>
+   <LumiSection ID="403"/>
+   <LumiSection ID="404"/>
+   <LumiSection ID="405"/>
+   <LumiSection ID="406"/>
+   <LumiSection ID="407"/>
+   <LumiSection ID="408"/>
+   <LumiSection ID="409"/>
+   <LumiSection ID="410"/>
+   <LumiSection ID="411"/>
+   <LumiSection ID="412"/>
+   <LumiSection ID="416"/>
+   <LumiSection ID="417"/>
+   <LumiSection ID="418"/>
+   <LumiSection ID="419"/>
+   <LumiSection ID="717"/>
+   <LumiSection ID="718"/>
+   <LumiSection ID="719"/>
+   <LumiSection ID="720"/>
+   <LumiSection ID="721"/>
+   <LumiSection ID="722"/>
+   <LumiSection ID="723"/>
+   <LumiSection ID="724"/>
+   <LumiSection ID="725"/>
+   <LumiSection ID="726"/>
+   <LumiSection ID="727"/>
+   <LumiSection ID="728"/>
+   <LumiSection ID="729"/>
+   <LumiSection ID="730"/>
+   <LumiSection ID="731"/>
+   <LumiSection ID="764"/>
+   <LumiSection ID="765"/>
+   <LumiSection ID="766"/>
+   <LumiSection ID="767"/>
+   <LumiSection ID="776"/>
+   <LumiSection ID="777"/>
+   <LumiSection ID="778"/>
+   <LumiSection ID="779"/>
+   <LumiSection ID="894"/>
+   <LumiSection ID="895"/>
+   <LumiSection ID="902"/>
+   <LumiSection ID="903"/>
+   <LumiSection ID="904"/>
+   <LumiSection ID="905"/>
+   <LumiSection ID="906"/>
+   <LumiSection ID="907"/>
+   <LumiSection ID="908"/>
+   <LumiSection ID="909"/>
+   <LumiSection ID="910"/>
+   <LumiSection ID="911"/>
+   <LumiSection ID="912"/>
+   <LumiSection ID="913"/>
+   <LumiSection ID="914"/>
+   <LumiSection ID="915"/>
+   <LumiSection ID="916"/>
+   <LumiSection ID="917"/>
+   <LumiSection ID="918"/>
+   <LumiSection ID="919"/>
+   <LumiSection ID="920"/>
+   <LumiSection ID="921"/>
+   <LumiSection ID="922"/>
+   <LumiSection ID="923"/>
+</Run>
+
+<Run ID="302229">
+   <LumiSection ID="191"/>
+   <LumiSection ID="192"/>
+   <LumiSection ID="193"/>
+   <LumiSection ID="194"/>
+   <LumiSection ID="195"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="275"/>
+   <LumiSection ID="276"/>
+   <LumiSection ID="288"/>
+</Run>
+
+<Run ID="302344">
+   <LumiSection ID="191"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+   <LumiSection ID="206"/>
+   <LumiSection ID="207"/>
+   <LumiSection ID="208"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+   <LumiSection ID="224"/>
+   <LumiSection ID="225"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="257"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="259"/>
+   <LumiSection ID="260"/>
+</Run>
+
+<Run ID="302350">
+   <LumiSection ID="53"/>
+   <LumiSection ID="54"/>
+   <LumiSection ID="55"/>
+   <LumiSection ID="56"/>
+   <LumiSection ID="57"/>
+   <LumiSection ID="58"/>
+   <LumiSection ID="59"/>
+   <LumiSection ID="60"/>
+   <LumiSection ID="61"/>
+   <LumiSection ID="64"/>
+   <LumiSection ID="65"/>
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="78"/>
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+</Run>
+
+<Run ID="302485">
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+   <LumiSection ID="81"/>
+   <LumiSection ID="82"/>
+   <LumiSection ID="83"/>
+   <LumiSection ID="84"/>
+   <LumiSection ID="85"/>
+   <LumiSection ID="86"/>
+   <LumiSection ID="87"/>
+   <LumiSection ID="88"/>
+   <LumiSection ID="89"/>
+   <LumiSection ID="90"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="144"/>
+   <LumiSection ID="145"/>
+   <LumiSection ID="146"/>
+   <LumiSection ID="147"/>
+   <LumiSection ID="148"/>
+   <LumiSection ID="149"/>
+   <LumiSection ID="160"/>
+   <LumiSection ID="161"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="535"/>
+   <LumiSection ID="536"/>
+   <LumiSection ID="537"/>
+   <LumiSection ID="538"/>
+   <LumiSection ID="539"/>
+   <LumiSection ID="540"/>
+   <LumiSection ID="541"/>
+   <LumiSection ID="542"/>
+   <LumiSection ID="543"/>
+   <LumiSection ID="550"/>
+   <LumiSection ID="551"/>
+   <LumiSection ID="552"/>
+   <LumiSection ID="553"/>
+   <LumiSection ID="554"/>
+   <LumiSection ID="568"/>
+   <LumiSection ID="569"/>
+   <LumiSection ID="570"/>
+   <LumiSection ID="571"/>
+   <LumiSection ID="577"/>
+   <LumiSection ID="578"/>
+   <LumiSection ID="579"/>
+   <LumiSection ID="580"/>
+   <LumiSection ID="581"/>
+   <LumiSection ID="582"/>
+   <LumiSection ID="583"/>
+   <LumiSection ID="584"/>
+   <LumiSection ID="585"/>
+</Run>
+
+<Run ID="302492">
+   <LumiSection ID="10"/>
+   <LumiSection ID="11"/>
+   <LumiSection ID="12"/>
+   <LumiSection ID="13"/>
+   <LumiSection ID="14"/>
+   <LumiSection ID="15"/>
+   <LumiSection ID="16"/>
+   <LumiSection ID="17"/>
+   <LumiSection ID="18"/>
+   <LumiSection ID="19"/>
+   <LumiSection ID="20"/>
+   <LumiSection ID="21"/>
+   <LumiSection ID="23"/>
+   <LumiSection ID="24"/>
+   <LumiSection ID="25"/>
+   <LumiSection ID="26"/>
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="31"/>
+   <LumiSection ID="32"/>
+   <LumiSection ID="33"/>
+   <LumiSection ID="34"/>
+   <LumiSection ID="35"/>
+   <LumiSection ID="36"/>
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="49"/>
+   <LumiSection ID="50"/>
+   <LumiSection ID="51"/>
+   <LumiSection ID="52"/>
+   <LumiSection ID="53"/>
+   <LumiSection ID="54"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/06913A7A-8337-E811-866D-842B2B1728FF.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>06913A7A-8337-E811-866D-842B2B1728FF</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>90038</EventsRead>
+<Runs>
+<Run ID="302597">
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="271"/>
+   <LumiSection ID="272"/>
+   <LumiSection ID="273"/>
+   <LumiSection ID="274"/>
+   <LumiSection ID="275"/>
+   <LumiSection ID="276"/>
+   <LumiSection ID="277"/>
+   <LumiSection ID="278"/>
+   <LumiSection ID="279"/>
+   <LumiSection ID="280"/>
+   <LumiSection ID="281"/>
+   <LumiSection ID="282"/>
+   <LumiSection ID="283"/>
+   <LumiSection ID="284"/>
+   <LumiSection ID="288"/>
+   <LumiSection ID="289"/>
+   <LumiSection ID="290"/>
+   <LumiSection ID="291"/>
+   <LumiSection ID="292"/>
+   <LumiSection ID="293"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+   <LumiSection ID="305"/>
+   <LumiSection ID="306"/>
+   <LumiSection ID="307"/>
+   <LumiSection ID="308"/>
+   <LumiSection ID="309"/>
+   <LumiSection ID="310"/>
+   <LumiSection ID="311"/>
+   <LumiSection ID="312"/>
+   <LumiSection ID="313"/>
+   <LumiSection ID="314"/>
+   <LumiSection ID="315"/>
+   <LumiSection ID="316"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="550"/>
+   <LumiSection ID="551"/>
+   <LumiSection ID="552"/>
+   <LumiSection ID="553"/>
+   <LumiSection ID="554"/>
+   <LumiSection ID="555"/>
+   <LumiSection ID="556"/>
+   <LumiSection ID="557"/>
+   <LumiSection ID="558"/>
+   <LumiSection ID="559"/>
+   <LumiSection ID="560"/>
+   <LumiSection ID="561"/>
+   <LumiSection ID="562"/>
+   <LumiSection ID="563"/>
+   <LumiSection ID="564"/>
+   <LumiSection ID="565"/>
+   <LumiSection ID="581"/>
+   <LumiSection ID="582"/>
+   <LumiSection ID="583"/>
+   <LumiSection ID="584"/>
+   <LumiSection ID="585"/>
+   <LumiSection ID="586"/>
+   <LumiSection ID="587"/>
+   <LumiSection ID="588"/>
+   <LumiSection ID="589"/>
+   <LumiSection ID="590"/>
+   <LumiSection ID="591"/>
+   <LumiSection ID="592"/>
+   <LumiSection ID="593"/>
+   <LumiSection ID="594"/>
+   <LumiSection ID="634"/>
+   <LumiSection ID="635"/>
+   <LumiSection ID="636"/>
+   <LumiSection ID="637"/>
+   <LumiSection ID="638"/>
+   <LumiSection ID="639"/>
+   <LumiSection ID="640"/>
+   <LumiSection ID="641"/>
+   <LumiSection ID="642"/>
+   <LumiSection ID="643"/>
+   <LumiSection ID="644"/>
+   <LumiSection ID="645"/>
+   <LumiSection ID="646"/>
+   <LumiSection ID="647"/>
+   <LumiSection ID="648"/>
+   <LumiSection ID="649"/>
+   <LumiSection ID="650"/>
+   <LumiSection ID="651"/>
+   <LumiSection ID="652"/>
+   <LumiSection ID="653"/>
+   <LumiSection ID="654"/>
+   <LumiSection ID="655"/>
+   <LumiSection ID="656"/>
+   <LumiSection ID="657"/>
+   <LumiSection ID="658"/>
+   <LumiSection ID="659"/>
+</Run>
+
+<Run ID="302634">
+   <LumiSection ID="123"/>
+   <LumiSection ID="125"/>
+   <LumiSection ID="126"/>
+   <LumiSection ID="127"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="144"/>
+   <LumiSection ID="145"/>
+   <LumiSection ID="146"/>
+   <LumiSection ID="147"/>
+   <LumiSection ID="148"/>
+   <LumiSection ID="149"/>
+   <LumiSection ID="150"/>
+   <LumiSection ID="151"/>
+   <LumiSection ID="152"/>
+   <LumiSection ID="153"/>
+   <LumiSection ID="154"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="257"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="290"/>
+   <LumiSection ID="291"/>
+   <LumiSection ID="292"/>
+   <LumiSection ID="293"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+   <LumiSection ID="299"/>
+   <LumiSection ID="300"/>
+   <LumiSection ID="428"/>
+   <LumiSection ID="429"/>
+   <LumiSection ID="430"/>
+   <LumiSection ID="431"/>
+   <LumiSection ID="432"/>
+   <LumiSection ID="433"/>
+   <LumiSection ID="434"/>
+   <LumiSection ID="435"/>
+   <LumiSection ID="436"/>
+   <LumiSection ID="437"/>
+   <LumiSection ID="438"/>
+   <LumiSection ID="439"/>
+   <LumiSection ID="471"/>
+   <LumiSection ID="472"/>
+   <LumiSection ID="473"/>
+   <LumiSection ID="474"/>
+   <LumiSection ID="475"/>
+   <LumiSection ID="476"/>
+   <LumiSection ID="477"/>
+   <LumiSection ID="478"/>
+   <LumiSection ID="479"/>
+   <LumiSection ID="485"/>
+   <LumiSection ID="486"/>
+   <LumiSection ID="487"/>
+   <LumiSection ID="500"/>
+   <LumiSection ID="501"/>
+   <LumiSection ID="502"/>
+   <LumiSection ID="503"/>
+   <LumiSection ID="505"/>
+   <LumiSection ID="506"/>
+   <LumiSection ID="507"/>
+   <LumiSection ID="508"/>
+   <LumiSection ID="512"/>
+   <LumiSection ID="513"/>
+   <LumiSection ID="514"/>
+   <LumiSection ID="524"/>
+   <LumiSection ID="525"/>
+   <LumiSection ID="526"/>
+   <LumiSection ID="527"/>
+   <LumiSection ID="528"/>
+   <LumiSection ID="529"/>
+   <LumiSection ID="530"/>
+   <LumiSection ID="531"/>
+   <LumiSection ID="532"/>
+   <LumiSection ID="533"/>
+   <LumiSection ID="534"/>
+   <LumiSection ID="535"/>
+   <LumiSection ID="544"/>
+   <LumiSection ID="550"/>
+   <LumiSection ID="551"/>
+   <LumiSection ID="552"/>
+   <LumiSection ID="553"/>
+   <LumiSection ID="554"/>
+   <LumiSection ID="555"/>
+   <LumiSection ID="556"/>
+   <LumiSection ID="557"/>
+   <LumiSection ID="558"/>
+   <LumiSection ID="559"/>
+   <LumiSection ID="560"/>
+   <LumiSection ID="561"/>
+   <LumiSection ID="562"/>
+   <LumiSection ID="602"/>
+   <LumiSection ID="603"/>
+   <LumiSection ID="604"/>
+   <LumiSection ID="605"/>
+   <LumiSection ID="606"/>
+   <LumiSection ID="607"/>
+   <LumiSection ID="608"/>
+   <LumiSection ID="609"/>
+   <LumiSection ID="610"/>
+   <LumiSection ID="611"/>
+   <LumiSection ID="612"/>
+   <LumiSection ID="613"/>
+   <LumiSection ID="614"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/3419CFAE-4A37-E811-9DA0-1866DAEA6E20.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>3419CFAE-4A37-E811-9DA0-1866DAEA6E20</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>108774</EventsRead>
+<Runs>
+<Run ID="302031">
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="633"/>
+   <LumiSection ID="634"/>
+   <LumiSection ID="635"/>
+   <LumiSection ID="636"/>
+   <LumiSection ID="637"/>
+   <LumiSection ID="638"/>
+   <LumiSection ID="639"/>
+   <LumiSection ID="648"/>
+   <LumiSection ID="649"/>
+   <LumiSection ID="650"/>
+   <LumiSection ID="651"/>
+   <LumiSection ID="652"/>
+   <LumiSection ID="653"/>
+   <LumiSection ID="654"/>
+</Run>
+
+<Run ID="302042">
+   <LumiSection ID="24"/>
+   <LumiSection ID="25"/>
+   <LumiSection ID="26"/>
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="31"/>
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+</Run>
+
+<Run ID="302043">
+   <LumiSection ID="190"/>
+   <LumiSection ID="191"/>
+   <LumiSection ID="192"/>
+   <LumiSection ID="193"/>
+   <LumiSection ID="194"/>
+   <LumiSection ID="195"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="204"/>
+   <LumiSection ID="205"/>
+</Run>
+
+<Run ID="302131">
+   <LumiSection ID="669"/>
+   <LumiSection ID="670"/>
+   <LumiSection ID="672"/>
+   <LumiSection ID="673"/>
+   <LumiSection ID="674"/>
+   <LumiSection ID="675"/>
+   <LumiSection ID="676"/>
+   <LumiSection ID="677"/>
+   <LumiSection ID="678"/>
+   <LumiSection ID="679"/>
+   <LumiSection ID="680"/>
+   <LumiSection ID="681"/>
+   <LumiSection ID="682"/>
+</Run>
+
+<Run ID="302163">
+   <LumiSection ID="207"/>
+   <LumiSection ID="208"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+   <LumiSection ID="211"/>
+   <LumiSection ID="212"/>
+   <LumiSection ID="213"/>
+   <LumiSection ID="214"/>
+   <LumiSection ID="215"/>
+   <LumiSection ID="216"/>
+   <LumiSection ID="217"/>
+   <LumiSection ID="218"/>
+   <LumiSection ID="219"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="243"/>
+   <LumiSection ID="244"/>
+   <LumiSection ID="245"/>
+   <LumiSection ID="246"/>
+   <LumiSection ID="247"/>
+   <LumiSection ID="248"/>
+   <LumiSection ID="249"/>
+   <LumiSection ID="250"/>
+   <LumiSection ID="251"/>
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="256"/>
+   <LumiSection ID="257"/>
+   <LumiSection ID="258"/>
+   <LumiSection ID="259"/>
+   <LumiSection ID="260"/>
+   <LumiSection ID="261"/>
+   <LumiSection ID="262"/>
+   <LumiSection ID="498"/>
+   <LumiSection ID="499"/>
+   <LumiSection ID="500"/>
+   <LumiSection ID="501"/>
+   <LumiSection ID="502"/>
+   <LumiSection ID="503"/>
+   <LumiSection ID="504"/>
+   <LumiSection ID="505"/>
+   <LumiSection ID="512"/>
+   <LumiSection ID="513"/>
+   <LumiSection ID="514"/>
+   <LumiSection ID="515"/>
+</Run>
+
+<Run ID="302225">
+   <LumiSection ID="66"/>
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="279"/>
+   <LumiSection ID="280"/>
+   <LumiSection ID="281"/>
+   <LumiSection ID="282"/>
+   <LumiSection ID="283"/>
+   <LumiSection ID="284"/>
+   <LumiSection ID="285"/>
+   <LumiSection ID="286"/>
+   <LumiSection ID="287"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="296"/>
+   <LumiSection ID="297"/>
+   <LumiSection ID="298"/>
+</Run>
+
+<Run ID="302228">
+   <LumiSection ID="125"/>
+   <LumiSection ID="126"/>
+   <LumiSection ID="127"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="144"/>
+</Run>
+
+<Run ID="302229">
+   <LumiSection ID="14"/>
+   <LumiSection ID="15"/>
+   <LumiSection ID="16"/>
+   <LumiSection ID="17"/>
+   <LumiSection ID="18"/>
+   <LumiSection ID="19"/>
+   <LumiSection ID="20"/>
+   <LumiSection ID="21"/>
+   <LumiSection ID="22"/>
+   <LumiSection ID="23"/>
+   <LumiSection ID="24"/>
+   <LumiSection ID="32"/>
+   <LumiSection ID="33"/>
+</Run>
+
+<Run ID="302262">
+   <LumiSection ID="252"/>
+   <LumiSection ID="253"/>
+   <LumiSection ID="254"/>
+   <LumiSection ID="255"/>
+   <LumiSection ID="263"/>
+   <LumiSection ID="264"/>
+   <LumiSection ID="265"/>
+   <LumiSection ID="266"/>
+   <LumiSection ID="267"/>
+   <LumiSection ID="268"/>
+   <LumiSection ID="269"/>
+   <LumiSection ID="270"/>
+   <LumiSection ID="304"/>
+   <LumiSection ID="305"/>
+   <LumiSection ID="306"/>
+   <LumiSection ID="307"/>
+   <LumiSection ID="308"/>
+   <LumiSection ID="309"/>
+   <LumiSection ID="310"/>
+   <LumiSection ID="311"/>
+   <LumiSection ID="320"/>
+   <LumiSection ID="321"/>
+   <LumiSection ID="322"/>
+   <LumiSection ID="397"/>
+   <LumiSection ID="398"/>
+   <LumiSection ID="399"/>
+   <LumiSection ID="400"/>
+   <LumiSection ID="401"/>
+   <LumiSection ID="402"/>
+   <LumiSection ID="403"/>
+   <LumiSection ID="404"/>
+   <LumiSection ID="405"/>
+   <LumiSection ID="406"/>
+   <LumiSection ID="416"/>
+   <LumiSection ID="417"/>
+</Run>
+
+<Run ID="302280">
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="39"/>
+   <LumiSection ID="40"/>
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="86"/>
+   <LumiSection ID="87"/>
+   <LumiSection ID="88"/>
+   <LumiSection ID="89"/>
+   <LumiSection ID="90"/>
+   <LumiSection ID="91"/>
+   <LumiSection ID="92"/>
+   <LumiSection ID="93"/>
+   <LumiSection ID="94"/>
+   <LumiSection ID="96"/>
+   <LumiSection ID="97"/>
+   <LumiSection ID="98"/>
+   <LumiSection ID="99"/>
+   <LumiSection ID="100"/>
+</Run>
+
+<Run ID="302322">
+   <LumiSection ID="354"/>
+   <LumiSection ID="355"/>
+   <LumiSection ID="356"/>
+   <LumiSection ID="357"/>
+   <LumiSection ID="358"/>
+   <LumiSection ID="359"/>
+   <LumiSection ID="360"/>
+   <LumiSection ID="361"/>
+   <LumiSection ID="362"/>
+   <LumiSection ID="363"/>
+   <LumiSection ID="364"/>
+   <LumiSection ID="365"/>
+   <LumiSection ID="366"/>
+   <LumiSection ID="435"/>
+   <LumiSection ID="436"/>
+   <LumiSection ID="437"/>
+   <LumiSection ID="438"/>
+   <LumiSection ID="439"/>
+   <LumiSection ID="440"/>
+   <LumiSection ID="441"/>
+   <LumiSection ID="442"/>
+   <LumiSection ID="443"/>
+   <LumiSection ID="444"/>
+   <LumiSection ID="445"/>
+   <LumiSection ID="446"/>
+   <LumiSection ID="447"/>
+   <LumiSection ID="450"/>
+</Run>
+
+<Run ID="302328">
+   <LumiSection ID="186"/>
+   <LumiSection ID="187"/>
+   <LumiSection ID="188"/>
+   <LumiSection ID="189"/>
+   <LumiSection ID="190"/>
+   <LumiSection ID="191"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="199"/>
+   <LumiSection ID="200"/>
+   <LumiSection ID="201"/>
+   <LumiSection ID="202"/>
+   <LumiSection ID="203"/>
+   <LumiSection ID="465"/>
+   <LumiSection ID="466"/>
+   <LumiSection ID="467"/>
+   <LumiSection ID="468"/>
+   <LumiSection ID="469"/>
+   <LumiSection ID="470"/>
+   <LumiSection ID="471"/>
+   <LumiSection ID="472"/>
+   <LumiSection ID="473"/>
+   <LumiSection ID="474"/>
+   <LumiSection ID="475"/>
+   <LumiSection ID="476"/>
+   <LumiSection ID="477"/>
+   <LumiSection ID="478"/>
+   <LumiSection ID="480"/>
+</Run>
+
+<Run ID="302393">
+   <LumiSection ID="485"/>
+   <LumiSection ID="486"/>
+   <LumiSection ID="487"/>
+   <LumiSection ID="488"/>
+   <LumiSection ID="489"/>
+   <LumiSection ID="490"/>
+   <LumiSection ID="502"/>
+   <LumiSection ID="503"/>
+   <LumiSection ID="504"/>
+   <LumiSection ID="505"/>
+   <LumiSection ID="506"/>
+   <LumiSection ID="512"/>
+   <LumiSection ID="513"/>
+   <LumiSection ID="514"/>
+   <LumiSection ID="515"/>
+   <LumiSection ID="516"/>
+   <LumiSection ID="517"/>
+   <LumiSection ID="518"/>
+   <LumiSection ID="519"/>
+   <LumiSection ID="887"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/C0BF930E-6C37-E811-93D7-1866DAEA6C40.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>C0BF930E-6C37-E811-93D7-1866DAEA6C40</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>116310</EventsRead>
+<Runs>
+<Run ID="302635">
+   <LumiSection ID="525"/>
+   <LumiSection ID="526"/>
+   <LumiSection ID="527"/>
+   <LumiSection ID="528"/>
+   <LumiSection ID="529"/>
+   <LumiSection ID="530"/>
+   <LumiSection ID="531"/>
+   <LumiSection ID="544"/>
+   <LumiSection ID="545"/>
+   <LumiSection ID="546"/>
+   <LumiSection ID="547"/>
+   <LumiSection ID="548"/>
+   <LumiSection ID="549"/>
+   <LumiSection ID="550"/>
+   <LumiSection ID="612"/>
+   <LumiSection ID="613"/>
+   <LumiSection ID="614"/>
+   <LumiSection ID="615"/>
+   <LumiSection ID="616"/>
+   <LumiSection ID="617"/>
+   <LumiSection ID="618"/>
+   <LumiSection ID="619"/>
+   <LumiSection ID="620"/>
+   <LumiSection ID="621"/>
+   <LumiSection ID="622"/>
+   <LumiSection ID="623"/>
+   <LumiSection ID="624"/>
+   <LumiSection ID="625"/>
+   <LumiSection ID="655"/>
+   <LumiSection ID="656"/>
+   <LumiSection ID="657"/>
+   <LumiSection ID="658"/>
+   <LumiSection ID="659"/>
+   <LumiSection ID="660"/>
+   <LumiSection ID="661"/>
+   <LumiSection ID="662"/>
+   <LumiSection ID="663"/>
+   <LumiSection ID="664"/>
+   <LumiSection ID="665"/>
+   <LumiSection ID="666"/>
+   <LumiSection ID="667"/>
+   <LumiSection ID="668"/>
+   <LumiSection ID="669"/>
+   <LumiSection ID="670"/>
+   <LumiSection ID="671"/>
+   <LumiSection ID="672"/>
+   <LumiSection ID="673"/>
+   <LumiSection ID="674"/>
+   <LumiSection ID="675"/>
+   <LumiSection ID="676"/>
+   <LumiSection ID="677"/>
+   <LumiSection ID="678"/>
+   <LumiSection ID="679"/>
+   <LumiSection ID="680"/>
+   <LumiSection ID="681"/>
+   <LumiSection ID="682"/>
+   <LumiSection ID="683"/>
+   <LumiSection ID="684"/>
+   <LumiSection ID="730"/>
+   <LumiSection ID="731"/>
+   <LumiSection ID="736"/>
+   <LumiSection ID="737"/>
+   <LumiSection ID="738"/>
+   <LumiSection ID="739"/>
+   <LumiSection ID="740"/>
+   <LumiSection ID="741"/>
+   <LumiSection ID="742"/>
+   <LumiSection ID="743"/>
+   <LumiSection ID="744"/>
+   <LumiSection ID="745"/>
+   <LumiSection ID="746"/>
+   <LumiSection ID="747"/>
+   <LumiSection ID="748"/>
+   <LumiSection ID="756"/>
+   <LumiSection ID="757"/>
+   <LumiSection ID="758"/>
+   <LumiSection ID="759"/>
+   <LumiSection ID="760"/>
+   <LumiSection ID="761"/>
+   <LumiSection ID="762"/>
+   <LumiSection ID="763"/>
+   <LumiSection ID="764"/>
+   <LumiSection ID="765"/>
+   <LumiSection ID="766"/>
+   <LumiSection ID="767"/>
+   <LumiSection ID="772"/>
+   <LumiSection ID="773"/>
+   <LumiSection ID="774"/>
+   <LumiSection ID="836"/>
+   <LumiSection ID="837"/>
+   <LumiSection ID="838"/>
+   <LumiSection ID="839"/>
+   <LumiSection ID="840"/>
+   <LumiSection ID="841"/>
+   <LumiSection ID="842"/>
+   <LumiSection ID="843"/>
+   <LumiSection ID="844"/>
+   <LumiSection ID="845"/>
+   <LumiSection ID="846"/>
+   <LumiSection ID="847"/>
+   <LumiSection ID="848"/>
+   <LumiSection ID="849"/>
+   <LumiSection ID="850"/>
+   <LumiSection ID="851"/>
+   <LumiSection ID="940"/>
+   <LumiSection ID="941"/>
+   <LumiSection ID="942"/>
+   <LumiSection ID="943"/>
+   <LumiSection ID="944"/>
+   <LumiSection ID="945"/>
+   <LumiSection ID="946"/>
+   <LumiSection ID="947"/>
+   <LumiSection ID="948"/>
+   <LumiSection ID="949"/>
+   <LumiSection ID="950"/>
+   <LumiSection ID="951"/>
+   <LumiSection ID="958"/>
+   <LumiSection ID="959"/>
+   <LumiSection ID="966"/>
+   <LumiSection ID="967"/>
+   <LumiSection ID="968"/>
+   <LumiSection ID="969"/>
+   <LumiSection ID="970"/>
+   <LumiSection ID="971"/>
+   <LumiSection ID="972"/>
+   <LumiSection ID="973"/>
+   <LumiSection ID="974"/>
+   <LumiSection ID="975"/>
+   <LumiSection ID="976"/>
+   <LumiSection ID="977"/>
+   <LumiSection ID="978"/>
+   <LumiSection ID="979"/>
+   <LumiSection ID="980"/>
+   <LumiSection ID="981"/>
+   <LumiSection ID="982"/>
+   <LumiSection ID="984"/>
+   <LumiSection ID="985"/>
+   <LumiSection ID="986"/>
+   <LumiSection ID="987"/>
+   <LumiSection ID="988"/>
+   <LumiSection ID="989"/>
+   <LumiSection ID="990"/>
+   <LumiSection ID="991"/>
+   <LumiSection ID="992"/>
+   <LumiSection ID="993"/>
+   <LumiSection ID="994"/>
+   <LumiSection ID="995"/>
+   <LumiSection ID="996"/>
+   <LumiSection ID="997"/>
+   <LumiSection ID="998"/>
+   <LumiSection ID="999"/>
+   <LumiSection ID="1000"/>
+   <LumiSection ID="1001"/>
+   <LumiSection ID="1002"/>
+   <LumiSection ID="1023"/>
+   <LumiSection ID="1043"/>
+   <LumiSection ID="1044"/>
+   <LumiSection ID="1045"/>
+   <LumiSection ID="1046"/>
+   <LumiSection ID="1047"/>
+   <LumiSection ID="1048"/>
+   <LumiSection ID="1049"/>
+   <LumiSection ID="1050"/>
+   <LumiSection ID="1051"/>
+   <LumiSection ID="1052"/>
+   <LumiSection ID="1053"/>
+   <LumiSection ID="1054"/>
+   <LumiSection ID="1097"/>
+   <LumiSection ID="1098"/>
+   <LumiSection ID="1099"/>
+   <LumiSection ID="1100"/>
+   <LumiSection ID="1101"/>
+   <LumiSection ID="1102"/>
+   <LumiSection ID="1103"/>
+   <LumiSection ID="1104"/>
+   <LumiSection ID="1105"/>
+   <LumiSection ID="1106"/>
+   <LumiSection ID="1107"/>
+   <LumiSection ID="1177"/>
+   <LumiSection ID="1178"/>
+   <LumiSection ID="1179"/>
+   <LumiSection ID="1180"/>
+   <LumiSection ID="1181"/>
+   <LumiSection ID="1231"/>
+   <LumiSection ID="1232"/>
+   <LumiSection ID="1233"/>
+   <LumiSection ID="1234"/>
+   <LumiSection ID="1236"/>
+   <LumiSection ID="1237"/>
+   <LumiSection ID="1238"/>
+   <LumiSection ID="1239"/>
+   <LumiSection ID="1240"/>
+   <LumiSection ID="1241"/>
+   <LumiSection ID="1242"/>
+   <LumiSection ID="1244"/>
+   <LumiSection ID="1259"/>
+   <LumiSection ID="1260"/>
+   <LumiSection ID="1261"/>
+   <LumiSection ID="1262"/>
+   <LumiSection ID="1263"/>
+   <LumiSection ID="1264"/>
+   <LumiSection ID="1265"/>
+   <LumiSection ID="1266"/>
+   <LumiSection ID="1267"/>
+   <LumiSection ID="1268"/>
+   <LumiSection ID="1269"/>
+   <LumiSection ID="1270"/>
+   <LumiSection ID="1271"/>
+   <LumiSection ID="1272"/>
+   <LumiSection ID="1273"/>
+   <LumiSection ID="1274"/>
+   <LumiSection ID="1275"/>
+   <LumiSection ID="1276"/>
+   <LumiSection ID="1277"/>
+   <LumiSection ID="1278"/>
+   <LumiSection ID="1279"/>
+   <LumiSection ID="1280"/>
+   <LumiSection ID="1281"/>
+   <LumiSection ID="1282"/>
+   <LumiSection ID="1283"/>
+   <LumiSection ID="1284"/>
+   <LumiSection ID="1285"/>
+   <LumiSection ID="1286"/>
+   <LumiSection ID="1287"/>
+   <LumiSection ID="1288"/>
+   <LumiSection ID="1289"/>
+   <LumiSection ID="1290"/>
+   <LumiSection ID="1291"/>
+</Run>
+
+<Run ID="302663">
+   <LumiSection ID="67"/>
+   <LumiSection ID="68"/>
+   <LumiSection ID="69"/>
+   <LumiSection ID="70"/>
+   <LumiSection ID="71"/>
+   <LumiSection ID="72"/>
+   <LumiSection ID="73"/>
+   <LumiSection ID="74"/>
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="142"/>
+   <LumiSection ID="143"/>
+   <LumiSection ID="144"/>
+   <LumiSection ID="145"/>
+   <LumiSection ID="146"/>
+   <LumiSection ID="147"/>
+   <LumiSection ID="181"/>
+   <LumiSection ID="182"/>
+   <LumiSection ID="183"/>
+   <LumiSection ID="184"/>
+   <LumiSection ID="185"/>
+   <LumiSection ID="186"/>
+   <LumiSection ID="187"/>
+   <LumiSection ID="188"/>
+   <LumiSection ID="189"/>
+   <LumiSection ID="190"/>
+   <LumiSection ID="191"/>
+   <LumiSection ID="195"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="209"/>
+   <LumiSection ID="210"/>
+   <LumiSection ID="211"/>
+   <LumiSection ID="212"/>
+   <LumiSection ID="213"/>
+   <LumiSection ID="214"/>
+   <LumiSection ID="215"/>
+   <LumiSection ID="216"/>
+   <LumiSection ID="217"/>
+   <LumiSection ID="218"/>
+   <LumiSection ID="219"/>
+   <LumiSection ID="224"/>
+   <LumiSection ID="232"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="234"/>
+   <LumiSection ID="235"/>
+   <LumiSection ID="236"/>
+   <LumiSection ID="237"/>
+   <LumiSection ID="238"/>
+   <LumiSection ID="239"/>
+   <LumiSection ID="240"/>
+   <LumiSection ID="241"/>
+   <LumiSection ID="242"/>
+   <LumiSection ID="316"/>
+   <LumiSection ID="317"/>
+   <LumiSection ID="318"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="324"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="326"/>
+   <LumiSection ID="327"/>
+   <LumiSection ID="328"/>
+   <LumiSection ID="329"/>
+   <LumiSection ID="330"/>
+   <LumiSection ID="331"/>
+   <LumiSection ID="389"/>
+   <LumiSection ID="390"/>
+   <LumiSection ID="391"/>
+   <LumiSection ID="392"/>
+   <LumiSection ID="393"/>
+   <LumiSection ID="394"/>
+   <LumiSection ID="395"/>
+   <LumiSection ID="396"/>
+   <LumiSection ID="397"/>
+   <LumiSection ID="398"/>
+   <LumiSection ID="399"/>
+   <LumiSection ID="400"/>
+   <LumiSection ID="563"/>
+   <LumiSection ID="564"/>
+   <LumiSection ID="565"/>
+   <LumiSection ID="566"/>
+   <LumiSection ID="567"/>
+   <LumiSection ID="568"/>
+   <LumiSection ID="569"/>
+   <LumiSection ID="570"/>
+   <LumiSection ID="571"/>
+   <LumiSection ID="572"/>
+   <LumiSection ID="575"/>
+   <LumiSection ID="584"/>
+   <LumiSection ID="585"/>
+   <LumiSection ID="586"/>
+   <LumiSection ID="587"/>
+   <LumiSection ID="588"/>
+   <LumiSection ID="589"/>
+   <LumiSection ID="590"/>
+   <LumiSection ID="591"/>
+   <LumiSection ID="592"/>
+</Run>
+
+</Runs>
+</InputFile>
+
+<InputFile>
+<State  Value="closed"/>
+<LFN></LFN>
+<PFN>file:/local/cms/user/wadud/aNTGCmet/datasets/SinglePhotonRun2017_31Mar2018/Run2017D/SinglePhoton/MINIAOD/31Mar2018-v1/80000/D2412012-5C37-E811-BDC3-001EC94B4F43.root</PFN>
+<Catalog></Catalog>
+<ModuleLabel>source</ModuleLabel>
+<GUID>D2412012-5C37-E811-BDC3-001EC94B4F43</GUID>
+<Branches>
+  <Branch>CSCDetIdCSCSegmentsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__PAT.</Branch>
+  <Branch>CTPPSLocalTrackLites_ctppsLocalTrackLiteProducer__RECO.</Branch>
+  <Branch>DTChamberIdDTRecSegment4DsOwnedRangeMap_slimmedMuons__PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT.</Branch>
+  <Branch>EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT.</Branch>
+  <Branch>GlobalAlgBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>GlobalExtBlkBXVector_gtStage2Digis__RECO.</Branch>
+  <Branch>HcalNoiseSummary_hcalnoise__RECO.</Branch>
+  <Branch>L1GlobalTriggerReadoutRecord_gtDigis__RECO.</Branch>
+  <Branch>LumiScalerss_scalersRawToDigi__RECO.</Branch>
+  <Branch>Strings_slimmedPatTrigger_filterLabels_PAT.</Branch>
+  <Branch>double_fixedGridRhoAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAll__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetAllCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentral__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralCalo__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralChargedPileUp__RECO.</Branch>
+  <Branch>double_fixedGridRhoFastjetCentralNeutral__RECO.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__HLT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__PAT.</Branch>
+  <Branch>edmTriggerResults_TriggerResults__RECO.</Branch>
+  <Branch>floatedmValueMap_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_Isolated_RECO.</Branch>
+  <Branch>l1extraL1EmParticles_l1extraParticles_NonIsolated_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MET_RECO.</Branch>
+  <Branch>l1extraL1EtMissParticles_l1extraParticles_MHT_RECO.</Branch>
+  <Branch>l1extraL1HFRingss_l1extraParticles__RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Central_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Forward_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_IsoTau_RECO.</Branch>
+  <Branch>l1extraL1JetParticles_l1extraParticles_Tau_RECO.</Branch>
+  <Branch>l1extraL1MuonParticles_l1extraParticles__RECO.</Branch>
+  <Branch>l1tEGammaBXVector_caloStage2Digis_EGamma_RECO.</Branch>
+  <Branch>l1tEtSumBXVector_caloStage2Digis_EtSum_RECO.</Branch>
+  <Branch>l1tJetBXVector_caloStage2Digis_Jet_RECO.</Branch>
+  <Branch>l1tMuonBXVector_gmtStage2Digis_Muon_RECO.</Branch>
+  <Branch>l1tTauBXVector_caloStage2Digis_Tau_RECO.</Branch>
+  <Branch>patCompositeCandidates_oniaPhotonCandidates_conversions_PAT.</Branch>
+  <Branch>patElectrons_slimmedElectrons__PAT.</Branch>
+  <Branch>patIsolatedTracks_isolatedTracks__PAT.</Branch>
+  <Branch>patJets_slimmedJets__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8__PAT.</Branch>
+  <Branch>patJets_slimmedJetsAK8PFPuppiSoftDropPacked_SubJets_PAT.</Branch>
+  <Branch>patJets_slimmedJetsPuppi__PAT.</Branch>
+  <Branch>patMETs_slimmedMETs__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsNoHF__PAT.</Branch>
+  <Branch>patMETs_slimmedMETsPuppi__PAT.</Branch>
+  <Branch>patMuons_slimmedMuons__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks__PAT.</Branch>
+  <Branch>patPackedCandidates_lostTracks_eleTracks_PAT.</Branch>
+  <Branch>patPackedCandidates_packedPFCandidates__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger__PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1max_PAT.</Branch>
+  <Branch>patPackedTriggerPrescales_patTrigger_l1min_PAT.</Branch>
+  <Branch>patPhotons_slimmedOOTPhotons__PAT.</Branch>
+  <Branch>patPhotons_slimmedPhotons__PAT.</Branch>
+  <Branch>patTaus_slimmedTaus__PAT.</Branch>
+  <Branch>patTaus_slimmedTausBoosted__PAT.</Branch>
+  <Branch>patTriggerObjectStandAlones_slimmedPatTrigger__PAT.</Branch>
+  <Branch>recoBaseTagInfosOwned_slimmedJetsPuppi_tagInfos_PAT.</Branch>
+  <Branch>recoBeamHaloSummary_BeamHaloSummary__RECO.</Branch>
+  <Branch>recoBeamSpot_offlineBeamSpot__RECO.</Branch>
+  <Branch>recoCSCHaloData_CSCHaloData__RECO.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedESClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT.</Branch>
+  <Branch>recoCaloClusters_reducedEgamma_reducedOOTESClusters_PAT.</Branch>
+  <Branch>recoCaloJets_slimmedCaloJets__PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedConversions_PAT.</Branch>
+  <Branch>recoConversions_reducedEgamma_reducedSingleLegConversions_PAT.</Branch>
+  <Branch>recoDeDxHitInfos_isolatedTracks__PAT.</Branch>
+  <Branch>recoDeDxHitInfosedmAssociation_isolatedTracks__PAT.</Branch>
+  <Branch>recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT.</Branch>
+  <Branch>recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT.</Branch>
+  <Branch>recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT.</Branch>
+  <Branch>recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedKshortVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedLambdaVertices__PAT.</Branch>
+  <Branch>recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT.</Branch>
+  <Branch>recoVertexs_offlineSlimmedPrimaryVertices__PAT.</Branch>
+  <Branch>uint_bunchSpacingProducer__PAT.</Branch>
+</Branches>
+<InputType>primaryFiles</InputType>
+<InputSourceClass>PoolSource</InputSourceClass>
+<EventsRead>129538</EventsRead>
+<Runs>
+<Run ID="302448">
+   <LumiSection ID="24"/>
+   <LumiSection ID="25"/>
+   <LumiSection ID="26"/>
+   <LumiSection ID="27"/>
+   <LumiSection ID="28"/>
+   <LumiSection ID="29"/>
+   <LumiSection ID="30"/>
+   <LumiSection ID="32"/>
+   <LumiSection ID="33"/>
+   <LumiSection ID="34"/>
+   <LumiSection ID="35"/>
+   <LumiSection ID="36"/>
+   <LumiSection ID="37"/>
+   <LumiSection ID="38"/>
+   <LumiSection ID="534"/>
+   <LumiSection ID="535"/>
+   <LumiSection ID="536"/>
+   <LumiSection ID="537"/>
+   <LumiSection ID="538"/>
+   <LumiSection ID="539"/>
+   <LumiSection ID="544"/>
+   <LumiSection ID="545"/>
+   <LumiSection ID="546"/>
+   <LumiSection ID="547"/>
+   <LumiSection ID="548"/>
+   <LumiSection ID="549"/>
+   <LumiSection ID="550"/>
+   <LumiSection ID="634"/>
+   <LumiSection ID="635"/>
+   <LumiSection ID="636"/>
+   <LumiSection ID="637"/>
+   <LumiSection ID="638"/>
+   <LumiSection ID="639"/>
+   <LumiSection ID="645"/>
+   <LumiSection ID="646"/>
+   <LumiSection ID="647"/>
+   <LumiSection ID="648"/>
+   <LumiSection ID="649"/>
+   <LumiSection ID="650"/>
+   <LumiSection ID="1081"/>
+   <LumiSection ID="1082"/>
+   <LumiSection ID="1083"/>
+   <LumiSection ID="1084"/>
+   <LumiSection ID="1091"/>
+   <LumiSection ID="1092"/>
+   <LumiSection ID="1093"/>
+   <LumiSection ID="1094"/>
+   <LumiSection ID="1095"/>
+   <LumiSection ID="1096"/>
+   <LumiSection ID="1097"/>
+   <LumiSection ID="1098"/>
+   <LumiSection ID="1099"/>
+   <LumiSection ID="1100"/>
+   <LumiSection ID="1400"/>
+   <LumiSection ID="1401"/>
+   <LumiSection ID="1402"/>
+   <LumiSection ID="1403"/>
+   <LumiSection ID="1404"/>
+   <LumiSection ID="1405"/>
+   <LumiSection ID="1406"/>
+   <LumiSection ID="1407"/>
+   <LumiSection ID="1420"/>
+   <LumiSection ID="1421"/>
+   <LumiSection ID="1422"/>
+   <LumiSection ID="1423"/>
+   <LumiSection ID="1424"/>
+   <LumiSection ID="1425"/>
+   <LumiSection ID="1426"/>
+   <LumiSection ID="1427"/>
+   <LumiSection ID="1460"/>
+   <LumiSection ID="1461"/>
+   <LumiSection ID="1462"/>
+   <LumiSection ID="1463"/>
+   <LumiSection ID="1464"/>
+   <LumiSection ID="1465"/>
+   <LumiSection ID="1466"/>
+   <LumiSection ID="1467"/>
+   <LumiSection ID="1468"/>
+   <LumiSection ID="1469"/>
+   <LumiSection ID="1470"/>
+   <LumiSection ID="1471"/>
+   <LumiSection ID="1472"/>
+   <LumiSection ID="1473"/>
+   <LumiSection ID="1474"/>
+   <LumiSection ID="1475"/>
+   <LumiSection ID="1476"/>
+   <LumiSection ID="1477"/>
+   <LumiSection ID="1478"/>
+   <LumiSection ID="1479"/>
+   <LumiSection ID="1480"/>
+   <LumiSection ID="1481"/>
+   <LumiSection ID="1482"/>
+   <LumiSection ID="1483"/>
+   <LumiSection ID="1484"/>
+   <LumiSection ID="1485"/>
+   <LumiSection ID="1486"/>
+   <LumiSection ID="1487"/>
+   <LumiSection ID="1488"/>
+   <LumiSection ID="1489"/>
+   <LumiSection ID="1490"/>
+   <LumiSection ID="1491"/>
+   <LumiSection ID="1492"/>
+   <LumiSection ID="1493"/>
+   <LumiSection ID="1494"/>
+   <LumiSection ID="1495"/>
+   <LumiSection ID="1496"/>
+   <LumiSection ID="1497"/>
+   <LumiSection ID="1498"/>
+   <LumiSection ID="1499"/>
+   <LumiSection ID="1504"/>
+   <LumiSection ID="1505"/>
+   <LumiSection ID="1506"/>
+   <LumiSection ID="1507"/>
+   <LumiSection ID="1508"/>
+   <LumiSection ID="1509"/>
+   <LumiSection ID="1510"/>
+   <LumiSection ID="1535"/>
+   <LumiSection ID="1547"/>
+   <LumiSection ID="1548"/>
+   <LumiSection ID="1549"/>
+   <LumiSection ID="1550"/>
+   <LumiSection ID="1551"/>
+   <LumiSection ID="1552"/>
+   <LumiSection ID="1553"/>
+   <LumiSection ID="1554"/>
+   <LumiSection ID="1555"/>
+   <LumiSection ID="1556"/>
+   <LumiSection ID="1557"/>
+   <LumiSection ID="1558"/>
+</Run>
+
+<Run ID="302485">
+   <LumiSection ID="12"/>
+   <LumiSection ID="13"/>
+   <LumiSection ID="14"/>
+   <LumiSection ID="15"/>
+   <LumiSection ID="16"/>
+   <LumiSection ID="17"/>
+   <LumiSection ID="18"/>
+   <LumiSection ID="19"/>
+   <LumiSection ID="20"/>
+   <LumiSection ID="21"/>
+   <LumiSection ID="22"/>
+   <LumiSection ID="115"/>
+   <LumiSection ID="116"/>
+   <LumiSection ID="117"/>
+   <LumiSection ID="118"/>
+   <LumiSection ID="119"/>
+   <LumiSection ID="120"/>
+   <LumiSection ID="128"/>
+   <LumiSection ID="129"/>
+   <LumiSection ID="130"/>
+   <LumiSection ID="131"/>
+   <LumiSection ID="132"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="176"/>
+   <LumiSection ID="177"/>
+   <LumiSection ID="178"/>
+   <LumiSection ID="179"/>
+   <LumiSection ID="180"/>
+   <LumiSection ID="181"/>
+   <LumiSection ID="182"/>
+   <LumiSection ID="183"/>
+   <LumiSection ID="184"/>
+   <LumiSection ID="185"/>
+   <LumiSection ID="186"/>
+   <LumiSection ID="187"/>
+   <LumiSection ID="279"/>
+   <LumiSection ID="280"/>
+   <LumiSection ID="281"/>
+   <LumiSection ID="282"/>
+   <LumiSection ID="283"/>
+   <LumiSection ID="284"/>
+   <LumiSection ID="285"/>
+   <LumiSection ID="286"/>
+   <LumiSection ID="287"/>
+   <LumiSection ID="293"/>
+   <LumiSection ID="294"/>
+   <LumiSection ID="295"/>
+   <LumiSection ID="347"/>
+   <LumiSection ID="348"/>
+   <LumiSection ID="349"/>
+   <LumiSection ID="350"/>
+   <LumiSection ID="351"/>
+   <LumiSection ID="353"/>
+   <LumiSection ID="354"/>
+   <LumiSection ID="355"/>
+   <LumiSection ID="356"/>
+   <LumiSection ID="357"/>
+   <LumiSection ID="358"/>
+   <LumiSection ID="359"/>
+   <LumiSection ID="360"/>
+   <LumiSection ID="361"/>
+   <LumiSection ID="362"/>
+   <LumiSection ID="363"/>
+   <LumiSection ID="364"/>
+   <LumiSection ID="365"/>
+   <LumiSection ID="366"/>
+   <LumiSection ID="367"/>
+   <LumiSection ID="368"/>
+   <LumiSection ID="369"/>
+   <LumiSection ID="370"/>
+   <LumiSection ID="371"/>
+   <LumiSection ID="372"/>
+   <LumiSection ID="373"/>
+</Run>
+
+<Run ID="302597">
+   <LumiSection ID="41"/>
+   <LumiSection ID="42"/>
+   <LumiSection ID="43"/>
+   <LumiSection ID="44"/>
+   <LumiSection ID="45"/>
+   <LumiSection ID="46"/>
+   <LumiSection ID="47"/>
+   <LumiSection ID="48"/>
+   <LumiSection ID="49"/>
+   <LumiSection ID="50"/>
+   <LumiSection ID="51"/>
+   <LumiSection ID="52"/>
+   <LumiSection ID="53"/>
+   <LumiSection ID="122"/>
+   <LumiSection ID="123"/>
+   <LumiSection ID="130"/>
+   <LumiSection ID="131"/>
+   <LumiSection ID="132"/>
+   <LumiSection ID="133"/>
+   <LumiSection ID="134"/>
+   <LumiSection ID="135"/>
+   <LumiSection ID="136"/>
+   <LumiSection ID="137"/>
+   <LumiSection ID="138"/>
+   <LumiSection ID="139"/>
+   <LumiSection ID="140"/>
+   <LumiSection ID="141"/>
+   <LumiSection ID="319"/>
+   <LumiSection ID="325"/>
+   <LumiSection ID="326"/>
+   <LumiSection ID="327"/>
+   <LumiSection ID="328"/>
+   <LumiSection ID="329"/>
+   <LumiSection ID="330"/>
+   <LumiSection ID="331"/>
+   <LumiSection ID="332"/>
+   <LumiSection ID="333"/>
+   <LumiSection ID="334"/>
+   <LumiSection ID="335"/>
+   <LumiSection ID="336"/>
+   <LumiSection ID="337"/>
+   <LumiSection ID="566"/>
+   <LumiSection ID="567"/>
+   <LumiSection ID="568"/>
+   <LumiSection ID="569"/>
+   <LumiSection ID="570"/>
+   <LumiSection ID="571"/>
+   <LumiSection ID="572"/>
+   <LumiSection ID="573"/>
+   <LumiSection ID="574"/>
+   <LumiSection ID="575"/>
+   <LumiSection ID="576"/>
+   <LumiSection ID="577"/>
+   <LumiSection ID="578"/>
+   <LumiSection ID="579"/>
+   <LumiSection ID="580"/>
+   <LumiSection ID="767"/>
+   <LumiSection ID="778"/>
+   <LumiSection ID="779"/>
+   <LumiSection ID="780"/>
+   <LumiSection ID="781"/>
+   <LumiSection ID="782"/>
+   <LumiSection ID="783"/>
+   <LumiSection ID="784"/>
+   <LumiSection ID="785"/>
+   <LumiSection ID="786"/>
+   <LumiSection ID="800"/>
+   <LumiSection ID="801"/>
+   <LumiSection ID="802"/>
+   <LumiSection ID="844"/>
+   <LumiSection ID="845"/>
+   <LumiSection ID="846"/>
+   <LumiSection ID="847"/>
+   <LumiSection ID="848"/>
+   <LumiSection ID="849"/>
+   <LumiSection ID="850"/>
+   <LumiSection ID="851"/>
+   <LumiSection ID="852"/>
+   <LumiSection ID="853"/>
+   <LumiSection ID="854"/>
+   <LumiSection ID="855"/>
+   <LumiSection ID="856"/>
+   <LumiSection ID="857"/>
+   <LumiSection ID="895"/>
+   <LumiSection ID="900"/>
+   <LumiSection ID="901"/>
+   <LumiSection ID="902"/>
+   <LumiSection ID="903"/>
+   <LumiSection ID="904"/>
+   <LumiSection ID="905"/>
+   <LumiSection ID="906"/>
+   <LumiSection ID="907"/>
+   <LumiSection ID="908"/>
+   <LumiSection ID="909"/>
+   <LumiSection ID="910"/>
+   <LumiSection ID="911"/>
+   <LumiSection ID="912"/>
+   <LumiSection ID="969"/>
+   <LumiSection ID="970"/>
+   <LumiSection ID="971"/>
+   <LumiSection ID="972"/>
+   <LumiSection ID="973"/>
+   <LumiSection ID="974"/>
+   <LumiSection ID="975"/>
+   <LumiSection ID="976"/>
+   <LumiSection ID="977"/>
+   <LumiSection ID="978"/>
+   <LumiSection ID="979"/>
+   <LumiSection ID="980"/>
+   <LumiSection ID="981"/>
+   <LumiSection ID="982"/>
+   <LumiSection ID="983"/>
+   <LumiSection ID="984"/>
+</Run>
+
+<Run ID="302634">
+   <LumiSection ID="75"/>
+   <LumiSection ID="76"/>
+   <LumiSection ID="77"/>
+   <LumiSection ID="78"/>
+   <LumiSection ID="79"/>
+   <LumiSection ID="80"/>
+   <LumiSection ID="81"/>
+   <LumiSection ID="82"/>
+   <LumiSection ID="83"/>
+   <LumiSection ID="84"/>
+   <LumiSection ID="185"/>
+   <LumiSection ID="186"/>
+   <LumiSection ID="187"/>
+   <LumiSection ID="188"/>
+   <LumiSection ID="189"/>
+   <LumiSection ID="190"/>
+   <LumiSection ID="191"/>
+   <LumiSection ID="195"/>
+   <LumiSection ID="196"/>
+   <LumiSection ID="197"/>
+   <LumiSection ID="198"/>
+   <LumiSection ID="211"/>
+   <LumiSection ID="212"/>
+   <LumiSection ID="213"/>
+   <LumiSection ID="214"/>
+   <LumiSection ID="215"/>
+   <LumiSection ID="216"/>
+   <LumiSection ID="218"/>
+   <LumiSection ID="219"/>
+   <LumiSection ID="220"/>
+   <LumiSection ID="221"/>
+   <LumiSection ID="222"/>
+   <LumiSection ID="223"/>
+   <LumiSection ID="224"/>
+   <LumiSection ID="225"/>
+   <LumiSection ID="226"/>
+   <LumiSection ID="227"/>
+   <LumiSection ID="228"/>
+   <LumiSection ID="229"/>
+   <LumiSection ID="230"/>
+   <LumiSection ID="231"/>
+   <LumiSection ID="232"/>
+   <LumiSection ID="233"/>
+   <LumiSection ID="381"/>
+   <LumiSection ID="382"/>
+   <LumiSection ID="383"/>
+   <LumiSection ID="395"/>
+   <LumiSection ID="396"/>
+   <LumiSection ID="397"/>
+   <LumiSection ID="398"/>
+   <LumiSection ID="399"/>
+   <LumiSection ID="400"/>
+   <LumiSection ID="401"/>
+   <LumiSection ID="402"/>
+   <LumiSection ID="403"/>
+</Run>
+
+</Runs>
+</InputFile>
+<ReadBranches>
+<Branch Name="EcalRecHitsSorted_reducedEgamma_reducedEBRecHits_PAT." ReadCount="1044218" />
+<Branch Name="EcalRecHitsSorted_reducedEgamma_reducedEERecHits_PAT." ReadCount="1044218" />
+<Branch Name="EcalRecHitsSorted_reducedEgamma_reducedESRecHits_PAT." ReadCount="1044218" />
+<Branch Name="GlobalAlgBlkBXVector_gtStage2Digis__RECO." ReadCount="1044218" />
+<Branch Name="GlobalExtBlkBXVector_gtStage2Digis__RECO." ReadCount="1044218" />
+<Branch Name="double_fixedGridRhoAll__RECO." ReadCount="1044218" />
+<Branch Name="double_fixedGridRhoFastjetAll__RECO." ReadCount="1044218" />
+<Branch Name="double_fixedGridRhoFastjetCentralNeutral__RECO." ReadCount="1044218" />
+<Branch Name="edmTriggerResults_TriggerResults__HLT." ReadCount="1044218" />
+<Branch Name="edmTriggerResults_TriggerResults__RECO." ReadCount="1044218" />
+<Branch Name="patElectrons_slimmedElectrons__PAT." ReadCount="1044218" />
+<Branch Name="patJets_slimmedJetsPuppi__PAT." ReadCount="1044218" />
+<Branch Name="patJets_slimmedJets__PAT." ReadCount="1044218" />
+<Branch Name="patMETs_slimmedMETs__PAT." ReadCount="1044218" />
+<Branch Name="patMuons_slimmedMuons__PAT." ReadCount="1044218" />
+<Branch Name="patPackedCandidates_lostTracks__PAT." ReadCount="1044218" />
+<Branch Name="patPackedCandidates_lostTracks_eleTracks_PAT." ReadCount="1044218" />
+<Branch Name="patPackedCandidates_packedPFCandidates__PAT." ReadCount="1044218" />
+<Branch Name="patPhotons_slimmedOOTPhotons__PAT." ReadCount="1044218" />
+<Branch Name="patPhotons_slimmedPhotons__PAT." ReadCount="1044218" />
+<Branch Name="patTaus_slimmedTaus__PAT." ReadCount="1044218" />
+<Branch Name="patTriggerObjectStandAlones_slimmedPatTrigger__PAT." ReadCount="1044218" />
+<Branch Name="recoBeamHaloSummary_BeamHaloSummary__RECO." ReadCount="1044218" />
+<Branch Name="recoBeamSpot_offlineBeamSpot__RECO." ReadCount="1044218" />
+<Branch Name="recoCaloClusters_reducedEgamma_reducedEBEEClusters_PAT." ReadCount="1030231" />
+<Branch Name="recoCaloClusters_reducedEgamma_reducedOOTEBEEClusters_PAT." ReadCount="12200" />
+<Branch Name="recoConversions_reducedEgamma_reducedConversions_PAT." ReadCount="1044218" />
+<Branch Name="recoConversions_reducedEgamma_reducedSingleLegConversions_PAT." ReadCount="1044218" />
+<Branch Name="recoGsfElectronCores_reducedEgamma_reducedGedGsfElectronCores_PAT." ReadCount="701486" />
+<Branch Name="recoGsfTracks_reducedEgamma_reducedGsfTracks_PAT." ReadCount="1044218" />
+<Branch Name="recoPhotonCores_reducedEgamma_reducedGedPhotonCores_PAT." ReadCount="1021264" />
+<Branch Name="recoPhotonCores_reducedEgamma_reducedOOTPhotonCores_PAT." ReadCount="12200" />
+<Branch Name="recoSuperClusters_reducedEgamma_reducedOOTSuperClusters_PAT." ReadCount="1044218" />
+<Branch Name="recoSuperClusters_reducedEgamma_reducedSuperClusters_PAT." ReadCount="1044218" />
+<Branch Name="recoVertexCompositePtrCandidates_slimmedSecondaryVertices__PAT." ReadCount="1044218" />
+<Branch Name="recoVertexs_offlineSlimmedPrimaryVertices__PAT." ReadCount="1044218" />
+</ReadBranches>
+<PerformanceReport>
+  <PerformanceSummary Metric="StorageStatistics">
+    <Metric Name="Parameter-untracked-bool-enabled" Value="true"/>
+    <Metric Name="Parameter-untracked-bool-prefetching" Value="false"/>
+    <Metric Name="Parameter-untracked-bool-stats" Value="true"/>
+    <Metric Name="Parameter-untracked-string-cacheHint" Value="auto-detect"/>
+    <Metric Name="Parameter-untracked-string-readHint" Value="auto-detect"/>
+    <Metric Name="ROOT-tfile-read-totalMegabytes" Value="1.18502"/>
+    <Metric Name="ROOT-tfile-write-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-close-maxMsecs" Value="37.4106"/>
+    <Metric Name="Timing-file-close-minMsecs" Value="0.825432"/>
+    <Metric Name="Timing-file-close-numOperations" Value="10"/>
+    <Metric Name="Timing-file-close-numSuccessfulOperations" Value="10"/>
+    <Metric Name="Timing-file-close-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-close-totalMsecs" Value="50.8181"/>
+    <Metric Name="Timing-file-construct-maxMsecs" Value="0.003693"/>
+    <Metric Name="Timing-file-construct-minMsecs" Value="0.000161"/>
+    <Metric Name="Timing-file-construct-numOperations" Value="12"/>
+    <Metric Name="Timing-file-construct-numSuccessfulOperations" Value="12"/>
+    <Metric Name="Timing-file-construct-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-construct-totalMsecs" Value="0.006779"/>
+    <Metric Name="Timing-file-flush-maxMsecs" Value="1272.74"/>
+    <Metric Name="Timing-file-flush-minMsecs" Value="0.609246"/>
+    <Metric Name="Timing-file-flush-numOperations" Value="104"/>
+    <Metric Name="Timing-file-flush-numSuccessfulOperations" Value="104"/>
+    <Metric Name="Timing-file-flush-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-flush-totalMsecs" Value="56725.9"/>
+    <Metric Name="Timing-file-open-maxMsecs" Value="89.865"/>
+    <Metric Name="Timing-file-open-minMsecs" Value="0.636995"/>
+    <Metric Name="Timing-file-open-numOperations" Value="12"/>
+    <Metric Name="Timing-file-open-numSuccessfulOperations" Value="12"/>
+    <Metric Name="Timing-file-open-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-open-totalMsecs" Value="501.961"/>
+    <Metric Name="Timing-file-position-maxMsecs" Value="0.160185"/>
+    <Metric Name="Timing-file-position-minMsecs" Value="0.000872"/>
+    <Metric Name="Timing-file-position-numOperations" Value="2541154"/>
+    <Metric Name="Timing-file-position-numSuccessfulOperations" Value="2541154"/>
+    <Metric Name="Timing-file-position-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-position-totalMsecs" Value="4473.18"/>
+    <Metric Name="Timing-file-prefetch-maxMsecs" Value="51.5453"/>
+    <Metric Name="Timing-file-prefetch-minMsecs" Value="8.3e-05"/>
+    <Metric Name="Timing-file-prefetch-numOperations" Value="45717119"/>
+    <Metric Name="Timing-file-prefetch-numSuccessfulOperations" Value="45717119"/>
+    <Metric Name="Timing-file-prefetch-totalMegabytes" Value="206487"/>
+    <Metric Name="Timing-file-prefetch-totalMsecs" Value="108340"/>
+    <Metric Name="Timing-file-read-maxMsecs" Value="1391.82"/>
+    <Metric Name="Timing-file-read-minMsecs" Value="0.001529"/>
+    <Metric Name="Timing-file-read-numOperations" Value="1252598"/>
+    <Metric Name="Timing-file-read-numSuccessfulOperations" Value="1252598"/>
+    <Metric Name="Timing-file-read-totalMegabytes" Value="28893.8"/>
+    <Metric Name="Timing-file-read-totalMsecs" Value="215687"/>
+    <Metric Name="Timing-file-readv-maxMsecs" Value="0"/>
+    <Metric Name="Timing-file-readv-minMsecs" Value="0"/>
+    <Metric Name="Timing-file-readv-numOperations" Value="0"/>
+    <Metric Name="Timing-file-readv-numSuccessfulOperations" Value="0"/>
+    <Metric Name="Timing-file-readv-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-readv-totalMsecs" Value="0"/>
+    <Metric Name="Timing-file-stagein-maxMsecs" Value="0.000658"/>
+    <Metric Name="Timing-file-stagein-minMsecs" Value="5.4e-05"/>
+    <Metric Name="Timing-file-stagein-numOperations" Value="10"/>
+    <Metric Name="Timing-file-stagein-numSuccessfulOperations" Value="10"/>
+    <Metric Name="Timing-file-stagein-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-stagein-totalMsecs" Value="0.001148"/>
+    <Metric Name="Timing-file-write-maxMsecs" Value="453.42"/>
+    <Metric Name="Timing-file-write-minMsecs" Value="0.003184"/>
+    <Metric Name="Timing-file-write-numOperations" Value="37872"/>
+    <Metric Name="Timing-file-write-numSuccessfulOperations" Value="37872"/>
+    <Metric Name="Timing-file-write-totalMegabytes" Value="3123.04"/>
+    <Metric Name="Timing-file-write-totalMsecs" Value="6291.89"/>
+    <Metric Name="Timing-file-writev-maxMsecs" Value="0"/>
+    <Metric Name="Timing-file-writev-minMsecs" Value="0"/>
+    <Metric Name="Timing-file-writev-numOperations" Value="0"/>
+    <Metric Name="Timing-file-writev-numSuccessfulOperations" Value="0"/>
+    <Metric Name="Timing-file-writev-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-file-writev-totalMsecs" Value="0"/>
+    <Metric Name="Timing-tstoragefile-close-maxMsecs" Value="37.4155"/>
+    <Metric Name="Timing-tstoragefile-close-minMsecs" Value="0.828704"/>
+    <Metric Name="Timing-tstoragefile-close-numOperations" Value="10"/>
+    <Metric Name="Timing-tstoragefile-close-numSuccessfulOperations" Value="10"/>
+    <Metric Name="Timing-tstoragefile-close-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-close-totalMsecs" Value="50.8658"/>
+    <Metric Name="Timing-tstoragefile-construct-maxMsecs" Value="1220.3"/>
+    <Metric Name="Timing-tstoragefile-construct-minMsecs" Value="8.77317"/>
+    <Metric Name="Timing-tstoragefile-construct-numOperations" Value="12"/>
+    <Metric Name="Timing-tstoragefile-construct-numSuccessfulOperations" Value="12"/>
+    <Metric Name="Timing-tstoragefile-construct-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-construct-totalMsecs" Value="2596.32"/>
+    <Metric Name="Timing-tstoragefile-flush-maxMsecs" Value="1272.75"/>
+    <Metric Name="Timing-tstoragefile-flush-minMsecs" Value="0.61038"/>
+    <Metric Name="Timing-tstoragefile-flush-numOperations" Value="104"/>
+    <Metric Name="Timing-tstoragefile-flush-numSuccessfulOperations" Value="104"/>
+    <Metric Name="Timing-tstoragefile-flush-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-flush-totalMsecs" Value="56726.3"/>
+    <Metric Name="Timing-tstoragefile-read-maxMsecs" Value="1391.83"/>
+    <Metric Name="Timing-tstoragefile-read-minMsecs" Value="0.002285"/>
+    <Metric Name="Timing-tstoragefile-read-numOperations" Value="1252598"/>
+    <Metric Name="Timing-tstoragefile-read-numSuccessfulOperations" Value="1252598"/>
+    <Metric Name="Timing-tstoragefile-read-totalMegabytes" Value="28893.8"/>
+    <Metric Name="Timing-tstoragefile-read-totalMsecs" Value="219240"/>
+    <Metric Name="Timing-tstoragefile-readActual-maxMsecs" Value="1391.82"/>
+    <Metric Name="Timing-tstoragefile-readActual-minMsecs" Value="0.001817"/>
+    <Metric Name="Timing-tstoragefile-readActual-numOperations" Value="1252598"/>
+    <Metric Name="Timing-tstoragefile-readActual-numSuccessfulOperations" Value="1252598"/>
+    <Metric Name="Timing-tstoragefile-readActual-totalMegabytes" Value="28893.8"/>
+    <Metric Name="Timing-tstoragefile-readActual-totalMsecs" Value="216264"/>
+    <Metric Name="Timing-tstoragefile-readAsync-maxMsecs" Value="51.547"/>
+    <Metric Name="Timing-tstoragefile-readAsync-minMsecs" Value="0.000311"/>
+    <Metric Name="Timing-tstoragefile-readAsync-numOperations" Value="45717119"/>
+    <Metric Name="Timing-tstoragefile-readAsync-numSuccessfulOperations" Value="45717119"/>
+    <Metric Name="Timing-tstoragefile-readAsync-totalMegabytes" Value="27914.1"/>
+    <Metric Name="Timing-tstoragefile-readAsync-totalMsecs" Value="130003"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-maxMsecs" Value="0.083516"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-minMsecs" Value="0.000318"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-numOperations" Value="1247866"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-numSuccessfulOperations" Value="1114712"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-totalMegabytes" Value="27443"/>
+    <Metric Name="Timing-tstoragefile-readPrefetchToCache-totalMsecs" Value="655.449"/>
+    <Metric Name="Timing-tstoragefile-seek-maxMsecs" Value="0.160819"/>
+    <Metric Name="Timing-tstoragefile-seek-minMsecs" Value="0.001087"/>
+    <Metric Name="Timing-tstoragefile-seek-numOperations" Value="2538326"/>
+    <Metric Name="Timing-tstoragefile-seek-numSuccessfulOperations" Value="2538326"/>
+    <Metric Name="Timing-tstoragefile-seek-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-seek-totalMsecs" Value="5297.98"/>
+    <Metric Name="Timing-tstoragefile-stat-maxMsecs" Value="0.135311"/>
+    <Metric Name="Timing-tstoragefile-stat-minMsecs" Value="0.004668"/>
+    <Metric Name="Timing-tstoragefile-stat-numOperations" Value="695"/>
+    <Metric Name="Timing-tstoragefile-stat-numSuccessfulOperations" Value="695"/>
+    <Metric Name="Timing-tstoragefile-stat-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-stat-totalMsecs" Value="4.86306"/>
+    <Metric Name="Timing-tstoragefile-write-maxMsecs" Value="453.422"/>
+    <Metric Name="Timing-tstoragefile-write-minMsecs" Value="0.003851"/>
+    <Metric Name="Timing-tstoragefile-write-numOperations" Value="37872"/>
+    <Metric Name="Timing-tstoragefile-write-numSuccessfulOperations" Value="37872"/>
+    <Metric Name="Timing-tstoragefile-write-totalMegabytes" Value="3123.04"/>
+    <Metric Name="Timing-tstoragefile-write-totalMsecs" Value="6333.2"/>
+    <Metric Name="Timing-tstoragefile-writeActual-maxMsecs" Value="453.421"/>
+    <Metric Name="Timing-tstoragefile-writeActual-minMsecs" Value="0.003577"/>
+    <Metric Name="Timing-tstoragefile-writeActual-numOperations" Value="37872"/>
+    <Metric Name="Timing-tstoragefile-writeActual-numSuccessfulOperations" Value="37872"/>
+    <Metric Name="Timing-tstoragefile-writeActual-totalMegabytes" Value="3123.04"/>
+    <Metric Name="Timing-tstoragefile-writeActual-totalMsecs" Value="6315.89"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-maxMsecs" Value="0"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-minMsecs" Value="0"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-numOperations" Value="37872"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-numSuccessfulOperations" Value="0"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-totalMegabytes" Value="0"/>
+    <Metric Name="Timing-tstoragefile-writeViaCache-totalMsecs" Value="0"/>
+  </PerformanceSummary>
+</PerformanceReport>
+</FrameworkJobReport>

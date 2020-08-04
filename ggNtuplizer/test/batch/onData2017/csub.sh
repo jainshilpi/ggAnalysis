@@ -3,12 +3,13 @@
 ### syntax:  bash csub.sh [path_to_ntuple_lists]  [write_directory]
 
 cmsswfile="/cvmfs/cms.cern.ch/cmsset_default.sh"
-cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/ggAnalysis/ggNtuplizer/test/
-workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
+cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/
+# workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 
 jobList=$1
-writeDir=$2
-jobsDir=$2
+writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/METv5data/
+jobsDir=${writeDir}
+workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onData2017/jobsMETv5/
 
 
 # espresso     = 20 minutes
@@ -19,13 +20,13 @@ jobsDir=$2
 # testmatch    = 3 days
 # nextweek     = 1 week
 
-jobflavor=workday
-splitfiles=5
+jobflavor=testmatch
+splitfiles=10
 
 
 ############################################################################
-runScriptTemplate=${workDir}/runOnDataTemplate.sh
-condorCFGtemplate=${workDir}/condor_job.sh
+runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onData2017//runOnDataTemplate.sh
+condorCFGtemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onData2017//condor_job.sh
 
 mkdir -p ${writeDir}
 
@@ -128,7 +129,8 @@ do
 	jobName=$(basename ${subJobList})
 	jobName="${jobName%.*}"
 	echo -e	"\t Submitting "${jobName}
-	preSelectDataset ${subJobList} ${jobName} ${jobDir} ${writeDir}
+	mkdir -p ${writeDir}/${jobBaseName}/
+	preSelectDataset ${subJobList} ${jobName} ${jobDir} ${writeDir}/${jobBaseName}/
 
 done
 

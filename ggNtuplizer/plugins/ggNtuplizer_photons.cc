@@ -15,8 +15,8 @@ vector<Float_t>  phoSigmaCalibE_;
 vector<Float_t>  phoCalibEt_;
 vector<Float_t>  phoESEnP1_;
 vector<Float_t>  phoESEnP2_;
-vector<UChar_t> phoFiducialRegion_;
-vector<UChar_t>   phoQualityBits_;
+vector<UChar_t>  phoFiducialRegion_;
+vector<UChar_t>  phoQualityBits_;
 vector<Float_t>  phoR9_;
 vector<Float_t>  phoHoverE_;
 vector<Float_t>  phoESEffSigmaRR_;
@@ -25,6 +25,11 @@ vector<Float_t>  phoSigmaIEtaIPhiFull5x5_;
 vector<Float_t>  phoSigmaIPhiIPhiFull5x5_;
 vector<Float_t>  phoE2x2Full5x5_;
 vector<Float_t>  phoE5x5Full5x5_;
+vector<Float_t>  phoMaxEnergyXtal;
+vector<Float_t>  phoE2ndFull5x5_;
+vector<Float_t>  phoE1x3Full5x5_;
+vector<Float_t>  phoE1x5Full5x5_;
+vector<Float_t>  phoE2x5Full5x5_;
 vector<Float_t>  phoR9Full5x5_;
 vector<Float_t>  phoPFChIso_;
 vector<Float_t>  phoPFPhoIso_;
@@ -32,9 +37,13 @@ vector<Float_t>  phoPFNeuIso_;
 vector<Float_t>  phoPFChWorstIso_;
 vector<Float_t>  phoPFClusEcalIso_;
 vector<Float_t>  phoPFClusHcalIso_;
+vector<UChar_t>  nPhoTrkHollowConeDR04_;
+vector<UChar_t>  nPhoTrkSolidConeDR04_;
 vector<Float_t>  phoTrkSumPtSolidConeDR04_;
-vector<Float_t>  phoTrkSumPtSolidConeDR03_;
 vector<Float_t>  phoTrkSumPtHollowConeDR04_;
+vector<UChar_t>  nPhoTrkHollowConeDR03_;
+vector<UChar_t>  nPhoTrkSolidConeDR03_;
+vector<Float_t>  phoTrkSumPtSolidConeDR03_;
 vector<Float_t>  phoTrkSumPtHollowConeDR03_;
 vector<Float_t>  phoECALIso_;
 vector<Float_t>  phoHCALIso_;
@@ -104,26 +113,32 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 	tree->Branch("phoSigmaIPhiIPhiFull5x5", &phoSigmaIPhiIPhiFull5x5_);
 	tree->Branch("phoE2x2Full5x5",          &phoE2x2Full5x5_);
 	tree->Branch("phoE5x5Full5x5",          &phoE5x5Full5x5_);
+	tree->Branch("phoMaxEnergyXtal",          &phoMaxEnergyXtal);
+	tree->Branch("phoE2ndFull5x5",          &phoE2ndFull5x5_);
+	tree->Branch("phoE1x3Full5x5",          &phoE1x3Full5x5_);
+	tree->Branch("phoE1x5Full5x5",          &phoE1x5Full5x5_);
+	tree->Branch("phoE2x5Full5x5",          &phoE2x5Full5x5_);
 	tree->Branch("phoR9Full5x5",            &phoR9Full5x5_);
 	tree->Branch("phoSeedBCE",              &phoSeedBCE_);
 	tree->Branch("phoSeedBCEta",            &phoSeedBCEta_);
 	tree->Branch("phoSeedBCPhi",            &phoSeedBCPhi_);
-
 	tree->Branch("phoPFChIso",              &phoPFChIso_);
 	tree->Branch("phoPFPhoIso",             &phoPFPhoIso_);
 	tree->Branch("phoPFNeuIso",             &phoPFNeuIso_);
 	tree->Branch("phoPFChWorstIso",         &phoPFChWorstIso_);
-
 	tree->Branch("phoPFClusEcalIso",         &phoPFClusEcalIso_);
 	tree->Branch("phoPFClusHcalIso",         &phoPFClusHcalIso_);
-	tree->Branch("phoTrkSumPtSolidConeDR04",         &phoTrkSumPtSolidConeDR04_);
+	tree->Branch("nPhoTrkSolidConeDR03",          &nPhoTrkSolidConeDR03_);
+	tree->Branch("nPhoTrkHollowConeDR03",          &nPhoTrkHollowConeDR03_);
 	tree->Branch("phoTrkSumPtSolidConeDR03",         &phoTrkSumPtSolidConeDR03_);
-	tree->Branch("phoTrkSumPtHollowConeDR04",         &phoTrkSumPtHollowConeDR04_);
 	tree->Branch("phoTrkSumPtHollowConeDR03",         &phoTrkSumPtHollowConeDR03_);
-
+	tree->Branch("nPhoTrkSolidConeDR04",          &nPhoTrkSolidConeDR04_);
+	tree->Branch("nPhoTrkHollowConeDR04",          &nPhoTrkHollowConeDR04_);
+	tree->Branch("nPhoTrkSolidConeDR04",          &nPhoTrkSolidConeDR04_);
+	tree->Branch("phoTrkSumPtSolidConeDR04",         &phoTrkSumPtSolidConeDR04_);
+	tree->Branch("phoTrkSumPtHollowConeDR04",         &phoTrkSumPtHollowConeDR04_);
 	tree->Branch("phoECALIso",         &phoECALIso_);
 	tree->Branch("phoHCALIso",         &phoHCALIso_);
-
 	tree->Branch("phoIDMVA",                &phoIDMVA_);
 	tree->Branch("phoFiredSingleTrgs",      &phoFiredSingleTrgs_);
 	tree->Branch("phoFiredDoubleTrgs",      &phoFiredDoubleTrgs_);
@@ -131,13 +146,11 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 	tree->Branch("phoFiredL1Trgs",          &phoFiredL1Trgs_);
 	tree->Branch("phoSeedTime",             &phoSeedTime_);
 	tree->Branch("phoSeedEnergy",           &phoSeedEnergy_);
-  // tree->Branch("phoSeedTimeFull5x5",              &phoSeedTimeFull5x5_);
 	tree->Branch("phoMIPChi2",                      &phoMIPChi2_);
 	tree->Branch("phoMIPTotEnergy",                 &phoMIPTotEnergy_);
 	tree->Branch("phoMIPSlope",                     &phoMIPSlope_);
 	tree->Branch("phoMIPIntercept",                 &phoMIPIntercept_);
 	tree->Branch("phoMIPNhitCone",                  &phoMIPNhitCone_);
-
 	tree->Branch("phoIDbit",         &phoIDbit_);
 	tree->Branch("phoScale_stat_up", &phoScale_stat_up_);
 	tree->Branch("phoScale_stat_dn", &phoScale_stat_dn_);
@@ -158,9 +171,10 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 	}
 }
 
+
 void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
-  // cleanup from previous execution
+	// cleanup from previous execution
 	phoE_                   .clear();
 	phoSigmaE_              .clear();
 	phoEt_                  .clear();
@@ -190,10 +204,23 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
 	phoPFClusEcalIso_        .clear();
 	phoPFClusHcalIso_        .clear();
-	phoTrkSumPtSolidConeDR04_       .clear();
+
+	nPhoTrkHollowConeDR03_      .clear();
+	nPhoTrkSolidConeDR03_      .clear();
 	phoTrkSumPtSolidConeDR03_       .clear();
-	phoTrkSumPtHollowConeDR04_       .clear();
 	phoTrkSumPtHollowConeDR03_       .clear();
+	nPhoTrkHollowConeDR04_      .clear();
+	nPhoTrkSolidConeDR04_      .clear();
+	phoTrkSumPtSolidConeDR04_       .clear();
+	phoTrkSumPtHollowConeDR04_       .clear();
+	
+
+
+	phoMaxEnergyXtal      .clear();
+	phoE2ndFull5x5_      .clear();
+	phoE1x3Full5x5_      .clear();
+	phoE1x5Full5x5_      .clear();
+	phoE2x5Full5x5_      .clear();
 
 	phoECALIso_   .clear();
 	phoHCALIso_   .clear();
@@ -207,7 +234,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 	phoFiredTripleTrgs_     .clear();
 	phoFiredL1Trgs_         .clear();
 	phoSeedTime_            .clear();
-  // phoSeedTimeFull5x5_     .clear();
+	// phoSeedTimeFull5x5_     .clear();
 	phoSeedEnergy_          .clear();
 	phoMIPChi2_           .clear();
 	phoMIPTotEnergy_      .clear();
@@ -246,25 +273,21 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 	edm::Handle<std::vector<reco::SuperCluster>> ecalSChandle;
 	e.getByToken(ecalSCcollection_, ecalSChandle);
 
-  // EcalClusterLazyTools       lazyTool    (e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 	noZS::EcalClusterLazyTools lazyToolnoZS(e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 
 
 
-  //reco::BeamSpot beamSpot;
+	//reco::BeamSpot beamSpot;
 	math::XYZPoint beamSpot;
 	edm::Handle<reco::BeamSpot> beamSpotHandle;
 	e.getByToken(offlinebeamSpot_, beamSpotHandle);
 
 	if (beamSpotHandle.isValid()) {
-	//beamSpot = *beamSpotHandle;
 		beamSpot = beamSpotHandle->position();
 	} else {
 		std::cout << "No beam spot available!!!" << std::endl;
 	}
 
-
-  ///handle to conversion vector
 	edm::Handle<edm::View<reco::Conversion> > conversionHandle;
 	e.getByToken(convPhotonTag_, conversionHandle);
 
@@ -272,15 +295,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		std::cout << "No Conv not available!!!" << std::endl;
 	}
 
-  /*
-  if (conversionHandle.isValid()) {
-	conversionsVector = conversionHandle->ptrs();
-  } else {
-	std::cout << "No Conv not available!!!" << std::endl;
-  }
-  */
-
-  ///single leg conv
+	///single leg conv
 	edm::Handle<edm::View<reco::Conversion> > conversionHandleSL;
 	e.getByToken(convPhotonTagSL_, conversionHandleSL);
 
@@ -288,17 +303,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		std::cout << "No ConvSL not available!!!" << std::endl;
 	}
 
-  /*
-  if (conversionHandleSL.isValid()) {
-	conversionsVectorSL = conversionHandleSL->ptrs();
-  } else {
-	std::cout << "No ConvSL not available!!!" << std::endl;
-  }
-  */
-
 	for (edm::View<pat::Photon>::const_iterator iPho = photonHandle->begin(); iPho != photonHandle->end(); ++iPho){
-
-	// if(iPho->et() < 15.) continue;
 
 		phoE_             .push_back(iPho->energy());
 		phoCalibE_        .push_back(iPho->userFloat("ecalEnergyPostCorr"));
@@ -318,7 +323,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
 		phoR9_            .push_back(iPho->r9());
 		phoHoverE_        .push_back(iPho->hadTowOverEm());
-	// phoESEffSigmaRR_  .push_back(lazyTool.eseffsirir(*(iPho->superCluster())));
+		// phoESEffSigmaRR_  .push_back(lazyTool.eseffsirir(*(iPho->superCluster())));
 		phoESEffSigmaRR_  .push_back(iPho->full5x5_showerShapeVariables().effSigmaRR);
 		phoPFChIso_       .push_back(iPho->userFloat("phoChargedIsolation"));
 		phoPFPhoIso_      .push_back(iPho->userFloat("phoPhotonIsolation"));
@@ -331,6 +336,16 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoTrkSumPtSolidConeDR03_        .push_back(iPho->trkSumPtSolidConeDR03());
 		phoTrkSumPtHollowConeDR04_        .push_back(iPho->trkSumPtHollowConeDR04());
 		phoTrkSumPtHollowConeDR03_        .push_back(iPho->trkSumPtHollowConeDR03());
+
+		nPhoTrkHollowConeDR04_      .push_back(iPho->nTrkHollowConeDR04());
+		nPhoTrkSolidConeDR04_      .push_back(iPho->nTrkSolidConeDR04());
+		nPhoTrkHollowConeDR03_      .push_back(iPho->nTrkHollowConeDR03());
+		nPhoTrkSolidConeDR03_      .push_back(iPho->nTrkHollowConeDR04());
+		phoMaxEnergyXtal      .push_back(iPho->full5x5_maxEnergyXtal());
+		phoE2ndFull5x5_      .push_back(iPho->full5x5_showerShapeVariables().e2nd);
+		phoE1x3Full5x5_      .push_back(iPho->full5x5_showerShapeVariables().e1x3);
+		phoE1x5Full5x5_      .push_back(iPho->full5x5_showerShapeVariables().e1x5);
+		phoE2x5Full5x5_      .push_back(iPho->full5x5_showerShapeVariables().e2x5);
 		
 		phoECALIso_        .push_back(iPho->ecalIso());
 		phoHCALIso_        .push_back(iPho->hcalIso());
@@ -340,7 +355,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoSeedBCE_        .push_back(iPho->superCluster()->seed()->energy());
 		phoSeedBCEta_      .push_back(iPho->superCluster()->seed()->eta());
 		phoSeedBCPhi_      .push_back(iPho->superCluster()->seed()->phi());
-	// phoSeedTimeFull5x5_.push_back(lazyToolnoZS.SuperClusterSeedTime(*(iPho->superCluster())));
+		// phoSeedTimeFull5x5_.push_back(lazyToolnoZS.SuperClusterSeedTime(*(iPho->superCluster())));
 		phoMIPChi2_        .push_back(iPho->mipChi2());
 		phoMIPTotEnergy_   .push_back(iPho->mipTotEnergy());
 		phoMIPSlope_       .push_back(iPho->mipSlope());
@@ -348,15 +363,11 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoMIPNhitCone_    .push_back(iPho->mipNhitCone());
 
 
-	// get photon supercluster index (for looking up from the SC branches)
+		// get photon supercluster index (for looking up from the SC branches)
 		if(ecalSChandle.isValid()){
 			const reco::SuperCluster * _tmpPhoSC = (iPho->superCluster().isAvailable()) ? iPho->superCluster().get() : nullptr;
 			Short_t tmpPhoSCindex = (_tmpPhoSC == nullptr) ? -999 : std::distance(ecalSChandle->begin(), (std::vector<reco::SuperCluster>::const_iterator) _tmpPhoSC);
 			phoSCindex_.push_back(tmpPhoSCindex);
-	  //check
-	  // if(tmpPhoSCindex>=0){
-	  //   std::cout<<_tmpPhoSC->eta()<<" "<<(ecalSChandle->begin()+tmpPhoSCindex)->eta()<<" "<<_tmpPhoSC->phi()<<" "<<(ecalSChandle->begin()+tmpPhoSCindex)->phi()<<std::endl;
-	  // }
 		}
 
 		UChar_t tmpphoFiducialRegion = 0;
@@ -370,10 +381,10 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoFiducialRegion_  .push_back(tmpphoFiducialRegion);
 
 
-	// VID decisions
+		// VID decisions
 		UShort_t tmpphoIDbit = 0;
-	// if(year_ == 2017){
-	//// https://twiki.cern.ch/twiki/bin/view/CMS/EgammaRunIIRecommendations?rev=9#Fall17v2_AN1
+		// if(year_ == 2017){
+		//// https://twiki.cern.ch/twiki/bin/view/CMS/EgammaRunIIRecommendations?rev=9#Fall17v2_AN1
 		bool isPassLoose  = iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-loose");
 		if (isPassLoose)  setbit(tmpphoIDbit, 0);
 		bool isPassMedium = iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-medium");
@@ -384,22 +395,16 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		if (isPassMVAv2wp80)  setbit(tmpphoIDbit, 3);
 		bool isPassMVAv2wp90  = iPho->photonID("mvaPhoID-RunIIFall17-v2-wp90");
 		if (isPassMVAv2wp90)  setbit(tmpphoIDbit, 4);
-	// bool isPassMVAisov2wp80  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp80");
-	// if (isPassMVAisov2wp80)  setbit(tmpphoIDbit, 5);
-	// bool isPassMVAisov2wp90  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp90");
-	// if (isPassMVAisov2wp90)  setbit(tmpphoIDbit, 6);
+		// bool isPassMVAisov2wp80  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp80");
+		// if (isPassMVAisov2wp80)  setbit(tmpphoIDbit, 5);
+		// bool isPassMVAisov2wp90  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp90");
+		// if (isPassMVAisov2wp90)  setbit(tmpphoIDbit, 6);
 		if (!(iPho->mipIsHalo()))  setbit(tmpphoIDbit, 7);
 
 		phoIDbit_.push_back(tmpphoIDbit);
 
-	// if(isPassMedium){
-	//   if(std::abs(iPho->et()/iPho->pt()-1.) > 0.000001){
-	//     std::cout<<" "<<iPho->eta()<<" "<<iPho->phi()<<" "<<iPho->et()<<" "<<iPho->pt()<<std::endl;
-	//   }
-	// }
 
-
-	// systematics for energy scale and resolution
+		// systematics for energy scale and resolution
 		phoScale_stat_up_.push_back(iPho->userFloat("energyScaleStatUp"));
 		phoScale_stat_dn_.push_back(iPho->userFloat("energyScaleStatDown"));
 		phoScale_syst_up_.push_back(iPho->userFloat("energyScaleSystUp"));
@@ -411,10 +416,10 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoResol_phi_up_ .push_back(iPho->userFloat("energySigmaPhiUp"));
 		phoResol_phi_dn_ .push_back(iPho->userFloat("energySigmaPhiDown"));
 
-	///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
+		///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
 
-	// DetId seed = (iPho->superCluster()->seed()->hitsAndFractions())[0].first;
-	// DetId seed = iPho->superCluster()->seed()->seed();
+		// DetId seed = (iPho->superCluster()->seed()->hitsAndFractions())[0].first;
+		// DetId seed = iPho->superCluster()->seed()->seed();
 		bool isBarrel = (iPho->superCluster()->seed()->seed().subdetId() == EcalBarrel);
 		const EcalRecHitCollection * rechits = (isBarrel ? lazyToolnoZS.getEcalEBRecHitCollection() : lazyToolnoZS.getEcalEERecHitCollection());
 
@@ -434,68 +439,58 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoFiredTripleTrgs_     .push_back(matchTriplePhotonTriggerFilters(iPho->et(), iPho->eta(), iPho->phi()));
 		phoFiredL1Trgs_         .push_back(matchL1TriggerFilters(iPho->et(), iPho->eta(), iPho->phi()));
 
-	// std::vector<Float_t> vCov = lazyToolnoZS.localCovariances( *(iPho->superCluster()->seed()) );
-	// const Float_t spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
-	// const Float_t sep = vCov[1];
+		// std::vector<Float_t> vCov = lazyToolnoZS.localCovariances( *(iPho->superCluster()->seed()) );
+		// const Float_t spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
+		// const Float_t sep = vCov[1];
 
 		phoSigmaIEtaIEtaFull5x5_ .push_back(iPho->full5x5_sigmaIetaIeta());
 		phoSigmaIEtaIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIetaIphi);
 		phoSigmaIPhiIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIphiIphi);
-	// phoE2x2Full5x5_          .push_back(lazyToolnoZS.e2x2(*(iPho->superCluster()->seed())));
+		// phoE2x2Full5x5_          .push_back(lazyToolnoZS.e2x2(*(iPho->superCluster()->seed())));
 		phoE2x2Full5x5_          .push_back(iPho->full5x5_showerShapeVariables().e2x2);
 		phoE5x5Full5x5_          .push_back(iPho->full5x5_e5x5());
 		phoR9Full5x5_            .push_back(iPho->full5x5_r9());
 
 		if(doGenParticles_){
-	  const reco::GenParticle * phoGen_ = iPho->genParticle(); // I don't know what matching algoritm is used - https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2017#MC_Truth
-	  Short_t phoGenPos_ = (phoGen_ == nullptr) ? -999 : std::distance(genParticlesHandle->begin(), (std::vector<reco::GenParticle>::const_iterator) phoGen_);
-	  // if(phoGenPos_>=0) std::cout<<"pho->genParticle->pdgID "<<phoGen_->pdgId()<<" prunedGenParticle("<<phoGenPos_<<")->pdgid() "<< (&*genParticlesHandle->begin()+phoGenPos_)->pdgId()<<std::endl;
-	  pho_gen_index_.push_back(phoGenPos_);
-	}
-
-
-	///conv pho info
-	/////reconstruct the Z vertex of the photons to reject beam halo from the converted ones
-	std::vector<int> vIndexMatchedConversion;
-	vIndexMatchedConversion = IndexMatchedConversion( iPho, conversionHandle->ptrs(), conversionHandleSL->ptrs() );
-	int IndexMatchedConversion = vIndexMatchedConversion[0];
-
-	int nConvLegs = vIndexMatchedConversion[1];
-	double zconv = -99;
-
-	//cout<<" "<<endl;
-	//cout<<"index of matched conversion "<<IndexMatchedConversion<<endl;
-
-	if(nConvLegs>0){
-
-		if(nConvLegs==2){
-			const std::vector<edm::Ptr<reco::Conversion> > & conversions = conversionHandle->ptrs();
-			zconv = vtxZFromConv( iPho, conversions[IndexMatchedConversion], beamSpot);   
-		}
-
-		if(nConvLegs==1){
-			const std::vector<edm::Ptr<reco::Conversion> > & conversions = conversionHandleSL->ptrs();
-			zconv = vtxZFromConv( iPho, conversions[IndexMatchedConversion], beamSpot);   
+		  const reco::GenParticle * phoGen_ = iPho->genParticle(); // I don't know what matching algoritm is used - https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2017#MC_Truth
+		  Short_t phoGenPos_ = (phoGen_ == nullptr) ? -999 : std::distance(genParticlesHandle->begin(), (std::vector<reco::GenParticle>::const_iterator) phoGen_);
+		  // if(phoGenPos_>=0) std::cout<<"pho->genParticle->pdgID "<<phoGen_->pdgId()<<" prunedGenParticle("<<phoGenPos_<<")->pdgid() "<< (&*genParticlesHandle->begin()+phoGenPos_)->pdgId()<<std::endl;
+		  pho_gen_index_.push_back(phoGenPos_);
 		}
 
 
+		///conv pho info
+		/////reconstruct the Z vertex of the photons to reject beam halo from the converted ones
+		std::vector<int> vIndexMatchedConversion;
+		vIndexMatchedConversion = IndexMatchedConversion( iPho, conversionHandle->ptrs(), conversionHandleSL->ptrs() );
+		int IndexMatchedConversion = vIndexMatchedConversion[0];
+
+		int nConvLegs = vIndexMatchedConversion[1];
+		double zconv = -99;
+
+		if(nConvLegs>0){
+
+			if(nConvLegs==2){
+				const std::vector<edm::Ptr<reco::Conversion> > & conversions = conversionHandle->ptrs();
+				zconv = vtxZFromConv( iPho, conversions[IndexMatchedConversion], beamSpot);   
+			}
+
+			if(nConvLegs==1){
+				const std::vector<edm::Ptr<reco::Conversion> > & conversions = conversionHandleSL->ptrs();
+				zconv = vtxZFromConv( iPho, conversions[IndexMatchedConversion], beamSpot);   
+			}
+
+
+		}
+		
+		phoNConvLegs_.push_back(nConvLegs);
+		phoZVtxWithConv_.push_back(zconv);
+
+
+		
+		nPho_++;
 	}
-	
-	phoNConvLegs_.push_back(nConvLegs);
-	phoZVtxWithConv_.push_back(zconv);
-
-
-	
-	nPho_++;
 }
-}
-
-
-
-
-
-
-
 
 
 
@@ -537,14 +532,20 @@ vector<Float_t>  ootPhoESEnP1_;
 vector<Float_t>  ootPhoESEnP2_;
 vector<Float_t>  ootPhoE2x2Full5x5_;
 vector<Float_t>  ootPhoE5x5Full5x5_;
-// vector<Float_t>  ootPhoPFChIso_;
-// vector<Float_t>  ootPhoPFPhoIso_;
-// vector<Float_t>  ootPhoPFNeuIso_;
+vector<Float_t>  ootPhoMaxEnergyXtal;
+vector<Float_t>  ootPhoE2ndFull5x5_;
+vector<Float_t>  ootPhoE1x3Full5x5_;
+vector<Float_t>  ootPhoE1x5Full5x5_;
+vector<Float_t>  ootPhoE2x5Full5x5_;
 vector<Float_t>  ootPhoPFClusEcalIso_;
 vector<Float_t>  ootPhoPFClusHcalIso_;
+vector<UChar_t>  nootPhoTrkHollowConeDR04_;
+vector<UChar_t>  nootPhoTrkSolidConeDR04_;
 vector<Float_t>  ootPhoTrkSumPtSolidConeDR04_;
-vector<Float_t>  ootPhoTrkSumPtSolidConeDR03_;
 vector<Float_t>  ootPhoTrkSumPtHollowConeDR04_;
+vector<UChar_t>  nootPhoTrkHollowConeDR03_;
+vector<UChar_t>  nootPhoTrkSolidConeDR03_;
+vector<Float_t>  ootPhoTrkSumPtSolidConeDR03_;
 vector<Float_t>  ootPhoTrkSumPtHollowConeDR03_;
 
 vector<Float_t>  ootPhoECALIso_;
@@ -563,7 +564,6 @@ void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
 	tree->Branch("ootPhoCalibE",                   &ootPhoCalibE_);
 	tree->Branch("ootPhoSigmaCalibE",                   &ootPhoSigmaCalibE_);
 	tree->Branch("ootPhoCalibEt",                   &ootPhoCalibEt_);
-
 	tree->Branch("ootPho_Eta",                  &ootPho_Eta_);
 	tree->Branch("ootPho_Phi",                  &ootPho_Phi_);
 	tree->Branch("ootPho_SCindex",              &ootPho_SCindex_);
@@ -577,20 +577,26 @@ void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
 	tree->Branch("ootPho_SigmaIEtaIEtaFull5x5", &ootPho_SigmaIEtaIEtaFull5x5_);
 	tree->Branch("ootPho_SigmaIEtaIPhiFull5x5", &ootPho_SigmaIEtaIPhiFull5x5_);
 	tree->Branch("ootPho_SigmaIPhiIPhiFull5x5", &ootPho_SigmaIPhiIPhiFull5x5_);
-	tree->Branch("ootPho_R9Full5x5",            &ootPho_R9Full5x5_);
-  // tree->Branch("ootPhoPFChIso",              &ootPhoPFChIso_);
-  // tree->Branch("ootPhoPFPhoIso",              &ootPhoPFPhoIso_);
-  // tree->Branch("ootPhoPFNeuIso",              &ootPhoPFNeuIso_);
-	tree->Branch("ootPhoPFClusEcalIso",              &ootPhoPFClusEcalIso_);
-	tree->Branch("ootPhoPFClusHcalIso",              &ootPhoPFClusHcalIso_);
-	tree->Branch("ootPhoTrkSumPtSolidConeDR04",              &ootPhoTrkSumPtSolidConeDR04_);
-	tree->Branch("ootPhoTrkSumPtSolidConeDR03",         &ootPhoTrkSumPtSolidConeDR03_);
-	tree->Branch("ootPhoTrkSumPtHollowConeDR04",         &ootPhoTrkSumPtHollowConeDR04_);
-	tree->Branch("ootPhoTrkSumPtHollowConeDR03",         &ootPhoTrkSumPtHollowConeDR03_);
-	tree->Branch("ootPhoECALIso",         &ootPhoECALIso_);
-	tree->Branch("ootPhoHCALIso",         &ootPhoHCALIso_);  
 	tree->Branch("ootPhoE2x2Full5x5",              &ootPhoE2x2Full5x5_);
 	tree->Branch("ootPhoE5x5Full5x5",              &ootPhoE5x5Full5x5_);
+	tree->Branch("ootPho_R9Full5x5",            &ootPho_R9Full5x5_);
+	tree->Branch("ootPhoMaxEnergyXtal",          &ootPhoMaxEnergyXtal);
+	tree->Branch("ootPhoE2ndFull5x5",          &ootPhoE2ndFull5x5_);
+	tree->Branch("ootPhoE1x3Full5x5",          &ootPhoE1x3Full5x5_);
+	tree->Branch("ootPhoE1x5Full5x5",          &ootPhoE1x5Full5x5_);
+	tree->Branch("ootPhoE2x5Full5x5",          &ootPhoE2x5Full5x5_);
+	tree->Branch("ootPhoPFClusEcalIso",              &ootPhoPFClusEcalIso_);
+	tree->Branch("ootPhoPFClusHcalIso",              &ootPhoPFClusHcalIso_);
+	tree->Branch("nootPhoTrkHollowConeDR03",          &nootPhoTrkHollowConeDR03_);
+	tree->Branch("nootPhoTrkSolidConeDR03",          &nootPhoTrkSolidConeDR03_);
+	tree->Branch("ootPhoTrkSumPtSolidConeDR03",         &ootPhoTrkSumPtSolidConeDR03_);
+	tree->Branch("ootPhoTrkSumPtHollowConeDR03",         &ootPhoTrkSumPtHollowConeDR03_);
+	tree->Branch("nootPhoTrkHollowConeDR04",          &nootPhoTrkHollowConeDR04_);
+	tree->Branch("nootPhoTrkSolidConeDR04",          &nootPhoTrkSolidConeDR04_);
+	tree->Branch("ootPhoTrkSumPtSolidConeDR04",              &ootPhoTrkSumPtSolidConeDR04_);
+	tree->Branch("ootPhoTrkSumPtHollowConeDR04",         &ootPhoTrkSumPtHollowConeDR04_);
+	tree->Branch("ootPhoECALIso",         &ootPhoECALIso_);
+	tree->Branch("ootPhoHCALIso",         &ootPhoHCALIso_);  
 	tree->Branch("ootPhoSeedBCE",              &ootPhoSeedBCE_);
 	tree->Branch("ootPhoSeedBCEta",              &ootPhoSeedBCEta_);
 	tree->Branch("ootPhoSeedBCPhi",              &ootPhoSeedBCPhi_);
@@ -611,7 +617,7 @@ void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
 
 void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es) {
 
-  // cleanup from previous execution
+	// cleanup from previous execution
 	ootPho_E_                   .clear();
 	ootPho_Et_                  .clear();
 
@@ -632,6 +638,25 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 	ootPho_SigmaIEtaIPhiFull5x5_.clear();
 	ootPho_SigmaIPhiIPhiFull5x5_.clear();
 	ootPho_R9Full5x5_           .clear();
+
+	nootPhoTrkHollowConeDR04_      .clear();
+	nootPhoTrkSolidConeDR04_      .clear();
+	nootPhoTrkHollowConeDR03_      .clear();
+	nootPhoTrkSolidConeDR03_      .clear();
+
+	ootPhoTrkSumPtHollowConeDR03_.clear();
+	ootPhoTrkSumPtSolidConeDR03_.clear();
+	ootPhoTrkSumPtHollowConeDR04_.clear();
+	ootPhoTrkSumPtSolidConeDR04_.clear();
+
+
+
+	ootPhoMaxEnergyXtal      .clear();
+	ootPhoE2ndFull5x5_      .clear();
+	ootPhoE1x3Full5x5_      .clear();
+	ootPhoE1x5Full5x5_      .clear();
+	ootPhoE2x5Full5x5_      .clear();
+
 	ootPho_FiredSingleTrgs_     .clear();
 	ootPho_FiredDoubleTrgs_     .clear();
 	ootPho_FiredTripleTrgs_     .clear();
@@ -648,12 +673,8 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 	ootPhoESEnP2_.clear();
 	ootPhoE2x2Full5x5_.clear();
 	ootPhoE5x5Full5x5_.clear();
-  // ootPhoPFChIso_.clear();
-  // ootPhoPFPhoIso_.clear();
-  // ootPhoPFNeuIso_.clear();
 	ootPhoPFClusEcalIso_.clear();
 	ootPhoPFClusHcalIso_.clear();
-	ootPhoTrkSumPtSolidConeDR04_.clear();
 	ootPhoECALIso_   .clear();
 	ootPhoHCALIso_   .clear();
 	ootPhoSeedBCE_.clear();
@@ -674,21 +695,13 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 	edm::Handle<std::vector<reco::SuperCluster>> ecalSC_OOT_handle;
 	e.getByToken(ecalSC_OOT_collection_, ecalSC_OOT_handle);
 
-  // EcalClusterLazyTools       lazyTool    (e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
+	// EcalClusterLazyTools       lazyTool    (e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 	noZS::EcalClusterLazyTools lazyToolnoZS(e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 
 	for (edm::View<pat::Photon>::const_iterator iootPho_ = photonOOT_Handle->begin(); iootPho_ != photonOOT_Handle->end(); ++iootPho_){
 
-	// if(iootPho_->et() < 15.) continue;
-
 		ootPho_E_             .push_back(iootPho_->energy());
 		ootPho_Et_            .push_back(iootPho_->et());
-
-	// ootPhoCalibE_.push_back(iootPho_->userFloat("ecalEnergyPostCorr"));
-	// ootPhoCalibEt_       .push_back(iootPho_->et()*iootPho_->userFloat("ecalEnergyPostCorr")/iootPho_->energy());
-	// ootPhoSigmaE_        .push_back(iootPho_->userFloat("ecalEnergyErrPreCorr"));
-	// ootPhoSigmaCalibE_   .push_back(iootPho_->userFloat("ecalEnergyErrPostCorr"));
-
 		ootPho_Eta_           .push_back(iootPho_->eta());
 		ootPho_Phi_           .push_back(iootPho_->phi());
 
@@ -700,10 +713,6 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 		ootPho_R9_            .push_back(iootPho_->r9());
 		ootPho_HoverE_        .push_back(iootPho_->hadTowOverEm());
 		ootPho_ESEffSigmaRR_  .push_back(iootPho_->full5x5_showerShapeVariables().effSigmaRR);
-	// ootPho_R9noZS_       .push_back(iootPho_->userFloat("r9_NoZS"));
-	// ootPho_sigmaIetaIeta_NoZS_      .push_back(iootPho_->userFloat("sigmaIetaIeta_NoZS"));
-	// ootPho_sigmaIetaIphi_NoZS_      .push_back(iootPho_->userFloat("sigmaIetaIphi_NoZS"));
-	// ootPho_sigmaIphiIphi_NoZS_  .push_back(iootPho_->userFloat("sigmaIphiIphi_NoZS"));
 		ootPho_MIPChi2_        .push_back(iootPho_->mipChi2());
 		ootPho_MIPTotEnergy_   .push_back(iootPho_->mipTotEnergy());
 		ootPho_MIPSlope_       .push_back(iootPho_->mipSlope());
@@ -711,15 +720,15 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 		ootPho_MIPNhitCone_    .push_back(iootPho_->mipNhitCone());
 
 
-	// get ootPho_ton supercluster index (for looking up from the SC branches)
+		// get ootPho_ton supercluster index (for looking up from the SC branches)
 		if(ecalSC_OOT_handle.isValid()){
 			const reco::SuperCluster * _tmpootPho_SC = (iootPho_->superCluster().isAvailable()) ? iootPho_->superCluster().get() : nullptr;
 			Short_t tmpootPho_SCindex = (_tmpootPho_SC == nullptr) ? -999 : std::distance(ecalSC_OOT_handle->begin(), (std::vector<reco::SuperCluster>::const_iterator) _tmpootPho_SC);
 			ootPho_SCindex_.push_back(tmpootPho_SCindex);
-	  //check
-	  // if(tmpootPho_SCindex>=0){
-	  //   std::cout<<_tmpootPho_SC->eta()<<" "<<(ecalSChandle->begin()+tmpootPho_SCindex)->eta()<<" "<<_tmpootPho_SC->phi()<<" "<<(ecalSChandle->begin()+tmpootPho_SCindex)->phi()<<std::endl;
-	  // }
+		  //check
+		  // if(tmpootPho_SCindex>=0){
+		  //   std::cout<<_tmpootPho_SC->eta()<<" "<<(ecalSChandle->begin()+tmpootPho_SCindex)->eta()<<" "<<_tmpootPho_SC->phi()<<" "<<(ecalSChandle->begin()+tmpootPho_SCindex)->phi()<<std::endl;
+		  // }
 		}
 
 		UChar_t tmpootPho_FiducialRegion = 0;
@@ -733,33 +742,18 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 		ootPho_FiducialRegion_  .push_back(tmpootPho_FiducialRegion);
 
 
-	// VID decisions
+		// VID decisions
 		UShort_t tmpootPho_IDbit = 0;
-	// if(year_ == 2017){
-	//// https://twiki.cern.ch/twiki/bin/view/CMS/EgammaRunIIRecommendations?rev=9#Fall17v2_AN1
-	// bool isPassLoose  = iootPho_->photonID("cutBasedphotonID-Fall17-94X-V2-loose");
-	// if (isPassLoose)  setbit(tmpootPho_IDbit, 0);
-	// bool isPassMedium = iootPho_->photonID("cutBasedphotonID-Fall17-94X-V2-medium");
-	// if (isPassMedium) setbit(tmpootPho_IDbit, 1);
-	// bool isPassTight  = iootPho_->photonID("cutBasedphotonID-Fall17-94X-V2-tight");
-	// if (isPassTight)  setbit(tmpootPho_IDbit, 2);
-	// bool isPassMVAv2wp80  = iootPho_->photonID("mvaootPho_ID-RunIIFall17-v2-wp80");
-	// if (isPassMVAv2wp80)  setbit(tmpootPho_IDbit, 3);
-	// bool isPassMVAv2wp90  = iootPho_->photonID("mvaootPho_ID-RunIIFall17-v2-wp90");
-	// if (isPassMVAv2wp90)  setbit(tmpootPho_IDbit, 4);
-	// bool isPassMVAisov2wp80  = iootPho_->photonID("mvaootPho_ID-Fall17-iso-V2-wp80");
-	// if (isPassMVAisov2wp80)  setbit(tmpootPho_IDbit, 5);
-	// bool isPassMVAisov2wp90  = iootPho_->photonID("mvaootPho_ID-Fall17-iso-V2-wp90");
-	// if (isPassMVAisov2wp90)  setbit(tmpootPho_IDbit, 6);
+
 		if (!(iootPho_->mipIsHalo()))  setbit(tmpootPho_IDbit, 7);
 
 		ootPho_IDbit_.push_back(tmpootPho_IDbit);
 
 
-	///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
+		///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
 
-	// DetId seed = (iootPho_->superCluster()->seed()->hitsAndFractions())[0].first;
-	// DetId seed = iootPho_->superCluster()->seed()->seed();
+		// DetId seed = (iootPho_->superCluster()->seed()->hitsAndFractions())[0].first;
+		// DetId seed = iootPho_->superCluster()->seed()->seed();
 		bool isBarrel = (iootPho_->superCluster()->seed()->seed().subdetId() == EcalBarrel);
 		const EcalRecHitCollection * rechits = isBarrel ? lazyToolnoZS.getEcalEBRecHitCollection() : lazyToolnoZS.getEcalEERecHitCollection();
 
@@ -779,48 +773,55 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 		ootPho_FiredTripleTrgs_     .push_back(matchTriplePhotonTriggerFilters(iootPho_->et(), iootPho_->eta(), iootPho_->phi()));
 		ootPho_FiredL1Trgs_         .push_back(matchL1TriggerFilters(iootPho_->et(), iootPho_->eta(), iootPho_->phi()));
 
-	// std::vector<Float_t> vCov = lazyToolnoZS.localCovariances( *(iootPho_->superCluster()->seed()) );
-	// const Float_t spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
-	// const Float_t sep = vCov[1];
-
+		// std::vector<Float_t> vCov = lazyToolnoZS.localCovariances( *(iootPho_->superCluster()->seed()) );
+		// const Float_t spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
+		// const Float_t sep = vCov[1];
+		// ootPho_SigmaIEtaIPhiFull5x5_ .push_back(sep);
+		// ootPho_SigmaIPhiIPhiFull5x5_ .push_back(spp);
+		
 		ootPho_SigmaIEtaIEtaFull5x5_ .push_back(iootPho_->full5x5_sigmaIetaIeta());
-	// ootPho_SigmaIEtaIPhiFull5x5_ .push_back(sep);
-	// ootPho_SigmaIPhiIPhiFull5x5_ .push_back(spp);
+
 		ootPho_SigmaIEtaIPhiFull5x5_ .push_back(iootPho_->full5x5_showerShapeVariables().sigmaIetaIphi);
 		ootPho_SigmaIPhiIPhiFull5x5_ .push_back(iootPho_->full5x5_showerShapeVariables().sigmaIphiIphi);
 
 		ootPho_R9Full5x5_            .push_back(iootPho_->full5x5_r9());
 
 
+		nootPhoTrkHollowConeDR04_      .push_back(iootPho_->nTrkHollowConeDR04());
+		nootPhoTrkSolidConeDR04_      .push_back(iootPho_->nTrkSolidConeDR04());
+		nootPhoTrkHollowConeDR03_      .push_back(iootPho_->nTrkHollowConeDR03());
+		nootPhoTrkSolidConeDR03_      .push_back(iootPho_->nTrkHollowConeDR04());
+		ootPhoMaxEnergyXtal      .push_back(iootPho_->full5x5_maxEnergyXtal());
+		ootPhoE2ndFull5x5_      .push_back(iootPho_->full5x5_showerShapeVariables().e2nd);
+		ootPhoE1x3Full5x5_      .push_back(iootPho_->full5x5_showerShapeVariables().e1x3);
+		ootPhoE1x5Full5x5_      .push_back(iootPho_->full5x5_showerShapeVariables().e1x5);
+		ootPhoE2x5Full5x5_      .push_back(iootPho_->full5x5_showerShapeVariables().e2x5);
+
+
 		ootPhoESEnP1_        .push_back(iootPho_->superCluster()->preshowerEnergyPlane1());
 		ootPhoESEnP2_        .push_back(iootPho_->superCluster()->preshowerEnergyPlane2());
 
-	ootPhoE2x2Full5x5_.push_back(iootPho_->full5x5_showerShapeVariables().e2x2); //lazyToolnoZS.e2x2(*(iootPho_->superCluster()->seed()))
-	ootPhoE5x5Full5x5_.push_back(iootPho_->full5x5_e5x5());
-	// ootPhoPFChIso_.push_back(iootPho_->chargedHadronIso());
-	// ootPhoPFPhoIso_.push_back(iootPho_->photonIso());
-	// ootPhoPFNeuIso_.push_back(iootPho_->neutralHadronIso());
+		ootPhoE2x2Full5x5_.push_back(iootPho_->full5x5_showerShapeVariables().e2x2); //lazyToolnoZS.e2x2(*(iootPho_->superCluster()->seed()))
+		ootPhoE5x5Full5x5_.push_back(iootPho_->full5x5_e5x5());
 
 
-	// ootPhoPFChWorstIso_.push_back(iootPho_->);
 
+		ootPhoPFClusEcalIso_.push_back(iootPho_->ecalPFClusterIso());
+		ootPhoPFClusHcalIso_.push_back(iootPho_->hcalPFClusterIso());
+		ootPhoTrkSumPtSolidConeDR04_        .push_back(iootPho_->trkSumPtSolidConeDR04());
+		ootPhoTrkSumPtSolidConeDR03_        .push_back(iootPho_->trkSumPtSolidConeDR03());
+		ootPhoTrkSumPtHollowConeDR04_        .push_back(iootPho_->trkSumPtHollowConeDR04());
+		ootPhoTrkSumPtHollowConeDR03_        .push_back(iootPho_->trkSumPtHollowConeDR03());
 
-	ootPhoPFClusEcalIso_.push_back(iootPho_->ecalPFClusterIso());
-	ootPhoPFClusHcalIso_.push_back(iootPho_->hcalPFClusterIso());
-	ootPhoTrkSumPtSolidConeDR04_        .push_back(iootPho_->trkSumPtSolidConeDR04());
-	ootPhoTrkSumPtSolidConeDR03_        .push_back(iootPho_->trkSumPtSolidConeDR03());
-	ootPhoTrkSumPtHollowConeDR04_        .push_back(iootPho_->trkSumPtHollowConeDR04());
-	ootPhoTrkSumPtHollowConeDR03_        .push_back(iootPho_->trkSumPtHollowConeDR03());
+		ootPhoECALIso_        .push_back(iootPho_->ecalIso());
+		ootPhoHCALIso_        .push_back(iootPho_->hcalIso());
 
-	ootPhoECALIso_        .push_back(iootPho_->ecalIso());
-	ootPhoHCALIso_        .push_back(iootPho_->hcalIso());
+		ootPhoSeedBCE_.push_back(iootPho_->superCluster()->seed()->energy());
+		ootPhoSeedBCEta_.push_back(iootPho_->superCluster()->seed()->eta());
+		ootPhoSeedBCPhi_.push_back(iootPho_->superCluster()->seed()->phi());
 
-	ootPhoSeedBCE_.push_back(iootPho_->superCluster()->seed()->energy());
-	ootPhoSeedBCEta_.push_back(iootPho_->superCluster()->seed()->eta());
-	ootPhoSeedBCPhi_.push_back(iootPho_->superCluster()->seed()->phi());
-
-	nootPho_++;
-}
+		nootPho_++;
+	}
 };
 
 

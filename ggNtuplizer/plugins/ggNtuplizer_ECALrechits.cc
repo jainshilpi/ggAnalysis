@@ -20,7 +20,6 @@ std::vector<UChar_t> ecalSC_nXtals_;
 std::vector<Float_t> ecalSC_maxEnXtalTime_;
 std::vector<Float_t> ecalSC_maxEnXtalSwissCross_;
 std::vector<UChar_t> ecalSC_maxEnXtalBits_;
-
 std::vector<Char_t> ecalSCseedIx_;
 std::vector<Char_t> ecalSCseedIy_;
 std::vector<Char_t> ecalSCseedIz_;

@@ -31,15 +31,15 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:mc', '')
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(-1)
+	input = cms.untracked.int32(-1)
 )
 
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 
 process.source = cms.Source(
-    "PoolSource",
-    fileNames  = cms.untracked.vstring(options.inputFiles),
-    duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
+	"PoolSource",
+	fileNames  = cms.untracked.vstring(options.inputFiles),
+	duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
 )
 
 

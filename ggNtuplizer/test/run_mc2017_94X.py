@@ -22,7 +22,7 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v17')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(options.maxEvents))
-process.MessageLogger.cerr.FwkReport.reportEvery = 200
+process.MessageLogger.cerr.FwkReport.reportEvery = 1
 process.source = cms.Source("PoolSource",
                             fileNames=cms.untracked.vstring(
                                 # options.inputFiles
@@ -118,7 +118,7 @@ process.ggNtuplizer.doGenParticles = cms.bool(True)
 process.ggNtuplizer.dumpPFPhotons = cms.bool(False)
 process.ggNtuplizer.dumpHFElectrons = cms.bool(False)
 process.ggNtuplizer.dumpJets = cms.bool(True)
-# process.ggNtuplizer.dumpAK8Jets = cms.bool(True)
+process.ggNtuplizer.dumpAK8Jets = cms.bool(False)
 process.ggNtuplizer.dumpSoftDrop = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(False)
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")

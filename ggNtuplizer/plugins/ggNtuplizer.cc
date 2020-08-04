@@ -126,7 +126,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   hEvents_ = fs->make<TH1F>("hEvents",    "total processed and skimmed events",   2,  0,   1);
 
   branchesGlobalEvent(tree_);
-
+  branchesTrigObjPho(tree_);
   if (doGenParticles_) {
     branchesGenInfo(tree_, fs);
     branchesGenPart(tree_);

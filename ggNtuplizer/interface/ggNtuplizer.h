@@ -78,6 +78,7 @@ private:
 
   Short_t findSecondaryIndex(const Short_t & searchIndex, const std::vector<UShort_t> & container);
 
+  void branchesTrigObjPho(TTree*);
   void branchesGlobalEvent(TTree*);
   void branchesGenInfo    (TTree*, edm::Service<TFileService>&);
   void branchesGenPart    (TTree*);
