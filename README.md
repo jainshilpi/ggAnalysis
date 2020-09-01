@@ -5,9 +5,9 @@ export CMSSW_GIT_REFERENCE=/afs/cern.ch/cms/git-cmssw-mirror/cmssw.git <br>
 cmsrel CMSSW_9_4_13 <br>
 cd CMSSW_9_4_13/src <br>
 cmsenv <br>
-git cms-init
-git cms-addpkg CondFormats/JetMETObjects
-git cms-addpkg JetMETCorrections/Modules;
+git cms-init<br>
+git cms-addpkg CondFormats/JetMETObjects<br>
+git cms-addpkg JetMETCorrections/Modules;<br>
 git cms-addpkg RecoBTag/Combined;  <br> 
 git cms-addpkg JetMETCorrections/Type1MET;  <br> 
 git cms-addpkg RecoMET/METFilters;  <br> 
