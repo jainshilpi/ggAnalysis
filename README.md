@@ -20,8 +20,8 @@ scram b -j 16;  <br>
 git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPostRecoTools;  <br>
 cd  EgammaUser/EgammaPostRecoTools;  git checkout master;  cd -;  <br>
 scram b -j 16;  <br>
-git clone -b METv4 git@github.com:wadud001/aNTGC_gggNtuplizer.git
-mv aNTGC_gggNtuplizer ggAnalysis
+git clone -b METv4 git@github.com:wadud001/aNTGC_gggNtuplizer.git<br>
+mv aNTGC_gggNtuplizer ggAnalysis<br>
 scram b -j8 <br>
 
 
