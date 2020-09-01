@@ -7,7 +7,7 @@ cd CMSSW_9_4_13/src <br>
 cmsenv <br>
 git cms-init
 git cms-addpkg CondFormats/JetMETObjects
-git cms-addpkg JetMETCorrections/Modules;  <br> 
+git cms-addpkg JetMETCorrections/Modules;
 git cms-addpkg RecoBTag/Combined;  <br> 
 git cms-addpkg JetMETCorrections/Type1MET;  <br> 
 git cms-addpkg RecoMET/METFilters;  <br> 
