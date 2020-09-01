@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### syntax:  bash csub.sh [path_to_ntuple_lists]  [write_directory]
+### syntax:  bash csub.sh [path_to_ntuple_lists]
 
 
 jobsList=$1
@@ -12,10 +12,14 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer
 # writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
 # workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsec/
 # pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
+# splitfiles=200000
+
 
 pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test//run_condor_mc2017_94X.py"
-writeDir=/local/cms/user/wadud/aNTGCmet/jobsMETv5/
+writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/METv5/
 workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsMETv5/
+splitfiles=1
+
 
 jobsDir=${writeDir}
 
@@ -29,7 +33,7 @@ jobsDir=${writeDir}
 # nextweek     = 1 week
 
 jobflavor=workday
-splitfiles=20
+
 
 ############################################################################
 runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//runOnMCTemplate.sh
@@ -84,8 +88,6 @@ function submitSubJob(){
 	sed -i 's|#pset|'${pset}'|g' ${runScript}
 	sed -i 's|#jobList|'${fileListPath}'|g' ${runScript}
 	sed -i 's|#outFile|'${outFile}'|g' ${runScript}
-
-	
 	chmod +x ${runScript}
 
 	### prepare condor script ###
@@ -103,7 +105,6 @@ function submitSubJob(){
 
 	
 	cd ${jobDir}
-	##bash ${runScript}
 	condor_submit ${condorCFG}
 	cd ${workDir}
 }
@@ -122,9 +123,15 @@ function submitJob(){
 	logDir=${jobDir}/log/
 	outFileDir=${writeDir}/${jobBaseName}/
 
-	if [[ -d ${outFileDir} ]]; then
-		echo $${outFileDir} "exists! Skipping..."
-	fi
+	# if [[ -d ${outFileDir} ]]; then
+	# 	echo ${outFileDir} "exists! Skipping..."
+	# 	continue
+	# fi
+
+	# if [[ -d ${jobDir} ]]; then
+	# 	echo ${jobDir} "exists! Skipping..."
+	# 	continue
+	# fi
 
 	mkdir -p ${outFileDir}
 	mkdir -p ${logDir}
@@ -152,7 +159,6 @@ function submitJob(){
 	done
 
 	echo -e "***********************************************************************************************************************************************\n\n\n\n"
-
 }
 
 

@@ -24,9 +24,9 @@ function listNtuples(){
 	find ${SearchPath} -name "*.root" -type f | tee ${outfile}
 }
 
-mkdir -p $writeDir
+# mkdir -p $writeDir
 
-for directory in $(find "${searchPath}" -maxdepth 2 -mindepth 2 -type d -not -path '*/\.*' -and -not -path '*failed*');
+for directory in $(find "${searchPath}" -maxdepth 1 -mindepth 1 -type d -not -path '*/\.*' -and -not -path '*failed*');
 # for directory in $(find "${searchPath}" -maxdepth 2 -mindepth 1 -type d -path "*_300_1200/*");
 do
 	echo -e "\t\t" $directory
