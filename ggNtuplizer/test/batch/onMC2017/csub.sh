@@ -18,7 +18,7 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer
 pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test//run_condor_mc2017_94X.py"
 writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/METv5/
 workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsMETv5/
-splitfiles=1
+splitfiles=10
 
 
 jobsDir=${writeDir}
@@ -123,15 +123,15 @@ function submitJob(){
 	logDir=${jobDir}/log/
 	outFileDir=${writeDir}/${jobBaseName}/
 
-	# if [[ -d ${outFileDir} ]]; then
-	# 	echo ${outFileDir} "exists! Skipping..."
-	# 	continue
-	# fi
+	if [[ -d ${outFileDir} ]]; then
+		echo ${outFileDir} "exists! Skipping..."
+		continue
+	fi
 
-	# if [[ -d ${jobDir} ]]; then
-	# 	echo ${jobDir} "exists! Skipping..."
-	# 	continue
-	# fi
+	if [[ -d ${jobDir} ]]; then
+		echo ${jobDir} "exists! Skipping..."
+		continue
+	fi
 
 	mkdir -p ${outFileDir}
 	mkdir -p ${logDir}
@@ -146,7 +146,7 @@ function submitJob(){
 	echo -e "\n\n\n***********************************************************************************************************************************************"
 	echo -e "\nPreparing job: List = ${jobListFile} ouput directory = ${jobDir}"
 
-	for subJobList in $(find "${jobDir}" -name "${jobBaseName}_*");
+	for subJobList in $(find "${jobDir}" -name "${jobBaseName}_*" | sort );
 	do
 		echo -e "\n Submitting job: ${subJobList}"
 

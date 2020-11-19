@@ -82,20 +82,20 @@ for file in "${FILES[@]}"; do
 	# if ( [ "$hostLine" == *"128.101.221.176"* ] && [ "$hostLineN" -lt "$submittedN" ] ); then
 	# if ( [ "$hostLine" == *"128.101.221.178"* ] && [ "$hostLineN" -lt "$submittedN" ] ); then #scorpion8
 	#scorpion8
-	if [[ "$hostLine" == *"128.101.221.178"* ]]; then
-		echo "Killing "$jobID " running on scorpion8: " $(basename $file) $hostLineN
-		condor_rm $jobID
-	fi
+	# if [[ "$hostLine" == *"128.101.221.178"* ]]; then
+	# 	echo "Killing "$jobID " running on scorpion8: " $(basename $file) $hostLineN
+	# 	# condor_rm $jobID
+	# fi
 
-	if [[ "$hostLine" == *"128.101.221.176"* ]]; then
-		echo "Killing "$jobID " running on scorpion6: " $(basename $file) $hostLineN
-		condor_rm $jobID
-	fi
+	# if [[ "$hostLine" == *"128.101.221.176"* ]]; then
+	# 	echo "Killing "$jobID " running on scorpion6: " $(basename $file) $hostLineN
+	# 	# condor_rm $jobID
+	# fi
 
-	if [[ "$hostLine" == *"128.101.221.176"* ]]; then
-		echo "Killing "$jobID " running on scorpion6: " $(basename $file) $hostLineN
-		condor_rm $jobID
-	fi
+	# if [[ "$hostLine" == *"128.101.221.176"* ]]; then
+	# 	echo "Killing "$jobID " running on scorpion6: " $(basename $file) $hostLineN
+	# 	# condor_rm $jobID
+	# fi
 
 
 	# if ( [ -z "$normTermLine" ] ); then
@@ -143,5 +143,6 @@ done
 # echo -e "$running_jobs" | sort
 
 nFinished=$(echo -e "$finished_jobs" | wc -l)
+nFinished=$((nFinished - 1))
 echo -e "\n\n\n\nFinished jobs:" $nFinished
 echo -e "$finished_jobs" | sort
