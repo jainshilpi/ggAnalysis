@@ -40,7 +40,8 @@ process.maxEvents = cms.untracked.PSet(
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 process.source = cms.Source("PoolSource",
                             fileNames=cms.untracked.vstring(options.InFileList),
-                            duplicateCheckMode = cms.untracked.string('noDuplicateCheck'))
+                            #duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
+                            )
 
 print process.source
 

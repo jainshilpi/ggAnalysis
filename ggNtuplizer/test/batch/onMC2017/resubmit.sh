@@ -31,9 +31,9 @@ function resubmit(){
 	fi
 
 	echo $condorFile
-	# condor_submit $condorFile
-	# jobFiles=${pathName}/${fileName%.*}
-	# echo $jobFiles
+	condor_submit $condorFile
+	jobFiles=${pathName}/${fileName%.*}
+	echo $jobFiles
 }
 
 for file in "${FILES[@]}"; do
