@@ -147,6 +147,11 @@ private:
   void fillTracks(const edm::Event& e, const edm::EventSetup& es);
   edm::EDGetTokenT<edm::View<pat::IsolatedTrack>>        tracksLabel_;
 
+
+  void branchesTaus(TTree* tree);
+  void fillTaus(const edm::Event& e, const edm::EventSetup& es);
+  edm::EDGetTokenT<edm::View<pat::Tau>>        tauLabel_;
+
   
 
   bool development_;

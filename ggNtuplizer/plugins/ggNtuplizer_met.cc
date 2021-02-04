@@ -126,6 +126,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     pfMET_T1JERDo_ = pfMET->shiftedPt(pat::MET::JetResDown);
     pfMET_T1JESUp_ = pfMET->shiftedPt(pat::MET::JetEnUp);
     pfMET_T1JESDo_ = pfMET->shiftedPt(pat::MET::JetEnDown);
+    pfMET_T1UESUp_ = pfMET->shiftedPt(pat::MET::UnclusteredEnUp);
+    pfMET_T1UESDo_ = pfMET->shiftedPt(pat::MET::UnclusteredEnDown);
 
     // pfMET_T1MESUp_ = pfMET->shiftedPt(pat::MET::MuonEnUp);
     // pfMET_T1MESDo_ = pfMET->shiftedPt(pat::MET::MuonEnDown);
@@ -136,8 +138,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     // pfMET_T1TESUp_ = pfMET->shiftedPt(pat::MET::TauEnUp);
     // pfMET_T1TESDo_ = pfMET->shiftedPt(pat::MET::TauEnDown);
 
-    pfMET_T1UESUp_ = pfMET->shiftedPt(pat::MET::UnclusteredEnUp);
-    pfMET_T1UESDo_ = pfMET->shiftedPt(pat::MET::UnclusteredEnDown);
+    
 
     pfMETPhi_T1JESUp_ = pfMET->shiftedPhi(pat::MET::JetEnUp);
     pfMETPhi_T1JESDo_ = pfMET->shiftedPhi(pat::MET::JetEnDown);

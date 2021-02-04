@@ -35,7 +35,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   dumpJets_                   = ps.getParameter<bool>("dumpJets");
   dumpAK8Jets_                = ps.getParameter<bool>("dumpAK8Jets");
   dumpSoftDrop_               = ps.getParameter<bool>("dumpSoftDrop");
-  dumpTaus_                   = ps.getParameter<bool>("dumpTaus");
+  
   dumpPDFSystWeight_          = ps.getParameter<bool>("dumpPDFSystWeight");
   dumpHFElectrons_            = ps.getParameter<bool>("dumpHFElectrons");
   year_                       = ps.getParameter<int>("year");
@@ -92,6 +92,9 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
 
   tracksLabel_ = consumes<View<pat::IsolatedTrack>>(ps.getParameter<InputTag>("isoTrkSrc"));
   doTrks_ =  ps.getParameter<bool>("doTrks");
+
+  tauLabel_  = consumes<View<pat::Tau>>(ps.getParameter<InputTag>("tauSrc"));
+  dumpTaus_                   = ps.getParameter<bool>("dumpTaus");
   
   convPhotonTag_ = consumes<edm::View<reco::Conversion> >(ps.getParameter<edm::InputTag>("convPhotonTag"));
   convPhotonTagSL_ = consumes<edm::View<reco::Conversion> >(ps.getParameter<edm::InputTag>("convPhotonTagSL"));
@@ -147,8 +150,9 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   branchesElectrons(tree_);
   branchesEleECALSC(tree_);
   branchesMuons(tree_);
-  if (dumpJets_)        branchesAK4CHSJets(tree_);
-  if (dumpAK8Jets_)     branchesAK8PUPPIJets(tree_);
+  if(dumpJets_)         branchesAK4CHSJets(tree_);
+  if(dumpAK8Jets_)      branchesAK8PUPPIJets(tree_);
+  if(dumpTaus_)         branchesTaus(tree_);
   if(doTrks_)           branchesTracks(tree_);
 }
 
@@ -203,6 +207,7 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   if (dumpAK8Jets_) fillAK8PUPPIJets(e,es);
   if(dumpJets_ && doGenParticles_) fillGenAK4JetInfo(e, vtx.z());
   if(dumpAK8Jets_ && doGenParticles_) fillGenAK8JetInfo(e, vtx.z());
+  if(dumpTaus_)         fillTaus(e,es);
   if(doTrks_) fillTracks(e,es);
 
   tree_->Fill();

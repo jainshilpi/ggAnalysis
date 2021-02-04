@@ -34,17 +34,14 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v17')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(options.maxEvents))
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
-process.source = cms.Source("PoolSource",
-                            fileNames=cms.untracked.vstring(options.InFileList),
-                            )
+process.source = cms.Source("PoolSource", fileNames=cms.untracked.vstring(options.InFileList))
 
 print(process.source)
 
 process.load("PhysicsTools.PatAlgos.producersLayer1.patCandidates_cff")
 process.load("PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff")
 
-process.TFileService = cms.Service(
-    "TFileService", fileName=cms.string(options.outputFile))
+process.TFileService = cms.Service("TFileService", fileName=cms.string(options.outputFile))
 ##########################################################################
 
 
@@ -103,6 +100,7 @@ jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
 ##########################################################################
 
 
+
 ##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 
@@ -122,8 +120,24 @@ process.ggNtuplizer.runOnSherpa = cms.bool(False)
 process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
 # process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "RECO")
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
+##########################################################################
+
 
 ##########################################################################
+updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Ids
+import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
+tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
+                    updatedTauName = updatedTauName,
+                    toKeep = [ "dR0p32017v2", "newDM2017v2", #classic MVAIso tau-Ids
+                               "deepTau2017v1", #deepTau Tau-Ids
+                               "deepTau2017v2p1",
+                               "MVADM_2017_v1"
+                    ])
+tauIdEmbedder.runTauID()
+
+process.ggNtuplizer.tauSrc                    = cms.InputTag(updatedTauName)
+##########################################################################
+
 
 
 ##########################################################################
@@ -156,6 +170,8 @@ process.p = cms.Path(
     process.ecalBadCalibReducedMINIAODFilter *
     process.fullPatMetSequenceModifiedMET *
     process.egammaPostRecoSeq *
+    process.rerunMvaIsolationSequence *
+    getattr(process,updatedTauName) *
     process.ggNtuplizer
 )
 
