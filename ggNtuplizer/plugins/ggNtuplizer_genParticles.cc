@@ -9,7 +9,7 @@ enum PROMPT_STATUS_TYPE {
 
 // (local) variables associated with tree branches
 vector<Float_t>    pdf_;
-// Float_t            pthat_;
+Float_t            pthat_;
 // Float_t            processID_;
 Float_t            genWeight_;
 Float_t            genHT_;
@@ -118,7 +118,7 @@ Float_t getGenTrkIso(edm::Handle<reco::GenParticleCollection> handle,
 
 	  // has to come from the same collision
 	  if (thisPart->collisionId() != p->collisionId())
-		continue;
+	  	continue;
 
 	  // pass a minimum pt threshold
 	  // if (p->pt() < 0) continue;
@@ -136,7 +136,7 @@ Float_t getGenTrkIso(edm::Handle<reco::GenParticleCollection> handle,
 void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 
 	tree->Branch("pdf",           &pdf_);
-	// tree->Branch("pthat",         &pthat_);
+	tree->Branch("pthat",         &pthat_);
 	// tree->Branch("processID",     &processID_);
 	tree->Branch("genWeight",     &genWeight_);
 	tree->Branch("genHT",         &genHT_);
@@ -197,8 +197,8 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 
 void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 
-  // cleanup from previous execution
-	// pthat_     = -99;
+  	// cleanup from previous execution
+	pthat_     = -99;
 	// processID_ = -99;
 	genWeight_ = -99;
 	genHT_     = -99;
@@ -206,12 +206,12 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	genPho2_   = -99;
 	nPUInfo_   = 0;
 	pdfWeight_ = -99;
-  // EventTag_  = "";
+ 	 // EventTag_  = "";
 	pdf_          .clear();
 	pdfSystWeight_.clear();
-  // nPU_          .clear();
-  // puBX_         .clear();
-  // puTrue_       .clear();
+	  // nPU_          .clear();
+	  // puBX_         .clear();
+	  // puTrue_       .clear();
 
 	edm::Handle<GenEventInfoProduct> genEventInfoHandle;
 	e.getByToken(generatorLabel_, genEventInfoHandle);
@@ -219,105 +219,105 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	if (genEventInfoHandle.isValid()) {
 
 		if (genEventInfoHandle->pdf()) {
-	  pdf_.push_back(genEventInfoHandle->pdf()->id.first);    // PDG ID of incoming parton #1
-	  pdf_.push_back(genEventInfoHandle->pdf()->id.second);   // PDG ID of incoming parton #2
-	  pdf_.push_back(genEventInfoHandle->pdf()->x.first);     // x value of parton #1
-	  pdf_.push_back(genEventInfoHandle->pdf()->x.second);    // x value of parton #2
-	  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.first);  // PDF weight for parton #1
-	  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.second); // PDF weight for parton #2
-	  pdf_.push_back(genEventInfoHandle->pdf()->scalePDF);    // scale of the hard interaction
-	}
-
-  // if (genEventInfoHandle->hasBinningValues()) pthat_ = genEventInfoHandle->binningValues()[0];
-  // processID_ = genEventInfoHandle->signalProcessID();
-	genWeight_ = genEventInfoHandle->weight();
-	if (genWeight_ >= 0) hGenWeightSign_->Fill(0.5);
-	else hGenWeightSign_->Fill(-0.5);
-	if (abs(genWeight_)>1) hSumGenWeightSign_->Fill(0.5,genWeight_/abs(genWeight_));
-	else hSumGenWeightSign_->Fill(0.5,genWeight_);
-	hSumGenWeight_->Fill(0.5,genWeight_);
-} else edm::LogWarning("ggNtuplizer") << "no GenEventInfoProduct in event";
-
-  // access generator level HT
-edm::Handle<LHEEventProduct> lheEventProduct;
-e.getByToken(lheEventLabel_, lheEventProduct);
-
-double lheHt   = 0.;
-double lhePho1 = 0.;
-double lhePho2 = 0.;
-if (lheEventProduct.isValid()){
-	const lhef::HEPEUP& lheEvent = lheEventProduct->hepeup();
-	std::vector<lhef::HEPEUP::FiveVector> lheParticles = lheEvent.PUP;
-	size_t numParticles = lheParticles.size();
-	Int_t nMCPho = 0;
-	for ( size_t idxParticle = 0; idxParticle < numParticles; ++idxParticle ) {
-		Int_t absPdgId = TMath::Abs(lheEvent.IDUP[idxParticle]);
-		Int_t status = lheEvent.ISTUP[idxParticle];
-	  if (status == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21) ){// quarks and gluons
-		// first entry is px, second py
-		lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
-	  }
-	  if (status == 1 && absPdgId == 22 && nMCPho == 0) { // first photon
-		lhePho1 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
-		nMCPho++;
-	  }
-	  if (status == 1 && absPdgId == 22 && nMCPho == 1) { // first photon
-		lhePho2 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
-		nMCPho++;
-	  }
-
-	  typedef std::vector<std::string>::const_iterator comments_const_iterator;
-
-	 // comments_const_iterator c_begin = lheEventProduct->comments_begin();
-	 // comments_const_iterator c_end = lheEventProduct->comments_end();
-
-	 // TString model_params;
-	 // for(comments_const_iterator cit=c_begin; cit!=c_end; ++cit) {
-	 //   size_t found = (*cit).find("model");
-	 //   if(found != std::string::npos)   {
-	 //     model_params = *cit;
-	 //   }
-	 // }
-	 // EventTag_ = model_params;
-	}
-
-	if (dumpPDFSystWeight_) {
-	  pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
-	  for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
-		pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
-	  }
-	}
-}
-genHT_   = lheHt;
-genPho1_ = lhePho1;
-genPho2_ = lhePho2;
-
-edm::Handle<vector<PileupSummaryInfo> > genPileupHandle;
-e.getByToken(puCollection_, genPileupHandle);
-
-if (genPileupHandle.isValid()) {
-	for (vector<PileupSummaryInfo>::const_iterator pu = genPileupHandle->begin(); pu != genPileupHandle->end(); ++pu) {
-		if (pu->getBunchCrossing() == 0) {
-			hPU_->Fill(pu->getPU_NumInteractions() + 0.1);
-			hPUTrue_->Fill(pu->getTrueNumInteractions() + 0.1);
-
-			hPUw_->Fill(pu->getPU_NumInteractions() + 0.1, genWeight_);
-			hPUTruew_->Fill(pu->getTrueNumInteractions() + 0.1, genWeight_);
-
-			nPU_= pu->getPU_NumInteractions();
-			puTrue_ = pu->getTrueNumInteractions();
-			puBX_ = pu->getBunchCrossing();
+		  pdf_.push_back(genEventInfoHandle->pdf()->id.first);    // PDG ID of incoming parton #1
+		  pdf_.push_back(genEventInfoHandle->pdf()->id.second);   // PDG ID of incoming parton #2
+		  pdf_.push_back(genEventInfoHandle->pdf()->x.first);     // x value of parton #1
+		  pdf_.push_back(genEventInfoHandle->pdf()->x.second);    // x value of parton #2
+		  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.first);  // PDF weight for parton #1
+		  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.second); // PDF weight for parton #2
+		  pdf_.push_back(genEventInfoHandle->pdf()->scalePDF);    // scale of the hard interaction
 		}
 
-	// nPU_   .push_back(pu->getPU_NumInteractions());
-	// puTrue_.push_back(pu->getTrueNumInteractions());
-	// puBX_  .push_back(pu->getBunchCrossing());
+		if (genEventInfoHandle->hasBinningValues()) pthat_ = genEventInfoHandle->binningValues()[0];
+	  	// processID_ = genEventInfoHandle->signalProcessID();
+		genWeight_ = genEventInfoHandle->weight();
+		if (genWeight_ >= 0) hGenWeightSign_->Fill(0.5);
+		else hGenWeightSign_->Fill(-0.5);
+		if (abs(genWeight_)>1) hSumGenWeightSign_->Fill(0.5,genWeight_/abs(genWeight_));
+		else hSumGenWeightSign_->Fill(0.5,genWeight_);
+		hSumGenWeight_->Fill(0.5,genWeight_);
+	} else edm::LogWarning("ggNtuplizer") << "no GenEventInfoProduct in event";
 
-		nPUInfo_++;
+ 	 // access generator level HT
+	edm::Handle<LHEEventProduct> lheEventProduct;
+	e.getByToken(lheEventLabel_, lheEventProduct);
+
+	double lheHt   = 0.;
+	double lhePho1 = 0.;
+	double lhePho2 = 0.;
+	if (lheEventProduct.isValid()){
+		const lhef::HEPEUP& lheEvent = lheEventProduct->hepeup();
+		std::vector<lhef::HEPEUP::FiveVector> lheParticles = lheEvent.PUP;
+		size_t numParticles = lheParticles.size();
+		Int_t nMCPho = 0;
+		for ( size_t idxParticle = 0; idxParticle < numParticles; ++idxParticle ) {
+
+			Int_t absPdgId = TMath::Abs(lheEvent.IDUP[idxParticle]);
+			Int_t status = lheEvent.ISTUP[idxParticle];
+
+			if (status == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21) ){// quarks and gluons
+				// first entry is px, second py
+				lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
+			}
+
+			if (status == 1 && absPdgId == 22 && nMCPho == 0) { // first photon
+				lhePho1 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
+				nMCPho++;
+			}
+			if (status == 1 && absPdgId == 22 && nMCPho == 1) { // first photon
+				lhePho2 = TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
+				nMCPho++;
+			}
+
+			// typedef std::vector<std::string>::const_iterator comments_const_iterator;
+			 // comments_const_iterator c_begin = lheEventProduct->comments_begin();
+			 // comments_const_iterator c_end = lheEventProduct->comments_end();
+
+			 // TString model_params;
+			 // for(comments_const_iterator cit=c_begin; cit!=c_end; ++cit) {
+			 //   size_t found = (*cit).find("model");
+			 //   if(found != std::string::npos)   {
+			 //     model_params = *cit;
+			 //   }
+			 // }
+			 // EventTag_ = model_params;
+		}
+
+		if (dumpPDFSystWeight_) {
+		  pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
+		  for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
+		  	pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
+		  }
+		}
 	}
-}
-else
-	edm::LogWarning("ggNtuplizer") << "no PileupSummaryInfo in event";
+	genHT_   = lheHt;
+	genPho1_ = lhePho1;
+	genPho2_ = lhePho2;
+
+	edm::Handle<vector<PileupSummaryInfo> > genPileupHandle;
+	e.getByToken(puCollection_, genPileupHandle);
+
+	if (genPileupHandle.isValid()) {
+		for (vector<PileupSummaryInfo>::const_iterator pu = genPileupHandle->begin(); pu != genPileupHandle->end(); ++pu) {
+			if (pu->getBunchCrossing() == 0) {
+				hPU_->Fill(pu->getPU_NumInteractions() + 0.1);
+				hPUTrue_->Fill(pu->getTrueNumInteractions() + 0.1);
+
+				hPUw_->Fill(pu->getPU_NumInteractions() + 0.1, genWeight_);
+				hPUTruew_->Fill(pu->getTrueNumInteractions() + 0.1, genWeight_);
+
+				nPU_= pu->getPU_NumInteractions();
+				puTrue_ = pu->getTrueNumInteractions();
+				puBX_ = pu->getBunchCrossing();
+			}
+
+		// nPU_   .push_back(pu->getPU_NumInteractions());
+		// puTrue_.push_back(pu->getTrueNumInteractions());
+		// puBX_  .push_back(pu->getBunchCrossing());
+
+			nPUInfo_++;
+		}
+	} else edm::LogWarning("ggNtuplizer") << "no PileupSummaryInfo in event";
 
 }
 
@@ -371,22 +371,22 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 
 		Int_t status = ip->status();
 
-		bool stableFinalStateParticle = (status == 1) && (ip->pt() > 5.0);
+		bool stableFinalStateParticle = (status == 1);
 
 		bool quarks = (abs(ip->pdgId())<7);
 
 		Bool_t gluons = (ip->pdgId() == 21);
 
-	// keep non-FSR photons with pT > 5.0 and all leptons with pT > 3.0;
+		// keep non-FSR photons and all leptons with pT > 3.0;
 		bool photonOrLepton =
 		(ip->pdgId() == 22 && (ip->isPromptFinalState() || ip->isLastCopy() || status == 1)) ||
 		(status == 1 && abs(ip->pdgId()) == 11 && (ip->isPromptFinalState() || ip->isLastCopy())) ||
 		(status == 1 && abs(ip->pdgId()) == 13 && (ip->isPromptFinalState() || ip->isLastCopy())) ||
 		(status == 1 && (abs(ip->pdgId()) == 12 || abs(ip->pdgId()) == 14 || abs(ip->pdgId()) == 16)) ||
 		(status == 1 && ( abs(ip->pdgId()) >= 11 && abs(ip->pdgId()) <= 16 ) && ip->pt() > 3.0)  ||
-		(status < 10 && abs(ip->pdgId()) == 15 && ip->pt() > 3.0);
+		(status < 10 && abs(ip->pdgId()) == 15);
 
-	// select also Z, W, H, top and b
+		// select also Z, W, H, top and b
 		bool heavyParticle =
 		((    ip->pdgId()  == 23 && ip->isHardProcess()) ||
 			(abs(ip->pdgId()) == 24 && ip->isHardProcess()) ||
@@ -428,7 +428,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 			if(ip->isPromptDecayed()) setbit(tmpStatusFlag, 7);
 
 
-	  // if genParticle is W or Z, check its decay type
+	  		// if genParticle is W or Z, check its decay type
 			if ( ip->pdgId() == 23 || abs(ip->pdgId()) == 24 ) {
 				for (size_t k=0; k < p->numberOfDaughters(); ++k) {
 					const reco::Candidate *dp = p->daughter(k);
@@ -474,7 +474,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 							mcMomEta_  = momRef->eta();
 							mcMomPhi_  = momRef->phi();
 
-			 // get Granny
+							// get Granny
 							genpartparentage::GenParticleParentage motherParticle(momRef);
 							if ( motherParticle.hasRealParent() ) {
 								reco::GenParticleRef granny = motherParticle.parent();

@@ -3,7 +3,6 @@ import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_mc.root'
-#options.inputFiles = 'file:Data2017sample.root'#'root://cmsxrootd.fnal.gov//store/data/Run2017F/SinglePhoton/MINIAOD/09May2018-v1/100000/9C45E45B-A1C5-E811-98DE-FE770ABDA957.root'
 options.maxEvents = 200
 
 options.register('InputFileList',
@@ -11,7 +10,6 @@ options.register('InputFileList',
                 VarParsing.VarParsing.multiplicity.singleton,
                 VarParsing.VarParsing.varType.string,
                 "InputFileList")
-
 options.register('InFileList',
                 '',
                 VarParsing.VarParsing.multiplicity.list,
@@ -28,10 +26,8 @@ process = cms.Process('ggKit')
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.options = cms.untracked.PSet(allowUnscheduled=cms.untracked.bool(True))
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
-process.load(
-    "Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff")
-process.load(
-    "Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
+process.load("Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff")
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v17')
@@ -40,10 +36,9 @@ process.maxEvents = cms.untracked.PSet(
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
 process.source = cms.Source("PoolSource",
                             fileNames=cms.untracked.vstring(options.InFileList),
-                            #duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
                             )
 
-print process.source
+print(process.source)
 
 process.load("PhysicsTools.PatAlgos.producersLayer1.patCandidates_cff")
 process.load("PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff")
@@ -105,36 +100,19 @@ jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
            postFix='updated'
            )
 
-# jetToolbox(process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
-#            PUMethod='PUPPI',
-#            updateCollection='slimmedJetsAK8',
-#            updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
-#            JETCorrPayload='AK8PFPuppi'
-#            # subJETCorrPayload='AK4PFPuppi'
-#            # addPruning=True,
-#            # addSoftDrop=True
-#            # addTrimming=True,
-#            # addFiltering=True,
-#            # addNsub=True,
-#            # maxTau=3,
-#            # addQGTagger=True,
-#            # addPUJetID=True,
-#            # addEnergyCorrFunc=True
-#            )
 ##########################################################################
 
 
 ##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
+
 process.ggNtuplizer.year = cms.int32(2017)
 process.ggNtuplizer.doGenParticles = cms.bool(True)
-process.ggNtuplizer.dumpPFPhotons = cms.bool(False)
-process.ggNtuplizer.dumpHFElectrons = cms.bool(False)
+process.ggNtuplizer.dumpPDFSystWeight = cms.bool(True)
 process.ggNtuplizer.dumpJets = cms.bool(True)
-process.ggNtuplizer.dumpAK8Jets = cms.bool(False)
-process.ggNtuplizer.dumpSoftDrop = cms.bool(True)
-process.ggNtuplizer.dumpTaus = cms.bool(False)
-process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
+process.ggNtuplizer.dumpTaus = cms.bool(True)
+process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
+
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak8GenJetLabel = cms.InputTag("selectedPatJetsAK8PFPUPPI", "genJets", "ggKit")
@@ -143,7 +121,8 @@ process.ggNtuplizer.runOnSherpa = cms.bool(False)
 # process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
 process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
 # process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "RECO")
-process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
+process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
+
 ##########################################################################
 
 

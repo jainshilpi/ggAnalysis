@@ -325,10 +325,10 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoHoverE_        .push_back(iPho->hadTowOverEm());
 		// phoESEffSigmaRR_  .push_back(lazyTool.eseffsirir(*(iPho->superCluster())));
 		phoESEffSigmaRR_  .push_back(iPho->full5x5_showerShapeVariables().effSigmaRR);
-		phoPFChIso_       .push_back(iPho->userFloat("phoChargedIsolation"));
-		phoPFPhoIso_      .push_back(iPho->userFloat("phoPhotonIsolation"));
-		phoPFNeuIso_      .push_back(iPho->userFloat("phoNeutralHadronIsolation"));
-		phoPFChWorstIso_  .push_back(iPho->userFloat("phoWorstChargedIsolation"));
+		phoPFChIso_       .push_back(iPho->chargedHadronIso());
+		phoPFPhoIso_      .push_back(iPho->photonIso());
+		phoPFNeuIso_      .push_back(iPho->neutralHadronIso());
+		phoPFChWorstIso_  .push_back(iPho->chargedHadronWorstVtxIso());
 
 		phoPFClusEcalIso_        .push_back(iPho->ecalPFClusterIso());
 		phoPFClusHcalIso_        .push_back(iPho->hcalPFClusterIso());

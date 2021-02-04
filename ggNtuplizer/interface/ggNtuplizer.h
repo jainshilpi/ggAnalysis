@@ -37,6 +37,8 @@
 #include "RecoEcal/EgammaCoreTools/interface/EcalClusterLazyTools.h"
 #include "DataFormats/EgammaReco/interface/SuperCluster.h"
 #include "DataFormats/Common/interface/View.h"
+#include "DataFormats/PatCandidates/interface/IsolatedTrack.h"
+
 #include "iterator"
 
 using namespace std;
@@ -141,6 +143,12 @@ private:
   // void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
   // void fillAK8PUPPIJets    (const edm::Event&, const edm::EventSetup&);
 
+  void branchesTracks(TTree* tree);
+  void fillTracks(const edm::Event& e, const edm::EventSetup& es);
+  edm::EDGetTokenT<edm::View<pat::IsolatedTrack>>        tracksLabel_;
+
+  
+
   bool development_;
   bool addFilterInfoAOD_;
   bool addFilterInfoMINIAOD_;
@@ -158,6 +166,7 @@ private:
   bool dumpHFElectrons_;
   int  year_;
   Bool_t doOOTphotons_;
+  Bool_t doTrks_;
 
   vector<int> newparticles_;
 

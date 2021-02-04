@@ -26,7 +26,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 1
 process.source = cms.Source("PoolSource",
                             fileNames=cms.untracked.vstring(
                                 # options.inputFiles
-                                'file:/afs/cern.ch/work/m/mwadud/private/naTGC/CMSSW_9_4_13/src/ggAnalysis/ggNtuplizer/test/ZNuNuGJets_MonoPhoton_PtG-130.root'
+                                'file:Znunugamma_aTGC_Zgg_h3m3p5em4_h40p0_Ptg600_2jets_slc7_amd64_gcc630_CMSSW_9_3_16_432156_miniaod.root'
                                 #'file:/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/Configuration/Generator/generateGJets4ID/miniaodsimfile_PythiaFilterGammaGamma.root'
                                 # 'file:/local/cms/user/wadud/aNTGCmet/CMSSW_9_4_17/src/Configuration/Generator/generateGJets4ID/batch/test/GJetsEMenriched_1/GJetsEMenriched_1_MINIAODSIM.root'
                             ),
@@ -54,7 +54,7 @@ process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
 ##########################################################################
 # fix a bug in the ECAL-Tracker momentum combination when applying the
 # scale and smearing
-from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
                        era='2017-Nov17ReReco',
