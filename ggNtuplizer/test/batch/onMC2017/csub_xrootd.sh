@@ -8,19 +8,18 @@ jobsList='runList.txt'
 voms-proxy-init --voms cms --valid 720:00
 
 cmsswfile="/cvmfs/cms.cern.ch/cmsset_default.sh"
-cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/
+cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/
 # workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 
-writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
-workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsecSignals/
-pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
-splitfiles=200000
+# writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
+# workDir=/local/cms/user/wadud/aNTGCmet/ntuples/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsecSignals/
+# pset="/local/cms/user/wadud/aNTGCmet/ntuples/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
+# splitfiles=200000
 
-
-# writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/METv5/
-# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsMETv5Signals/
-# pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test//run_condor_mc2017_94X.py"
-# splitfiles=34
+pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
+writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18/
+workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_2017_10_6_18/
+splitfiles=3
 
 
 x509file=/tmp/x509up_u926763
@@ -45,8 +44,8 @@ jobflavor=workday
 
 
 ############################################################################
-runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//runOnMCxrdTemplate.sh
-condorCFGtemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_9/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//condor_job.sh
+runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//runOnMCxrdTemplate.sh
+condorCFGtemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//condor_job.sh
 
 mkdir -p ${writeDir}
 
