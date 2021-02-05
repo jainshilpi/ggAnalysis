@@ -12,9 +12,9 @@ vector<Float_t>                       	tauEta_;
 vector<Float_t>                       	tauPhi_;
 vector<Float_t>                       	tauEn_;
 vector<Float_t>                       	tauDxy_;
-vector<Float_t>                       	tauDz_;
+// vector<Float_t>                       	tauDz_;
 vector<vector<Char_t>>             		tauDMs_;
-vector<ULong64_t>						tauIDbits_;
+vector<Long64_t>						tauIDbits_;
 vector<UInt_t>							tauIDbitsDeepTau2017v2p1_;
 vector<UInt_t>							tauIDbitsDeepTau2017v1_;
 vector<Float_t>                       	tauCombIsoDelBetaCorRaw3Hits_;
@@ -49,7 +49,7 @@ void ggNtuplizer::branchesTaus(TTree* tree) {
 	tree->Branch("tauPhi",                  		&tauPhi_);
 	tree->Branch("tauEn",                  			&tauEn_);
 	tree->Branch("tauDxy",                  		&tauDxy_);
-	tree->Branch("tauDz",                  			&tauDz_);
+	// tree->Branch("tauDz",                  			&tauDz_);
 	tree->Branch("tauDMs",                  		&tauDMs_);
 	tree->Branch("tauIDbits",                  		&tauIDbits_);
 	tree->Branch("tauIDbitsDeepTau2017v2p1",       	&tauIDbitsDeepTau2017v2p1_);
@@ -87,7 +87,7 @@ void ggNtuplizer::fillTaus(const edm::Event& e, const edm::EventSetup& es) {
 	tauPhi_ 												.clear();
 	tauEn_ 													.clear();
 	tauDxy_ 												.clear();
-	tauDz_ 													.clear();
+	// tauDz_ 													.clear();
 	tauDMs_ 												.clear();
 	tauIDbits_												.clear();
 	tauIDbitsDeepTau2017v2p1_ 								.clear();
@@ -136,17 +136,16 @@ void ggNtuplizer::fillTaus(const edm::Event& e, const edm::EventSetup& es) {
 		tauPhi_ 												.push_back(iTau->phi());
 		tauEn_ 													.push_back(iTau->energy());
 		tauDxy_ 												.push_back(iTau->dxy());
-		tauDz_ 													.push_back(iTau->bestTrack() ? iTau->bestTrack()->dz() : -99999.);
+		// tauDz_ 													.push_back(iTau->leadTrack().isNonnull() ? iTau->leadTrack()->dz() : -99999.);
 
 		tauDMs_ 												.push_back({
 			(Char_t)iTau->decayMode(),
 			(Char_t)iTau->tauID("decayModeFinding"),
-			// (Char_t)iTau->tauID("decayModeFindingOldDMs"),
 			(Char_t)iTau->tauID("decayModeFindingNewDMs"),
 			(Char_t)iTau->tauID("MVADM2017v1")			
 		});
 
-		ULong64_t iTauIDbits = 0;
+		Long64_t iTauIDbits = 0;
 		if(iTau->tauID("againstElectronLooseMVA6")) setbit(iTauIDbits, 0);
 		if(iTau->tauID("againstElectronMediumMVA6")) setbit(iTauIDbits, 1);
 		if(iTau->tauID("againstElectronTightMVA6")) setbit(iTauIDbits, 2);
@@ -247,8 +246,8 @@ void ggNtuplizer::fillTaus(const edm::Event& e, const edm::EventSetup& es) {
 		if(iTau->tauID("byTightDeepTau2017v1VSmu")) setbit(iTauIDbitsDeepTau2017v1, 21);
 		if(iTau->tauID("byVTightDeepTau2017v1VSmu")) setbit(iTauIDbitsDeepTau2017v1, 22);
 		if(iTau->tauID("byVVTightDeepTau2017v1VSmu")) setbit(iTauIDbitsDeepTau2017v1, 23);
-		if(iTau->tauID("byTightDpfTau2016v0VSall")) setbit(iTauIDbitsDeepTau2017v1, 24);
-		if(iTau->tauID("byTightDpfTau2016v1VSall")) setbit(iTauIDbitsDeepTau2017v1, 25);
+		// if(iTau->tauID("byTightDpfTau2016v0VSall")) setbit(iTauIDbitsDeepTau2017v1, 24);
+		// if(iTau->tauID("byTightDpfTau2016v1VSall")) setbit(iTauIDbitsDeepTau2017v1, 25);
 		tauIDbitsDeepTau2017v1_.push_back(iTauIDbitsDeepTau2017v1);
 
 		tauCombIsoDelBetaCorRaw3Hits_ 							.push_back(iTau->tauID("byCombinedIsolationDeltaBetaCorrRaw3Hits"));

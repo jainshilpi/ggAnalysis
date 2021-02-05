@@ -3,6 +3,90 @@
 #include "DataFormats/EcalDetId/interface/EBDetId.h"
 #include "DataFormats/EcalDetId/interface/EEDetId.h"
 
+const EcalRecHit * ggNtuplizer::getECALrecHit(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS){
+  const EcalRecHitCollection *recHits = (id.subdetId() == EcalBarrel) ? ltNoZS.getEcalEBRecHitCollection() : ltNoZS.getEcalEERecHitCollection();
+  EcalRecHitCollection::const_iterator idRecHitIterator = recHits->find(id);
+  return ((idRecHitIterator!= recHits->end()) ? &(*(idRecHitIterator)) : nullptr);
+};
+
+Float_t ggNtuplizer::ECALrecHitE(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di, int dj){
+  DetId nid;
+  if(di == 0 && dj == 0) nid = id;
+  else if(id.subdetId() == EcalBarrel) nid = EBDetId::offsetBy(id, di, dj);
+  else if(id.subdetId() == EcalEndcap) nid = EEDetId::offsetBy(id, di, dj);
+  const EcalRecHit * nidRH = getECALrecHit(nid, ltNoZS);
+  return ((nidRH) ? nidRH->energy() : 0.);
+};
+
+
+Float_t ggNtuplizer::ECALrecHitT(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS){
+  const EcalRecHit *idRecHit  = getECALrecHit(id, ltNoZS);
+  return ((idRecHit) ? idRecHit->time() : -9999);  
+};
+
+
+Float_t ggNtuplizer::etaWing(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS){
+  Float_t e0 = ECALrecHitE(id, ltNoZS);
+  Float_t eL = ECALrecHitE(id, ltNoZS,  -1,  0);
+  Float_t eR = ECALrecHitE(id, ltNoZS,  1,  0);
+  return (std::max(eL, eR)/e0);
+};
+
+
+Float_t ggNtuplizer::swissCross(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS){
+  Float_t e1 = ECALrecHitE(id, ltNoZS);
+  Float_t s4 = 0.;
+  s4 += ECALrecHitE(id, ltNoZS,  1,  0);
+  s4 += ECALrecHitE(id, ltNoZS, -1,  0);
+  s4 += ECALrecHitE(id, ltNoZS,  0,  1);
+  s4 += ECALrecHitE(id, ltNoZS,  0, -1);
+  return (1 - s4/e1);
+};
+
+
+Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS){
+
+  if(sc->clustersSize()<1) return -9999.;
+  if(!sc->clusters().isAvailable()) return -9999.;
+
+  DetId seedDetID = sc->seed()->seed();
+
+  const EcalRecHit *seedRecHit  = getECALrecHit(seedDetID, ltNoZS);
+
+  if(!seedRecHit) return -9999;;
+
+  Float_t maxTime = - std::numeric_limits<Float_t>::max();
+  Float_t minTime = std::numeric_limits<Float_t>::max();
+
+  Bool_t timeValid = 0;
+  for(reco::CaloCluster_iterator cluster = sc->clustersBegin(); cluster != sc->clustersEnd(); cluster++){
+    if((*cluster)->size()<1) continue;
+
+    for(const std::pair<DetId, Float_t> & iXtal : (*cluster)->hitsAndFractions()){
+
+      const EcalRecHit * iXtalHit = getECALrecHit(iXtal.first, ltNoZS);
+
+      if(!iXtalHit) continue;
+
+      if(iXtalHit->energy() < iXtalHit->energyError() || iXtalHit->energy() < 1.) continue;
+
+      if(iXtalHit->time() > maxTime) maxTime = iXtalHit->time();
+      if(iXtalHit->time() < minTime) minTime = iXtalHit->time();
+      timeValid = 1.;
+    }
+  };
+
+  Float_t LICTD = -99999.;
+  if(timeValid){
+    Float_t maxT = maxTime - seedRecHit->time();
+    Float_t minT = minTime - seedRecHit->time();
+    LICTD = (std::abs(maxT) > std::abs(minT)) ? maxT : minT;
+  }
+
+  return LICTD;
+};
+
+
 UShort_t necalSC_;
 std::vector<Float_t> ecalSCeta_;
 std::vector<Float_t> ecalSCphi_;
@@ -11,66 +95,17 @@ std::vector<Float_t> ecalSCRawEn_;
 std::vector<Float_t> ecalSCetaWidth_;
 std::vector<Float_t> ecalSCphiWidth_;
 std::vector<Float_t> ecalSC_LICTD_;
-std::vector<UChar_t> ecalSC_nL1Spike_;
-std::vector<UChar_t> ecalSC_nDiweird_;
-std::vector<UChar_t> ecalSC_nWeird_;
-std::vector<UChar_t> ecalSC_nSaturated_;
-std::vector<UChar_t> ecalSC_nOutOfTime_;
-std::vector<UChar_t> ecalSC_nXtals_;
-std::vector<Float_t> ecalSC_maxEnXtalTime_;
-std::vector<Float_t> ecalSC_maxEnXtalSwissCross_;
-std::vector<UChar_t> ecalSC_maxEnXtalBits_;
+std::vector<Float_t> ecalSC_seedTime_;
+std::vector<Float_t> ecalSC_seedSwissCross_;
+std::vector<Float_t> ecalSC_seedEtaWing_;
+std::vector<UChar_t> ecalSC_seedBits_;
 std::vector<Char_t> ecalSCseedIx_;
 std::vector<Char_t> ecalSCseedIy_;
 std::vector<Char_t> ecalSCseedIz_;
 
 
-
-Float_t ggNtuplizer::ECALrecHitE(const DetId & id, const EcalRecHitCollection *recHits, int di, int dj){
-  DetId nid;
-  if(di == 0 && dj == 0) nid = id;
-  else if(id.subdetId() == EcalBarrel) nid = EBDetId::offsetBy(id, di, dj);
-  else if(id.subdetId() == EcalEndcap) nid = EEDetId::offsetBy(id, di, dj);
-  return ((recHits->find(nid) != recHits->end()) ? recHits->find(nid)->energy() : 0.);
-};
-
-
-
-Float_t ggNtuplizer::swissCross(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS){
-  const EcalRecHitCollection * recHits = nullptr;
-  if (id.subdetId() == EcalBarrel) {
-    recHits = ltNoZS.getEcalEBRecHitCollection();
-    EBDetId ebId(id);
-      // avoid recHits at |iEta|=85 where one side of the neighbours is missing
-    if (std::abs(ebId.ieta())==85) return -100.;
-    Float_t e1 = ECALrecHitE(id, recHits);
-    Float_t s4 = 0.;
-    if (!(e1 > 0.)) return -900.;
-    s4 += ECALrecHitE(id, recHits,  1,  0);
-    s4 += ECALrecHitE(id, recHits, -1,  0);
-    s4 += ECALrecHitE(id, recHits,  0,  1);
-    s4 += ECALrecHitE(id, recHits,  0, -1);
-    return (1 - s4 / e1);
-  } else if (id.subdetId() == EcalEndcap) {
-    recHits = ltNoZS.getEcalEERecHitCollection();
-    EEDetId eeId(id);
-    Float_t e1 = ECALrecHitE(id, recHits);
-    Float_t s4 = 0.;
-    if (!(e1 > 0.)) return -920.;
-    s4 += ECALrecHitE(id, recHits,  1,  0);
-    s4 += ECALrecHitE(id, recHits, -1,  0);
-    s4 += ECALrecHitE(id, recHits,  0,  1);
-    s4 += ECALrecHitE(id, recHits,  0, -1);
-    return (1 - s4 / e1);
-  }
-  return -9999.;
-};
-
-
-
 void ggNtuplizer::branchesECALSC(TTree* tree) {
   tree->Branch("necalSC",                       &necalSC_);
-  // tree->Branch("ecalSCindex",                     &ecalSCindex_);
   tree->Branch("ecalSCeta",                     &ecalSCeta_);
   tree->Branch("ecalSCphi",                     &ecalSCphi_);
   tree->Branch("ecalSCEn",                      &ecalSCEn_);
@@ -78,136 +113,14 @@ void ggNtuplizer::branchesECALSC(TTree* tree) {
   tree->Branch("ecalSCetaWidth",                  &ecalSCetaWidth_);
   tree->Branch("ecalSCphiWidth",                  &ecalSCphiWidth_);
   tree->Branch("ecalSC_LICTD",                    &ecalSC_LICTD_);
-  tree->Branch("ecalSC_nL1Spike",                 &ecalSC_nL1Spike_);
-  tree->Branch("ecalSC_nDiweird",                 &ecalSC_nDiweird_);
-  tree->Branch("ecalSC_nWeird",         &ecalSC_nWeird_);
-  tree->Branch("ecalSC_nSaturated",       &ecalSC_nSaturated_);
-  tree->Branch("ecalSC_nOutOfTime",       &ecalSC_nOutOfTime_);
-  tree->Branch("ecalSC_nXtals",         &ecalSC_nXtals_);
-  tree->Branch("ecalSC_maxEnXtalTime",      &ecalSC_maxEnXtalTime_);
-  tree->Branch("ecalSC_maxEnXtalSwissCross",    &ecalSC_maxEnXtalSwissCross_);
-  tree->Branch("ecalSC_maxEnXtalBits",      &ecalSC_maxEnXtalBits_);
-
+  tree->Branch("ecalSC_seedTime",      &ecalSC_seedTime_);
+  tree->Branch("ecalSC_seedSwissCross",    &ecalSC_seedSwissCross_);
+  tree->Branch("ecalSC_seedEtaWing",                    &ecalSC_seedEtaWing_);
+  tree->Branch("ecalSC_seedBits",      &ecalSC_seedBits_);
   tree->Branch("ecalSCseedIx",      &ecalSCseedIx_);
   tree->Branch("ecalSCseedIy",      &ecalSCseedIy_);
   tree->Branch("ecalSCseedIz",      &ecalSCseedIz_);
 };
-
-
-
-Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS, Float_t &_maxEnXtalTime, UChar_t & _nL1Spike, UChar_t & _nDiweird, UChar_t & _nWeird, UChar_t & _nSaturated, UChar_t & _nOutOfTime, UChar_t & _nXtals, UChar_t & _maxEnXtalBits, Float_t & _maxEnXtalSwissCross){
-
-  _maxEnXtalTime = -999.;
-  _nL1Spike = 0;
-  _nDiweird = 0;
-  _nWeird = 0;
-  _nSaturated = 0;
-  _nOutOfTime = 0;
-  _nXtals = 0;
-  _maxEnXtalBits= 0;
-  _maxEnXtalSwissCross = -999.;
-
-  if(sc->clustersSize()<1) return -999999.;
-  if(!sc->clusters().isAvailable()) return -99999.;
-
-  DetId seedDetID = sc->seed()->seed();
-  Bool_t isEB = (seedDetID.subdetId() == EcalBarrel);
-  if(!isEB && !(seedDetID.subdetId() == EcalEndcap)) return -999.;
-
-  const EcalRecHitCollection *recHitsEB = ltNoZS.getEcalEBRecHitCollection();
-  const EcalRecHitCollection *recHitsEE = ltNoZS.getEcalEERecHitCollection();
-
-  std::vector<uint32_t> _detIDs_nL1Spike;
-  std::vector<uint32_t> _detIDs_nDiweird;
-  std::vector<uint32_t> _detIDs_nWeird;
-  std::vector<uint32_t> _detIDs_nSaturated;
-  std::vector<uint32_t> _detIDs_nOutOfTime;
-  std::vector<uint32_t> _detIDs_nXtals;
-
-  const EcalRecHit *maxEnergyXtalRecHit_  = nullptr;
-  Float_t maxEnergyXtal_          = std::numeric_limits<Float_t>::min();
-  Float_t maxTime_            = std::numeric_limits<Float_t>::min();
-  Float_t minTime_            = std::numeric_limits<Float_t>::max();
-  Bool_t  _timeValid            = 0;
-
-  for(reco::CaloCluster_iterator cluster = sc->clustersBegin(); cluster != sc->clustersEnd(); cluster++){
-    if((*cluster)->size()<1) continue;
-
-    for(const std::pair<DetId, Float_t> & _xtal : (*cluster)->hitsAndFractions()){
-
-      // Find rechit
-      const EcalRecHit * _xtalHit = nullptr;
-      if(isEB){
-        if(recHitsEB->find(_xtal.first) != recHitsEB->end()) _xtalHit = &(*(recHitsEB->find (_xtal.first)));
-        else if(recHitsEE->find(_xtal.first) != recHitsEE->end()) _xtalHit = &(*(recHitsEE->find (_xtal.first)));
-      } else{
-        if(recHitsEE->find(_xtal.first) != recHitsEE->end()) _xtalHit = &(*(recHitsEE->find (_xtal.first)));
-        else if(recHitsEB->find(_xtal.first) != recHitsEB->end()) _xtalHit = &(*(recHitsEB->find (_xtal.first)));
-      }
-
-      if(!_xtalHit) continue;
-
-      // skip xtal if energy deposit is < 1 GeV
-      // if(_xtalHit->energy() > 1.) {
-      if(_xtalHit->energy() > 2*_xtalHit->energyError() && _xtalHit->energy() > 1.) {
-        // Get time range
-        if(_xtalHit->time() > maxTime_) maxTime_ = _xtalHit->time();
-        if(_xtalHit->time() < minTime_) minTime_ = _xtalHit->time();
-        _timeValid = 1.;
-
-        // Get max energy xtal
-        if(_xtalHit->energy() > maxEnergyXtal_){
-          maxEnergyXtal_ = _xtalHit->energy();
-          maxEnergyXtalRecHit_ = _xtalHit;
-        }
-      }
-
-
-
-      uint32_t _xtalDetID = _xtal.first.rawId();
-      if(_xtalHit->checkFlag(EcalRecHit::kL1SpikeFlag) && (std::find(_detIDs_nL1Spike.begin(), _detIDs_nL1Spike.end(), _xtalDetID) == _detIDs_nL1Spike.end())){
-        _detIDs_nL1Spike.push_back(_xtalDetID);
-        _nL1Spike++;
-      }
-      if(_xtalHit->checkFlag(EcalRecHit::kDiWeird) && (std::find(_detIDs_nDiweird.begin(), _detIDs_nDiweird.end(), _xtalDetID) == _detIDs_nDiweird.end())){
-        _detIDs_nDiweird.push_back(_xtalDetID);
-        _nDiweird++;
-      }
-      if(_xtalHit->checkFlag(EcalRecHit::kWeird) && (std::find(_detIDs_nWeird.begin(), _detIDs_nWeird.end(), _xtalDetID) == _detIDs_nWeird.end())){
-        _detIDs_nWeird.push_back(_xtalDetID);
-        _nWeird++;
-      }
-      if(_xtalHit->checkFlag(EcalRecHit::kSaturated) && (std::find(_detIDs_nSaturated.begin(), _detIDs_nSaturated.end(), _xtalDetID) == _detIDs_nSaturated.end())){
-        _detIDs_nSaturated.push_back(_xtalDetID);
-        _nSaturated++;
-      }
-      if(_xtalHit->checkFlag(EcalRecHit::kOutOfTime) && (std::find(_detIDs_nOutOfTime.begin(), _detIDs_nOutOfTime.end(), _xtalDetID) == _detIDs_nOutOfTime.end())){
-        _detIDs_nOutOfTime.push_back(_xtalDetID);
-        _nOutOfTime++;
-      }
-      if(std::find(_detIDs_nXtals.begin(), _detIDs_nXtals.end(), _xtalDetID) == _detIDs_nXtals.end()){
-        _detIDs_nXtals.push_back(_xtalDetID);
-        _nXtals++;
-      }
-    }
-  };
-
-  if(!maxEnergyXtalRecHit_) return -9999.;
-  _maxEnXtalTime    = maxEnergyXtalRecHit_->time();
-  _maxEnXtalBits    = 0;
-  if(maxEnergyXtalRecHit_->checkFlag(EcalRecHit::kDiWeird)) setbit(_maxEnXtalBits, 0);
-  if(maxEnergyXtalRecHit_->checkFlag(EcalRecHit::kWeird)) setbit(_maxEnXtalBits, 1);
-  if(maxEnergyXtalRecHit_->checkFlag(EcalRecHit::kSaturated)) setbit(_maxEnXtalBits, 2);
-  if(maxEnergyXtalRecHit_->checkFlag(EcalRecHit::kOutOfTime)) setbit(_maxEnXtalBits, 3);
-
-  _maxEnXtalSwissCross = swissCross(maxEnergyXtalRecHit_->detid(), ltNoZS);
-  if(maxEnergyXtalRecHit_->detid().rawId() != seedDetID.rawId()) setbit(_maxEnXtalBits, 4);
-
-  Float_t LICTD_ = (_timeValid) ? std::max(std::abs(maxTime_ - _maxEnXtalTime), std::abs(_maxEnXtalTime - minTime_)) : -9999999.;
-
-  return LICTD_;
-};
-
 
 
 void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
@@ -220,86 +133,72 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
   ecalSCetaWidth_.clear();
   ecalSCphiWidth_.clear();
   ecalSC_LICTD_.clear();
-  ecalSC_nL1Spike_.clear();
-  ecalSC_nDiweird_.clear();
-  ecalSC_nWeird_.clear();
-  ecalSC_nSaturated_.clear();
-  ecalSC_nOutOfTime_.clear();
-  ecalSC_nXtals_.clear();
-  ecalSC_maxEnXtalTime_.clear();
-  ecalSC_maxEnXtalSwissCross_.clear();
-  ecalSC_maxEnXtalBits_.clear();
-
+  ecalSC_seedTime_.clear();
+  ecalSC_seedSwissCross_.clear();
+  ecalSC_seedEtaWing_.clear();
+  ecalSC_seedBits_.clear();
   ecalSCseedIx_.clear();
   ecalSCseedIy_.clear();
   ecalSCseedIz_.clear();
-
 
   edm::Handle<std::vector<reco::SuperCluster>> ecalSChandle;
   e.getByToken(ecalSCcollection_, ecalSChandle);
 
   noZS::EcalClusterLazyTools lazyToolnoZS(e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 
-  if(ecalSChandle.isValid()){
+  if(!ecalSChandle.isValid()) return;
 
-    UShort_t _scIndex_ = 0;
-    for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalSChandle->begin(); iSC != ecalSChandle->end(); iSC++){
-      _scIndex_++;
+  for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalSChandle->begin(); iSC != ecalSChandle->end(); iSC++){
 
-      necalSC_++;
-      Float_t maxEnXtalTime = -999.;
-      UChar_t tmpnL1Spike = 0;
-      UChar_t tmpnDiweird = 0;
-      UChar_t tmpnWeird = 0;
-      UChar_t tmpnSaturated = 0;
-      UChar_t tmpnOutOfTime = 0;
-      UChar_t tmpnXtals = 0;
-      Float_t tmpmaxEnXtalSwissCross = -999;
-      UChar_t tmpmaxEnXtalBits = 0;
-      Float_t tmpscEta = iSC->eta();
-      Float_t tmpscPhi = iSC->phi();
-      Float_t tmpecalSC_LICTD =  getLICTD(&(*iSC), lazyToolnoZS, maxEnXtalTime, tmpnL1Spike, tmpnDiweird, tmpnWeird, tmpnSaturated, tmpnOutOfTime, tmpnXtals, tmpmaxEnXtalBits, tmpmaxEnXtalSwissCross);
+    ecalSCindex_.push_back(necalSC_);
+    ecalSCeta_.push_back(iSC->eta());
+    ecalSCphi_.push_back(iSC->phi());
+    ecalSCEn_.push_back(iSC->energy());
+    ecalSCRawEn_.push_back(iSC->rawEnergy());
+    ecalSCetaWidth_.push_back(iSC->etaWidth());
+    ecalSCphiWidth_.push_back(iSC->phiWidth());
+    ecalSC_LICTD_.push_back(getLICTD(&(*iSC), lazyToolnoZS));
 
-      ecalSCindex_.push_back(_scIndex_-1);
-      ecalSCeta_.push_back(tmpscEta);
-      ecalSCphi_.push_back(tmpscPhi);
-      ecalSCEn_.push_back(iSC->energy());
-      ecalSCRawEn_.push_back(iSC->rawEnergy());
-      ecalSCetaWidth_.push_back(iSC->etaWidth());
-      ecalSCphiWidth_.push_back(iSC->phiWidth());
-      ecalSC_LICTD_.push_back(tmpecalSC_LICTD);
-      ecalSC_nL1Spike_.push_back(tmpnL1Spike);
-      ecalSC_nDiweird_.push_back(tmpnDiweird);
-      ecalSC_nWeird_.push_back(tmpnWeird);
-      ecalSC_nSaturated_.push_back(tmpnSaturated);
-      ecalSC_nOutOfTime_.push_back(tmpnOutOfTime);
-      ecalSC_nXtals_.push_back(tmpnXtals);
-      ecalSC_maxEnXtalTime_.push_back(maxEnXtalTime);
-      ecalSC_maxEnXtalSwissCross_.push_back(tmpmaxEnXtalSwissCross);
-      ecalSC_maxEnXtalBits_.push_back(tmpmaxEnXtalBits);
+    DetId seedDetID = iSC->seed()->seed();
+    const EcalRecHit *seedRecHit  =getECALrecHit(seedDetID, lazyToolnoZS);
+    Float_t iSeedTime = -9999;
+    Float_t iSeedSwissX = -9999;
+    Float_t iSeedEtaW = -9999;
+    UChar_t iSeedBits    = 0;
+    if(seedRecHit){
+      iSeedTime= ECALrecHitT(seedDetID, lazyToolnoZS);
+      iSeedSwissX = swissCross(seedDetID, lazyToolnoZS);
+      iSeedEtaW = etaWing(seedDetID, lazyToolnoZS);
+      if(seedRecHit->checkFlag(EcalRecHit::kDiWeird)) setbit(iSeedBits, 0);
+      if(seedRecHit->checkFlag(EcalRecHit::kWeird)) setbit(iSeedBits, 1);
+      if(seedRecHit->checkFlag(EcalRecHit::kSaturated)) setbit(iSeedBits, 2);
+      if(seedRecHit->checkFlag(EcalRecHit::kOutOfTime)) setbit(iSeedBits, 3);
 
-
-      DetId seedDetID = iSC->seed()->seed();
-      if(seedDetID.subdetId() == EcalBarrel){
-        EBDetId seedEB = iSC->seed()->seed();
-        ecalSCseedIx_.push_back(seedEB.ieta());
-        ecalSCseedIy_.push_back(seedEB.iphi());
-        ecalSCseedIz_.push_back(0);
-      } else if (seedDetID.subdetId() == EcalEndcap){
-        EEDetId seedEE = iSC->seed()->seed();
-        ecalSCseedIx_.push_back(seedEE.ix());
-        ecalSCseedIy_.push_back(seedEE.iy());
-        ecalSCseedIz_.push_back(seedEE.zside());
-      } else{
-        ecalSCseedIx_.push_back(-116);
-        ecalSCseedIy_.push_back(-116);
-        ecalSCseedIz_.push_back(-116);
-      }
     }
+    ecalSC_seedTime_.push_back(iSeedTime);
+    ecalSC_seedSwissCross_.push_back(iSeedSwissX);
+    ecalSC_seedEtaWing_.push_back(iSeedEtaW);
+    ecalSC_seedBits_.push_back(iSeedBits);
+
+    if(seedDetID.subdetId() == EcalBarrel){
+      EBDetId seedEB = iSC->seed()->seed();
+      ecalSCseedIx_.push_back(seedEB.ieta());
+      ecalSCseedIy_.push_back(seedEB.iphi());
+      ecalSCseedIz_.push_back(0);
+    } else if (seedDetID.subdetId() == EcalEndcap){
+      EEDetId seedEE = iSC->seed()->seed();
+      ecalSCseedIx_.push_back(seedEE.ix());
+      ecalSCseedIy_.push_back(seedEE.iy());
+      ecalSCseedIz_.push_back(seedEE.zside());
+    } else{
+      ecalSCseedIx_.push_back(-116);
+      ecalSCseedIy_.push_back(-116);
+      ecalSCseedIz_.push_back(-116);
+    }
+
+    necalSC_++;
   }
 };
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -312,25 +211,17 @@ std::vector<Float_t> ecalootSCRawEn_;
 std::vector<Float_t> ecalootSCetaWidth_;
 std::vector<Float_t> ecalootSCphiWidth_;
 std::vector<Float_t> ecalootSC_LICTD_;
-std::vector<UChar_t> ecalootSC_nL1Spike_;
-std::vector<UChar_t> ecalootSC_nDiweird_;
-std::vector<UChar_t> ecalootSC_nWeird_;
-std::vector<UChar_t> ecalootSC_nSaturated_;
-std::vector<UChar_t> ecalootSC_nOutOfTime_;
-std::vector<UChar_t> ecalootSC_nXtals_;
-std::vector<Float_t> ecalootSC_maxEnXtalTime_;
-std::vector<Float_t> ecalootSC_maxEnXtalSwissCross_;
-std::vector<UChar_t> ecalootSC_maxEnXtalBits_;
-
+std::vector<Float_t> ecalootSC_seedTime_;
+std::vector<Float_t> ecalootSC_seedSwissCross_;
+std::vector<Float_t> ecalootSC_seedEtaWing_;
+std::vector<UChar_t> ecalootSC_seedBits_;
 std::vector<Char_t> ecalootSC_seedIx_;
 std::vector<Char_t> ecalootSC_seedIy_;
 std::vector<Char_t> ecalootSC_seedIz_;
 
 
-
 void ggNtuplizer::branchesECALOOTSC(TTree* tree) {
   tree->Branch("necalootSC",                        &necalootSC_);
-  // tree->Branch("ecalootSC_index",                     &ecalootSCindex_);
   tree->Branch("ecalootSC_eta",                     &ecalootSCeta_);
   tree->Branch("ecalootSC_phi",                     &ecalootSCphi_);
   tree->Branch("ecalootSC_En",                      &ecalootSCEn_);
@@ -338,15 +229,10 @@ void ggNtuplizer::branchesECALOOTSC(TTree* tree) {
   tree->Branch("ecalootSC_etaWidth",                  &ecalootSCetaWidth_);
   tree->Branch("ecalootSC_phiWidth",                  &ecalootSCphiWidth_);
   tree->Branch("ecalootSC_LICTD",                    &ecalootSC_LICTD_);
-  tree->Branch("ecalootSC_nL1Spike",                 &ecalootSC_nL1Spike_);
-  tree->Branch("ecalootSC_nDiweird",                 &ecalootSC_nDiweird_);
-  tree->Branch("ecalootSC_nWeird",          &ecalootSC_nWeird_);
-  tree->Branch("ecalootSC_nSaturated",        &ecalootSC_nSaturated_);
-  tree->Branch("ecalootSC_nOutOfTime",        &ecalootSC_nOutOfTime_);
-  tree->Branch("ecalootSC_nXtals",          &ecalootSC_nXtals_);
-  tree->Branch("ecalootSC_maxEnXtalTime",     &ecalootSC_maxEnXtalTime_);
-  tree->Branch("ecalootSC_maxEnXtalSwissCross",   &ecalootSC_maxEnXtalSwissCross_);
-  tree->Branch("ecalootSC_maxEnXtalBits",     &ecalootSC_maxEnXtalBits_);
+  tree->Branch("ecalootSC_seedTime",     &ecalootSC_seedTime_);
+  tree->Branch("ecalootSC_seedSwissCross",   &ecalootSC_seedSwissCross_);
+  tree->Branch("ecalSC_seedEtaWing",   &ecalSC_seedEtaWing_);
+  tree->Branch("ecalootSC_seedBits",     &ecalootSC_seedBits_);
   tree->Branch("ecalootSC_seedIx",     &ecalootSC_seedIx_);
   tree->Branch("ecalootSC_seedIy",     &ecalootSC_seedIy_);
   tree->Branch("ecalootSC_seedIz",     &ecalootSC_seedIz_);
@@ -363,16 +249,10 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
   ecalootSCetaWidth_.clear();
   ecalootSCphiWidth_.clear();
   ecalootSC_LICTD_.clear();
-  ecalootSC_nL1Spike_.clear();
-  ecalootSC_nDiweird_.clear();
-  ecalootSC_nWeird_.clear();
-  ecalootSC_nSaturated_.clear();
-  ecalootSC_nOutOfTime_.clear();
-  ecalootSC_nXtals_.clear();
-  ecalootSC_maxEnXtalTime_.clear();
-  ecalootSC_maxEnXtalSwissCross_.clear();
-  ecalootSC_maxEnXtalBits_.clear();
-
+  ecalootSC_seedTime_.clear();
+  ecalootSC_seedSwissCross_.clear();
+  ecalootSC_seedEtaWing_.clear();
+  ecalootSC_seedBits_.clear();
   ecalootSC_seedIx_.clear();
   ecalootSC_seedIy_.clear();
   ecalootSC_seedIz_.clear();
@@ -383,62 +263,57 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
 
   noZS::EcalClusterLazyTools lazyToolnoZS(e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 
-  if(ecalootSChandle.isValid()){
+  if(!ecalootSChandle.isValid()) return;
 
-    UShort_t _scIndex_ = 0;
-    for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalootSChandle->begin(); iSC != ecalootSChandle->end(); iSC++){
-      _scIndex_++;
+  for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalootSChandle->begin(); iSC != ecalootSChandle->end(); iSC++){
 
-      necalootSC_++;
-      Float_t maxEnXtalTime = -999.;
-      UChar_t tmpnL1Spike = 0;
-      UChar_t tmpnDiweird = 0;
-      UChar_t tmpnWeird = 0;
-      UChar_t tmpnSaturated = 0;
-      UChar_t tmpnOutOfTime = 0;
-      UChar_t tmpnXtals = 0;
-      Float_t tmpmaxEnXtalSwissCross = -999;
-      UChar_t tmpmaxEnXtalBits = 0;
-      Float_t tmpscEta = iSC->eta();
-      Float_t tmpscPhi = iSC->phi();
-      Float_t tmpecalootSC_LICTD =  getLICTD(&(*iSC), lazyToolnoZS, maxEnXtalTime, tmpnL1Spike, tmpnDiweird, tmpnWeird, tmpnSaturated, tmpnOutOfTime, tmpnXtals, tmpmaxEnXtalBits, tmpmaxEnXtalSwissCross);
+    ecalootSCindex_.push_back(necalootSC_);
+    ecalootSCeta_.push_back(iSC->eta());
+    ecalootSCphi_.push_back(iSC->phi());
+    ecalootSCEn_.push_back(iSC->energy());
+    ecalootSCRawEn_.push_back(iSC->rawEnergy());
+    ecalootSCetaWidth_.push_back(iSC->etaWidth());
+    ecalootSCphiWidth_.push_back(iSC->phiWidth());
+    ecalootSC_LICTD_.push_back(getLICTD(&(*iSC), lazyToolnoZS));
 
-      ecalootSCindex_.push_back(_scIndex_-1);
-      ecalootSCeta_.push_back(tmpscEta);
-      ecalootSCphi_.push_back(tmpscPhi);
-      ecalootSCEn_.push_back(iSC->energy());
-      ecalootSCRawEn_.push_back(iSC->rawEnergy());
-      ecalootSCetaWidth_.push_back(iSC->etaWidth());
-      ecalootSCphiWidth_.push_back(iSC->phiWidth());
-      ecalootSC_LICTD_.push_back(tmpecalootSC_LICTD);
-      ecalootSC_nL1Spike_.push_back(tmpnL1Spike);
-      ecalootSC_nDiweird_.push_back(tmpnDiweird);
-      ecalootSC_nWeird_.push_back(tmpnWeird);
-      ecalootSC_nSaturated_.push_back(tmpnSaturated);
-      ecalootSC_nOutOfTime_.push_back(tmpnOutOfTime);
-      ecalootSC_nXtals_.push_back(tmpnXtals);
-      ecalootSC_maxEnXtalTime_.push_back(maxEnXtalTime);
-      ecalootSC_maxEnXtalSwissCross_.push_back(tmpmaxEnXtalSwissCross);
-      ecalootSC_maxEnXtalBits_.push_back(tmpmaxEnXtalBits);
+    DetId seedDetID = iSC->seed()->seed();
+    const EcalRecHit *seedRecHit  =getECALrecHit(seedDetID, lazyToolnoZS);
+    Float_t iSeedTime = -9999;
+    Float_t iSeedSwissX = -9999;
+    Float_t iSeedEtaW = -9999;
+    UChar_t iSeedBits    = 0;
+    if(seedRecHit){
+      iSeedTime= ECALrecHitT(seedDetID, lazyToolnoZS);
+      iSeedSwissX = swissCross(seedDetID, lazyToolnoZS);
+      iSeedEtaW = etaWing(seedDetID, lazyToolnoZS);
+      if(seedRecHit->checkFlag(EcalRecHit::kDiWeird)) setbit(iSeedBits, 0);
+      if(seedRecHit->checkFlag(EcalRecHit::kWeird)) setbit(iSeedBits, 1);
+      if(seedRecHit->checkFlag(EcalRecHit::kSaturated)) setbit(iSeedBits, 2);
+      if(seedRecHit->checkFlag(EcalRecHit::kOutOfTime)) setbit(iSeedBits, 3);
 
-
-      DetId seedDetID = iSC->seed()->seed();
-      if(seedDetID.subdetId() == EcalBarrel){
-        EBDetId seedEB = iSC->seed()->seed();
-        ecalootSC_seedIx_.push_back(seedEB.ieta());
-        ecalootSC_seedIy_.push_back(seedEB.iphi());
-        ecalootSC_seedIz_.push_back(0);
-      } else if (seedDetID.subdetId() == EcalEndcap){
-        EEDetId seedEE = iSC->seed()->seed();
-        ecalootSC_seedIx_.push_back(seedEE.ix());
-        ecalootSC_seedIy_.push_back(seedEE.iy());
-        ecalootSC_seedIz_.push_back(seedEE.zside());
-      } else{
-        ecalootSC_seedIx_.push_back(-116);
-        ecalootSC_seedIy_.push_back(-116);
-        ecalootSC_seedIz_.push_back(-116);
-      }
     }
+    ecalootSC_seedTime_.push_back(iSeedTime);
+    ecalootSC_seedSwissCross_.push_back(iSeedSwissX);
+    ecalootSC_seedEtaWing_.push_back(iSeedEtaW);
+    ecalootSC_seedBits_.push_back(iSeedBits);
+
+    if(seedDetID.subdetId() == EcalBarrel){
+      EBDetId seedEB = iSC->seed()->seed();
+      ecalootSC_seedIx_.push_back(seedEB.ieta());
+      ecalootSC_seedIy_.push_back(seedEB.iphi());
+      ecalootSC_seedIz_.push_back(0);
+    } else if (seedDetID.subdetId() == EcalEndcap){
+      EEDetId seedEE = iSC->seed()->seed();
+      ecalootSC_seedIx_.push_back(seedEE.ix());
+      ecalootSC_seedIy_.push_back(seedEE.iy());
+      ecalootSC_seedIz_.push_back(seedEE.zside());
+    } else{
+      ecalootSC_seedIx_.push_back(-116);
+      ecalootSC_seedIy_.push_back(-116);
+      ecalootSC_seedIz_.push_back(-116);
+    }
+
+    necalootSC_++;
   }
 };
 

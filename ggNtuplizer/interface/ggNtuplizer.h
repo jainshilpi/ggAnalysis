@@ -110,7 +110,9 @@ private:
   void fillGenAK4JetInfo(const edm::Event&, Float_t );
   void fillGenAK8JetInfo(const edm::Event&, Float_t );
 
-  Float_t ECALrecHitE( const DetId & id, const EcalRecHitCollection *recHits, int di = 0, int dj = 0);
+  const EcalRecHit * getECALrecHit(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
+  Float_t ECALrecHitE(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
+  Float_t ECALrecHitT(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
   Float_t swissCross(const DetId& id, noZS::EcalClusterLazyTools & ltNoZS);
 
   std::vector<int> IndexMatchedConversion( edm::View<pat::Photon>::const_iterator g, const std::vector<edm::Ptr<reco::Conversion> > &, const std::vector<edm::Ptr<reco::Conversion> > &) const;
@@ -138,7 +140,8 @@ private:
   void resolvePhoECALSCindex();
   void resolveootPhoECALSCindex();
   void resolveEleECALSCindex();
-  Float_t getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS, Float_t &_maxEnXtalTime, UChar_t & _nL1Spike, UChar_t & _nDiweird, UChar_t & _nWeird, UChar_t & _nSaturated, UChar_t & _nOutOfTime, UChar_t & _nXtals, UChar_t & _maxEnXtalBits, Float_t & _maxEnXtalSwissCross);
+  Float_t getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS);
+  Float_t etaWing(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
 
   // void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
   // void fillAK8PUPPIJets    (const edm::Event&, const edm::EventSetup&);

@@ -2,8 +2,8 @@ Step 1: Set Up CMSSW
 ====================
 **To skip this step, download setup.sh and run it in the desired directory.**<br>
 export CMSSW_GIT_REFERENCE=/afs/cern.ch/cms/git-cmssw-mirror/cmssw.git <br>
-cmsrel CMSSW_10_2_23 <br>
-cd CMSSW_10_2_23/src <br>
+cmsrel CMSSW_10_6_18 <br>
+cd CMSSW_10_6_18/src <br>
 cmsenv <br>
 git cms-init<br>
 git cms-addpkg CondFormats/JetMETObjects<br>
@@ -15,7 +15,6 @@ git cms-addpkg RecoEgamma/PhotonIdentification/;  <br>
 git cms-addpkg RecoEgamma/ElectronIdentification/;  <br> 
 git cms-addpkg CommonTools/PileupAlgos;  <br>
 git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_102X_v3;  <br>
-git cms-merge-topic cms-egamma:PhotonIDValueMapSpeedup1029;  <br>
 git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm; <br>
 scram b -j 16;  <br>
 git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPostRecoTools;  <br>
@@ -24,7 +23,7 @@ cd  EgammaUser/EgammaPostRecoTools;  git checkout master;  cd -;  <br>
 scram b -j 16;  <br>
 git clone -b METv4 git@github.com:wadud001/aNTGC_gggNtuplizer.git<br>
 mv aNTGC_gggNtuplizer ggAnalysis<br>
-scram b -j8 <br>
+scram b -j16 <br>
 
 
 Step 2: Edit crab script & submit

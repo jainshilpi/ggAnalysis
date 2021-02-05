@@ -23,6 +23,7 @@ vector<Float_t>  phoESEffSigmaRR_;
 vector<Float_t>  phoSigmaIEtaIEtaFull5x5_;
 vector<Float_t>  phoSigmaIEtaIPhiFull5x5_;
 vector<Float_t>  phoSigmaIPhiIPhiFull5x5_;
+vector<Float_t>  phoE3x3Full5x5_;
 vector<Float_t>  phoE2x2Full5x5_;
 vector<Float_t>  phoE5x5Full5x5_;
 vector<Float_t>  phoMaxEnergyXtal;
@@ -111,6 +112,7 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 	tree->Branch("phoSigmaIEtaIEtaFull5x5", &phoSigmaIEtaIEtaFull5x5_);
 	tree->Branch("phoSigmaIEtaIPhiFull5x5", &phoSigmaIEtaIPhiFull5x5_);
 	tree->Branch("phoSigmaIPhiIPhiFull5x5", &phoSigmaIPhiIPhiFull5x5_);
+	tree->Branch("phoE3x3Full5x5",          &phoE3x3Full5x5_);
 	tree->Branch("phoE2x2Full5x5",          &phoE2x2Full5x5_);
 	tree->Branch("phoE5x5Full5x5",          &phoE5x5Full5x5_);
 	tree->Branch("phoMaxEnergyXtal",          &phoMaxEnergyXtal);
@@ -194,6 +196,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 	phoSigmaIEtaIEtaFull5x5_.clear();
 	phoSigmaIEtaIPhiFull5x5_.clear();
 	phoSigmaIPhiIPhiFull5x5_.clear();
+	phoE3x3Full5x5_         .clear();
 	phoE2x2Full5x5_         .clear();
 	phoE5x5Full5x5_         .clear();
 	phoR9Full5x5_           .clear();
@@ -447,6 +450,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoSigmaIEtaIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIetaIphi);
 		phoSigmaIPhiIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIphiIphi);
 		// phoE2x2Full5x5_          .push_back(lazyToolnoZS.e2x2(*(iPho->superCluster()->seed())));
+		phoE3x3Full5x5_.push_back(iPho->full5x5_showerShapeVariables().e3x3);
 		phoE2x2Full5x5_          .push_back(iPho->full5x5_showerShapeVariables().e2x2);
 		phoE5x5Full5x5_          .push_back(iPho->full5x5_e5x5());
 		phoR9Full5x5_            .push_back(iPho->full5x5_r9());
@@ -530,6 +534,7 @@ vector<Short_t>  ootPho_MIPNhitCone_;
 vector<UChar_t>   ootPho_IDbit_;
 vector<Float_t>  ootPhoESEnP1_;
 vector<Float_t>  ootPhoESEnP2_;
+vector<Float_t>  ootPhoE3x3Full5x5_;
 vector<Float_t>  ootPhoE2x2Full5x5_;
 vector<Float_t>  ootPhoE5x5Full5x5_;
 vector<Float_t>  ootPhoMaxEnergyXtal;
@@ -577,6 +582,7 @@ void ggNtuplizer::branchesPhotonsOOT(TTree* tree) {
 	tree->Branch("ootPho_SigmaIEtaIEtaFull5x5", &ootPho_SigmaIEtaIEtaFull5x5_);
 	tree->Branch("ootPho_SigmaIEtaIPhiFull5x5", &ootPho_SigmaIEtaIPhiFull5x5_);
 	tree->Branch("ootPho_SigmaIPhiIPhiFull5x5", &ootPho_SigmaIPhiIPhiFull5x5_);
+	tree->Branch("ootPhoE3x3Full5x5",              &ootPhoE3x3Full5x5_);
 	tree->Branch("ootPhoE2x2Full5x5",              &ootPhoE2x2Full5x5_);
 	tree->Branch("ootPhoE5x5Full5x5",              &ootPhoE5x5Full5x5_);
 	tree->Branch("ootPho_R9Full5x5",            &ootPho_R9Full5x5_);
@@ -671,6 +677,7 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 	ootPho_IDbit_        .clear();
 	ootPhoESEnP1_.clear();
 	ootPhoESEnP2_.clear();
+	ootPhoE3x3Full5x5_.clear();
 	ootPhoE2x2Full5x5_.clear();
 	ootPhoE5x5Full5x5_.clear();
 	ootPhoPFClusEcalIso_.clear();
@@ -800,7 +807,7 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 
 		ootPhoESEnP1_        .push_back(iootPho_->superCluster()->preshowerEnergyPlane1());
 		ootPhoESEnP2_        .push_back(iootPho_->superCluster()->preshowerEnergyPlane2());
-
+		ootPhoE3x3Full5x5_.push_back(iootPho_->full5x5_showerShapeVariables().e3x3);
 		ootPhoE2x2Full5x5_.push_back(iootPho_->full5x5_showerShapeVariables().e2x2); //lazyToolnoZS.e2x2(*(iootPho_->superCluster()->seed()))
 		ootPhoE5x5Full5x5_.push_back(iootPho_->full5x5_e5x5());
 
@@ -901,21 +908,6 @@ double ggNtuplizer::vtxZFromConv( edm::View<pat::Photon>::const_iterator pho,
 	const math::XYZPoint &beamSpot) const
 {
 	double ReturnValue = 0;
-  /*
-  //const reco::Conversion* conversion = NULL;
-  edm::Ptr<reco::Conversion> conversion = NULL;
-
-  if(nConvLegs==2){
-	//reco::ConversionRefVector conversionsVector = pho->conversions();
-	conversion = conversionsVector[index];
-	
-  }
-
-  if(nConvLegs==1){
-	//reco::ConversionRefVector conversionsVector = pho->conversionsOneLeg();
-	conversion = conversionsVector[index];
-  }
-  */  
 
 	double perp = sqrt( conversion->conversionVertex().x() * conversion->conversionVertex().x() + conversion->conversionVertex().y() *
 		conversion->conversionVertex().y() );
@@ -1059,47 +1051,47 @@ std::vector<int> ggNtuplizer::IndexMatchedConversion( edm::View<pat::Photon>::co
 	  }//for( unsigned int i = 0; i < conversionsVector.size(); i++ )
 	  
 	  if( mindR < 0.1 ) {
-		result.push_back( selected_conversion_index );
-		nConvLegs = 2;
-		result.push_back( nConvLegs );
+	  	result.push_back( selected_conversion_index );
+	  	nConvLegs = 2;
+	  	result.push_back( nConvLegs );
 	  //cout<<"Found minDr < 0.1"<<endl;
-		doOneLeg = false;
+	  	doOneLeg = false;
 	  }
 
 	//reco::ConversionRefVector conversionsVectorSingleLeg = g->conversionsOneLeg();
 	//if( doOneLeg && useSingleLeg ) {
 	  if( doOneLeg ) {
-		mindR = 999;
-		for( unsigned int j = 0; j < conversionsVectorSL.size(); j++ ) {
-			edm::Ptr<reco::Conversion> conv = conversionsVectorSL[j];
+	  	mindR = 999;
+	  	for( unsigned int j = 0; j < conversionsVectorSL.size(); j++ ) {
+	  		edm::Ptr<reco::Conversion> conv = conversionsVectorSL[j];
   //const reco::Conversion* conv = conversionsVectorSingleLeg.at(j).get();
 
-			if( conv->nTracks() == 1 ) {
-				TVector3 VtxtoSC;
-				VtxtoSC.SetXYZ( g->superCluster()->position().x() - conv->conversionVertex().x(),
-					g->superCluster()->position().y() - conv->conversionVertex().y(),
-					g->superCluster()->position().z() - conv->conversionVertex().z() );
-				TVector3 RefPairMo;
-				float oneLegTrack_X = conv->tracksPin()[0].x();
-				float oneLegTrack_Y = conv->tracksPin()[0].y();
-				float oneLegTrack_Z = conv->tracksPin()[0].z();
+	  		if( conv->nTracks() == 1 ) {
+	  			TVector3 VtxtoSC;
+	  			VtxtoSC.SetXYZ( g->superCluster()->position().x() - conv->conversionVertex().x(),
+	  				g->superCluster()->position().y() - conv->conversionVertex().y(),
+	  				g->superCluster()->position().z() - conv->conversionVertex().z() );
+	  			TVector3 RefPairMo;
+	  			float oneLegTrack_X = conv->tracksPin()[0].x();
+	  			float oneLegTrack_Y = conv->tracksPin()[0].y();
+	  			float oneLegTrack_Z = conv->tracksPin()[0].z();
 
 	//cout<<"conv->nTracks() == 1 "<<endl;
 
-				RefPairMo.SetXYZ( oneLegTrack_X, oneLegTrack_Y, oneLegTrack_Z );
-				double dR = 0;
-				dR = VtxtoSC.DeltaR( RefPairMo );
-				if( dR < mindR ) {
-					mindR = dR;
-					selected_conversion_index = j;
+	  			RefPairMo.SetXYZ( oneLegTrack_X, oneLegTrack_Y, oneLegTrack_Z );
+	  			double dR = 0;
+	  			dR = VtxtoSC.DeltaR( RefPairMo );
+	  			if( dR < mindR ) {
+	  				mindR = dR;
+	  				selected_conversion_index = j;
 	}//if( dR < mindR )                         
   }//if( conv->nTracks() == 1 )
 	  }//for( unsigned int j = 0; j < conversionsVectorSingleLeg.size(); j++ )
 	  
 	  if( mindR < 0.1 ) {
-		result.push_back( selected_conversion_index );
-		nConvLegs = 1;
-		result.push_back( nConvLegs );
+	  	result.push_back( selected_conversion_index );
+	  	nConvLegs = 1;
+	  	result.push_back( nConvLegs );
   //cout<<"minDr single "<<endl;
 	  }//if( mindR < 0.1 )
 	}//if( doOneLeg )
@@ -1108,12 +1100,12 @@ std::vector<int> ggNtuplizer::IndexMatchedConversion( edm::View<pat::Photon>::co
   if( mindR < 0.1 )
   {
 	  //cout<<"Found a minDr final "<<endl;
-	return result;
+  	return result;
   }
   else {
 	//cout<<"Nothing found "<<endl;
-	result.push_back( -1 );
-	result.push_back( -1 );
-	return result;
+  	result.push_back( -1 );
+  	result.push_back( -1 );
+  	return result;
   }
 }
