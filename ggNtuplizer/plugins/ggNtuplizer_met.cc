@@ -128,7 +128,8 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
   pfMETPhi_T1UESDo_ = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown);
 
     // pfMET_caloMetSig_ = pfMET->caloMetSignificance();
-  pfMET_metSig_ = pfMET->metSignificance();
+  // pfMET_metSig_ = pfMET->metSignificance();
+  pfMET_metSig_ = pfMET->significance();
   pfMET_EtSig_ = pfMET->mEtSig();
 
   pfMET_metSigxx_ = pfMET->getSignificanceMatrix()(0,0);

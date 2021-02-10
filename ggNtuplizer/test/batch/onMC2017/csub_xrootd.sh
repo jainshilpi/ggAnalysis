@@ -18,8 +18,8 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer
 
 pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
 writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18/
-workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_2017_10_6_18/
-splitfiles=3
+workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_17_10_6_18/
+splitfiles=2
 
 
 x509file=/tmp/x509up_u926763

@@ -30,7 +30,7 @@ function resubmit(){
 		return 0
 	fi
 
-	echo $condorFile
+	# echo $condorFile
 	condor_submit $condorFile
 	jobFiles=${pathName}/${fileName%.*}
 	echo $jobFiles

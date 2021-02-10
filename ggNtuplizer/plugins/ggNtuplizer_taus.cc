@@ -3,7 +3,11 @@
 using namespace std;
 
 
-
+//// https://twiki.cern.ch/twiki/bin/view/CMS/Tau
+//// https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID
+//// https://twiki.cern.ch/twiki/bin/viewauth/CMS/TauIDRecommendationForRun2
+//// https://twiki.cern.ch/twiki/bin/view/CMS/TauIDMeasurementsHelp
+//// https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID
 //// https://cmssdt.cern.ch/lxr/source/DataFormats/TauReco/interface/PFTau.h#0038
 
 UShort_t 								nTau_;
