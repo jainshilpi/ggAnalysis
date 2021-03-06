@@ -5,7 +5,6 @@ process = cms.Process('ggKit')
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_data.root'
-#options.inputFiles = 'file:Data2017sample.root'#'root://cmsxrootd.fnal.gov//store/data/Run2017F/SinglePhoton/MINIAOD/09May2018-v1/100000/9C45E45B-A1C5-E811-98DE-FE770ABDA957.root'
 options.maxEvents = 200
 
 
@@ -35,9 +34,9 @@ options.register('InFileList',
 options.loadFromFile ('InFileList', options.InputFileList)
 
 
+process = cms.Process('ggKit')
 
-
-##########################################################################################################################
+##########################################################################
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 process.options = cms.untracked.PSet( allowUnscheduled = cms.untracked.bool(True) )
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
@@ -51,14 +50,16 @@ process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(options.InFileList),
                             # eventsToProcess = cms.untracked.VEventRange("302163:507:461728992-303000:507:462728992")
                             )
-#process.load("PhysicsTools.PatAlgos.patSequences_cff")
+
 
 print process.source
-# ##########################################################################################################################
-# ################################### lumi mask if running locally (not CRAB) ##############################################
+###########################################################################################################################
+
+
+#################################### lumi mask if running locally (not CRAB) ##############################################
 import FWCore.PythonUtilities.LumiList as LumiList
 process.source.lumisToProcess = LumiList.LumiList(filename = options.LumiMask).getVLuminosityBlockRange()
-# ##########################################################################################################################
+###########################################################################################################################
 
 
 ##########################################################################################################################
@@ -66,6 +67,13 @@ process.load( "PhysicsTools.PatAlgos.producersLayer1.patCandidates_cff" )
 process.load( "PhysicsTools.PatAlgos.triggerLayer1.triggerProducer_cff" )
 process.load( "PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff" )
 process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputFile))
+##########################################################################################################################
+
+
+##########################################################################################################################
+process.load("PhysicsTools.PatAlgos.patSequences_cff")
+from PhysicsTools.PatAlgos.tools.coreTools import *
+runOnData( process,  names=['Photons', 'Electrons','Muons','Taus','Jets'], outputModules = [] )
 ##########################################################################################################################
 
 
@@ -87,12 +95,6 @@ setupEgammaPostRecoSeq(process,
 
 
 ##########################################################################################################################
-from PhysicsTools.PatAlgos.tools.coreTools import *
-runOnData( process,  names=['Photons', 'Electrons','Muons','Taus','Jets'], outputModules = [] )
-##########################################################################################################################
-
-
-##########################################################################################################################
 ### reduce effect of high eta EE noise on the PF MET measurement
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
 runMetCorAndUncFromMiniAOD (
@@ -105,6 +107,7 @@ runMetCorAndUncFromMiniAOD (
 ##########################################################################################################################
 
 
+
 ##########################################################################################################################
 ### include jetToolbox to add various jets
 from JMEAnalysis.JetToolbox.jetToolbox_cff import jetToolbox
@@ -115,37 +118,44 @@ jetToolbox( process, 'ak4', 'ak4JetSubs', 'noOutput',
         postFix='updated',
         dataTier='miniAOD'
         )
-
-# ### ak 0.8 PUPPI jets
-# jetToolbox( process, 'ak8', 'ak8PUPPIJetToolbox', 'noOutput',
-#             runOnMC=False,
-#             PUMethod='PUPPI',
-#             updateCollection='slimmedJetsAK8',
-#             updateCollectionSubjets='slimmedJetsAK8PFPuppiSoftDropPacked',
-#             JETCorrPayload = 'AK8PFPuppi'
-#             )
 ##########################################################################################################################
 
 
-##########################################################################################################################
+##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
-process.ggNtuplizer.year=cms.int32(2017)
-process.ggNtuplizer.doGenParticles=cms.bool(False)
-process.ggNtuplizer.dumpPFPhotons=cms.bool(False)
-process.ggNtuplizer.dumpHFElectrons=cms.bool(False)
-process.ggNtuplizer.dumpJets=cms.bool(True)
-# process.ggNtuplizer.dumpAK8Jets=cms.bool(True)
-process.ggNtuplizer.dumpSoftDrop= cms.bool(True)
-process.ggNtuplizer.dumpTaus=cms.bool(False)
+
+process.ggNtuplizer.year = cms.int32(2017)
+process.ggNtuplizer.doGenParticles = cms.bool(False)
+process.ggNtuplizer.dumpPDFSystWeight = cms.bool(False)
+process.ggNtuplizer.dumpJets = cms.bool(True)
+process.ggNtuplizer.dumpTaus = cms.bool(True)
+process.ggNtuplizer.getECALprefiringWeights = cms.bool(False)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
-process.ggNtuplizer.ak4PFJetsCHSSrc=cms.InputTag("selectedPatJetsAK4PFCHSupdated")
-process.ggNtuplizer.ak8JetsPUPPISrc=cms.InputTag("selectedPatJetsAK8PFPUPPI")
+process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
 process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger")
-##########################################################################################################################
+##########################################################################
 
 
-##########################################################################################################################
+##########################################################################
+updatedTauName = "slimmedTausNewID"
+import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
+tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
+                    updatedTauName = updatedTauName,
+                    toKeep = [ "dR0p32017v2", "newDM2017v2", #classic MVAIso tau-Ids
+                               "deepTau2017v1", #deepTau Tau-Ids
+                               "deepTau2017v2p1",
+                               "MVADM_2017_v1",
+                               # "DPFTau_2016_v0"
+                    ])
+tauIdEmbedder.runTauID()
+
+process.ggNtuplizer.tauSrc                    = cms.InputTag(updatedTauName)
+##########################################################################
+
+
+
+##########################################################################
 process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
 
 baddetEcallist = cms.vuint32(
@@ -159,24 +169,25 @@ baddetEcallist = cms.vuint32(
 
 process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     "EcalBadCalibFilter",
-    EcalRecHitSource = cms.InputTag("reducedEgamma:reducedEERecHits"),
-    ecalMinEt        = cms.double(50.),
-    baddetEcal    = baddetEcallist,
-    taggingMode = cms.bool(True),
-    debug = cms.bool(False)
-    )
+    EcalRecHitSource=cms.InputTag("reducedEgamma:reducedEERecHits"),
+    ecalMinEt=cms.double(50.),
+    baddetEcal=baddetEcallist,
+    taggingMode=cms.bool(True),
+    debug=cms.bool(False)
+)
 
 process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAODFilter")
-##########################################################################################################################
+##########################################################################
 
-
-##########################################################################################################################
+##########################################################################
 process.p = cms.Path(
     process.ecalBadCalibReducedMINIAODFilter *
     process.fullPatMetSequenceModifiedMET *
     process.egammaPostRecoSeq *
+    process.rerunMvaIsolationSequence *
+    getattr(process,updatedTauName) *
     process.ggNtuplizer
-    )
+)
 
-#print process.dumpPython()
-##########################################################################################################################
+# print process.dumpPython()
+##########################################################################
