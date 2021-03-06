@@ -136,7 +136,6 @@ void ggNtuplizer::branchesPhotons(TTree* tree) {
 	tree->Branch("phoTrkSumPtHollowConeDR03",         &phoTrkSumPtHollowConeDR03_);
 	tree->Branch("nPhoTrkSolidConeDR04",          &nPhoTrkSolidConeDR04_);
 	tree->Branch("nPhoTrkHollowConeDR04",          &nPhoTrkHollowConeDR04_);
-	tree->Branch("nPhoTrkSolidConeDR04",          &nPhoTrkSolidConeDR04_);
 	tree->Branch("phoTrkSumPtSolidConeDR04",         &phoTrkSumPtSolidConeDR04_);
 	tree->Branch("phoTrkSumPtHollowConeDR04",         &phoTrkSumPtHollowConeDR04_);
 	tree->Branch("phoECALIso",         &phoECALIso_);
@@ -343,7 +342,7 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		nPhoTrkHollowConeDR04_      .push_back(iPho->nTrkHollowConeDR04());
 		nPhoTrkSolidConeDR04_      .push_back(iPho->nTrkSolidConeDR04());
 		nPhoTrkHollowConeDR03_      .push_back(iPho->nTrkHollowConeDR03());
-		nPhoTrkSolidConeDR03_      .push_back(iPho->nTrkHollowConeDR04());
+		nPhoTrkSolidConeDR03_      .push_back(iPho->nTrkSolidConeDR03());
 		phoMaxEnergyXtal      .push_back(iPho->full5x5_maxEnergyXtal());
 		phoE2ndFull5x5_      .push_back(iPho->full5x5_showerShapeVariables().e2nd);
 		phoE1x3Full5x5_      .push_back(iPho->full5x5_showerShapeVariables().e1x3);

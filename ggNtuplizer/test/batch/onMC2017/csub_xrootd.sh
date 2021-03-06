@@ -12,13 +12,13 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer
 # workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 
 # writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
-# workDir=/local/cms/user/wadud/aNTGCmet/ntuples/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsecSignals/
-# pset="/local/cms/user/wadud/aNTGCmet/ntuples/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
+# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsecSignals/
+# pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test//XsecAna.py"
 # splitfiles=200000
 
 pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
-writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18/
-workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_17_10_6_18/
+writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18_METbugfix/
+workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_17_10_6_18_METbugfix/
 splitfiles=2
 
 
@@ -147,7 +147,7 @@ function submitJob(){
 	mkdir -p ${logDir}
 	mkdir -p ${jobDir}/jobReport/
 
-	x509cpy=${jobDir}/${x509file##*/}
+	x509cpy=${jobDir}/X509fl
 	cp  ${x509file} ${x509cpy}
 
 	if [ ! -f "$x509cpy" ]; then

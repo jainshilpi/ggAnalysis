@@ -19,4 +19,4 @@ fi
 
 cmsRun --jobreport=#jobDir/jobReport/#jobName.xml #pset InputFileList=#jobList outputFile=#outFile maxEvents=-1
 
-rm -f ${X509_USER_PROXY}
+#rm -f ${X509_USER_PROXY}

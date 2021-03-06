@@ -110,7 +110,7 @@ process.ggNtuplizer.dumpPDFSystWeight = cms.bool(True)
 process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(True)
 process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
-
+process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak8GenJetLabel = cms.InputTag("selectedPatJetsAK8PFPUPPI", "genJets", "ggKit")

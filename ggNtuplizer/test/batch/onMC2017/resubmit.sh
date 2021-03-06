@@ -1,6 +1,12 @@
 #!/bin/bash
 
 searchDir=$1
+doResubmit=$2
+
+
+voms-proxy-init --voms cms --valid 720:00
+
+x509file=/tmp/x509up_u926763
 
 if [ -z "$searchDir" ]; then
 	exit
@@ -30,10 +36,17 @@ function resubmit(){
 		return 0
 	fi
 
-	# echo $condorFile
-	condor_submit $condorFile
-	jobFiles=${pathName}/${fileName%.*}
-	echo $jobFiles
+	x509cpy=${pathName}/X509fl
+	cp  ${x509file} ${x509cpy}
+	# echo $x509cpy
+
+	if [ -z "$doResubmit" ];	then
+    	echo $condorFile
+		condor_submit $condorFile
+	else	
+		logFile=${pathName}/log/${fileName%.*}.out
+		echo $logFile
+	fi
 }
 
 for file in "${FILES[@]}"; do

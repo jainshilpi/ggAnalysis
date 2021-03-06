@@ -9,16 +9,16 @@ cmsswfile="/cvmfs/cms.cern.ch/cmsset_default.sh"
 cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_2_23/src/ggAnalysis/ggNtuplizer/test/
 # workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 
-# writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
-# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsec/
-# pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
-# splitfiles=200000
+writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
+workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsec/
+pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/XsecAna.py"
+splitfiles=200000
 
 
-pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
-writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18/
-workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_2017_10_6_18/
-splitfiles=3
+# pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
+# writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/jobs_2017_10_6_18/
+# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_18/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobs_2017_10_6_18/
+# splitfiles=3
 
 
 jobsDir=${writeDir}
