@@ -215,8 +215,6 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 	nPhoTrkSolidConeDR04_      .clear();
 	phoTrkSumPtSolidConeDR04_       .clear();
 	phoTrkSumPtHollowConeDR04_       .clear();
-	
-
 
 	phoMaxEnergyXtal      .clear();
 	phoE2ndFull5x5_      .clear();
@@ -277,8 +275,6 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
 	noZS::EcalClusterLazyTools lazyToolnoZS(e, es, ebReducedRecHitCollection_, eeReducedRecHitCollection_, esReducedRecHitCollection_);
 
-
-
 	//reco::BeamSpot beamSpot;
 	math::XYZPoint beamSpot;
 	edm::Handle<reco::BeamSpot> beamSpotHandle;
@@ -325,7 +321,6 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 
 		phoR9_            .push_back(iPho->r9());
 		phoHoverE_        .push_back(iPho->hadTowOverEm());
-		// phoESEffSigmaRR_  .push_back(lazyTool.eseffsirir(*(iPho->superCluster())));
 		phoESEffSigmaRR_  .push_back(iPho->full5x5_showerShapeVariables().effSigmaRR);
 		phoPFChIso_       .push_back(iPho->chargedHadronIso());
 		phoPFPhoIso_      .push_back(iPho->photonIso());
@@ -387,16 +382,11 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		UShort_t tmpphoIDbit = 0;
 		// if(year_ == 2017){
 		//// https://twiki.cern.ch/twiki/bin/view/CMS/EgammaRunIIRecommendations?rev=9#Fall17v2_AN1
-		bool isPassLoose  = iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-loose");
-		if (isPassLoose)  setbit(tmpphoIDbit, 0);
-		bool isPassMedium = iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-medium");
-		if (isPassMedium) setbit(tmpphoIDbit, 1);
-		bool isPassTight  = iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-tight");
-		if (isPassTight)  setbit(tmpphoIDbit, 2);
-		bool isPassMVAv2wp80  = iPho->photonID("mvaPhoID-RunIIFall17-v2-wp80");
-		if (isPassMVAv2wp80)  setbit(tmpphoIDbit, 3);
-		bool isPassMVAv2wp90  = iPho->photonID("mvaPhoID-RunIIFall17-v2-wp90");
-		if (isPassMVAv2wp90)  setbit(tmpphoIDbit, 4);
+		if (iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-loose"))  setbit(tmpphoIDbit, 0);
+		if (iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-medium")) setbit(tmpphoIDbit, 1);
+		if (iPho->photonID("cutBasedPhotonID-Fall17-94X-V2-tight"))  setbit(tmpphoIDbit, 2);
+		if (iPho->photonID("mvaPhoID-RunIIFall17-v2-wp80"))  setbit(tmpphoIDbit, 3);
+		if (iPho->photonID("mvaPhoID-RunIIFall17-v2-wp90"))  setbit(tmpphoIDbit, 4);
 		// bool isPassMVAisov2wp80  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp80");
 		// if (isPassMVAisov2wp80)  setbit(tmpphoIDbit, 5);
 		// bool isPassMVAisov2wp90  = iPho->photonID("mvaPhoID-Fall17-iso-V2-wp90");
@@ -404,7 +394,6 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		if (!(iPho->mipIsHalo()))  setbit(tmpphoIDbit, 7);
 
 		phoIDbit_.push_back(tmpphoIDbit);
-
 
 		// systematics for energy scale and resolution
 		phoScale_stat_up_.push_back(iPho->userFloat("energyScaleStatUp"));
@@ -418,15 +407,9 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoResol_phi_up_ .push_back(iPho->userFloat("energySigmaPhiUp"));
 		phoResol_phi_dn_ .push_back(iPho->userFloat("energySigmaPhiDown"));
 
-		///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
-
-		// DetId seed = (iPho->superCluster()->seed()->hitsAndFractions())[0].first;
-		// DetId seed = iPho->superCluster()->seed()->seed();
 		bool isBarrel = (iPho->superCluster()->seed()->seed().subdetId() == EcalBarrel);
 		const EcalRecHitCollection * rechits = (isBarrel ? lazyToolnoZS.getEcalEBRecHitCollection() : lazyToolnoZS.getEcalEERecHitCollection());
-
 		DetId seed = lazyToolnoZS.getMaximum(*(iPho->superCluster()->seed())).first;
-
 		EcalRecHitCollection::const_iterator theSeedHit = rechits->find(seed);
 		if (theSeedHit != rechits->end()) {
 			phoSeedTime_.push_back(theSeedHit->time());
@@ -441,14 +424,9 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoFiredTripleTrgs_     .push_back(matchTriplePhotonTriggerFilters(iPho->et(), iPho->eta(), iPho->phi()));
 		phoFiredL1Trgs_         .push_back(matchL1TriggerFilters(iPho->et(), iPho->eta(), iPho->phi()));
 
-		// std::vector<Float_t> vCov = lazyToolnoZS.localCovariances( *(iPho->superCluster()->seed()) );
-		// const Float_t spp = (isnan(vCov[2]) ? 0. : sqrt(vCov[2]));
-		// const Float_t sep = vCov[1];
-
 		phoSigmaIEtaIEtaFull5x5_ .push_back(iPho->full5x5_sigmaIetaIeta());
 		phoSigmaIEtaIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIetaIphi);
 		phoSigmaIPhiIPhiFull5x5_ .push_back(iPho->full5x5_showerShapeVariables().sigmaIphiIphi);
-		// phoE2x2Full5x5_          .push_back(lazyToolnoZS.e2x2(*(iPho->superCluster()->seed())));
 		phoE3x3Full5x5_.push_back(iPho->full5x5_showerShapeVariables().e3x3);
 		phoE2x2Full5x5_          .push_back(iPho->full5x5_showerShapeVariables().e2x2);
 		phoE5x5Full5x5_          .push_back(iPho->full5x5_e5x5());
@@ -489,8 +467,6 @@ void ggNtuplizer::fillPhotons(const edm::Event& e, const edm::EventSetup& es) {
 		phoNConvLegs_.push_back(nConvLegs);
 		phoZVtxWithConv_.push_back(zconv);
 
-
-		
 		nPho_++;
 	}
 }
@@ -747,7 +723,6 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 		if(iootPho_->isEERingGap()) setbit(tmpootPho_FiducialRegion, 6);
 		ootPho_FiducialRegion_  .push_back(tmpootPho_FiducialRegion);
 
-
 		// VID decisions
 		UShort_t tmpootPho_IDbit = 0;
 
@@ -755,11 +730,6 @@ void ggNtuplizer::fillPhotonsOOT(const edm::Event& e, const edm::EventSetup& es)
 
 		ootPho_IDbit_.push_back(tmpootPho_IDbit);
 
-
-		///////////////////////////////SATURATED/UNSATURATED ///from ggFlash////
-
-		// DetId seed = (iootPho_->superCluster()->seed()->hitsAndFractions())[0].first;
-		// DetId seed = iootPho_->superCluster()->seed()->seed();
 		bool isBarrel = (iootPho_->superCluster()->seed()->seed().subdetId() == EcalBarrel);
 		const EcalRecHitCollection * rechits = isBarrel ? lazyToolnoZS.getEcalEBRecHitCollection() : lazyToolnoZS.getEcalEERecHitCollection();
 

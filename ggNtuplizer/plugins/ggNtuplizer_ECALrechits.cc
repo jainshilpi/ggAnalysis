@@ -312,7 +312,7 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
       ecalootSC_seedIy_.push_back(-116);
       ecalootSC_seedIz_.push_back(-116);
     }
-
+    
     necalootSC_++;
   }
 };
