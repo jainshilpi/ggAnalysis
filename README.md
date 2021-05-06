@@ -14,8 +14,7 @@ git cms-addpkg RecoMET/METFilters;  <br>
 git cms-addpkg RecoEgamma/PhotonIdentification/;  <br> 
 git cms-addpkg RecoEgamma/ElectronIdentification/;  <br> 
 git cms-addpkg CommonTools/PileupAlgos;  <br>
-git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm
-git cms-merge-topic -u cms-tau-pog:CMSSW_10_2_X_tau-pog_DeepTau2017v2p1_nanoAOD
+git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm;   <br> 
 git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_102X_v3;  <br>
 git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm; <br>
 scram b -j 16;  <br>
