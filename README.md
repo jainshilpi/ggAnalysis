@@ -16,7 +16,6 @@ git cms-addpkg RecoEgamma/ElectronIdentification/;  <br>
 git cms-addpkg CommonTools/PileupAlgos;  <br>
 git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm;   <br> 
 git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_102X_v3;  <br>
-git cms-merge-topic -u cms-tau-pog:CMSSW_10_6_X_tau-pog_MVAdm; <br>
 scram b -j 16;  <br>
 git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPostRecoTools;  <br>
 cd  EgammaUser/EgammaPostRecoTools;  git checkout master;  cd -;  <br>
