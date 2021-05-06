@@ -21,9 +21,9 @@ git clone git@github.com:cms-egamma/EgammaPostRecoTools.git  EgammaUser/EgammaPo
 cd  EgammaUser/EgammaPostRecoTools;  git checkout master;  cd -;  <br>
 
 scram b -j 16;  <br>
-git clone -b CMSSW_10_6_24 git@github.com:wadud001/aNTGC_gggNtuplizer.git<br>
-mv aNTGC_gggNtuplizer ggAnalysis<br>
-scram b -j16 <br>
+git clone -b CMSSW_10_6_24 git@github.com:wadud001/aNTGC_gggNtuplizer.git;<br>
+mv aNTGC_gggNtuplizer ggAnalysis;<br>
+scram b -j16; <br>
 
 
 Step 2: Edit crab script & submit
