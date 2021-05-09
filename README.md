@@ -1,5 +1,5 @@
 cmsrel CMSSW_10_6_24 <br>
-cd CMSSW_10_6_26/src <br>
+cd CMSSW_10_6_24/src <br>
 cmsenv <br>
 git cms-init<br>
 git cms-addpkg CondFormats/JetMETObjects<br>
