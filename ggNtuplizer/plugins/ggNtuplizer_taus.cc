@@ -146,7 +146,7 @@ void ggNtuplizer::fillTaus(const edm::Event& e, const edm::EventSetup& es) {
 			(Char_t)iTau->decayMode(),
 			(Char_t)iTau->tauID("decayModeFinding"),
 			(Char_t)iTau->tauID("decayModeFindingNewDMs"),
-			(Char_t)iTau->tauID("MVADM2017v1")			
+			// (Char_t)iTau->tauID("MVADM2017v1")			
 		});
 
 		Long64_t iTauIDbits = 0;
@@ -290,9 +290,6 @@ void ggNtuplizer::fillTaus(const edm::Event& e, const edm::EventSetup& es) {
 				tauLeadChDxy_.push_back(-9999);
 			}
 		}
-		
 		tauLeadTrkNChi2_ 					.push_back(iTau->leadingTrackNormChi2());	
-
 	}
-
 };

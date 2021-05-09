@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_mc.root'
-options.maxEvents = 200
+options.maxEvents = 100
 
 options.register('InputFileList',
                 'testList.txt',
@@ -30,7 +30,9 @@ process.load("Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cf
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '94X_mc2017_realistic_v17')
+### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.g8b904a5927_2_0
+### MC: 102X_mcRun2_asymptotic_v8 (2016), 102X_mc2017_realistic_v8 (2017), 102X_upgrade2018_realistic_v21 (2018)
+process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mc2017_realistic_v8')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(options.maxEvents))
 process.MessageLogger.cerr.FwkReport.reportEvery = 1000
@@ -131,7 +133,7 @@ tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
                     toKeep = [ "dR0p32017v2", "newDM2017v2", #classic MVAIso tau-Ids
                                "deepTau2017v1", #deepTau Tau-Ids
                                "deepTau2017v2p1",
-                               "MVADM_2017_v1",
+                               # "MVADM_2017_v1",
                                # "DPFTau_2016_v0"
                     ])
 tauIdEmbedder.runTauID()

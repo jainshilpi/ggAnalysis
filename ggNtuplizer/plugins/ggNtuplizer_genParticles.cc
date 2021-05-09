@@ -28,6 +28,7 @@ vector<Short_t>    lheStatus_;
 Float_t 			alphaQED_;
 Float_t 			alphaQCD_;
 vector<Float_t> 	scales_;
+Float_t 			qScale_;
 vector<Float_t> 	genWeights_;
 
 UChar_t            nPUInfo_;
@@ -167,6 +168,7 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 	tree->Branch("alphaQED", &alphaQED_);
 	tree->Branch("alphaQCD", &alphaQCD_);
 	tree->Branch("scales", &scales_);
+	tree->Branch("qScale", &qScale_);
 	tree->Branch("genWeights", &genWeights_);
 
 	tree->Branch("nPUInfo",       &nPUInfo_);
@@ -229,6 +231,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	alphaQED_ = -999;
 	alphaQCD_ = -999;
 	scales_.clear();
+	qScale_ = -999;
 	genWeights_.clear();
 
 	pthat_     = -99;;
@@ -262,17 +265,17 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 		else hSumGenWeightSign_->Fill(0.5,genWeight_);
 		hSumGenWeight_->Fill(0.5,genWeight_);
 
+		qScale_ = genEventInfoHandle->qScale();
+
 		for(UInt_t i =0; i < genEventInfoHandle->weights().size(); i++){
 			genWeights_.push_back(genEventInfoHandle->weights()[i]);
 		}
 	} else edm::LogWarning("ggNtuplizer") << "no GenEventInfoProduct in event";
 
- 	// access generator level HT
 	edm::Handle<LHEEventProduct> lheEventProduct;
 	e.getByToken(lheEventLabel_, lheEventProduct);
 
 	double lheHt   = 0.;
-
 	if (lheEventProduct.isValid()){
 		////	https://cmssdt.cern.ch/lxr/source/SimDataFormats/GeneratorProducts/interface/LesHouches.h
 		const lhef::HEPEUP& lheEvent = lheEventProduct->hepeup();
@@ -294,8 +297,8 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 			lheE_.push_back(lheParticles[idxParticle][3]);
 			lheStatus_.push_back(lheEvent.ISTUP[idxParticle]);
 
-			alphaQED_ = lheEvent.AQCDUP;
-			alphaQCD_ = lheEvent.AQEDUP;
+			alphaQED_ = lheEvent.AQEDUP;
+			alphaQCD_ = lheEvent.AQCDUP;
 
 			for(UInt_t i =0; i < lheEventProduct->scales().size(); i++){
 				scales_.push_back(lheEventProduct->scales()[i]);
@@ -336,8 +339,6 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 }
 
 void ggNtuplizer::fillGenPart(const edm::Event& e) {
-
-  // Fills tree branches with generated particle info.
 
   // cleanup from previous execution
 	mcPID       .clear();

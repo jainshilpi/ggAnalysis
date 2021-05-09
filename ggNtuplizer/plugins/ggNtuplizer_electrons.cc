@@ -56,7 +56,7 @@ vector<float>  eleR9Full5x5_;
 vector<ULong64_t> eleFiredSingleTrgs_;
 vector<ULong64_t> eleFiredDoubleTrgs_;
 vector<ULong64_t> eleFiredL1Trgs_;
-vector<UChar_t>  eleIDbit_;
+vector<UInt_t>  eleIDbit_;
 // vector<float>  eleScale_stat_up_;
 // vector<float>  eleScale_stat_dn_;
 // vector<float>  eleScale_syst_up_;
@@ -296,18 +296,22 @@ void ggNtuplizer::fillElectrons(const edm::Event &e, const edm::EventSetup &es, 
     // eleResol_phi_up_ .push_back(iEle->userFloat("energySigmaPhiUp"));
     // eleResol_phi_dn_ .push_back(iEle->userFloat("energySigmaPhiDown"));
 
+
     // VID decisions
-    UChar_t tmpeleIDbit = 0;
-    bool isPassVeto   = iEle->electronID("cutBasedElectronID-Fall17-94X-V2-veto");
-    if (isPassVeto)   setbit(tmpeleIDbit, 0);
-    bool isPassLoose  = iEle->electronID("cutBasedElectronID-Fall17-94X-V2-loose");
-    if (isPassLoose)  setbit(tmpeleIDbit, 1);
-    bool isPassMedium = iEle->electronID("cutBasedElectronID-Fall17-94X-V2-medium");
-    if (isPassMedium) setbit(tmpeleIDbit, 2);
-    bool isPassTight  = iEle->electronID("cutBasedElectronID-Fall17-94X-V2-tight");
-    if (isPassTight)  setbit(tmpeleIDbit, 3);
-    bool isPassHEEP   = iEle->electronID("heepElectronID-HEEPV70");
-    if (isPassHEEP)   setbit(tmpeleIDbit, 4);
+    UInt_t tmpeleIDbit = 0;
+    if (iEle->electronID("cutBasedElectronID-Fall17-94X-V2-veto"))   setbit(tmpeleIDbit, 0);
+    if (iEle->electronID("cutBasedElectronID-Fall17-94X-V2-loose"))  setbit(tmpeleIDbit, 1);
+    if (iEle->electronID("cutBasedElectronID-Fall17-94X-V2-medium")) setbit(tmpeleIDbit, 2);
+    if (iEle->electronID("cutBasedElectronID-Fall17-94X-V2-tight"))  setbit(tmpeleIDbit, 3);
+    if (iEle->electronID("heepElectronID-HEEPV70"))   setbit(tmpeleIDbit, 4);
+    if (iEle->electronID("mvaEleID-Fall17-iso-V2-wp80"))   setbit(tmpeleIDbit, 5);
+    if (iEle->electronID("mvaEleID-Fall17-iso-V2-wp90"))   setbit(tmpeleIDbit, 6);
+    if (iEle->electronID("mvaEleID-Fall17-iso-V2-wpLoose"))   setbit(tmpeleIDbit, 7);
+    if (iEle->electronID("mvaEleID-Fall17-iso-V2-wpHZZ"))   setbit(tmpeleIDbit, 8);
+    if (iEle->electronID("mvaEleID-Fall17-noIso-V2-wp80"))   setbit(tmpeleIDbit, 9);
+    if (iEle->electronID("mvaEleID-Fall17-noIso-V2-wp90"))   setbit(tmpeleIDbit, 10);
+    if (iEle->electronID("mvaEleID-Fall17-noIso-V2-wpLoose"))   setbit(tmpeleIDbit, 11);
+
     eleIDbit_.push_back(tmpeleIDbit);
 
     eleIDMVAIso_  .push_back(iEle->userFloat("ElectronMVAEstimatorRun2Fall17IsoV2Values"));
