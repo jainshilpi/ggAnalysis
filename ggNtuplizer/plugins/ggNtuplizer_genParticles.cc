@@ -10,12 +10,8 @@ enum PROMPT_STATUS_TYPE {
 // (local) variables associated with tree branches
 vector<Float_t>    pdf_;
 Float_t            pthat_;
-// Float_t            processID_;
 Float_t            genWeight_;
 Float_t            genHT_;
-// Float_t            genPho1_;
-// Float_t            genPho2_;
-// TString          EventTag_;
 Float_t            pdfWeight_;
 vector<Float_t>    pdfSystWeight_;
 
@@ -27,7 +23,7 @@ vector<Float_t>    lheE_;
 vector<Short_t>    lheStatus_;
 Float_t 			alphaQED_;
 Float_t 			alphaQCD_;
-vector<Float_t> 	scales_;
+vector<Float_t> 	lheScales_;
 Float_t 			qScale_;
 vector<Float_t> 	genWeights_;
 
@@ -149,11 +145,9 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 
 	tree->Branch("pdf",           &pdf_);
 	tree->Branch("pthat",         &pthat_);
-	// tree->Branch("processID",     &processID_);
 	tree->Branch("genWeight",     &genWeight_);
 	tree->Branch("genHT",         &genHT_);
-	// tree->Branch("genPho1",       &genPho1_);
-	// tree->Branch("genPho2",       &genPho2_);
+
 	if (dumpPDFSystWeight_) {
 		tree->Branch("pdfWeight",     &pdfWeight_);
 		tree->Branch("pdfSystWeight", &pdfSystWeight_);
@@ -165,9 +159,10 @@ void ggNtuplizer::branchesGenInfo(TTree* tree, edm::Service<TFileService> &fs) {
 	tree->Branch("lhePhi", &lhePhi_);
 	tree->Branch("lheE", &lheE_);
 	tree->Branch("lheStatus", &lheStatus_);
+	tree->Branch("lheScales", &lheScales_);
+
 	tree->Branch("alphaQED", &alphaQED_);
 	tree->Branch("alphaQCD", &alphaQCD_);
-	tree->Branch("scales", &scales_);
 	tree->Branch("qScale", &qScale_);
 	tree->Branch("genWeights", &genWeights_);
 
@@ -230,7 +225,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	lheStatus_.clear();
 	alphaQED_ = -999;
 	alphaQCD_ = -999;
-	scales_.clear();
+	lheScales_.clear();
 	qScale_ = -999;
 	genWeights_.clear();
 
@@ -266,6 +261,8 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 		hSumGenWeight_->Fill(0.5,genWeight_);
 
 		qScale_ = genEventInfoHandle->qScale();
+		alphaQED_ = genEventInfoHandle->alphaQED();
+		alphaQCD_ = genEventInfoHandle->alphaQCD();
 
 		for(UInt_t i =0; i < genEventInfoHandle->weights().size(); i++){
 			genWeights_.push_back(genEventInfoHandle->weights()[i]);
@@ -297,11 +294,8 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 			lheE_.push_back(lheParticles[idxParticle][3]);
 			lheStatus_.push_back(lheEvent.ISTUP[idxParticle]);
 
-			alphaQED_ = lheEvent.AQEDUP;
-			alphaQCD_ = lheEvent.AQCDUP;
-
 			for(UInt_t i =0; i < lheEventProduct->scales().size(); i++){
-				scales_.push_back(lheEventProduct->scales()[i]);
+				lheScales_.push_back(lheEventProduct->scales()[i]);
 			}
 		}
 

@@ -40,6 +40,8 @@ const std::vector<std::string> filterNamesToCheck = {
 	"Flag_BadChargedCandidateFilter"
 	"Flag_eeBadScFilter",
 	"Flag_ecalBadCalibFilter",
+	"Flag_BadPFMuonDzFilter",
+	"Flag_hfNoisyHitsFilter"
 };
 
 void ggNtuplizer::branchesMET(TTree* tree) {

@@ -130,12 +130,11 @@ updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Id
 import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
 tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
                     updatedTauName = updatedTauName,
-                    toKeep = [ "dR0p32017v2", "newDM2017v2", #classic MVAIso tau-Ids
-                               "deepTau2017v1", #deepTau Tau-Ids
-                               "deepTau2017v2p1",
-                               # "MVADM_2017_v1",
-                               # "DPFTau_2016_v0"
-                    ])
+                    toKeep = [  "dR0p32017v2",
+                                "newDM2017v2",
+                                "deepTau2017v1",
+                                "deepTau2017v2p1"
+                              ])
 tauIdEmbedder.runTauID()
 
 process.ggNtuplizer.tauSrc                    = cms.InputTag(updatedTauName)
@@ -146,8 +145,9 @@ process.ggNtuplizer.tauSrc                    = cms.InputTag(updatedTauName)
 ##########################################################################
 process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
 
+#### https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2#How_to_run_ecal_BadCalibReducedM
 baddetEcallist = cms.vuint32(
-    [872439604,872422825,872420274,872423218,872423215,872416066,872435036,872439336,
+  [872439604,872422825,872420274,872423218,872423215,872416066,872435036,872439336,
     872420273,872436907,872420147,872439731,872436657,872420397,872439732,872439339,
     872439603,872422436,872439861,872437051,872437052,872420649,872421950,872437185,
     872422564,872421566,872421695,872421955,872421567,872437184,872421951,872421694,
