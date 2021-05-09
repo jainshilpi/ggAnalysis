@@ -1,4 +1,3 @@
-export CMSSW_GIT_REFERENCE=/afs/cern.ch/cms/git-cmssw-mirror/cmssw.git <br>
 cmsrel CMSSW_10_6_18 <br>
 cd CMSSW_10_6_18/src <br>
 cmsenv <br>
