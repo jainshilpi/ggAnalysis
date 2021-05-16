@@ -19,6 +19,16 @@ declare running_jobs
 echo -e "Resubmitting Failed Tasks: "
 FILES=($(find ${searchDir} -name "*.log" 2>/dev/null)) 
 
+mkdir -p failed
+rm -rf failed/failed.txt
+
+function xrdInFiles(){
+	condorFile=$1
+	inFileList=$(echo ${condorFile} | sed 's|condor_||g')
+	inFileList=${inFileList%.sh}
+	cat ${inFileList} | tee -a failed/failed.txt
+}
+
 function resubmit(){
 	file=$1
 	fileName=$(basename $file)
@@ -41,6 +51,7 @@ function resubmit(){
 	else	
 		logFile=${pathName}/log/${fileName%.*}.out
 		echo $logFile
+		xrdInFiles ${condorFile}
 	fi
 }
 

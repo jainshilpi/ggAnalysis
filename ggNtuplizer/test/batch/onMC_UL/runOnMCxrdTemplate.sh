@@ -25,20 +25,4 @@ git show --format="%h %T %cn %cI %s" --no-patch
 
 echo -e "\n\n"
 
-n=0
-until [ "$n" -ge #nRetries ]
-do
-	echo -e "Try number "$n
-
-	date
-
-	cmsRun --jobreport=#jobDir/jobReport/#jobName.xml #pset InputFileList=#jobList outputFile=#outFile maxEvents=-1 && break
-
-	n=$((n+1)) 
-
-	sleep 10
-done
-
-echo -e "Complete!"
-
-date
+cmsRun --jobreport=#jobDir/jobReport/#jobName.xml #pset InputFileList=#jobList outputFile=#outFile maxEvents=-1
