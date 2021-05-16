@@ -122,8 +122,6 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 	pfMET_T1Smear_ =	pfMET->corPt(pat::MET::Type1Smear);
 	pfMETPhi_T1Smear_ =	pfMET->corPhi(pat::MET::Type1Smear);
 
-	// std::cout<<pfMET->corPt(pat::MET::Type1) - pfMET->corPt(pat::MET::Type1Smear)<<"\t"<<pfMET->corPhi(pat::MET::Type1)-pfMET->corPhi(pat::MET::Type1Smear)<<std::endl;
-
 	// Type1MET uncertainties =======================================
 	pfMET_T1SmearJERUp_ = pfMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1Smear);
 	pfMET_T1SmearJERDo_ = pfMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1Smear);
@@ -139,6 +137,7 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 	pfMETPhi_T1SmearUESUp_ = pfMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
 	pfMETPhi_T1SmearUESDo_ = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
 
+	// std::cout<<pfMET->corPt(pat::MET::Type1) - pfMET->corPt(pat::MET::Type1Smear)<<"\t"<<pfMET->corPhi(pat::MET::Type1)-pfMET->corPhi(pat::MET::Type1Smear)<<std::endl;
 	pfMET_metSig_ = pfMET->significance();
 	pfMET_EtSig_ = pfMET->mEtSig();
 

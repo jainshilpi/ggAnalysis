@@ -12,7 +12,7 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer
 # workDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 
 # writeDir=/local/cms/user/wadud/aNTGCmet/Xsecs/
-# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017/jobsXsecSignals/
+# workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC_UL/jobsXsecSignals/
 # pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test//XsecAna.py"
 # splitfiles=200000
 
@@ -43,8 +43,8 @@ jobflavor=nextweek
 
 
 ############################################################################
-runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//runOnMCxrdTemplate.sh
-condorCFGtemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC2017//condor_job.sh
+runScriptTemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC_UL/runOnMCxrdTemplate.sh
+condorCFGtemplate=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC_UL/condor_job.sh
 
 mkdir -p ${writeDir}
 

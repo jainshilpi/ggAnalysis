@@ -94,59 +94,62 @@ Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLaz
 };
 
 
-UShort_t necalSC_;
-std::vector<Float_t> ecalSCeta_;
-std::vector<Float_t> ecalSCphi_;
-std::vector<Float_t> ecalSCEn_;
-std::vector<Float_t> ecalSCRawEn_;
-std::vector<Float_t> ecalSCetaWidth_;
-std::vector<Float_t> ecalSCphiWidth_;
+UShort_t             necalSC_;
+std::vector<Float_t> ecalSC_eta_;
+std::vector<Float_t> ecalSC_phi_;
+std::vector<Float_t> ecalSC_En_;
+std::vector<Float_t> ecalSC_RawEn_;
+std::vector<Float_t> ecalSC_etaWidth_;
+std::vector<Float_t> ecalSC_phiWidth_;
 std::vector<Float_t> ecalSC_LICTD_;
 std::vector<Float_t> ecalSC_seedTime_;
 std::vector<Float_t> ecalSC_seedSwissCross_;
 std::vector<Float_t> ecalSC_seedEtaWing_;
 std::vector<UChar_t> ecalSC_seedBits_;
-std::vector<Char_t> ecalSCseedIx_;
-std::vector<Char_t> ecalSCseedIy_;
-std::vector<Char_t> ecalSCseedIz_;
+std::vector<Char_t>  ecalSC_seedIx_;
+std::vector<Char_t>  ecalSC_seedIy_;
+std::vector<Char_t>  ecalSC_seedIz_;
+std::vector<UInt_t>  ecalSC_nXtals_;
 
 
 void ggNtuplizer::branchesECALSC(TTree* tree) {
-  tree->Branch("necalSC",                       &necalSC_);
-  tree->Branch("ecalSCeta",                     &ecalSCeta_);
-  tree->Branch("ecalSCphi",                     &ecalSCphi_);
-  tree->Branch("ecalSCEn",                      &ecalSCEn_);
-  tree->Branch("ecalSCRawEn",                     &ecalSCRawEn_);
-  tree->Branch("ecalSCetaWidth",                  &ecalSCetaWidth_);
-  tree->Branch("ecalSCphiWidth",                  &ecalSCphiWidth_);
-  tree->Branch("ecalSC_LICTD",                    &ecalSC_LICTD_);
-  tree->Branch("ecalSC_seedTime",      &ecalSC_seedTime_);
-  tree->Branch("ecalSC_seedSwissCross",    &ecalSC_seedSwissCross_);
-  tree->Branch("ecalSC_seedEtaWing",                    &ecalSC_seedEtaWing_);
-  tree->Branch("ecalSC_seedBits",      &ecalSC_seedBits_);
-  tree->Branch("ecalSCseedIx",      &ecalSCseedIx_);
-  tree->Branch("ecalSCseedIy",      &ecalSCseedIy_);
-  tree->Branch("ecalSCseedIz",      &ecalSCseedIz_);
+  tree->Branch("necalSC",               & necalSC_);
+  tree->Branch("ecalSC_eta",            & ecalSC_eta_);
+  tree->Branch("ecalSC_phi",            & ecalSC_phi_);
+  tree->Branch("ecalSC_En",             & ecalSC_En_);
+  tree->Branch("ecalSC_RawEn",          & ecalSC_RawEn_);
+  tree->Branch("ecalSC_etaWidth",       & ecalSC_etaWidth_);
+  tree->Branch("ecalSC_phiWidth",       & ecalSC_phiWidth_);
+  tree->Branch("ecalSC_LICTD",          & ecalSC_LICTD_);
+  tree->Branch("ecalSC_seedTime",       & ecalSC_seedTime_);
+  tree->Branch("ecalSC_seedSwissCross", & ecalSC_seedSwissCross_);
+  tree->Branch("ecalSC_seedEtaWing",    & ecalSC_seedEtaWing_);
+  tree->Branch("ecalSC_seedBits",       & ecalSC_seedBits_);
+  tree->Branch("ecalSC_seedIx",         & ecalSC_seedIx_);
+  tree->Branch("ecalSC_seedIy",         & ecalSC_seedIy_);
+  tree->Branch("ecalSC_seedIz",         & ecalSC_seedIz_);
+  tree->Branch("ecalSC_nXtals",         & ecalSC_nXtals_);
 };
 
 
 void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
   necalSC_ = 0;
-  ecalSCindex_.clear();
-  ecalSCeta_.clear();
-  ecalSCphi_.clear();
-  ecalSCEn_.clear();
-  ecalSCRawEn_.clear();
-  ecalSCetaWidth_.clear();
-  ecalSCphiWidth_.clear();
-  ecalSC_LICTD_.clear();
-  ecalSC_seedTime_.clear();
-  ecalSC_seedSwissCross_.clear();
-  ecalSC_seedEtaWing_.clear();
-  ecalSC_seedBits_.clear();
-  ecalSCseedIx_.clear();
-  ecalSCseedIy_.clear();
-  ecalSCseedIz_.clear();
+  ecalSCindex_           . clear();
+  ecalSC_eta_            . clear();
+  ecalSC_phi_            . clear();
+  ecalSC_En_             . clear();
+  ecalSC_RawEn_          . clear();
+  ecalSC_etaWidth_       . clear();
+  ecalSC_phiWidth_       . clear();
+  ecalSC_LICTD_          . clear();
+  ecalSC_seedTime_       . clear();
+  ecalSC_seedSwissCross_ . clear();
+  ecalSC_seedEtaWing_    . clear();
+  ecalSC_seedBits_       . clear();
+  ecalSC_seedIx_         . clear();
+  ecalSC_seedIy_         . clear();
+  ecalSC_seedIz_         . clear();
+  ecalSC_nXtals_         . clear();
 
   edm::Handle<std::vector<reco::SuperCluster>> ecalSChandle;
   e.getByToken(ecalSCcollection_, ecalSChandle);
@@ -157,14 +160,14 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
 
   for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalSChandle->begin(); iSC != ecalSChandle->end(); iSC++){
 
-    ecalSCindex_.push_back(necalSC_);
-    ecalSCeta_.push_back(iSC->eta());
-    ecalSCphi_.push_back(iSC->phi());
-    ecalSCEn_.push_back(iSC->energy());
-    ecalSCRawEn_.push_back(iSC->rawEnergy());
-    ecalSCetaWidth_.push_back(iSC->etaWidth());
-    ecalSCphiWidth_.push_back(iSC->phiWidth());
-    ecalSC_LICTD_.push_back(getLICTD(&(*iSC), lazyToolnoZS));
+    ecalSCindex_     . push_back(necalSC_);
+    ecalSC_eta_      . push_back(iSC->eta());
+    ecalSC_phi_      . push_back(iSC->phi());
+    ecalSC_En_       . push_back(iSC->energy());
+    ecalSC_RawEn_    . push_back(iSC->rawEnergy());
+    ecalSC_etaWidth_ . push_back(iSC->etaWidth());
+    ecalSC_phiWidth_ . push_back(iSC->phiWidth());
+    ecalSC_LICTD_    . push_back(getLICTD(&(*iSC), lazyToolnoZS));
 
     DetId seedDetID = iSC->seed()->seed();
     const EcalRecHit *seedRecHit  =getECALrecHit(seedDetID, lazyToolnoZS);
@@ -182,26 +185,28 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
       if(seedRecHit->checkFlag(EcalRecHit::kOutOfTime)) setbit(iSeedBits, 3);
 
     }
-    ecalSC_seedTime_.push_back(iSeedTime);
-    ecalSC_seedSwissCross_.push_back(iSeedSwissX);
-    ecalSC_seedEtaWing_.push_back(iSeedEtaW);
-    ecalSC_seedBits_.push_back(iSeedBits);
+    ecalSC_seedTime_       . push_back(iSeedTime);
+    ecalSC_seedSwissCross_ . push_back(iSeedSwissX);
+    ecalSC_seedEtaWing_    . push_back(iSeedEtaW);
+    ecalSC_seedBits_       . push_back(iSeedBits);
 
     if(seedDetID.subdetId() == EcalBarrel){
       EBDetId seedEB = iSC->seed()->seed();
-      ecalSCseedIx_.push_back(seedEB.ieta());
-      ecalSCseedIy_.push_back(seedEB.iphi());
-      ecalSCseedIz_.push_back(0);
+      ecalSC_seedIx_.push_back(seedEB.ieta());
+      ecalSC_seedIy_.push_back(seedEB.iphi());
+      ecalSC_seedIz_.push_back(0);
     } else if (seedDetID.subdetId() == EcalEndcap){
       EEDetId seedEE = iSC->seed()->seed();
-      ecalSCseedIx_.push_back(seedEE.ix());
-      ecalSCseedIy_.push_back(seedEE.iy());
-      ecalSCseedIz_.push_back(seedEE.zside());
+      ecalSC_seedIx_.push_back(seedEE.ix());
+      ecalSC_seedIy_.push_back(seedEE.iy());
+      ecalSC_seedIz_.push_back(seedEE.zside());
     } else{
-      ecalSCseedIx_.push_back(-116);
-      ecalSCseedIy_.push_back(-116);
-      ecalSCseedIz_.push_back(-116);
+      ecalSC_seedIx_.push_back(-116);
+      ecalSC_seedIy_.push_back(-116);
+      ecalSC_seedIz_.push_back(-116);
     }
+
+    ecalSC_nXtals_.push_back(iSC->hitsAndFractions().size());
 
     necalSC_++;
   }
@@ -210,60 +215,61 @@ void ggNtuplizer::fillECALSC(const edm::Event& e, const edm::EventSetup& es){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////         OOT ECAL SC     ////////////////////////////////////////////////////////
-UShort_t necalootSC_;
-std::vector<Float_t> ecalootSCeta_;
-std::vector<Float_t> ecalootSCphi_;
-std::vector<Float_t> ecalootSCEn_;
-std::vector<Float_t> ecalootSCRawEn_;
-std::vector<Float_t> ecalootSCetaWidth_;
-std::vector<Float_t> ecalootSCphiWidth_;
+UShort_t             necalootSC_;
+std::vector<Float_t> ecalootSC_eta_;
+std::vector<Float_t> ecalootSC_phi_;
+std::vector<Float_t> ecalootSC_En_;
+std::vector<Float_t> ecalootSC_RawEn_;
+std::vector<Float_t> ecalootSC_etaWidth_;
+std::vector<Float_t> ecalootSC_phiWidth_;
 std::vector<Float_t> ecalootSC_LICTD_;
 std::vector<Float_t> ecalootSC_seedTime_;
 std::vector<Float_t> ecalootSC_seedSwissCross_;
 std::vector<Float_t> ecalootSC_seedEtaWing_;
 std::vector<UChar_t> ecalootSC_seedBits_;
-std::vector<Char_t> ecalootSC_seedIx_;
-std::vector<Char_t> ecalootSC_seedIy_;
-std::vector<Char_t> ecalootSC_seedIz_;
-
+std::vector<Char_t>  ecalootSC_seedIx_;
+std::vector<Char_t>  ecalootSC_seedIy_;
+std::vector<Char_t>  ecalootSC_seedIz_;
+std::vector<UInt_t>  ecalootSC_nXtals_;
 
 void ggNtuplizer::branchesECALOOTSC(TTree* tree) {
-  tree->Branch("necalootSC",                        &necalootSC_);
-  tree->Branch("ecalootSC_eta",                     &ecalootSCeta_);
-  tree->Branch("ecalootSC_phi",                     &ecalootSCphi_);
-  tree->Branch("ecalootSC_En",                      &ecalootSCEn_);
-  tree->Branch("ecalootSC_RawEn",                     &ecalootSCRawEn_);
-  tree->Branch("ecalootSC_etaWidth",                  &ecalootSCetaWidth_);
-  tree->Branch("ecalootSC_phiWidth",                  &ecalootSCphiWidth_);
-  tree->Branch("ecalootSC_LICTD",                    &ecalootSC_LICTD_);
-  tree->Branch("ecalootSC_seedTime",     &ecalootSC_seedTime_);
-  tree->Branch("ecalootSC_seedSwissCross",   &ecalootSC_seedSwissCross_);
-  tree->Branch("ecalSC_seedEtaWing",   &ecalSC_seedEtaWing_);
-  tree->Branch("ecalootSC_seedBits",     &ecalootSC_seedBits_);
-  tree->Branch("ecalootSC_seedIx",     &ecalootSC_seedIx_);
-  tree->Branch("ecalootSC_seedIy",     &ecalootSC_seedIy_);
-  tree->Branch("ecalootSC_seedIz",     &ecalootSC_seedIz_);
+  tree->Branch("necalootSC",               & necalootSC_);
+  tree->Branch("ecalootSC_eta",            & ecalootSC_eta_);
+  tree->Branch("ecalootSC_phi",            & ecalootSC_phi_);
+  tree->Branch("ecalootSC_En",             & ecalootSC_En_);
+  tree->Branch("ecalootSC_RawEn",          & ecalootSC_RawEn_);
+  tree->Branch("ecalootSC_etaWidth",       & ecalootSC_etaWidth_);
+  tree->Branch("ecalootSC_phiWidth",       & ecalootSC_phiWidth_);
+  tree->Branch("ecalootSC_LICTD",          & ecalootSC_LICTD_);
+  tree->Branch("ecalootSC_seedTime",       & ecalootSC_seedTime_);
+  tree->Branch("ecalootSC_seedSwissCross", & ecalootSC_seedSwissCross_);
+  tree->Branch("ecalSC_seedEtaWing",       & ecalSC_seedEtaWing_);
+  tree->Branch("ecalootSC_seedBits",       & ecalootSC_seedBits_);
+  tree->Branch("ecalootSC_seedIx",         & ecalootSC_seedIx_);
+  tree->Branch("ecalootSC_seedIy",         & ecalootSC_seedIy_);
+  tree->Branch("ecalootSC_seedIz",         & ecalootSC_seedIz_);
+  tree->Branch("ecalootSC_nXtals",         & ecalootSC_nXtals_);
 };
 
 
 void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
   necalootSC_ = 0;
-  ecalootSCindex_.clear();
-  ecalootSCeta_.clear();
-  ecalootSCphi_.clear();
-  ecalootSCEn_.clear();
-  ecalootSCRawEn_.clear();
-  ecalootSCetaWidth_.clear();
-  ecalootSCphiWidth_.clear();
-  ecalootSC_LICTD_.clear();
-  ecalootSC_seedTime_.clear();
-  ecalootSC_seedSwissCross_.clear();
-  ecalootSC_seedEtaWing_.clear();
-  ecalootSC_seedBits_.clear();
-  ecalootSC_seedIx_.clear();
-  ecalootSC_seedIy_.clear();
-  ecalootSC_seedIz_.clear();
-
+  ecalootSCindex_           . clear();
+  ecalootSC_eta_            . clear();
+  ecalootSC_phi_            . clear();
+  ecalootSC_En_             . clear();
+  ecalootSC_RawEn_          . clear();
+  ecalootSC_etaWidth_       . clear();
+  ecalootSC_phiWidth_       . clear();
+  ecalootSC_LICTD_          . clear();
+  ecalootSC_seedTime_       . clear();
+  ecalootSC_seedSwissCross_ . clear();
+  ecalootSC_seedEtaWing_    . clear();
+  ecalootSC_seedBits_       . clear();
+  ecalootSC_seedIx_         . clear();
+  ecalootSC_seedIy_         . clear();
+  ecalootSC_seedIz_         . clear();
+  ecalootSC_nXtals_         . clear();
 
   edm::Handle<std::vector<reco::SuperCluster>> ecalootSChandle;
   e.getByToken(ecalSC_OOT_collection_, ecalootSChandle);
@@ -274,14 +280,14 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
 
   for(std::vector<reco::SuperCluster>::const_iterator iSC = ecalootSChandle->begin(); iSC != ecalootSChandle->end(); iSC++){
 
-    ecalootSCindex_.push_back(necalootSC_);
-    ecalootSCeta_.push_back(iSC->eta());
-    ecalootSCphi_.push_back(iSC->phi());
-    ecalootSCEn_.push_back(iSC->energy());
-    ecalootSCRawEn_.push_back(iSC->rawEnergy());
-    ecalootSCetaWidth_.push_back(iSC->etaWidth());
-    ecalootSCphiWidth_.push_back(iSC->phiWidth());
-    ecalootSC_LICTD_.push_back(getLICTD(&(*iSC), lazyToolnoZS));
+    ecalootSCindex_     . push_back(necalootSC_);
+    ecalootSC_eta_      . push_back(iSC->eta());
+    ecalootSC_phi_      . push_back(iSC->phi());
+    ecalootSC_En_       . push_back(iSC->energy());
+    ecalootSC_RawEn_    . push_back(iSC->rawEnergy());
+    ecalootSC_etaWidth_ . push_back(iSC->etaWidth());
+    ecalootSC_phiWidth_ . push_back(iSC->phiWidth());
+    ecalootSC_LICTD_    . push_back(getLICTD(&(*iSC), lazyToolnoZS));
 
     DetId seedDetID = iSC->seed()->seed();
     const EcalRecHit *seedRecHit  =getECALrecHit(seedDetID, lazyToolnoZS);
@@ -320,6 +326,8 @@ void ggNtuplizer::fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es){
       ecalootSC_seedIz_.push_back(-116);
     }
     
+    ecalootSC_nXtals_.push_back(iSC->hitsAndFractions().size());
+
     necalootSC_++;
   }
 };

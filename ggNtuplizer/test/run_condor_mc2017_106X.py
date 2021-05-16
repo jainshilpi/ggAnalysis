@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
 options.outputFile = 'anTGCtree_mc.root'
-options.maxEvents = 100
+options.maxEvents = 200
 
 options.register('InputFileList',
                 'testList.txt',
