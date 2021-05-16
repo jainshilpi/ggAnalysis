@@ -19,7 +19,8 @@ cmsswDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer
 pset="/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_condor_mc2017_106X.py"
 writeDir=/local/cms/user/wadud/aNTGCmet/ntuples/UL2017_v1/
 workDir=/local/cms/user/wadud/aNTGCmet/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/batch/onMC_UL/jobs_v1/
-splitfiles=10
+splitfiles=5
+nRetries=5
 
 x509file=/tmp/x509up_u926763
 
@@ -97,6 +98,9 @@ function submitSubJob(){
 	sed -i 's|#jobList|'${fileListPath}'|g' ${runScript}
 	sed -i 's|#outFile|'${outFile}'|g' ${runScript}
 	sed -i 's|#X509FILE|'${x509copy}'|g' ${runScript}
+	sed -i 's|#nRetries|'${nRetries}'|g' ${runScript}
+
+	
 	chmod +x ${runScript}
 
 	### prepare condor script ###
