@@ -110,7 +110,7 @@ private:
   void fillGenAK4JetInfo(const edm::Event&, Float_t );
   void fillGenAK8JetInfo(const edm::Event&, Float_t );
 
-  const EcalRecHit * getECALrecHit(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
+  const EcalRecHit * getECALrecHit(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
   Float_t ECALrecHitE(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
   Float_t ECALrecHitT(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
   Float_t swissCross(const DetId& id, noZS::EcalClusterLazyTools & ltNoZS);
