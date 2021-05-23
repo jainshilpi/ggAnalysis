@@ -97,9 +97,7 @@ Float_t ggNtuplizer::getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLaz
 
       //// https://cmssdt.cern.ch/lxr/source/RecoLocalCalo/EcalRecAlgos/interface/EcalRecHitSimpleAlgo.h#L0042
       //// rh.setEnergyError(uncalibRH.amplitudeError() * adcToGeVConstant_ * intercalibConstant);
-      // std::cout<<"RH Energy: "<<iXtalHit->energy()<<" +- "<<iXtalHit->energyError()<<"("<<100.*iXtalHit->energyError()/iXtalHit->energy()<<"%)\n";
       if (iXtalHit->energy() < iXtalHit->energyError() || iXtalHit->energy() < 1.) continue;
-      // if(std::abs(iXtalHit->time()) < iXtalHit->timeError() || iXtalHit->energy() < 1.) continue;
 
       if (iXtalHit->time() > maxTime) maxTime = iXtalHit->time();
       if (iXtalHit->time() < minTime) minTime = iXtalHit->time();

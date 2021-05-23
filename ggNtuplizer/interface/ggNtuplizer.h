@@ -51,14 +51,14 @@ void setbit(typeA & x, typeB bit) {
 
 
 class ggNtuplizer : public edm::EDAnalyzer {
-public:
+ public:
 
   explicit ggNtuplizer(const edm::ParameterSet&);
   ~ggNtuplizer();
 
   //   static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
 
-private:
+ private:
 
   //   virtual void beginJob() {};
   virtual void analyze(const edm::Event&, const edm::EventSetup&);
@@ -75,8 +75,6 @@ private:
   ULong64_t matchL1TriggerFilters(double pt, double eta, double phi);
   Double_t deltaPhi(Double_t phi1, Double_t phi2);
   Double_t deltaR(Double_t eta1, Double_t phi1, Double_t eta2, Double_t phi2);
-  Double_t getMiniIsolation(edm::Handle<pat::PackedCandidateCollection> pfcands, const reco::Candidate* ptcl,
-   double r_iso_min, double r_iso_max, double kt_scale, bool charged_only);
 
   Short_t findSecondaryIndex(const Short_t & searchIndex, const std::vector<UShort_t> & container);
 
@@ -91,7 +89,7 @@ private:
   // void branchesHFElectrons(TTree*);
   void branchesMuons      (TTree*);
   void branchesAK4CHSJets       (TTree*);
-  // void branchesAK4PUPPIJets       (TTree*);
+  void branchesAK4PUPPIJets       (TTree*);
   void branchesAK8PUPPIJets    (TTree*);
 
   void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
@@ -101,12 +99,14 @@ private:
   void fillPhotons    (const edm::Event&, const edm::EventSetup&);
   void fillPhotonsOOT    (const edm::Event&, const edm::EventSetup&);
   void fillElectrons  (const edm::Event&, const edm::EventSetup&, math::XYZPoint&);
-  // void fillHFElectrons(const edm::Event&);
   void fillMuons      (const edm::Event&, math::XYZPoint&, const reco::Vertex);
-  void fillAK4CHSJets       (const edm::Event&, const edm::EventSetup&);
   void fillAK8PUPPIJets(const edm::Event&, const edm::EventSetup&);
-  void branchesGenAK4JetPart(TTree*);
   void branchesGenAK8JetPart(TTree*);
+
+  void fillAK4CHSJets       (const edm::Event&, const edm::EventSetup&);
+  void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
+
+  void branchesGenAK4JetPart(TTree*);
   void fillGenAK4JetInfo(const edm::Event&, Float_t );
   void fillGenAK8JetInfo(const edm::Event&, Float_t );
 
@@ -144,7 +144,6 @@ private:
   Float_t etaWing(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
 
   // void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
-  // void fillAK8PUPPIJets    (const edm::Event&, const edm::EventSetup&);
 
   void branchesTracks(TTree* tree);
   void fillTracks(const edm::Event& e, const edm::EventSetup& es);
@@ -155,26 +154,24 @@ private:
   void fillTaus(const edm::Event& e, const edm::EventSetup& es);
   edm::EDGetTokenT<edm::View<pat::Tau>>        tauLabel_;
 
-  
 
-  bool development_;
-  bool addFilterInfoAOD_;
-  bool addFilterInfoMINIAOD_;
-  bool doNoHFMET_;
-  bool doGenParticles_;
-  bool runOnParticleGun_;
-  bool doGenJets_;
-  bool runOnSherpa_;
-  bool dumpPFPhotons_;
-  bool dumpTaus_;
-  bool dumpJets_;
-  bool dumpAK8Jets_;
-  bool dumpSoftDrop_;
-  bool dumpPDFSystWeight_;
-  bool dumpHFElectrons_;
-  int  year_;
+  Bool_t development_;
+  Bool_t addFilterInfoAOD_;
+  Bool_t addFilterInfoMINIAOD_;
+  Bool_t doGenParticles_;
+  Bool_t runOnParticleGun_;
+  Bool_t doGenJets_;
+  Bool_t runOnSherpa_;
+  Bool_t dumpPFPhotons_;
+  Bool_t dumpTaus_;
+  Bool_t dumpJets_;
+  Bool_t dumpAK8Jets_;
+  Bool_t dumpSoftDrop_;
+  Bool_t dumpPDFSystWeight_;
   Bool_t doOOTphotons_;
   Bool_t doTrks_;
+
+  int  year_;
 
   vector<int> newparticles_;
 
@@ -197,6 +194,7 @@ private:
   edm::EDGetTokenT<vector<PileupSummaryInfo> >     puCollection_;
   edm::EDGetTokenT<vector<reco::GenParticle> >     genParticlesCollection_;
   edm::EDGetTokenT<edm::View<pat::MET> >           pfMETlabel_;
+  edm::EDGetTokenT<edm::View<pat::MET> >           puppiMETlabel_;
   edm::EDGetTokenT<edm::View<pat::Electron> >      electronCollection_;
   edm::EDGetTokenT<edm::View<pat::Photon> >        photonCollection_;
   edm::EDGetTokenT<edm::View<pat::Photon> >        photonOOTCollection_;
@@ -215,7 +213,7 @@ private:
   edm::EDGetTokenT<vector<pat::PackedCandidate> >   pckPFCdsLabel_;
   edm::EDGetTokenT<edm::View<reco::Candidate> >     recoCdsLabel_;
   edm::EDGetTokenT<edm::View<pat::Jet> >            ak4PFJetsCHSLabel_;
-  edm::EDGetTokenT<edm::View<pat::Jet> >            ak4PFJetsPUPPILabel_;
+  edm::EDGetTokenT<edm::View<pat::Jet> >            ak4PFJetsPuppiLabel_;
   edm::EDGetTokenT<edm::View<pat::Jet> >            ak8JetsPUPPILabel_;
   edm::EDGetTokenT<std::vector<reco::GenJet> >      ak4PFJetsCHSGenJetLabel_;
   edm::EDGetTokenT<std::vector<reco::GenJet> >      ak8GenJetLabel_;
@@ -236,7 +234,6 @@ private:
   edm::EDGetToken gsfEle_;
 
   edm::EDGetTokenT<reco::BeamSpot> offlinebeamSpot_;
-
   edm::EDGetTokenT<edm::View<reco::Conversion> > convPhotonTag_;
   edm::EDGetTokenT<edm::View<reco::Conversion> > convPhotonTagSL_;
 

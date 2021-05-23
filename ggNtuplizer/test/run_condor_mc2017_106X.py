@@ -59,12 +59,10 @@ process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
 
 
 ##########################################################################
-# fix a bug in the ECAL-Tracker momentum combination when applying the
-# scale and smearing
 from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
-                       era='2017-Nov17ReReco',
+                       era='2017-UL',
                        eleIDModules=['RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V2_cff',
                                      'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
                                      'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V2_cff',
@@ -74,34 +72,71 @@ setupEgammaPostRecoSeq(process,
                        )
 ##########################################################################
 
-
-##########################################################################
-# reduce effect of high eta EE noise on the PF MET measurement
-from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-runMetCorAndUncFromMiniAOD(process,
-                           isData=False,  # false for MC
-                           fixEE2017=True,
-                           fixEE2017Params={'userawPt': True, 'ptThreshold': 50.0,
-                                            'minEtaThreshold': 2.65, 'maxEtaThreshold': 3.139},
-                           postfix="ModifiedMET"
-                           )
-##########################################################################
-
-
 ##########################################################################
 # include jetToolbox to add various jets
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetToolbox
+# https://github.com/cms-jet/JetToolbox/blob/jetToolbox_102X_v3/python/jetToolbox_cff.py
+# https://twiki.cern.ch/twiki/bin/view/CMS/IntroToJEC
+# https://github.com/cms-sw/cmssw/blob/CMSSW_10_6_X/JetMETCorrections/Configuration/python/JetCorrectors_cff.py
+# https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections
 from JMEAnalysis.JetToolbox.jetToolbox_cff import jetToolbox
 
-jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
-           updateCollection='slimmedJets',
-           JETCorrPayload='AK4PFchs',
-           JETCorrLevels=['L1FastJet', 'L2Relative', 'L3Absolute'],
-           postFix='updated'
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/QGDataBaseVersion
+jetToolbox(         process, 'ak4', 'ak4JetSubs', 'noOutput',
+                    PUMethod='CHS',
+                    runOnMC=True,
+                    JETCorrPayload='AK4PFchs',
+                    JETCorrLevels=['L1FastJet', 'L2Relative', 'L3Absolute'],
+                    addPUJetID=True,
+                    addQGTagger=True,
+                    bTagDiscriminators=None,
+                    postFix='updated'
            )
 
+### https://twiki.cern.ch/twiki/bin/viewauth/CMS/PUPPI
+jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
+            PUMethod='Puppi',
+            runOnMC=True,
+            JETCorrPayload='AK4PFPuppi',
+            JETCorrLevels = ['L1FastJet', 'L2Relative', 'L3Absolute'],
+            addPUJetID=False, # not supported for Puppi
+            addQGTagger=False,
+            bTagDiscriminators=None,
+            postFix='updated'
+)
 ##########################################################################
 
+##########################################################################
+# https://twiki.cern.ch/twiki/bin/view/CMS/MissingETUncertaintyPrescription
+# https://github.com/cms-sw/cmssw/blob/CMSSW_10_6_X/PhysicsTools/PatUtils/python/tools/runMETCorrectionsAndUncertainties.py
+from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
+runMetCorAndUncFromMiniAOD(process,
+                          isData=False,
+                          metType="PF",
+                          pfCandColl=cms.InputTag("packedPFCandidates"),
+                          recoMetFromPFCs=True,
+                          CHS = True,
+                          reclusterJets = True,
+                          postfix="ModifiedPFMET"
+                           )
+## https://twiki.cern.ch/twiki/bin/view/CMS/ChargedPUMet
+#
+## Followed https://github.com/ajgilbert/Acorn/blob/66b517a6be284ddde70f6c3b6a0ade49ccf26437/NTupler/test/wgamma_cfg.py#L151
+from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
+makePuppiesFromMiniAOD(process, True)
 
+runMetCorAndUncFromMiniAOD(process,
+                            isData=False,
+                            metType="Puppi",
+                            pfCandColl=cms.InputTag("puppiForMET"),
+                            recoMetFromPFCs=True,
+                            jetFlavor="AK4PFPuppi",
+                            reclusterJets = True,
+                            postfix="Puppi"
+                            )
+process.puppiNoLep.useExistingWeights = True
+process.puppi.useExistingWeights = True
+##########################################################################
 
 ##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
@@ -112,11 +147,11 @@ process.ggNtuplizer.dumpPDFSystWeight = cms.bool(True)
 process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(True)
 process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
-process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedMET")
+process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedPFMET")
+process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppi")
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
-process.ggNtuplizer.ak8GenJetLabel = cms.InputTag("selectedPatJetsAK8PFPUPPI", "genJets", "ggKit")
-process.ggNtuplizer.ak8JetsPUPPISrc = cms.InputTag("selectedPatJetsAK8PFPUPPI")
+process.ggNtuplizer.ak4PFJetsPUPPISrc =  cms.InputTag("selectedPatJetsAK4PFPuppiupdated")
 process.ggNtuplizer.runOnSherpa = cms.bool(False)
 # process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
 process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
@@ -146,6 +181,7 @@ process.ggNtuplizer.tauSrc                    = cms.InputTag(updatedTauName)
 process.load('RecoMET.METFilters.ecalBadCalibFilter_cfi')
 
 #### https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2#How_to_run_ecal_BadCalibReducedM
+#### https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2
 baddetEcallist = cms.vuint32(
   [872439604,872422825,872420274,872423218,872423215,872416066,872435036,872439336,
     872420273,872436907,872420147,872439731,872436657,872420397,872439732,872439339,
@@ -171,7 +207,9 @@ process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAO
 process.p = cms.Path(
     process.prefiringweight *
     process.ecalBadCalibReducedMINIAODFilter *
-    process.fullPatMetSequenceModifiedMET *
+    process.puppiMETSequence *
+    process.fullPatMetSequencePuppi *
+    process.fullPatMetSequenceModifiedPFMET *
     process.egammaPostRecoSeq *
     process.rerunMvaIsolationSequence *
     getattr(process,updatedTauName) *

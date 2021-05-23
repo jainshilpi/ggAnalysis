@@ -10,11 +10,10 @@ void ggNtuplizer::endJob() {
 
 
 ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
-hltPrescaleProvider_(ps, consumesCollector(), *this)
-{
+  hltPrescaleProvider_(ps, consumesCollector(), *this) {
 
   getECALprefiringWeights_      = ps.getParameter<bool>("getECALprefiringWeights");
-  if(getECALprefiringWeights_){
+  if (getECALprefiringWeights_) {
     prefweight_token              = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
     prefweightup_token            = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
     prefweightdown_token          = consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
@@ -24,7 +23,6 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   development_                = ps.getParameter<bool>("development");
   addFilterInfoAOD_           = ps.getParameter<bool>("addFilterInfoAOD");
   addFilterInfoMINIAOD_       = ps.getParameter<bool>("addFilterInfoMINIAOD");
-  doNoHFMET_                  = ps.getParameter<bool>("doNoHFMET");
 
 
   doOOTphotons_               = ps.getParameter<bool>("doOOTphotons");
@@ -35,9 +33,9 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   dumpJets_                   = ps.getParameter<bool>("dumpJets");
   dumpAK8Jets_                = ps.getParameter<bool>("dumpAK8Jets");
   dumpSoftDrop_               = ps.getParameter<bool>("dumpSoftDrop");
-  
+
   dumpPDFSystWeight_          = ps.getParameter<bool>("dumpPDFSystWeight");
-  dumpHFElectrons_            = ps.getParameter<bool>("dumpHFElectrons");
+  // dumpHFElectrons_            = ps.getParameter<bool>("dumpHFElectrons");
   year_                       = ps.getParameter<int>("year");
 
   trgFilterDeltaPtCut_        = ps.getParameter<double>("trgFilterDeltaPtCut");
@@ -58,6 +56,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   puCollection_               = consumes<vector<PileupSummaryInfo> >    (ps.getParameter<InputTag>("pileupCollection"));
   genParticlesCollection_     = consumes<vector<reco::GenParticle> >    (ps.getParameter<InputTag>("genParticleSrc"));
   pfMETlabel_                 = consumes<View<pat::MET> >               (ps.getParameter<InputTag>("pfMETLabel"));
+  puppiMETlabel_                = consumes<View<pat::MET> >               (ps.getParameter<InputTag>("puppiMETLabel"));
   electronCollection_         = consumes<View<pat::Electron> >          (ps.getParameter<InputTag>("electronSrc"));
   gsfTracks_                  = consumes<View<reco::GsfTrack>>          (ps.getParameter<InputTag>("gsfTrackSrc"));
 
@@ -82,7 +81,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
   recoCdsLabel_               = consumes<View<reco::Candidate>>         (ps.getParameter<InputTag>("packedPFCands"));
 
   ak4PFJetsCHSLabel_          = consumes<View<pat::Jet> >               (ps.getParameter<InputTag>("ak4PFJetsCHSSrc"));
-  ak4PFJetsPUPPILabel_        = consumes<View<pat::Jet> >               (ps.getParameter<InputTag>("ak4PFJetsPUPPISrc"));
+  ak4PFJetsPuppiLabel_        = consumes<View<pat::Jet> >               (ps.getParameter<InputTag>("ak4PFJetsPUPPISrc"));
   ak8JetsPUPPILabel_          = consumes<View<pat::Jet> >               (ps.getParameter<InputTag>("ak8JetsPUPPISrc"));
 
   ak4PFJetsCHSGenJetLabel_    = consumes<std::vector<reco::GenJet> >    (ps.getParameter<InputTag>("ak4PFJetsCHSGenJetLabel"));
@@ -95,7 +94,7 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
 
   tauLabel_  = consumes<View<pat::Tau>>(ps.getParameter<InputTag>("tauSrc"));
   dumpTaus_                   = ps.getParameter<bool>("dumpTaus");
-  
+
   convPhotonTag_ = consumes<edm::View<reco::Conversion> >(ps.getParameter<edm::InputTag>("convPhotonTag"));
   convPhotonTagSL_ = consumes<edm::View<reco::Conversion> >(ps.getParameter<edm::InputTag>("convPhotonTagSL"));
 
@@ -132,28 +131,39 @@ hltPrescaleProvider_(ps, consumesCollector(), *this)
 
   branchesGlobalEvent(tree_);
   branchesTrigObjPho(tree_);
+
   if (doGenParticles_) {
     branchesGenInfo(tree_, fs);
     branchesGenPart(tree_);
   }
-  if(dumpJets_ && doGenParticles_) branchesGenAK4JetPart(tree_);
-  if(dumpAK8Jets_ && doGenParticles_) branchesGenAK8JetPart(tree_);
+
+  if (dumpJets_ && doGenParticles_) branchesGenAK4JetPart(tree_);
+
+  if (dumpAK8Jets_ && doGenParticles_) branchesGenAK8JetPart(tree_);
+
   branchesMET(tree_);
   branchesPhotons(tree_);
   branchesPhoECALSC(tree_);
   branchesECALSC(tree_);
-  if(doOOTphotons_) {
+
+  if (doOOTphotons_) {
     branchesPhotonsOOT(tree_);
     branchesootPhoECALSC(tree_);
     branchesECALOOTSC(tree_);
   }
+
   branchesElectrons(tree_);
   branchesEleECALSC(tree_);
   branchesMuons(tree_);
-  if(dumpJets_)         branchesAK4CHSJets(tree_);
-  if(dumpAK8Jets_)      branchesAK8PUPPIJets(tree_);
-  if(dumpTaus_)         branchesTaus(tree_);
-  if(doTrks_)           branchesTracks(tree_);
+
+  if (dumpJets_) {
+    branchesAK4CHSJets(tree_);
+    branchesAK4PUPPIJets(tree_);
+  }
+
+  if (dumpAK8Jets_)      branchesAK8PUPPIJets(tree_);
+  if (dumpTaus_)         branchesTaus(tree_);
+  if (doTrks_)           branchesTracks(tree_);
 }
 
 ggNtuplizer::~ggNtuplizer() {
@@ -198,17 +208,22 @@ void ggNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es) {
   resolvePhoECALSCindex();
   fillElectrons(e, es, pv);
   resolveEleECALSCindex();
-  if(doOOTphotons_) {
+  if (doOOTphotons_) {
     fillPhotonsOOT(e, es);
     fillECALOOTSC(e, es);
     resolveootPhoECALSCindex();
   }
-  if (dumpJets_) fillAK4CHSJets(e,es);
+  
+  if (dumpJets_) {
+    fillAK4CHSJets(e,es);
+    fillAK4PUPPIJets(e,es);
+  }
+
   if (dumpAK8Jets_) fillAK8PUPPIJets(e,es);
-  if(dumpJets_ && doGenParticles_) fillGenAK4JetInfo(e, vtx.z());
-  if(dumpAK8Jets_ && doGenParticles_) fillGenAK8JetInfo(e, vtx.z());
-  if(dumpTaus_)         fillTaus(e,es);
-  if(doTrks_) fillTracks(e,es);
+  if (dumpJets_ && doGenParticles_) fillGenAK4JetInfo(e, vtx.z());
+  if (dumpAK8Jets_ && doGenParticles_) fillGenAK8JetInfo(e, vtx.z());
+  if (dumpTaus_)         fillTaus(e,es);
+  if (doTrks_) fillTracks(e,es);
 
   tree_->Fill();
   hEvents_->Fill(0.8);

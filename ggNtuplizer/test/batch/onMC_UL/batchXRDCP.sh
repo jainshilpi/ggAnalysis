@@ -41,9 +41,9 @@ function copyFile(){
 		# rm -rf ${destinationPath}
 	fi
 
-	echo -e "\t\t xrdcp -v root://cmsxrootd.fnal.gov//"${originalPath} ${destinationDirectory}/
+	echo -e "\t\t xrdcp -v "${originalPath} ${destinationDirectory}/
 
-	xrdcp -vf root://cmsxrootd.fnal.gov//${originalPath} ${destinationDirectory}/
+	xrdcp -vf ${originalPath} ${destinationDirectory}/
 }
 
 echo -e "Log file: "${logFile}
