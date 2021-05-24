@@ -34,7 +34,6 @@ config.Site.blacklist                 = ['T2_US_Purdue']
 
 config.JobType.psetName               = '/afs/hep.wisc.edu/user/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2017_106X.py'
 config.JobType.pluginName             = 'Analysis'
-config.JobType.inputFiles             = ['/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/L1PrefiringMaps.root']
 config.JobType.maxMemoryMB             = 2600
 config.JobType.maxJobRuntimeMin        = 2500
 
