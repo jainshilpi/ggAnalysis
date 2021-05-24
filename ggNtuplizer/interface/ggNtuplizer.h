@@ -323,6 +323,7 @@ class ggNtuplizer : public edm::EDAnalyzer {
   edm::EDGetTokenT<edm::TriggerResults>                    trgResultsLabel_;
   string                                                   trgResultsProcess_;
   edm::EDGetTokenT<edm::TriggerResults>                    patTrgResultsLabel_;
+  edm::EDGetTokenT<edm::TriggerResults>                    patTrgResultsLabel2_;
   edm::EDGetTokenT<GenEventInfoProduct>                    generatorLabel_;
   edm::EDGetTokenT<LHEEventProduct>                        lheEventLabel_;
   edm::EDGetTokenT<vector<PileupSummaryInfo>>              puCollection_;

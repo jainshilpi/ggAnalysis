@@ -50,6 +50,7 @@ ggNtuplizer::ggNtuplizer(const edm::ParameterSet& ps) :
   triggerObjectsLabel_        = consumes<pat::TriggerObjectStandAloneCollection>(ps.getParameter<edm::InputTag>("triggerEvent"));
   trgResultsLabel_            = consumes<edm::TriggerResults>           (ps.getParameter<InputTag>("triggerResults"));
   patTrgResultsLabel_         = consumes<edm::TriggerResults>           (ps.getParameter<InputTag>("patTriggerResults"));
+  patTrgResultsLabel2_        = consumes<edm::TriggerResults>           (ps.getParameter<InputTag>("patTriggerResults2"));
   trgResultsProcess_          =                                          ps.getParameter<InputTag>("triggerResults").process();
   generatorLabel_             = consumes<GenEventInfoProduct>           (ps.getParameter<InputTag>("generatorLabel"));
   lheEventLabel_              = consumes<LHEEventProduct>               (ps.getParameter<InputTag>("LHEEventLabel"));
