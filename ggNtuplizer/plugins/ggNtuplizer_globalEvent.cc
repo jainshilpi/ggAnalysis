@@ -132,6 +132,10 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
 
   edm::Handle<edm::TriggerResults> trgResultsHandle;
   e.getByToken(trgResultsLabel_, trgResultsHandle);
+  if (!trgResultsHandle.isValid()) e.getByToken(patTrgResultsLabel_, trgResultsHandle);
+  if (!trgResultsHandle.isValid()) e.getByToken(patTrgResultsLabel2_, trgResultsHandle);
+
+
 
   bool cfg_changed = true;
   hltPrescaleProvider_.init(e.getRun(), es, trgResultsProcess_, cfg_changed);
@@ -140,7 +144,17 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
 
   const edm::TriggerNames &trgNames = e.triggerNames(*trgResultsHandle);
 
-  for (size_t i = 0; i < trgNames.size(); ++i) {
+  HLTMuX_                 = 0;
+  HLTPho_                 = 0;
+  HLTPhoRejectedByPS_     = 0;
+  HLTJet_                 = 0;
+  HLTMetFWjet_            = 0;
+  HLTMuXIsPrescaled_      = 0;
+  HLTPhoIsPrescaled_      = 0;
+  HLTJetIsPrescaled_      = 0;
+  HLTMetFWjetIsPrescaled_ = 0;
+
+  for (size_t i = 0; i < trgNames.size(); i++) {
     const string &name = trgNames.triggerName(i);
 
     int bitMu       = -1;
@@ -175,16 +189,6 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
         break;
       }
     }
-
-    HLTMuX_                 = 0;
-    HLTPho_                 = 0;
-    HLTPhoRejectedByPS_     = 0;
-    HLTJet_                 = 0;
-    HLTMetFWjet_            = 0;
-    HLTMuXIsPrescaled_      = 0;
-    HLTPhoIsPrescaled_      = 0;
-    HLTJetIsPrescaled_      = 0;
-    HLTMetFWjetIsPrescaled_ = 0;
 
     ULong64_t isPrescaled = (hltCfg.prescaleValue(prescaleSet, name)!=1) ? 1 : 0;
     ULong64_t isFired     = (trgResultsHandle->accept(i)) ? 1 : 0;
