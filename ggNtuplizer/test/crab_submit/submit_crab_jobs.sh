@@ -10,7 +10,7 @@ testDir=$(readlink -f ${scriptDir}"/..")
 psetname=${testDir}"/run_mc2017_106X.py"
 writeSite="T2_US_Wisconsin"
 # mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
-mainOutputDir="/store/user/wadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
 prefiringWeights=${testDir}'/L1PrefiringMaps.root'
