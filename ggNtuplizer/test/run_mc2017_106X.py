@@ -140,8 +140,10 @@ process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdat
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak4PFJetsPUPPISrc =  cms.InputTag("selectedPatJetsAK4PFPuppiupdated")
 process.ggNtuplizer.runOnSherpa = cms.bool(False)
-# process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
-process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
+process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
+process.ggNtuplizer.patTriggerResults2 = cms.InputTag("TriggerResults", "", "RECO")  
+
+root://cmsxrootd.fnal.gov/
 # process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "RECO")
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
 ##########################################################################
