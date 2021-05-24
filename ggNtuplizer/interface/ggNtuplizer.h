@@ -50,6 +50,149 @@ void setbit(typeA & x, typeB bit) {
 }
 
 
+const std::vector<std::string>    muTriggerPathsRunII = {
+
+  //https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2016#Recommended_trigger_paths_for_20
+  //https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2017#Recommendations_for_2017_data_an
+  //https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2018#Recommended_trigger_paths_for_20
+  "HLT_IsoMu24_v",                                   //0
+  "HLT_IsoMu27_v",                                   //2
+  "HLT_IsoTkMu24_v",                                 //1
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v",   //5
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v",     //6
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v",           //13
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v",              //10
+  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",         //14
+  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",            //11
+  "HLT_Mu50_v",                                      //7
+  "HLT_Mu50_v",                                      //8
+  "HLT_OldMu100_v",                                  //3
+  "HLT_TkMu100_v",                                   //4
+  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",       //15
+  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",          //12
+  "HLT_TkMu50_v",                                    //9
+};
+
+
+const std::vector<std::string>    phoTriggerPathsRunII = {
+
+  //https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary#Short_Summary_Recommended_Trigge
+  //https://indico.cern.ch/event/662751/contributions/2778365/attachments/1561439/2458438/egamma_workshop_triggerTalk.pdf
+  //https://github.com/GhentAnalysis/heavyNeutrino/blob/0ac0591cea7a323356e5cc367c65213dbf1cfa44/multilep/src/TriggerAnalyzer.cc#L195-L215
+  //https://github.com/Sam-Harper/usercode/blob/106XNtup/TrigTools/plugins/Ele32DoubleL1ToSingleL1Example.cc#L113
+
+  "HLT_DiEle27_WPTightCaloOnly_L1DoubleEG_v",        //15
+  "HLT_DoubleEle25_CaloIdL_MW_v",                    //14
+  "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v",            //22
+  "HLT_DoubleEle33_CaloIdL_MW_v",                    //21
+  "HLT_DoubleEle37_CaloIdL_GsfTrackIdVL_v",          //2
+  "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v",      //3
+  "HLT_DoublePhoton60_v",                            //4
+  "HLT_DoublePhoton70_v",                            //16
+  "hltEGL1SingleEGOrFilter",                         //8
+  "HLT_Ele115_CaloIdVT_GsfTrkIdT_v",                 //10
+  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v",     //20
+  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v",        //13
+  "HLT_Ele25_eta2p1_WPTight_Gsf_v",                  //1
+  "HLT_Ele27_WPTight_Gsf_v",                         //0
+  "hltEle32L1DoubleEGWPTightGsfTrackIsoFilter",      //6
+  "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v",              //5
+  "HLT_Ele32_WPTight_Gsf_v",                         //11
+  "HLT_Ele35_WPTight_Gsf_v",                         //9
+  "HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v", //17
+  "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v",         //18
+  "hltL1sSingleEGor",                                //7
+  "HLT_Photon175_v",                                 //19
+  "HLT_Photon200_v",                                 //12
+};
+
+const std::vector<std::string>    jetTriggerPathsRunII = {
+
+  // https://twiki.cern.ch/twiki/bin/view/CMS/JetMETPathsRun2
+
+  "HLT_AK4CaloJet100_v",
+  "HLT_AK4CaloJet120_v",
+  "HLT_AK4CaloJet30_v",
+  "HLT_AK4CaloJet40_v",
+  "HLT_AK4CaloJet50_v",
+  "HLT_AK4CaloJet80_v",
+  "HLT_AK4PFJet100_v",
+  "HLT_AK4PFJet120_v",
+  "HLT_AK4PFJet30_v",
+  "HLT_AK4PFJet50_v",
+  "HLT_AK4PFJet80_v",
+  "HLT_CaloJet500_NoJetID_v",
+  "HLT_CaloJet550_NoJetID_v",
+  "HLT_CaloMET250_NotCleanedHLT_CaloMET250_HBHECleanedHLT_CaloMET300_HBHECleanedHLT_CaloMET350_HBHECleaned_v",
+  "HLT_DiPFJetAve100_HFJEC_v",
+  "HLT_DiPFJetAve140_v",
+  "HLT_DiPFJetAve15_HFJECHLT_DiPFJetAve25_HFJECHLT_DiPFJetAve35_HFJECHLT_DiPFJetAve60_HFJECHLT_DiPFJetAve80_HFJECHLT_DiPFJetAve100_HFJECHLT_DiPFJetAve160_HFJECHLT_DiPFJetAve220_HFJECHLT_DiPFJetAve300_HFJEC_v",
+  "HLT_DiPFJetAve15_HFJEC_v",
+  "HLT_DiPFJetAve160_HFJEC_v",
+  "HLT_DiPFJetAve200_v",
+  "HLT_DiPFJetAve220_HFJEC_v",
+  "HLT_DiPFJetAve25_HFJEC_v",
+  "HLT_DiPFJetAve260_v",
+  "HLT_DiPFJetAve300_HFJEC_v",
+  "HLT_DiPFJetAve320HLT_DiPFJetAve15_HFJEC_v",
+  "HLT_DiPFJetAve320_v",
+  "HLT_DiPFJetAve35_HFJECHLT_DiPFJetAve60_HFJEC_v",
+  "HLT_DiPFJetAve35_HFJEC_v",
+  "HLT_DiPFJetAve400_v",
+  "HLT_DiPFJetAve40HLT_DiPFJetAve60HLT_DiPFJetAve80HLT_DiPFJetAve140HLT_DiPFJetAve200HLT_DiPFJetAve260HLT_DiPFJetAve320HLT_DiPFJetAve400HLT_DiPFJetAve500_v",
+  "HLT_DiPFJetAve40HLT_DiPFJetAve60HLT_DiPFJetAve80_v",
+  "HLT_DiPFJetAve40_v",
+  "HLT_DiPFJetAve500_v",
+  "HLT_DiPFJetAve60_HFJEC_v",
+  "HLT_DiPFJetAve60_v",
+  "HLT_DiPFJetAve80_HFJECHLT_DiPFJetAve100_HFJECHLT_DiPFJetAve160_HFJECHLT_DiPFJetAve220_HFJEC_v",
+  "HLT_DiPFJetAve80_HFJEC_v",
+  "HLT_DiPFJetAve80_v",
+  "HLT_PFJet140_v",
+  "HLT_PFJet15_NoCaloMatchedHLT_PFJet25_NoCaloMatchedHLT_PFJet40_v",
+  "HLT_PFJet15_v",
+  "HLT_PFJet200_v",
+  "HLT_PFJet25_v",
+  "HLT_PFJet260_v",
+  "HLT_PFJet320_v",
+  "HLT_PFJet400_v",
+  "HLT_PFJet40HLT_PFJet60HLT_PFJet80HLT_PFJet140_v",
+  "HLT_PFJet40_v",
+  "HLT_PFJet450HLT_PFJet500_v",
+  "HLT_PFJet450_v",
+  "HLT_PFJet500_v",
+  "HLT_PFJet550HLT_PFJetFwd15_v",
+  "HLT_PFJet60_v",
+  "HLT_PFJet80HLT_PFJet140HLT_PFJet200HLT_PFJet260HLT_PFJet320HLT_PFJet400HLT_PFJet450HLT_PFJet500_v",
+  "HLT_PFJet80_v",
+};
+
+const std::vector<std::string>    metFWjetTriggerPathsRunII = {
+
+  // https://twiki.cern.ch/twiki/bin/view/CMS/JetMETPathsRun2
+
+  "HLT_PFJetFwd140_v",
+  "HLT_PFJetFwd200_v",
+  "HLT_PFJetFwd25_v",
+  "HLT_PFJetFwd260_v",
+  "HLT_PFJetFwd320_v",
+  "HLT_PFJetFwd400_v",
+  "HLT_PFJetFwd40_v",
+  "HLT_PFJetFwd450_v",
+  "HLT_PFJetFwd500_v",
+  "HLT_PFJetFwd60_v",
+  "HLT_PFJetFwd80_v",
+  "HLT_PFMET170_NoiseCleanedHLT_PFMET170_JetIdCleanedHLT_PFMET170_BeamHaloCleaned_v",
+  "HLT_PFMET170_NotCleaned_v",
+  "HLT_PFMET200_HBHE_BeamHaloCleaned_v",
+  "HLT_PFMET200_HBHECleaned_v",
+  "HLT_PFMET200_NotCleaned_v",
+  "HLT_PFMET250_HBHECleaned_v",
+  "HLT_PFMET300_HBHECleaned_v",
+  "HLT_PFMETTypeOne200_HBHE_BeamHaloCleaned_v",
+};
+
+
 class ggNtuplizer : public edm::EDAnalyzer {
  public:
 

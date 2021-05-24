@@ -20,6 +20,7 @@ workarea='#workarea'
 
 mainOutputDir = '#mainOutputDir'
 
+config                                = config()
 
 config.General.requestName = '#jobname'
 config.General.transferLogs = True
@@ -33,7 +34,7 @@ config.Site.blacklist = [#blacklist]
 
 config.JobType.psetName  = '#psetname'
 config.JobType.pluginName  = 'Analysis'
-config.JobType.inputFiles = '#prefiringweights'
+config.JobType.inputFiles = ['#prefiringweights']
 
 
 config.Data.inputDBS = '#inputDBS'
