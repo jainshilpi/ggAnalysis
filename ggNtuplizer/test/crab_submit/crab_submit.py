@@ -1,24 +1,19 @@
 #!/usr/bin/env python
 
 from CRABClient.UserUtilities import config
-# from CRABClient.ClientUtilities import getUsernameFromSiteDB
-import sys
-
-config = config()
-
-
-#**************************submit function***********************
 from CRABAPI.RawCommand import crabCommand
 from CRABClient.ClientExceptions import ClientException
 from httplib import HTTPException
+
+from datetime import date
+
 def submit(config):
-	try:
-		crabCommand('submit', config = config)
-	except HTTPException as hte:
-		print "Failed submitting task: %s" % (hte.headers)
-	except ClientException as cle:
-		print "Failed submitting task: %s" % (cle)
-#****************************************************************
+    try:
+        crabCommand('submit', config = config)
+    except HTTPException as hte:
+        print "Failed submitting task: %s" % (hte.headers)
+    except ClientException as cle:
+        print "Failed submitting task: %s" % (cle)
 
 
 workarea='#workarea'
@@ -38,6 +33,7 @@ config.Site.blacklist = [#blacklist]
 
 config.JobType.psetName  = '#psetname'
 config.JobType.pluginName  = 'Analysis'
+config.JobType.inputFiles = '#prefiringweights'
 
 
 config.Data.inputDBS = '#inputDBS'

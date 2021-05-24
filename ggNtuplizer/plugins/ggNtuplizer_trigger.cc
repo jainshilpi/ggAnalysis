@@ -7,21 +7,6 @@ using namespace std;
 //// https://cmssdt.cern.ch/lxr/source/HLTrigger/Configuration/python/HLT_FULL_cff.py
 //// https://cmssdt.cern.ch/lxr/source/HLTrigger/Configuration/python/HLT_GRun_cff.py
 
-// Store HLT_Photon200_v* and HLT_Photon175_v* objects
-UChar_t         ntrgObjPho_;
-vector<UChar_t> trgObjPhoBits_;
-vector<Float_t> trgObjPhoPt_;
-vector<Float_t> trgObjPhoEta_;
-vector<Float_t> trgObjPhoPhi_;
-
-void ggNtuplizer::branchesTrigObjPho(TTree* tree) {
-    tree->Branch("ntrgObjPho",                    &ntrgObjPho_);
-    tree->Branch("trgObjPhoBits",                    &trgObjPhoBits_);
-    tree->Branch("trgObjPhoPt",                    &trgObjPhoPt_);
-    tree->Branch("trgObjPhoEta",                    &trgObjPhoEta_);
-    tree->Branch("trgObjPhoPhi",                    &trgObjPhoPhi_);
-};
-
 // local variables: per-filter per-electron/muon/photon/jet arrays of matched trigger objects
 // NOTE: number of elements in the arrays equals sizeof(ULong64_t)
 vector<float> trgSingleElePt[64], trgSingleEleEta[64], trgSingleElePhi[64];
@@ -33,15 +18,164 @@ vector<float> trgMuPt[64],  trgMuEta[64],  trgMuPhi[64];
 vector<float> trgJetPt[64], trgJetEta[64], trgJetPhi[64];
 vector<float> trgL1Eta[64],  trgL1Phi[64];
 
+
+const std::vector<std::string>    muTriggerPaths2016 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2016#Recommended_trigger_paths_for_20
+    "HLT_IsoMu24_v*",                            //0
+    "HLT_IsoTkMu24_v*",                          //1
+    "HLT_Mu50_v*",                               //2
+    "HLT_TkMu50_v*",                             //3
+    "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v*",       //4
+    "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v*",     //5
+    "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v*",   //6
+    "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*",    //7
+    "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*",  //8
+    "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*",//9
+};
+
+const std::vector<std::string>    muTriggerPaths2017 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2017#Recommendations_for_2017_data_an
+    "HLT_IsoMu27_v*",                                 //0
+    "HLT_Mu50_v*",                                    //1
+    "HLT_OldMu100_v*",                                //2
+    "HLT_TkMu100_v*",                                 //3
+    "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*", //4
+    "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v*",   //5
+};
+
+const std::vector<std::string>    muTriggerPaths2018 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2018#Recommended_trigger_paths_for_20
+    "HLT_IsoMu24_v*",                                 //0
+    "HLT_Mu50_v*",                                    //1
+    "HLT_OldMu100_v*",                                //2
+    "HLT_TkMu100_v*",                                 //3
+    "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*", //4
+};
+
+const std::vector<std::string>    phoTriggerPaths2016 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary#Short_Summary_Recommended_Trigge
+    "HLT_Ele27_WPTight_Gsf_v*",                         // 0
+    "HLT_Ele25_eta2p1_WPTight_Gsf_v*",                  // 1
+    "HLT_Ele115_CaloIdVT_GsfTrkIdT_v*",                 // 2
+    "HLT_Photon175_v*",                                 // 3
+    "HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v*", // 4
+    "HLT_Photon175_v*",                                 // 5
+    "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*",         // 6
+    "HLT_Photon175_v*",                                 // 7
+    "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*",     // 8
+    "HLT_DoubleEle33_CaloIdL_MW_v*",                    // 9
+    "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*",            // 10
+    "HLT_DoubleEle33_CaloIdL_MW_v*",                    // 11
+    "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v*",      // 12
+    "DoubleEle37_CaloIdL_GsfTrackIdVL_v*",              // 13
+    "HLT_DoublePhoton60_v*",                            // 14
+};
+
+const std::vector<std::string>    phoTriggerPaths2017 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary#Short_Summary_Recommended_Trigge
+    // https://indico.cern.ch/event/662751/contributions/2778365/attachments/1561439/2458438/egamma_workshop_triggerTalk.pdf
+    // https://github.com/GhentAnalysis/heavyNeutrino/blob/0ac0591cea7a323356e5cc367c65213dbf1cfa44/multilep/src/TriggerAnalyzer.cc#L195-L215
+    // https://github.com/Sam-Harper/usercode/blob/106XNtup/TrigTools/plugins/Ele32DoubleL1ToSingleL1Example.cc#L113
+    "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*",      // 0
+    "hltL1sSingleEGor",                         // 1
+    "hltEGL1SingleEGOrFilter",                  // 2
+    "HLT_Ele35_WPTight_Gsf_v*",                 // 3
+    "HLT_Ele35_WPTight_Gsf_v*",                 // 4
+    "HLT_Ele27_WPTight_Gsf_v*",                 // 5
+    "HLT_Ele32_WPTight_Gsf_v*",                 // 6
+    "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*",      // 7
+    "HLT_Ele115_CaloIdVT_GsfTrkIdT_v*",         // 8
+    "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*", // 9
+    "HLT_Photon200_v*",                         // 10
+    "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*",// 11
+    "HLT_DoubleEle33_CaloIdL_MW_v*",            // 12
+    "HLT_DoubleEle25_CaloIdL_MW_v*",            // 13
+    "HLT_DiEle27_WPTightCaloOnly_L1DoubleEG_v*",// 14
+    "HLT_DoublePhoton70_v*",                    // 15
+};
+
+const std::vector<std::string>    phoTriggerPaths2018 = {
+    // https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary#Short_Summary_Recommended_Trigge
+    "HLT_Ele32_WPTight_Gsf_v*",                  //0
+    "HLT_Ele115_CaloIdVT_GsfTrkIdT_v*",          //1
+    "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*",  //2
+    "HLT_Photon200_v*",                          //3
+    "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*", //4
+    "HLT_DoubleEle25_CaloIdL_MW_v*",             //5
+    "HLT_DiEle27_WPTightCaloOnly_L1DoubleEG_v*", //6
+    "HLT_DoublePhoton70_v*"                      //7
+};
+
+
+UChar_t         ntrgObjMu_;
+vector<Float_t> trgObjMuPt_;
+vector<Float_t> trgObjMuEta_;
+vector<Float_t> trgObjMuPhi_;
+vector<Float_t> trgObjMuE_;
+vector<UInt_t>  trgObjMuBits1_;
+vector<UInt_t>  trgObjMuBits2_;
+vector<UInt_t>  trgObjMuBits3_;
+vector<UInt_t>  trgObjMuBits4_;
+
+
+
+UChar_t         ntrgObjPho_;
+vector<Float_t> trgObjPhoPt_;
+vector<Float_t> trgObjPhoEta_;
+vector<Float_t> trgObjPhoPhi_;
+vector<Float_t> trgObjPhoE_;
+vector<UInt_t>  trgObjPhoBits1_;
+vector<UInt_t>  trgObjPhoBits2_;
+vector<UInt_t>  trgObjPhoBits3_;
+vector<UInt_t>  trgObjPhoBits4_;
+
+void ggNtuplizer::branchesTrigObj(TTree* tree) {
+
+    tree->Branch("ntrgObjMu",                    &ntrgObjMu_);
+    tree->Branch("trgObjMuPt",                    &trgObjMuPt_);
+    tree->Branch("trgObjMuEta",                    &trgObjMuEta_);
+    tree->Branch("trgObjMuPhi",                    &trgObjMuPhi_);
+    tree->Branch("trgObjMuE",                    &trgObjMuE_);
+    tree->Branch("trgObjMuBits1",                    &trgObjMuBits1_);
+    tree->Branch("trgObjMuBits2",                    &trgObjMuBits2_);
+    tree->Branch("trgObjMuBits3",                    &trgObjMuBits3_);
+    tree->Branch("trgObjMuBits4",                    &trgObjMuBits4_);
+
+    tree->Branch("ntrgObjPho",                    &ntrgObjPho_);
+    tree->Branch("trgObjPhoPt",                    &trgObjPhoPt_);
+    tree->Branch("trgObjPhoEta",                    &trgObjPhoEta_);
+    tree->Branch("trgObjPhoPhi",                    &trgObjPhoPhi_);
+    tree->Branch("trgObjPhoE",                    &trgObjPhoE_);
+    tree->Branch("trgObjPhoBits1",                    &trgObjPhoBits1_);
+    tree->Branch("trgObjPhoBits2",                    &trgObjPhoBits2_);
+    tree->Branch("trgObjPhoBits3",                    &trgObjPhoBits3_);
+    tree->Branch("trgObjPhoBits4",                    &trgObjPhoBits4_);
+};
+
+
+
 void ggNtuplizer::initTriggerFilters(const edm::Event &e) {
-    // Fills the arrays above.
-    // cleanup from previous execution
+
+    ntrgObjMu_ = 0;
+    trgObjMuPt_.clear();
+    trgObjMuEta_.clear();
+    trgObjMuPhi_.clear();
+    trgObjMuE_.clear();
+    trgObjMuBits1_.clear();
+    trgObjMuBits2_.clear();
+    trgObjMuBits3_.clear();
+    trgObjMuBits4_.clear();
+
 
     ntrgObjPho_ = 0;
-    trgObjPhoBits_.clear();
     trgObjPhoPt_.clear();
     trgObjPhoEta_.clear();
     trgObjPhoPhi_.clear();
+    trgObjPhoE_.clear();
+    trgObjPhoBits1_.clear();
+    trgObjPhoBits2_.clear();
+    trgObjPhoBits3_.clear();
+    trgObjPhoBits4_.clear();
 
 
     for (size_t i = 0; i < 64; ++i) {
@@ -80,8 +214,8 @@ void ggNtuplizer::initTriggerFilters(const edm::Event &e) {
     static std::map<string,size_t> jetFilters;
     static std::map<string,size_t> l1Filters;
 
-// one-time initialization
     if (eleSingleFilters.size() == 0) {
+        // one-time initialization
         eleSingleFilters["hltEle27WPLooseGsfTrackIsoFilter"] = 0;
         eleSingleFilters["hltEle25WP60SC4HcalIsoFilter"] = 1;
         // for HLT_Ele23_WPLoose_Gsf_v and EventTree
@@ -271,20 +405,16 @@ void ggNtuplizer::initTriggerFilters(const edm::Event &e) {
         //triple photon filter
         phoTripleFilters["hltEG20CaloIdLV2ClusterShapeL1TripleEGFilter"]         = 0;  //1st leg of TriplePho20_Calo
         phoTripleFilters["hltTriEG20CaloIdLV2ClusterShapeUnseededFilter"]        = 1;  //3rd leg of TriplePho20_Calo
-
         phoTripleFilters["hltEG20CaloIdLV2R9IdVLR9IdL1TripleEGFilter"]           = 2;  //1st leg of TriplePho20_Calo_R9
         phoTripleFilters["hltTriEG20CaloIdLV2R9IdVLR9IdUnseededFilter"]          = 3;  //3rd leg of TriplePho20_Calo_R9
-
         phoTripleFilters["hltEG30CaloIdLV2ClusterShapeL1TripleEGFilter"]         = 4;  //1st leg Seeded_30 of TriplePho30_30_10_Calo
         phoTripleFilters["hltEG10CaloIdLV2ClusterShapeUnseededFilter"]           = 5;  //1st leg UnSeeded_10 of TriplePho30_30_10_Calo
         phoTripleFilters["hltDiEG30CaloIdLV2EtUnseededFilter"]                   = 6;  //2nd leg UnSeeded_30 of TriplePho30_30_10_Calo
         phoTripleFilters["hltDiEG30TriEG10CaloIdLV2EtUnseededFilter"]            = 7;  //3 legs of TriplePho30_30_10_Calo (last filter)
-
         phoTripleFilters["hltEG30CaloIdLV2R9IdVLR9IdL1TripleEGFilter"]           = 8;  //1st leg Seeded_30 of TriplePho30_30_10_Calo_R9
         phoTripleFilters["hltEG10CaloIdLV2R9IdVLR9IdUnseededFilter"]             = 9;  //1st leg UnSeeded_10 of TriplePho30_30_10_Calo_R9
         phoTripleFilters["hltDiEG30CaloIdLV2R9IdVLEtUnseededFilter"]             = 10; //2nd leg UnSeeded_30 of TriplePho30_30_10_Calo_R9
         phoTripleFilters["hltDiEG30TriEG10HECaloIdV2R9IdVLEtUnseededFilter"]     = 11; //3 legs of TriplePho30_30_10_Calo_R9 (last filter)
-
         phoTripleFilters["hltEG35CaloIdLV2R9IdVLR9IdL1TripleEGFilter"]           = 12; //1st leg Seeded_35 of TriplePho35_35_5_Calo_R9
         phoTripleFilters["hltEG5CaloIdLV2R9IdVLR9IdUnseededFilter"]              = 13; //1st leg UnSeeded_5 of TriplePho35_35_5_Calo_R9
         phoTripleFilters["hltDiEG35CaloIdLV2R9IdVLEtUnseededFilter"]             = 14; //2nd leg UnSeeded_35 of TriplePho35_35_5_Calo_R9
@@ -353,18 +483,64 @@ void ggNtuplizer::initTriggerFilters(const edm::Event &e) {
 
         obj.unpackPathNames(e.triggerNames(*trgResultsHandle));
 
-        UChar_t passHLTPhoton200 = 0;
-        if (obj.hasPathName("HLT_Photon200_v*", 1, 1)) setbit(passHLTPhoton200, 0);
-        if (obj.hasPathName("HLT_Photon200_v*", 1, 0)) setbit(passHLTPhoton200, 1);
-        // if(obj.hasPathName("HLT_Photon200_v*", 0, 1)) setbit(passHLTPhoton200, 2);
-        // if(obj.hasPathName("HLT_Photon200_v*", 0, 0)) setbit(passHLTPhoton200, 3);
+        //// https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolCERN2020TriggerShortExercise#Exercise_3_Accessing_trigger_obj
 
-        if (passHLTPhoton200) {
+        UInt_t triggerBits1 = 0;
+        UInt_t triggerBits2 = 0;
+        UInt_t triggerBits3 = 0;
+        UInt_t triggerBits4 = 0;
+
+        const std::vector<std::string>* muTriggerPathsForYear = nullptr;
+        if (year_ == 2016) muTriggerPathsForYear = &muTriggerPaths2016;
+        else if (year_ == 2017) muTriggerPathsForYear = &muTriggerPaths2017;
+        else if (year_ == 2018) muTriggerPathsForYear = &muTriggerPaths2018;
+        if (muTriggerPathsForYear) {
+            for (UInt_t iMuTrgPath = 0; iMuTrgPath < muTriggerPathsForYear->size(); iMuTrgPath++) {
+                if (obj.hasPathName(muTriggerPathsForYear->at(iMuTrgPath), 1, 1)) setbit(triggerBits1, iMuTrgPath);
+                if (obj.hasPathName(muTriggerPathsForYear->at(iMuTrgPath), 1, 0)) setbit(triggerBits2, iMuTrgPath);
+                if (obj.hasPathName(muTriggerPathsForYear->at(iMuTrgPath), 0, 1)) setbit(triggerBits3, iMuTrgPath);
+                if (obj.hasPathName(muTriggerPathsForYear->at(iMuTrgPath), 0, 0)) setbit(triggerBits4, iMuTrgPath);
+            }
+        }
+        if (triggerBits1 || triggerBits2 || triggerBits3 || triggerBits4) {
+            ntrgObjMu_++;
+            trgObjMuBits1_.push_back(triggerBits1);
+            trgObjMuBits2_.push_back(triggerBits2);
+            trgObjMuBits3_.push_back(triggerBits3);
+            trgObjMuBits4_.push_back(triggerBits4);
+            trgObjMuPt_.push_back(obj.pt());
+            trgObjMuEta_.push_back(obj.eta());
+            trgObjMuPhi_.push_back(obj.phi());
+            trgObjMuE_.push_back(obj.energy());
+
+        }
+
+        const std::vector<std::string>* phoTriggerPathsForYear = nullptr;
+        if (year_ == 2016) phoTriggerPathsForYear = &phoTriggerPaths2016;
+        else if (year_ == 2017) phoTriggerPathsForYear = &phoTriggerPaths2017;
+        else if (year_ == 2018) phoTriggerPathsForYear = &phoTriggerPaths2018;
+        triggerBits1 = 0;
+        triggerBits2 = 0;
+        triggerBits3 = 0;
+        triggerBits4 = 0;
+        if (phoTriggerPathsForYear) {
+            for (UInt_t iPhoTrgPath = 0; iPhoTrgPath < phoTriggerPathsForYear->size(); iPhoTrgPath++) {
+                if (obj.hasPathName(phoTriggerPathsForYear->at(iPhoTrgPath), 1, 1)) setbit(triggerBits1, iPhoTrgPath);
+                if (obj.hasPathName(phoTriggerPathsForYear->at(iPhoTrgPath), 1, 0)) setbit(triggerBits2, iPhoTrgPath);
+                if (obj.hasPathName(phoTriggerPathsForYear->at(iPhoTrgPath), 0, 1)) setbit(triggerBits3, iPhoTrgPath);
+                if (obj.hasPathName(phoTriggerPathsForYear->at(iPhoTrgPath), 0, 0)) setbit(triggerBits4, iPhoTrgPath);
+            }
+        }
+        if (triggerBits1 || triggerBits2 || triggerBits3 || triggerBits4) {
             ntrgObjPho_++;
-            trgObjPhoBits_.push_back(passHLTPhoton200);
+            trgObjPhoBits1_.push_back(triggerBits1);
+            trgObjPhoBits2_.push_back(triggerBits2);
+            trgObjPhoBits3_.push_back(triggerBits3);
+            trgObjPhoBits4_.push_back(triggerBits4);
             trgObjPhoPt_.push_back(obj.pt());
             trgObjPhoEta_.push_back(obj.eta());
             trgObjPhoPhi_.push_back(obj.phi());
+            trgObjPhoE_.push_back(obj.energy());
 
         }
 

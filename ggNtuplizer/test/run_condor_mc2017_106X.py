@@ -48,17 +48,6 @@ process.TFileService = cms.Service("TFileService", fileName=cms.string(options.o
 
 
 ##########################################################################
-# ECAL prefiring correction
-from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
-process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
-    DataEra=cms.string("2017BtoF"),
-    UseJetEMPt=cms.bool(False),
-    PrefiringRateSystematicUncty=cms.double(0.2),
-    SkipWarnings=False)
-##########################################################################
-
-
-##########################################################################
 from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
@@ -138,6 +127,22 @@ process.puppiNoLep.useExistingWeights = True
 process.puppi.useExistingWeights = True
 ##########################################################################
 
+
+##########################################################################
+# ECAL prefiring correction
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Call_the_producer_in_your_config
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Accessing_the_UL2017_maps
+from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
+process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
+    TheJets = cms.InputTag("selectedPatJetsAK4PFCHSupdated"), 
+    L1Maps = cms.string("L1PrefiringMaps.root"),
+    DataEra=cms.string("2017BtoF"),
+    UseJetEMPt=cms.bool(False),
+    PrefiringRateSystematicUncty=cms.double(0.2),
+    SkipWarnings=False)
+##########################################################################
+
+
 ##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 
@@ -205,14 +210,14 @@ process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAO
 
 ##########################################################################
 process.p = cms.Path(
-    process.prefiringweight *
-    process.ecalBadCalibReducedMINIAODFilter *
     process.puppiMETSequence *
     process.fullPatMetSequencePuppi *
     process.fullPatMetSequenceModifiedPFMET *
     process.egammaPostRecoSeq *
     process.rerunMvaIsolationSequence *
     getattr(process,updatedTauName) *
+    process.prefiringweight *
+    process.ecalBadCalibReducedMINIAODFilter *
     process.ggNtuplizer
 )
 
