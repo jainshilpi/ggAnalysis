@@ -155,7 +155,12 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
   HLTMetFWjetIsPrescaled_ = 0;
 
   for (size_t i = 0; i < trgNames.size(); i++) {
+
     const string &name = trgNames.triggerName(i);
+
+    ULong64_t isPrescaled = (hltCfg.prescaleValue(prescaleSet, name)!=1) ? 1 : 0;
+    ULong64_t isFired     = (trgResultsHandle->accept(i)) ? 1 : 0;
+    ULong64_t isrejectedByHLTPS = (hltCfg.moduleType(hltCfg.moduleLabel(i,trgResultsHandle->index(i)))=="HLTPrescaler") ? 1: 0;
 
     int bitMu       = -1;
     int bitPho      = -1;
@@ -169,11 +174,24 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
       }
     }
 
+    if (bitMu >= 0) {
+      HLTMuX_            |= (isFired << bitMu);
+      HLTMuXIsPrescaled_ |= (isPrescaled << bitMu);
+      continue;
+    }
+
     for (UInt_t iTrigPath = 0; iTrigPath < phoTriggerPathsRunII.size(); iTrigPath++) {
       if (name.find(phoTriggerPathsRunII[iTrigPath])!= string::npos) {
         bitPho =  iTrigPath;
         break;
       }
+    }
+
+    if (bitPho >= 0) {
+      HLTPho_            |= (isFired << bitPho);
+      HLTPhoIsPrescaled_ |= (isPrescaled << bitPho);
+      HLTPhoRejectedByPS_|= (isrejectedByHLTPS << bitPho);
+      continue;
     }
 
     for (UInt_t iTrigPath = 0; iTrigPath < jetTriggerPathsRunII.size(); iTrigPath++) {
@@ -183,6 +201,12 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
       }
     }
 
+    if (bitJet >= 0) {
+      HLTJet_            |= (isFired << bitJet);
+      HLTJetIsPrescaled_ |= (isPrescaled << bitJet);
+      continue;
+    }
+
     for (UInt_t iTrigPath = 0; iTrigPath < metFWjetTriggerPathsRunII.size(); iTrigPath++) {
       if (name.find(metFWjetTriggerPathsRunII[iTrigPath])!= string::npos) {
         bitMetFwjet =  iTrigPath;
@@ -190,25 +214,11 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
       }
     }
 
-    ULong64_t isPrescaled = (hltCfg.prescaleValue(prescaleSet, name)!=1) ? 1 : 0;
-    ULong64_t isFired     = (trgResultsHandle->accept(i)) ? 1 : 0;
-    ULong64_t isrejectedByHLTPS = (hltCfg.moduleType(hltCfg.moduleLabel(i,trgResultsHandle->index(i)))=="HLTPrescaler") ? 1: 0;
-
-    if (bitMu >= 0) {
-      HLTMuX_            |= (isFired << bitMu);
-      HLTMuXIsPrescaled_ |= (isPrescaled << bitMu);
-    } else if (bitPho >= 0) {
-      HLTPho_            |= (isFired << bitPho);
-      HLTPhoIsPrescaled_ |= (isPrescaled << bitPho);
-      HLTPhoRejectedByPS_|= (isrejectedByHLTPS << bitPho);
-    } else if (bitJet >= 0) {
-      HLTJet_            |= (isFired << bitJet);
-      HLTJetIsPrescaled_ |= (isPrescaled << bitJet);
-    } else if (bitMetFwjet >= 0) {
+    if (bitMetFwjet >= 0) {
       HLTMetFWjet_            |= (isFired << bitMetFwjet);
       HLTMetFWjetIsPrescaled_ |= (isPrescaled << bitMetFwjet);
+      continue;
     }
-
   }
 
   if (getECALprefiringWeights_) {
