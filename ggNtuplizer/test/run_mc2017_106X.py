@@ -112,6 +112,8 @@ process.puppi.useExistingWeights = True
 # ECAL prefiring correction
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Call_the_producer_in_your_config
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Accessing_the_UL2017_maps
+# https://github.com/cms-sw/cmssw/blob/CMSSW_10_6_X/PhysicsTools/PatUtils/plugins/L1ECALPrefiringWeightProducer.cc
+# https://github.com/cms-sw/cmssw-cfipython/blob/371ab6d166e50056cb14b4dc03b5876eb5fa5940/PhysicsTools/PatUtils/l1ECALPrefiringWeightProducer_cfi.py
 from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
 process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
     TheJets = cms.InputTag("selectedPatJetsAK4PFCHSupdated"), 

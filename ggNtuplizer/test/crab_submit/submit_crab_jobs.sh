@@ -6,7 +6,7 @@ input_datasets=${scriptDir}/"mc_UL_2017.txt"
 jobsetName=jobsUL2017v1
 
 writedir=${scriptDir}/jobs//${jobsetName}/
-testDir=$(readlink -f ${scriptDir}"/..")
+testDir=$(readlink -f ${scriptDir}"/../")
 psetname=${testDir}"/run_mc2017_106X.py"
 writeSite="T2_US_Wisconsin"
 # mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}

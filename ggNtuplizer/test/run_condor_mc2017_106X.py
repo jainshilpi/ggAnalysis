@@ -135,7 +135,7 @@ process.puppi.useExistingWeights = True
 from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
 process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
     TheJets = cms.InputTag("selectedPatJetsAK4PFCHSupdated"), 
-    L1Maps = cms.string("L1PrefiringMaps.root"),
+    L1Maps = cms.string("root://cmsxrootd.fnal.gov//store/user/mwadud/aNTGC/ECALL1Prefiring/L1PrefiringMaps.root"),
     DataEra=cms.string("2017BtoF"),
     UseJetEMPt=cms.bool(False),
     PrefiringRateSystematicUncty=cms.double(0.2),
