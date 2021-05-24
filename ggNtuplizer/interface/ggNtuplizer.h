@@ -171,25 +171,25 @@ const std::vector<std::string>    metFWjetTriggerPathsRunII = {
 
   // https://twiki.cern.ch/twiki/bin/view/CMS/JetMETPathsRun2
 
-  "HLT_PFJetFwd140_v",
-  "HLT_PFJetFwd200_v",
-  "HLT_PFJetFwd25_v",
-  "HLT_PFJetFwd260_v",
-  "HLT_PFJetFwd320_v",
-  "HLT_PFJetFwd400_v",
-  "HLT_PFJetFwd40_v",
-  "HLT_PFJetFwd450_v",
-  "HLT_PFJetFwd500_v",
-  "HLT_PFJetFwd60_v",
-  "HLT_PFJetFwd80_v",
-  "HLT_PFMET170_NoiseCleanedHLT_PFMET170_JetIdCleanedHLT_PFMET170_BeamHaloCleaned_v",
-  "HLT_PFMET170_NotCleaned_v",
-  "HLT_PFMET200_HBHE_BeamHaloCleaned_v",
-  "HLT_PFMET200_HBHECleaned_v",
-  "HLT_PFMET200_NotCleaned_v",
-  "HLT_PFMET250_HBHECleaned_v",
-  "HLT_PFMET300_HBHECleaned_v",
-  "HLT_PFMETTypeOne200_HBHE_BeamHaloCleaned_v",
+  "HLT_PFJetFwd140_v",                                                                //0
+  "HLT_PFJetFwd200_v",                                                                //1
+  "HLT_PFJetFwd25_v",                                                                 //2
+  "HLT_PFJetFwd260_v",                                                                //3
+  "HLT_PFJetFwd320_v",                                                                //4
+  "HLT_PFJetFwd400_v",                                                                //5
+  "HLT_PFJetFwd40_v",                                                                 //6
+  "HLT_PFJetFwd450_v",                                                                //7
+  "HLT_PFJetFwd500_v",                                                                //8
+  "HLT_PFJetFwd60_v",                                                                 //9
+  "HLT_PFJetFwd80_v",                                                                 //10
+  "HLT_PFMET170_NoiseCleanedHLT_PFMET170_JetIdCleanedHLT_PFMET170_BeamHaloCleaned_v", //11
+  "HLT_PFMET170_NotCleaned_v",                                                        //12
+  "HLT_PFMET200_HBHE_BeamHaloCleaned_v",                                              //13
+  "HLT_PFMET200_HBHECleaned_v",                                                       //14
+  "HLT_PFMET200_NotCleaned_v",                                                        //15
+  "HLT_PFMET250_HBHECleaned_v",                                                       //16
+  "HLT_PFMET300_HBHECleaned_v",                                                       //17
+  "HLT_PFMETTypeOne200_HBHE_BeamHaloCleaned_v",                                       //18
 };
 
 

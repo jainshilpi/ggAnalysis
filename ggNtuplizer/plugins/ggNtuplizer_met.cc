@@ -54,6 +54,7 @@ Float_t puppiMET_metSigxy_;
 Float_t puppiMET_metSigyy_;
 Float_t puppiMET_SumEt_;
 
+// https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETOptionalFiltersRun2#UL_data
 const std::vector<std::string> filterNamesToCheck = {
     "Flag_goodVertices",
     "Flag_globalSuperTightHalo2016Filter",
@@ -150,20 +151,20 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
     edm::Handle<edm::View<pat::MET> > puppiMETHandle;
     e.getByToken(puppiMETlabel_, puppiMETHandle);
 
-    genMET_    = -99;
-    genMETPhi_ = -99;
+    genMET_                  = -99;
+    genMETPhi_               = -99;
 
-    pfMET_     = -99;
-    pfMETPhi_  = -99;
-    pfMET_Corr_     = -99;
-    pfMETPhi_Corr_  = -99;
+    pfMET_                   = -99;
+    pfMETPhi_                = -99;
+    pfMET_Corr_              = -99;
+    pfMETPhi_Corr_           = -99;
 
-    puppiMET_     = -99;
-    puppiMETPhi_  = -99;
-    puppiMET_Corr_     = -99;
-    puppiMETPhi_Corr_  = -99;
+    puppiMET_                = -99;
+    puppiMETPhi_             = -99;
+    puppiMET_Corr_           = -99;
+    puppiMETPhi_Corr_        = -99;
 
-    const pat::MET *pfMET = &(pfMETHandle->front());
+    const pat::MET *pfMET    = &(pfMETHandle->front());
 
     const pat::MET *puppiMET = &(puppiMETHandle->front());
 
@@ -179,99 +180,91 @@ void ggNtuplizer::fillMET(const edm::Event& e, const edm::EventSetup& es) {
 
     //// https://twiki.cern.ch/twiki/bin/viewauth/CMS/MissingETRun2Corrections
     if (pfMETHandle.isValid()) {
-        pfMET_    = pfMET->et();
-        pfMETPhi_ = pfMET->phi();
+        pfMET_             = pfMET->et();
+        pfMETPhi_          = pfMET->phi();
 
         if (e.isRealData())  {
-            pfMET_Corr_         = pfMET->corPt(pat::MET::Type1);
-            pfMETPhi_Corr_      = pfMET->corPhi(pat::MET::Type1);
-
-            pfMET_JERUp_        = pfMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1);
-            pfMET_JERDo_        = pfMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1);
-            pfMET_JESUp_        = pfMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1);
-            pfMET_JESDo_        = pfMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1);
-            pfMET_UESUp_        = pfMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1);
-            pfMET_UESDo_        = pfMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1);
-
-            pfMETPhi_JERUp_     = pfMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1);
-            pfMETPhi_JERDo_     = pfMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1);
-            pfMETPhi_JESUp_     = pfMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1);
-            pfMETPhi_JESDo_     = pfMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1);
-            pfMETPhi_UESUp_     = pfMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1);
-            pfMETPhi_UESDo_     = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1);
-            pfMET_SumEt_ = pfMET->corSumEt(pat::MET::Type1);
+            pfMET_Corr_        = pfMET->corPt(pat::MET::Type1);
+            pfMETPhi_Corr_     = pfMET->corPhi(pat::MET::Type1);
+            pfMET_JERUp_       = pfMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1);
+            pfMET_JERDo_       = pfMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1);
+            pfMET_JESUp_       = pfMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1);
+            pfMET_JESDo_       = pfMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1);
+            pfMET_UESUp_       = pfMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1);
+            pfMET_UESDo_       = pfMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1);
+            pfMETPhi_JERUp_    = pfMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1);
+            pfMETPhi_JERDo_    = pfMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1);
+            pfMETPhi_JESUp_    = pfMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1);
+            pfMETPhi_JESDo_    = pfMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1);
+            pfMETPhi_UESUp_    = pfMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1);
+            pfMETPhi_UESDo_    = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1);
+            pfMET_SumEt_       = pfMET->corSumEt(pat::MET::Type1);
 
         } else {
-            pfMET_Corr_         = pfMET->corPt(pat::MET::Type1Smear);
-            pfMETPhi_Corr_      = pfMET->corPhi(pat::MET::Type1Smear);
-
-            pfMET_JERUp_        = pfMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1Smear);
-            pfMET_JERDo_        = pfMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1Smear);
-            pfMET_JESUp_        = pfMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1Smear);
-            pfMET_JESDo_        = pfMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1Smear);
-            pfMET_UESUp_        = pfMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
-            pfMET_UESDo_        = pfMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
-
-            pfMETPhi_JERUp_     = pfMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1Smear);
-            pfMETPhi_JERDo_     = pfMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1Smear);
-            pfMETPhi_JESUp_     = pfMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1Smear);
-            pfMETPhi_JESDo_     = pfMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1Smear);
-            pfMETPhi_UESUp_     = pfMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
-            pfMETPhi_UESDo_     = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
-            pfMET_SumEt_ = pfMET->corSumEt(pat::MET::Type1Smear);
+            pfMET_Corr_        = pfMET->corPt(pat::MET::Type1Smear);
+            pfMETPhi_Corr_     = pfMET->corPhi(pat::MET::Type1Smear);
+            pfMET_JERUp_       = pfMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1Smear);
+            pfMET_JERDo_       = pfMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1Smear);
+            pfMET_JESUp_       = pfMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1Smear);
+            pfMET_JESDo_       = pfMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1Smear);
+            pfMET_UESUp_       = pfMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
+            pfMET_UESDo_       = pfMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
+            pfMETPhi_JERUp_    = pfMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1Smear);
+            pfMETPhi_JERDo_    = pfMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1Smear);
+            pfMETPhi_JESUp_    = pfMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1Smear);
+            pfMETPhi_JESDo_    = pfMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1Smear);
+            pfMETPhi_UESUp_    = pfMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
+            pfMETPhi_UESDo_    = pfMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
+            pfMET_SumEt_       = pfMET->corSumEt(pat::MET::Type1Smear);
         }
 
-        pfMET_metSig_   = pfMET->significance();
-        pfMET_EtSig_    = pfMET->mEtSig();
+        pfMET_metSig_      = pfMET->significance();
+        pfMET_EtSig_       = pfMET->mEtSig();
 
-        pfMET_metSigxx_ = pfMET->getSignificanceMatrix()(0,0);
-        pfMET_metSigxy_ = pfMET->getSignificanceMatrix()(0,1);
-        pfMET_metSigyy_ = pfMET->getSignificanceMatrix()(1,1);
+        pfMET_metSigxx_    = pfMET->getSignificanceMatrix()(0,0);
+        pfMET_metSigxy_    = pfMET->getSignificanceMatrix()(0,1);
+        pfMET_metSigyy_    = pfMET->getSignificanceMatrix()(1,1);
     }
 
     if (puppiMETHandle.isValid()) {
 
-        puppiMET_    = puppiMET->et();
-        puppiMETPhi_ = puppiMET->phi();
+        puppiMET_          = puppiMET->et();
+        puppiMETPhi_       = puppiMET->phi();
 
         if (e.isRealData())  {
 
-            puppiMET_Corr_         = puppiMET->corPt(pat::MET::Type1);
-            puppiMETPhi_Corr_      = puppiMET->corPhi(pat::MET::Type1);
-
-            puppiMET_JERUp_        = puppiMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1);
-            puppiMET_JERDo_        = puppiMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1);
-            puppiMET_JESUp_        = puppiMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1);
-            puppiMET_JESDo_        = puppiMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1);
-            puppiMET_UESUp_        = puppiMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1);
-            puppiMET_UESDo_        = puppiMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1);
-
-            puppiMETPhi_JERUp_     = puppiMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1);
-            puppiMETPhi_JERDo_     = puppiMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1);
-            puppiMETPhi_JESUp_     = puppiMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1);
-            puppiMETPhi_JESDo_     = puppiMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1);
-            puppiMETPhi_UESUp_     = puppiMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1);
-            puppiMETPhi_UESDo_     = puppiMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1);
-            puppiMET_SumEt_ = puppiMET->corSumEt(pat::MET::Type1);
+            puppiMET_Corr_     = puppiMET->corPt(pat::MET::Type1);
+            puppiMETPhi_Corr_  = puppiMET->corPhi(pat::MET::Type1);
+            puppiMET_JERUp_    = puppiMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1);
+            puppiMET_JERDo_    = puppiMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1);
+            puppiMET_JESUp_    = puppiMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1);
+            puppiMET_JESDo_    = puppiMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1);
+            puppiMET_UESUp_    = puppiMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1);
+            puppiMET_UESDo_    = puppiMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1);
+            puppiMETPhi_JERUp_ = puppiMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1);
+            puppiMETPhi_JERDo_ = puppiMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1);
+            puppiMETPhi_JESUp_ = puppiMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1);
+            puppiMETPhi_JESDo_ = puppiMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1);
+            puppiMETPhi_UESUp_ = puppiMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1);
+            puppiMETPhi_UESDo_ = puppiMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1);
+            puppiMET_SumEt_    = puppiMET->corSumEt(pat::MET::Type1);
         } else {
 
-            puppiMET_Corr_         = puppiMET->corPt(pat::MET::Type1Smear);
-            puppiMETPhi_Corr_      = puppiMET->corPhi(pat::MET::Type1Smear);
-
-            puppiMET_JERUp_        = puppiMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1Smear);
-            puppiMET_JERDo_        = puppiMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1Smear);
-            puppiMET_JESUp_        = puppiMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1Smear);
-            puppiMET_JESDo_        = puppiMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1Smear);
-            puppiMET_UESUp_        = puppiMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
-            puppiMET_UESDo_        = puppiMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
-
-            puppiMETPhi_JERUp_     = puppiMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1Smear);
-            puppiMETPhi_JERDo_     = puppiMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1Smear);
-            puppiMETPhi_JESUp_     = puppiMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1Smear);
-            puppiMETPhi_JESDo_     = puppiMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1Smear);
-            puppiMETPhi_UESUp_     = puppiMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
-            puppiMETPhi_UESDo_     = puppiMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
-            puppiMET_SumEt_ = puppiMET->corSumEt(pat::MET::Type1Smear);
+            puppiMET_Corr_     = puppiMET->corPt(pat::MET::Type1Smear);
+            puppiMETPhi_Corr_  = puppiMET->corPhi(pat::MET::Type1Smear);
+            puppiMET_JERUp_    = puppiMET->shiftedPt(pat::MET::JetResUp, pat::MET::Type1Smear);
+            puppiMET_JERDo_    = puppiMET->shiftedPt(pat::MET::JetResDown, pat::MET::Type1Smear);
+            puppiMET_JESUp_    = puppiMET->shiftedPt(pat::MET::JetEnUp, pat::MET::Type1Smear);
+            puppiMET_JESDo_    = puppiMET->shiftedPt(pat::MET::JetEnDown, pat::MET::Type1Smear);
+            puppiMET_UESUp_    = puppiMET->shiftedPt(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
+            puppiMET_UESDo_    = puppiMET->shiftedPt(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
+            puppiMETPhi_JERUp_ = puppiMET->shiftedPhi(pat::MET::JetResUp, pat::MET::Type1Smear);
+            puppiMETPhi_JERDo_ = puppiMET->shiftedPhi(pat::MET::JetResDown, pat::MET::Type1Smear);
+            puppiMETPhi_JESUp_ = puppiMET->shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1Smear);
+            puppiMETPhi_JESDo_ = puppiMET->shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1Smear);
+            puppiMETPhi_UESUp_ = puppiMET->shiftedPhi(pat::MET::UnclusteredEnUp, pat::MET::Type1Smear);
+            puppiMETPhi_UESDo_ = puppiMET->shiftedPhi(pat::MET::UnclusteredEnDown, pat::MET::Type1Smear);
+            puppiMET_SumEt_    = puppiMET->corSumEt(pat::MET::Type1Smear);
         }
 
         puppiMET_metSig_   = puppiMET->significance();

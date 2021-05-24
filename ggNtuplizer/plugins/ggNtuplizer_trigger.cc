@@ -384,9 +384,6 @@ void ggNtuplizer::initTriggerFilters(const edm::Event &e) {
     edm::Handle<edm::TriggerResults> trgResultsHandle;
     e.getByToken(trgResultsLabel_, trgResultsHandle);
 
-    // edm::Handle<std::string> filterLabels_;
-    // e.getByLabel("slimmedPatTrigger:filterLabels", filterLabels_);
-
     for (pat::TriggerObjectStandAlone obj : *triggerHandleMiniAOD) {
         obj.unpackFilterLabels(e, *trgResultsHandle);
 

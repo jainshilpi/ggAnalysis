@@ -12,7 +12,7 @@ writeSite="T2_US_Wisconsin"
 mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
-prefiringWeights=${testDir}/L1PrefiringMaps.root
+prefiringWeights='/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/L1PrefiringMaps.root'
 maxFiles=50000
 inputDBS=global
 # inputDBS=phys03
@@ -44,7 +44,7 @@ echo "*************************************************************************"
 
 for dataset in `sed '/^$/d' ${input_datasets}`;
 do
-	jobName=$(echo ${dataset} | cut -f1,2 -d'/')
+	jobName=$(echo ${dataset} | cut -f2,3 -d'/')
 	# jobName=$(echo ${dataset////_})
 	jobName=${jobName#"_"}
 	jobName=$(echo ${jobName} | sed 's/[^a-zA-Z0-9]//g')
@@ -71,8 +71,9 @@ do
 	crab_cfg_file=${jobDir}/crab_${jobName}.py
 	cp ${crab_cfg_template} ${crab_cfg_file}
 
-	prefiringWeightsCpy=${jobDir}/L1PrefiringMaps.root
-	cp ${prefiringWeights} ${prefiringWeightsCpy}
+	prefiringWeightsCpy=${prefiringWeights}
+	# prefiringWeightsCpy=${jobDir}/L1PrefiringMaps.root
+	# cp ${prefiringWeights} ${prefiringWeightsCpy}
 
 	sed -i 's|#psetname|'$psetname'|g' ${crab_cfg_file}
 	sed -i 's|#workarea|'$jobDir'|g' ${crab_cfg_file}

@@ -3,13 +3,8 @@
 #include "FWCore/Common/interface/TriggerNames.h"
 #include "ggAnalysis/ggNtuplizer/interface/ggNtuplizer.h"
 
-
 using namespace std;
 
-
-
-
-// (local) variables associated with tree branches
 Int_t       run_;
 Long64_t    event_;
 UShort_t    lumis_;
@@ -68,11 +63,6 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
 }
 
 void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es) {
-
-  // if (!doGenParticles_) {
-  //   phoPrescale_.clear();
-  //   phoPrescale_.reserve(9);
-  // }
 
   edm::Handle<double> rhoHandle;
   e.getByToken(rhoLabel_, rhoHandle);
@@ -230,5 +220,4 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
     e.getByToken(prefweightdown_token, theprefweightdown ) ;
     ecalPrefireWdn_ = (*theprefweightdown);
   }
-
 }
