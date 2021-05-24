@@ -9,10 +9,11 @@ writedir=${scriptDir}/jobs//${jobsetName}/
 testDir=$(readlink -f ${scriptDir}"/..")
 psetname=${testDir}"/run_mc2017_106X.py"
 writeSite="T2_US_Wisconsin"
-mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
+mainOutputDir="/store/user/wadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
-prefiringWeights='/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/L1PrefiringMaps.root'
+prefiringWeights=${testDir}'/L1PrefiringMaps.root'
 maxFiles=50000
 inputDBS=global
 # inputDBS=phys03
