@@ -34,7 +34,6 @@ config.Site.blacklist = [#blacklist]
 
 config.JobType.psetName  = '#psetname'
 config.JobType.pluginName  = 'Analysis'
-config.JobType.inputFiles = ['#prefiringweights']
 config.JobType.maxMemoryMB             = 2600
 config.JobType.maxJobRuntimeMin        = 2500
 

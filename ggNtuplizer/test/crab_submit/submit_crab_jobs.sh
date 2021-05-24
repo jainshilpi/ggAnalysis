@@ -13,7 +13,6 @@ writeSite="T2_US_Wisconsin"
 mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
-prefiringWeights=${testDir}'/L1PrefiringMaps.root'
 maxFiles=50000
 inputDBS=global
 # inputDBS=phys03
@@ -72,10 +71,6 @@ do
 	crab_cfg_file=${jobDir}/crab_${jobName}.py
 	cp ${crab_cfg_template} ${crab_cfg_file}
 
-	prefiringWeightsCpy=${prefiringWeights}
-	# prefiringWeightsCpy=${jobDir}/L1PrefiringMaps.root
-	# cp ${prefiringWeights} ${prefiringWeightsCpy}
-
 	sed -i 's|#psetname|'$psetname'|g' ${crab_cfg_file}
 	sed -i 's|#workarea|'$jobDir'|g' ${crab_cfg_file}
 	sed -i 's|#jobname|'$jobName'|g' ${crab_cfg_file}
@@ -86,7 +81,6 @@ do
 	sed -i 's|#splitting|'$splitting'|g' ${crab_cfg_file}
 	sed -i 's|#unitsperjob|'$units_perjob'|g' ${crab_cfg_file}
 	sed -i 's|#mainOutputDir|'$mainOutputDir'|g' ${crab_cfg_file}
-	sed -i 's|#prefiringweights|'$prefiringWeightsCpy'|g' ${crab_cfg_file}
 
 	sed -i 's|#inputDBS|'$inputDBS'|g' ${crab_cfg_file}
 
