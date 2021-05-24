@@ -56,21 +56,21 @@ const std::vector<std::string>    muTriggerPathsRunII = {
   //https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2017#Recommendations_for_2017_data_an
   //https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2018#Recommended_trigger_paths_for_20
   "HLT_IsoMu24_v",                                   //0
-  "HLT_IsoMu27_v",                                   //2
-  "HLT_IsoTkMu24_v",                                 //1
-  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v",   //5
-  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v",     //6
-  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v",           //13
-  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v",              //10
-  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",         //14
-  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",            //11
-  "HLT_Mu50_v",                                      //7
-  "HLT_Mu50_v",                                      //8
-  "HLT_OldMu100_v",                                  //3
-  "HLT_TkMu100_v",                                   //4
-  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",       //15
-  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",          //12
-  "HLT_TkMu50_v",                                    //9
+  "HLT_IsoMu27_v",                                   //1
+  "HLT_IsoTkMu24_v",                                 //2
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v",   //3
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v",     //4
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v",           //5
+  "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v",              //6
+  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",         //7
+  "HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",            //8
+  "HLT_Mu50_v",                                      //9
+  "HLT_Mu50_v",                                      //10
+  "HLT_OldMu100_v",                                  //11
+  "HLT_TkMu100_v",                                   //12
+  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v",       //13
+  "HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v",          //14
+  "HLT_TkMu50_v",                                    //15
 };
 
 
@@ -81,29 +81,29 @@ const std::vector<std::string>    phoTriggerPathsRunII = {
   //https://github.com/GhentAnalysis/heavyNeutrino/blob/0ac0591cea7a323356e5cc367c65213dbf1cfa44/multilep/src/TriggerAnalyzer.cc#L195-L215
   //https://github.com/Sam-Harper/usercode/blob/106XNtup/TrigTools/plugins/Ele32DoubleL1ToSingleL1Example.cc#L113
 
-  "HLT_DiEle27_WPTightCaloOnly_L1DoubleEG_v",        //15
-  "HLT_DoubleEle25_CaloIdL_MW_v",                    //14
-  "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v",            //22
-  "HLT_DoubleEle33_CaloIdL_MW_v",                    //21
-  "HLT_DoubleEle37_CaloIdL_GsfTrackIdVL_v",          //2
-  "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v",      //3
-  "HLT_DoublePhoton60_v",                            //4
-  "HLT_DoublePhoton70_v",                            //16
+  "HLT_DiEle27_WPTightCaloOnly_L1DoubleEG_v",        //0
+  "HLT_DoubleEle25_CaloIdL_MW_v",                    //1
+  "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v",            //2
+  "HLT_DoubleEle33_CaloIdL_MW_v",                    //3
+  "HLT_DoubleEle37_CaloIdL_GsfTrackIdVL_v",          //4
+  "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v",      //5
+  "HLT_DoublePhoton60_v",                            //6
+  "HLT_DoublePhoton70_v",                            //7
   "hltEGL1SingleEGOrFilter",                         //8
-  "HLT_Ele115_CaloIdVT_GsfTrkIdT_v",                 //10
-  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v",     //20
-  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v",        //13
-  "HLT_Ele25_eta2p1_WPTight_Gsf_v",                  //1
-  "HLT_Ele27_WPTight_Gsf_v",                         //0
-  "hltEle32L1DoubleEGWPTightGsfTrackIsoFilter",      //6
-  "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v",              //5
-  "HLT_Ele32_WPTight_Gsf_v",                         //11
-  "HLT_Ele35_WPTight_Gsf_v",                         //9
-  "HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v", //17
-  "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v",         //18
-  "hltL1sSingleEGor",                                //7
-  "HLT_Photon175_v",                                 //19
-  "HLT_Photon200_v",                                 //12
+  "HLT_Ele115_CaloIdVT_GsfTrkIdT_v",                 //9
+  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v",     //10
+  "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v",        //11
+  "HLT_Ele25_eta2p1_WPTight_Gsf_v",                  //12
+  "HLT_Ele27_WPTight_Gsf_v",                         //13
+  "hltEle32L1DoubleEGWPTightGsfTrackIsoFilter",      //14
+  "HLT_Ele32_WPTight_Gsf_L1DoubleEG_v",              //15
+  "HLT_Ele32_WPTight_Gsf_v",                         //16
+  "HLT_Ele35_WPTight_Gsf_v",                         //17
+  "HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v", //18
+  "HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v",         //19
+  "hltL1sSingleEGor",                                //20
+  "HLT_Photon175_v",                                 //21
+  "HLT_Photon200_v",                                 //22
 };
 
 const std::vector<std::string>    jetTriggerPathsRunII = {
@@ -199,223 +199,214 @@ class ggNtuplizer : public edm::EDAnalyzer {
   explicit ggNtuplizer(const edm::ParameterSet&);
   ~ggNtuplizer();
 
-  //   static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
-
  private:
+  virtual void analyze                        ( const edm::Event&, const edm::EventSetup&);
+  virtual void endJob                         ( );
 
-  //   virtual void beginJob() {};
-  virtual void analyze(const edm::Event&, const edm::EventSetup&);
-  virtual void endJob();
+  void initTriggerFilters                     ( const edm::Event&);
+  ULong64_t matchSingleElectronTriggerFilters ( double pt, double eta, double phi);
+  ULong64_t matchDoubleElectronTriggerFilters ( double pt, double eta, double phi);
+  ULong64_t matchSinglePhotonTriggerFilters   ( double pt, double eta, double phi);
+  ULong64_t matchDoublePhotonTriggerFilters   ( double pt, double eta, double phi);
+  ULong64_t matchTriplePhotonTriggerFilters   ( double pt, double eta, double phi);
+  ULong64_t matchMuonTriggerFilters           ( double pt, double eta, double phi);
+  ULong64_t matchJetTriggerFilters            ( double pt, double eta, double phi);
+  ULong64_t matchL1TriggerFilters             ( double pt, double eta, double phi);
+  Double_t deltaPhi                           ( Double_t phi1, Double_t phi2);
+  Double_t deltaR                             ( Double_t eta1, Double_t phi1, Double_t eta2, Double_t phi2);
 
-  void initTriggerFilters(const edm::Event&);
-  ULong64_t matchSingleElectronTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchDoubleElectronTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchSinglePhotonTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchDoublePhotonTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchTriplePhotonTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchMuonTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchJetTriggerFilters(double pt, double eta, double phi);
-  ULong64_t matchL1TriggerFilters(double pt, double eta, double phi);
-  Double_t deltaPhi(Double_t phi1, Double_t phi2);
-  Double_t deltaR(Double_t eta1, Double_t phi1, Double_t eta2, Double_t phi2);
+  Short_t findSecondaryIndex                  ( const Short_t & searchIndex, const std::vector<UShort_t> & container);
 
-  Short_t findSecondaryIndex(const Short_t & searchIndex, const std::vector<UShort_t> & container);
+  void branchesTrigObj                        ( TTree*);
+  void branchesGlobalEvent                    ( TTree*);
+  void branchesGenInfo                        ( TTree*, edm::Service<TFileService>&);
+  void branchesGenPart                        ( TTree*);
+  void branchesMET                            ( TTree*);
+  void branchesPhotons                        ( TTree*);
+  void branchesPhotonsOOT                     ( TTree*);
+  void branchesElectrons                      ( TTree*);
+  // void branchesHFElectrons                 ( TTree*);
+  void branchesMuons                          ( TTree*);
+  void branchesAK4CHSJets                     ( TTree*);
+  void branchesAK4PUPPIJets                   ( TTree*);
+  void branchesAK8PUPPIJets                   ( TTree*);
 
-  void branchesTrigObj(TTree*);
-  void branchesGlobalEvent(TTree*);
-  void branchesGenInfo    (TTree*, edm::Service<TFileService>&);
-  void branchesGenPart    (TTree*);
-  void branchesMET        (TTree*);
-  void branchesPhotons    (TTree*);
-  void branchesPhotonsOOT(TTree*);
-  void branchesElectrons  (TTree*);
-  // void branchesHFElectrons(TTree*);
-  void branchesMuons      (TTree*);
-  void branchesAK4CHSJets       (TTree*);
-  void branchesAK4PUPPIJets       (TTree*);
-  void branchesAK8PUPPIJets    (TTree*);
+  void fillGlobalEvent                        ( const edm::Event&, const edm::EventSetup&);
+  void fillGenInfo                            ( const edm::Event&);
+  void fillGenPart                            ( const edm::Event&);
+  void fillMET                                ( const edm::Event&, const edm::EventSetup&);
+  void fillPhotons                            ( const edm::Event&, const edm::EventSetup&);
+  void fillPhotonsOOT                         ( const edm::Event&, const edm::EventSetup&);
+  void fillElectrons                          ( const edm::Event&, const edm::EventSetup&, math::XYZPoint&);
+  void fillMuons                              ( const edm::Event&, math::XYZPoint&, const reco::Vertex);
+  void fillAK8PUPPIJets                       ( const edm::Event&, const edm::EventSetup&);
+  void branchesGenAK8JetPart                  ( TTree*);
 
-  void fillGlobalEvent(const edm::Event&, const edm::EventSetup&);
-  void fillGenInfo    (const edm::Event&);
-  void fillGenPart    (const edm::Event&);
-  void fillMET        (const edm::Event&, const edm::EventSetup&);
-  void fillPhotons    (const edm::Event&, const edm::EventSetup&);
-  void fillPhotonsOOT    (const edm::Event&, const edm::EventSetup&);
-  void fillElectrons  (const edm::Event&, const edm::EventSetup&, math::XYZPoint&);
-  void fillMuons      (const edm::Event&, math::XYZPoint&, const reco::Vertex);
-  void fillAK8PUPPIJets(const edm::Event&, const edm::EventSetup&);
-  void branchesGenAK8JetPart(TTree*);
+  void fillAK4CHSJets                         ( const edm::Event&, const edm::EventSetup&);
+  void fillAK4PUPPIJets                       ( const edm::Event&, const edm::EventSetup&);
 
-  void fillAK4CHSJets       (const edm::Event&, const edm::EventSetup&);
-  void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
+  void branchesGenAK4JetPart                  ( TTree*);
+  void fillGenAK4JetInfo                      ( const edm::Event&, Float_t );
+  void fillGenAK8JetInfo                      ( const edm::Event&, Float_t );
 
-  void branchesGenAK4JetPart(TTree*);
-  void fillGenAK4JetInfo(const edm::Event&, Float_t );
-  void fillGenAK8JetInfo(const edm::Event&, Float_t );
+  const EcalRecHit * getECALrecHit            ( const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
+  Float_t ECALrecHitE                         ( const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
+  Float_t ECALrecHitT                         ( const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
+  Float_t swissCross                          ( const DetId& id, noZS::EcalClusterLazyTools & ltNoZS);
 
-  const EcalRecHit * getECALrecHit(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
-  Float_t ECALrecHitE(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS, int di=0, int dj=0);
-  Float_t ECALrecHitT(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
-  Float_t swissCross(const DetId& id, noZS::EcalClusterLazyTools & ltNoZS);
+  std::vector<int> IndexMatchedConversion     ( edm::View<pat::Photon>::const_iterator g, const std::vector<edm::Ptr<reco::Conversion>> &, const std::vector<edm::Ptr<reco::Conversion>> &) const;
+  double vtxZFromConv                         ( edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &, const math::XYZPoint &beamSpot) const;
+  double vtxZFromConvSuperCluster             ( edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &conversion, const math::XYZPoint &beamSpot ) const ;
+  double vtxZFromConvOnly                     ( edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &conversion, const math::XYZPoint &beamSpot ) const;
 
-  std::vector<int> IndexMatchedConversion( edm::View<pat::Photon>::const_iterator g, const std::vector<edm::Ptr<reco::Conversion> > &, const std::vector<edm::Ptr<reco::Conversion> > &) const;
-  double vtxZFromConv( edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &, const math::XYZPoint &beamSpot) const;
-  double vtxZFromConvSuperCluster( edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &conversion, const math::XYZPoint &beamSpot ) const ;
-  double vtxZFromConvOnly(  edm::View<pat::Photon>::const_iterator pho, const edm::Ptr<reco::Conversion> &conversion, const math::XYZPoint &beamSpot ) const;
+  void branchesECALSC                         ( TTree* tree);
+  void branchesECALOOTSC                      ( TTree* tree);
+  void branchesPhoECALSC                      ( TTree* tree);
+  void branchesEleECALSC                      ( TTree* tree);
+  void branchesootPhoECALSC                   ( TTree* tree);
+  void fillECALSC                             ( const edm::Event& e, const edm::EventSetup& es);
+  void fillECALOOTSC                          ( const edm::Event& e, const edm::EventSetup& es);
+  void resolvePhoECALSCindex                  ( );
+  void resolveootPhoECALSCindex               ( );
+  void resolveEleECALSCindex                  ( );
+  Float_t getLICTD                            ( const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS);
+  Float_t etaWing                             ( const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
 
+  void branchesTracks                         ( TTree* tree);
+  void fillTracks                             ( const edm::Event& e, const edm::EventSetup& es);
+  edm::EDGetTokenT<edm::View<pat::IsolatedTrack>>          tracksLabel_;
 
-  std::vector<Short_t> phoSCindex_;
-  std::vector<Short_t> ootPho_SCindex_;
-  std::vector<UShort_t> ecalSCindex_;
-  std::vector<UShort_t> ecalootSCindex_;
-  std::vector<Short_t> eleSCindex_;
-  std::vector<Short_t> phoDirectEcalSCindex_;
-  std::vector<Short_t> ootPhoDirectEcalSCindex_;
-  std::vector<Short_t> eleDirectEcalSCindex_;
+  void branchesTaus                           ( TTree* tree);
+  void fillTaus                               ( const edm::Event& e, const edm::EventSetup& es);
+  edm::EDGetTokenT<edm::View<pat::Tau>>                    tauLabel_;
 
-  void branchesECALSC(TTree* tree);
-  void branchesECALOOTSC(TTree* tree);
-  void branchesPhoECALSC(TTree* tree);
-  void branchesEleECALSC(TTree* tree);
-  void branchesootPhoECALSC(TTree* tree);
-  void fillECALSC(const edm::Event& e, const edm::EventSetup& es);
-  void fillECALOOTSC(const edm::Event& e, const edm::EventSetup& es);
-  void resolvePhoECALSCindex();
-  void resolveootPhoECALSCindex();
-  void resolveEleECALSCindex();
-  Float_t getLICTD(const reco::SuperCluster *sc, noZS::EcalClusterLazyTools & ltNoZS);
-  Float_t etaWing(const DetId & id, noZS::EcalClusterLazyTools & ltNoZS);
+  std::vector<Short_t>                                     phoSCindex_;
+  std::vector<Short_t>                                     ootPho_SCindex_;
+  std::vector<UShort_t>                                    ecalSCindex_;
+  std::vector<UShort_t>                                    ecalootSCindex_;
+  std::vector<Short_t>                                     eleSCindex_;
+  std::vector<Short_t>                                     phoDirectEcalSCindex_;
+  std::vector<Short_t>                                     ootPhoDirectEcalSCindex_;
+  std::vector<Short_t>                                     eleDirectEcalSCindex_;
 
-  // void fillAK4PUPPIJets       (const edm::Event&, const edm::EventSetup&);
+  Bool_t                                                   development_;
+  Bool_t                                                   addFilterInfoAOD_;
+  Bool_t                                                   addFilterInfoMINIAOD_;
+  Bool_t                                                   doGenParticles_;
+  Bool_t                                                   runOnParticleGun_;
+  Bool_t                                                   doGenJets_;
+  Bool_t                                                   runOnSherpa_;
+  Bool_t                                                   dumpPFPhotons_;
+  Bool_t                                                   dumpTaus_;
+  Bool_t                                                   dumpJets_;
+  Bool_t                                                   dumpAK8Jets_;
+  Bool_t                                                   dumpSoftDrop_;
+  Bool_t                                                   dumpPDFSystWeight_;
+  Bool_t                                                   doOOTphotons_;
+  Bool_t                                                   doTrks_;
 
-  void branchesTracks(TTree* tree);
-  void fillTracks(const edm::Event& e, const edm::EventSetup& es);
-  edm::EDGetTokenT<edm::View<pat::IsolatedTrack>>        tracksLabel_;
+  int                                                      year_;
 
+  vector<int>                                              newparticles_;
 
-  void branchesTaus(TTree* tree);
-  void fillTaus(const edm::Event& e, const edm::EventSetup& es);
-  edm::EDGetTokenT<edm::View<pat::Tau>>        tauLabel_;
-
-
-  Bool_t development_;
-  Bool_t addFilterInfoAOD_;
-  Bool_t addFilterInfoMINIAOD_;
-  Bool_t doGenParticles_;
-  Bool_t runOnParticleGun_;
-  Bool_t doGenJets_;
-  Bool_t runOnSherpa_;
-  Bool_t dumpPFPhotons_;
-  Bool_t dumpTaus_;
-  Bool_t dumpJets_;
-  Bool_t dumpAK8Jets_;
-  Bool_t dumpSoftDrop_;
-  Bool_t dumpPDFSystWeight_;
-  Bool_t doOOTphotons_;
-  Bool_t doTrks_;
-
-  int  year_;
-
-  vector<int> newparticles_;
-
-  double trgFilterDeltaPtCut_;
-  double trgFilterDeltaRCut_;
+  double                                                   trgFilterDeltaPtCut_;
+  double                                                   trgFilterDeltaRCut_;
 
 
-  edm::EDGetTokenT<reco::BeamHaloSummary>           beamHaloSummaryToken_;
-  edm::EDGetTokenT<reco::VertexCollection>         vtxLabel_;
-  edm::EDGetTokenT<reco::VertexCollection>         vtxBSLabel_;
-  edm::EDGetTokenT<double>                         rhoLabel_;
-  edm::EDGetTokenT<double>                         rhoCentralLabel_;
-  edm::EDGetTokenT<trigger::TriggerEvent>          trgEventLabel_;
+  edm::EDGetTokenT<reco::BeamHaloSummary>                  beamHaloSummaryToken_;
+  edm::EDGetTokenT<reco::VertexCollection>                 vtxLabel_;
+  edm::EDGetTokenT<reco::VertexCollection>                 vtxBSLabel_;
+  edm::EDGetTokenT<double>                                 rhoLabel_;
+  edm::EDGetTokenT<double>                                 rhoCentralLabel_;
+  edm::EDGetTokenT<trigger::TriggerEvent>                  trgEventLabel_;
   edm::EDGetTokenT<pat::TriggerObjectStandAloneCollection> triggerObjectsLabel_;
-  edm::EDGetTokenT<edm::TriggerResults>            trgResultsLabel_;
-  string                                           trgResultsProcess_;
-  edm::EDGetTokenT<edm::TriggerResults>            patTrgResultsLabel_;
-  edm::EDGetTokenT<GenEventInfoProduct>            generatorLabel_;
-  edm::EDGetTokenT<LHEEventProduct>                lheEventLabel_;
-  edm::EDGetTokenT<vector<PileupSummaryInfo> >     puCollection_;
-  edm::EDGetTokenT<vector<reco::GenParticle> >     genParticlesCollection_;
-  edm::EDGetTokenT<edm::View<pat::MET> >           pfMETlabel_;
-  edm::EDGetTokenT<edm::View<pat::MET> >           puppiMETlabel_;
-  edm::EDGetTokenT<edm::View<pat::Electron> >      electronCollection_;
-  edm::EDGetTokenT<edm::View<pat::Photon> >        photonCollection_;
-  edm::EDGetTokenT<edm::View<pat::Photon> >        photonOOTCollection_;
-  edm::EDGetTokenT<edm::View<pat::Muon> >          muonCollection_;
-  edm::EDGetTokenT<vector<pat::Tau> >              tauCollection_;
-  edm::EDGetTokenT<EcalRecHitCollection>           ebReducedRecHitCollection_;
-  edm::EDGetTokenT<EcalRecHitCollection>           eeReducedRecHitCollection_;
-  edm::EDGetTokenT<EcalRecHitCollection>           esReducedRecHitCollection_;
-  edm::EDGetTokenT<std::vector<reco::SuperCluster>>           ecalSCcollection_;
-  edm::EDGetTokenT<std::vector<reco::SuperCluster>>           ecalSC_OOT_collection_;
-  edm::EDGetTokenT<reco::PhotonCollection>         recophotonCollection_;
-  edm::EDGetTokenT<reco::TrackCollection>          tracklabel_;
-  edm::EDGetTokenT<reco::GsfElectronCollection>     gsfElectronlabel_;
-  edm::EDGetTokenT<edm::View<reco::GsfTrack> >      gsfTracks_;
-  edm::EDGetTokenT<reco::PFCandidateCollection>     pfAllParticles_;
-  edm::EDGetTokenT<vector<pat::PackedCandidate> >   pckPFCdsLabel_;
-  edm::EDGetTokenT<edm::View<reco::Candidate> >     recoCdsLabel_;
-  edm::EDGetTokenT<edm::View<pat::Jet> >            ak4PFJetsCHSLabel_;
-  edm::EDGetTokenT<edm::View<pat::Jet> >            ak4PFJetsPuppiLabel_;
-  edm::EDGetTokenT<edm::View<pat::Jet> >            ak8JetsPUPPILabel_;
-  edm::EDGetTokenT<std::vector<reco::GenJet> >      ak4PFJetsCHSGenJetLabel_;
-  edm::EDGetTokenT<std::vector<reco::GenJet> >      ak8GenJetLabel_;
-  edm::EDGetTokenT<reco::JetTagCollection>          boostedDoubleSVLabel_;
-  edm::EDGetTokenT<pat::PackedCandidateCollection>  pckPFCandidateCollection_;
-  edm::EDGetTokenT<Bool_t>                          ecalBadCalibFilterUpdateToken_;
+  edm::EDGetTokenT<edm::TriggerResults>                    trgResultsLabel_;
+  string                                                   trgResultsProcess_;
+  edm::EDGetTokenT<edm::TriggerResults>                    patTrgResultsLabel_;
+  edm::EDGetTokenT<GenEventInfoProduct>                    generatorLabel_;
+  edm::EDGetTokenT<LHEEventProduct>                        lheEventLabel_;
+  edm::EDGetTokenT<vector<PileupSummaryInfo>>              puCollection_;
+  edm::EDGetTokenT<vector<reco::GenParticle>>              genParticlesCollection_;
+  edm::EDGetTokenT<edm::View<pat::MET>>                    pfMETlabel_;
+  edm::EDGetTokenT<edm::View<pat::MET>>                    puppiMETlabel_;
+  edm::EDGetTokenT<edm::View<pat::Electron>>               electronCollection_;
+  edm::EDGetTokenT<edm::View<pat::Photon>>                 photonCollection_;
+  edm::EDGetTokenT<edm::View<pat::Photon>>                 photonOOTCollection_;
+  edm::EDGetTokenT<edm::View<pat::Muon>>                   muonCollection_;
+  edm::EDGetTokenT<vector<pat::Tau>>                       tauCollection_;
+  edm::EDGetTokenT<EcalRecHitCollection>                   ebReducedRecHitCollection_;
+  edm::EDGetTokenT<EcalRecHitCollection>                   eeReducedRecHitCollection_;
+  edm::EDGetTokenT<EcalRecHitCollection>                   esReducedRecHitCollection_;
+  edm::EDGetTokenT<std::vector<reco::SuperCluster>>        ecalSCcollection_;
+  edm::EDGetTokenT<std::vector<reco::SuperCluster>>        ecalSC_OOT_collection_;
+  edm::EDGetTokenT<reco::PhotonCollection>                 recophotonCollection_;
+  edm::EDGetTokenT<reco::TrackCollection>                  tracklabel_;
+  edm::EDGetTokenT<reco::GsfElectronCollection>            gsfElectronlabel_;
+  edm::EDGetTokenT<edm::View<reco::GsfTrack>>              gsfTracks_;
+  edm::EDGetTokenT<reco::PFCandidateCollection>            pfAllParticles_;
+  edm::EDGetTokenT<vector<pat::PackedCandidate>>           pckPFCdsLabel_;
+  edm::EDGetTokenT<edm::View<reco::Candidate>>             recoCdsLabel_;
+  edm::EDGetTokenT<edm::View<pat::Jet>>                    ak4PFJetsCHSLabel_;
+  edm::EDGetTokenT<edm::View<pat::Jet>>                    ak4PFJetsPuppiLabel_;
+  edm::EDGetTokenT<edm::View<pat::Jet>>                    ak8JetsPUPPILabel_;
+  edm::EDGetTokenT<std::vector<reco::GenJet>>              ak4PFJetsCHSGenJetLabel_;
+  edm::EDGetTokenT<std::vector<reco::GenJet>>              ak8GenJetLabel_;
+  edm::EDGetTokenT<reco::JetTagCollection>                 boostedDoubleSVLabel_;
+  edm::EDGetTokenT<pat::PackedCandidateCollection>         pckPFCandidateCollection_;
+  edm::EDGetTokenT<Bool_t>                                 ecalBadCalibFilterUpdateToken_;
 
-  Bool_t                                            getECALprefiringWeights_;
-  edm::EDGetTokenT<double>                          prefweight_token;
-  edm::EDGetTokenT<double>                          prefweightup_token;
-  edm::EDGetTokenT<double>                          prefweightdown_token;
+  Bool_t                                                   getECALprefiringWeights_;
+  edm::EDGetTokenT<double>                                 prefweight_token;
+  edm::EDGetTokenT<double>                                 prefweightup_token;
+  edm::EDGetTokenT<double>                                 prefweightdown_token;
 
   // for MET filters
-  edm::EDGetTokenT<bool> BadChCandFilterToken_;
-  edm::EDGetTokenT<bool> BadPFMuonFilterToken_;
+  edm::EDGetTokenT<bool>                                   BadChCandFilterToken_;
+  edm::EDGetTokenT<bool>                                   BadPFMuonFilterToken_;
 
   //check
-  edm::EDGetToken gsfEle_;
+  edm::EDGetToken                                          gsfEle_;
 
-  edm::EDGetTokenT<reco::BeamSpot> offlinebeamSpot_;
-  edm::EDGetTokenT<edm::View<reco::Conversion> > convPhotonTag_;
-  edm::EDGetTokenT<edm::View<reco::Conversion> > convPhotonTagSL_;
+  edm::EDGetTokenT<reco::BeamSpot>                         offlinebeamSpot_;
+  edm::EDGetTokenT<edm::View<reco::Conversion>>            convPhotonTag_;
+  edm::EDGetTokenT<edm::View<reco::Conversion>>            convPhotonTagSL_;
 
-  double sigma1Pix;
-  double sigma1Tib;
-  double sigma1Tob;
-  double sigma1PixFwd;
-  double sigma1Tid;
-  double sigma1Tec;
-  double sigma2Pix;
-  double sigma2Tib;
-  double sigma2Tob;
-  double sigma2PixFwd;
-  double sigma2Tid;
-  double sigma2Tec;
-  double singlelegsigma1Pix;
-  double singlelegsigma1Tib;
-  double singlelegsigma1Tob;
-  double singlelegsigma1PixFwd;
-  double singlelegsigma1Tid;
-  double singlelegsigma1Tec;
-  double singlelegsigma2Pix;
-  double singlelegsigma2Tib;
-  double singlelegsigma2Tob;
-  double singlelegsigma2PixFwd;
-  double singlelegsigma2Tid;
-  double singlelegsigma2Tec;
+  double                                                   sigma1Pix;
+  double                                                   sigma1Tib;
+  double                                                   sigma1Tob;
+  double                                                   sigma1PixFwd;
+  double                                                   sigma1Tid;
+  double                                                   sigma1Tec;
+  double                                                   sigma2Pix;
+  double                                                   sigma2Tib;
+  double                                                   sigma2Tob;
+  double                                                   sigma2PixFwd;
+  double                                                   sigma2Tid;
+  double                                                   sigma2Tec;
+  double                                                   singlelegsigma1Pix;
+  double                                                   singlelegsigma1Tib;
+  double                                                   singlelegsigma1Tob;
+  double                                                   singlelegsigma1PixFwd;
+  double                                                   singlelegsigma1Tid;
+  double                                                   singlelegsigma1Tec;
+  double                                                   singlelegsigma2Pix;
+  double                                                   singlelegsigma2Tib;
+  double                                                   singlelegsigma2Tob;
+  double                                                   singlelegsigma2PixFwd;
+  double                                                   singlelegsigma2Tid;
+  double                                                   singlelegsigma2Tec;
 
-  TTree   *tree_;
-  TH1F    *hEvents_;
-  TH1F    *hPU_;
-  TH1F    *hPUTrue_;
-  TH1F    *hPUw_;
-  TH1F    *hPUTruew_;
-  TH1F    *hGenWeightSign_;
-  TH1F    *hSumGenWeightSign_;
-  TH1F    *hSumGenWeight_;
+  TTree                                                    *tree_;
+  TH1F                                                     *hEvents_;
+  TH1F                                                     *hPU_;
+  TH1F                                                     *hPUTrue_;
+  TH1F                                                     *hPUw_;
+  TH1F                                                     *hPUTruew_;
+  TH1F                                                     *hGenWeightSign_;
+  TH1F                                                     *hSumGenWeightSign_;
+  TH1F                                                     *hSumGenWeight_;
 
-  HLTPrescaleProvider hltPrescaleProvider_;
+  HLTPrescaleProvider                                      hltPrescaleProvider_;
 };
 
 #endif

@@ -49,19 +49,19 @@ void ggNtuplizer::branchesGlobalEvent(TTree* tree) {
   tree->Branch("vtz",                    & vtz_);
   tree->Branch("rho",                    & rho_);
   tree->Branch("rhoCentral",             & rhoCentral_);
-  tree->Branch("HLTMuX",              & HLTMuX_);
+  tree->Branch("HLTMuX",                 & HLTMuX_);
   tree->Branch("HLTPho",                 & HLTPho_);
   tree->Branch("HLTPhoRejectedByPS",     & HLTPhoRejectedByPS_);
   tree->Branch("HLTJet",                 & HLTJet_);
   tree->Branch("HLTMetFWjet",            & HLTMetFWjet_);
-  tree->Branch("HLTMuXIsPrescaled",   & HLTMuXIsPrescaled_);
+  tree->Branch("HLTMuXIsPrescaled",      & HLTMuXIsPrescaled_);
   tree->Branch("HLTPhoIsPrescaled",      & HLTPhoIsPrescaled_);
   tree->Branch("HLTJetIsPrescaled",      & HLTJetIsPrescaled_);
   tree->Branch("HLTMetFWjetIsPrescaled", & HLTMetFWjetIsPrescaled_);
   if (getECALprefiringWeights_) {
-    tree->Branch("ecalPrefireW",           & ecalPrefireW_);
-    tree->Branch("ecalPrefireWup",         & ecalPrefireWup_);
-    tree->Branch("ecalPrefireWdn",         & ecalPrefireWdn_);
+    tree->Branch("ecalPrefireW",         & ecalPrefireW_);
+    tree->Branch("ecalPrefireWup",       & ecalPrefireWup_);
+    tree->Branch("ecalPrefireWdn",       & ecalPrefireWdn_);
   }
   tree->Branch("beamHaloSummary",        & beamHaloSummary_);
 
@@ -140,17 +140,6 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
     }
   } else edm::LogWarning("ggNtuplizer") << "Primary vertices info not unavailable";
 
-  // HLT treatment
-  HLTMuX_              = 0;
-  HLTPho_                 = 0;
-  HLTPhoRejectedByPS_     = 0;
-  HLTJet_                 = 0;
-  HLTMetFWjet_            = 0;
-  HLTMuXIsPrescaled_   = 0;
-  HLTPhoIsPrescaled_      = 0;
-  HLTJetIsPrescaled_      = 0;
-  HLTMetFWjetIsPrescaled_ = 0;
-
   edm::Handle<edm::TriggerResults> trgResultsHandle;
   e.getByToken(trgResultsLabel_, trgResultsHandle);
 
@@ -196,6 +185,16 @@ void ggNtuplizer::fillGlobalEvent(const edm::Event& e, const edm::EventSetup& es
         break;
       }
     }
+
+    HLTMuX_                 = 0;
+    HLTPho_                 = 0;
+    HLTPhoRejectedByPS_     = 0;
+    HLTJet_                 = 0;
+    HLTMetFWjet_            = 0;
+    HLTMuXIsPrescaled_      = 0;
+    HLTPhoIsPrescaled_      = 0;
+    HLTJetIsPrescaled_      = 0;
+    HLTMetFWjetIsPrescaled_ = 0;
 
     ULong64_t isPrescaled = (hltCfg.prescaleValue(prescaleSet, name)!=1) ? 1 : 0;
     ULong64_t isFired     = (trgResultsHandle->accept(i)) ? 1 : 0;
