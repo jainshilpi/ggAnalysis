@@ -1,25 +1,5 @@
 import FWCore.ParameterSet.Config as cms
 
-import FWCore.ParameterSet.VarParsing as VarParsing
-options = VarParsing.VarParsing('analysis')
-options.outputFile = 'anTGCtree_mc.root'
-options.maxEvents = 200
-
-options.register('InputFileList',
-                'testList.txt',
-                VarParsing.VarParsing.multiplicity.singleton,
-                VarParsing.VarParsing.varType.string,
-                "InputFileList")
-options.register('InFileList',
-                '',
-                VarParsing.VarParsing.multiplicity.list,
-                VarParsing.VarParsing.varType.string,
-                "InFileList")
-
-options.parseArguments()
-
-options.loadFromFile('InFileList', options.InputFileList)
-
 process = cms.Process('ggKit')
 
 ##########################################################################
@@ -31,24 +11,33 @@ process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condD
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 ### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.g8b904a5927_2_0
-### MC: 102X_mcRun2_asymptotic_v8 (2016), 102X_mc2017_realistic_v8 (2017), 102X_upgrade2018_realistic_v21 (2018)
-process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mc2017_realistic_v8')
+### Data: 102X_dataRun2_v13 (2016, 2017, 2018 A-C), 102X_dataRun2_Prompt_v16 (2018 D)
+process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_v13')
 process.maxEvents = cms.untracked.PSet(
-    input=cms.untracked.int32(options.maxEvents))
-process.MessageLogger.cerr.FwkReport.reportEvery = 1000
-process.source = cms.Source("PoolSource", fileNames=cms.untracked.vstring(options.InFileList))
+    input=cms.untracked.int32(2000))
+process.MessageLogger.cerr.FwkReport.reportEvery = 500
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/data/Run2017B/SinglePhoton/MINIAOD/UL2017_MiniAODv2-v1/280000/C7C4BD22-E226-FD4F-8197-A39C873FEA01.root'))
 
 print(process.source)
 
 process.load("PhysicsTools.PatAlgos.producersLayer1.patCandidates_cff")
+process.load("PhysicsTools.PatAlgos.triggerLayer1.triggerProducer_cff" )
 process.load("PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff")
 
-process.TFileService = cms.Service("TFileService", fileName=cms.string(options.outputFile))
+process.TFileService = cms.Service("TFileService", fileName=cms.string("anTGCtree_data.root"))
 ##########################################################################
 
 
+##########################################################################################################################
+process.load("PhysicsTools.PatAlgos.patSequences_cff")
+from PhysicsTools.PatAlgos.tools.coreTools import *
+runOnData( process,  names=['Photons', 'Electrons','Muons','Taus','Jets'], outputModules = [] )
+##########################################################################################################################
+
+
 ##########################################################################
-from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018
+from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
                        era='2017-UL',
@@ -73,9 +62,9 @@ from JMEAnalysis.JetToolbox.jetToolbox_cff import jetToolbox
 # https://twiki.cern.ch/twiki/bin/viewauth/CMS/QGDataBaseVersion
 jetToolbox(         process, 'ak4', 'ak4JetSubs', 'noOutput',
                     PUMethod='CHS',
-                    runOnMC=True,
+                    runOnMC=False,
                     JETCorrPayload='AK4PFchs',
-                    JETCorrLevels=['L1FastJet', 'L2Relative', 'L3Absolute'],
+                    JETCorrLevels=['L1FastJet', 'L2Relative', 'L3Absolute', 'L2L3Residual'],
                     addPUJetID=True,
                     addQGTagger=True,
                     bTagDiscriminators=None,
@@ -85,7 +74,7 @@ jetToolbox(         process, 'ak4', 'ak4JetSubs', 'noOutput',
 ### https://twiki.cern.ch/twiki/bin/viewauth/CMS/PUPPI
 jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
             PUMethod='Puppi',
-            runOnMC=True,
+            runOnMC=False,
             JETCorrPayload='AK4PFPuppi',
             JETCorrLevels = ['L1FastJet', 'L2Relative', 'L3Absolute'],
             addPUJetID=False, # not supported for Puppi
@@ -100,7 +89,7 @@ jetToolbox(process, 'ak4', 'ak4JetSubs', 'noOutput',
 # https://github.com/cms-sw/cmssw/blob/CMSSW_10_6_X/PhysicsTools/PatUtils/python/tools/runMETCorrectionsAndUncertainties.py
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
 runMetCorAndUncFromMiniAOD(process,
-                          isData=False,
+                          isData=True,
                           metType="PF",
                           pfCandColl=cms.InputTag("packedPFCandidates"),
                           recoMetFromPFCs=True,
@@ -115,7 +104,7 @@ from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAO
 makePuppiesFromMiniAOD(process, True)
 
 runMetCorAndUncFromMiniAOD(process,
-                            isData=False,
+                            isData=True,
                             metType="Puppi",
                             pfCandColl=cms.InputTag("puppiForMET"),
                             recoMetFromPFCs=True,
@@ -129,38 +118,20 @@ process.puppi.useExistingWeights = True
 
 
 ##########################################################################
-# ECAL prefiring correction
-# https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Call_the_producer_in_your_config
-# https://twiki.cern.ch/twiki/bin/viewauth/CMS/L1ECALPrefiringWeightRecipe#Accessing_the_UL2017_maps
-from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
-process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
-    TheJets = cms.InputTag("selectedPatJetsAK4PFCHSupdated"), 
-    L1Maps = cms.string("root://cmsxrootd.fnal.gov//store/user/mwadud/aNTGC/ECALL1Prefiring/L1PrefiringMaps.root"),
-    DataEra=cms.string("2017BtoF"),
-    UseJetEMPt=cms.bool(False),
-    PrefiringRateSystematicUncty=cms.double(0.2),
-    SkipWarnings=False)
-##########################################################################
-
-
-##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 
 process.ggNtuplizer.year = cms.int32(2017)
-process.ggNtuplizer.doGenParticles = cms.bool(True)
-process.ggNtuplizer.dumpPDFSystWeight = cms.bool(True)
+process.ggNtuplizer.doGenParticles = cms.bool(False)
+process.ggNtuplizer.dumpPDFSystWeight = cms.bool(False)
 process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(True)
-process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
+process.ggNtuplizer.getECALprefiringWeights = cms.bool(False)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedPFMET")
 process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppi")
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak4PFJetsPUPPISrc =  cms.InputTag("selectedPatJetsAK4PFPuppiupdated")
 process.ggNtuplizer.runOnSherpa = cms.bool(False)
-# process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "PAT")
-process.ggNtuplizer.patTriggerResults = cms.InputTag("TriggerResults", "", "RECO")
-# process.ggNtuplizer.triggerEvent=cms.InputTag("slimmedPatTrigger", "", "RECO")
 process.ggNtuplizer.triggerEvent = cms.InputTag("slimmedPatTrigger")
 ##########################################################################
 
@@ -216,7 +187,6 @@ process.p = cms.Path(
     process.egammaPostRecoSeq *
     process.rerunMvaIsolationSequence *
     getattr(process,updatedTauName) *
-    process.prefiringweight *
     process.ecalBadCalibReducedMINIAODFilter *
     process.ggNtuplizer
 )
