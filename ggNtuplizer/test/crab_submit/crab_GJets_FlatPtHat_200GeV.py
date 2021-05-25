@@ -16,9 +16,9 @@ def submit(config):
         print "Failed submitting task: %s" % (cle)
 
 
-workarea                              = '/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsUL2017v1/GJets_FlatPtHat_200/'
+workarea                              = '/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsUL2017v1/GJets_FlatPtHat_200/'
 
-mainOutputDir                         = '/store/user/rusack/aNTGCmet/ntuples/UL2017/jobsUL2017v1/'
+mainOutputDir                         = '/store/user/mwadud/aNTGCmet/ntuples/UL2017/jobsUL2017v1/'
 
 config                                = config()
 
@@ -32,18 +32,19 @@ config.Site.whitelist                 = ['T3_US_UCR','T3_US_FNALLPC','T3_US_Rice
 config.Site.blacklist                 = ['T2_US_Purdue']
 
 
-config.JobType.psetName               = '/afs/hep.wisc.edu/user/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2017_106X.py'
+config.JobType.psetName               = '/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2017_106X.py'
 config.JobType.pluginName             = 'Analysis'
 config.JobType.maxMemoryMB             = 2600
 config.JobType.maxJobRuntimeMin        = 2500
 
-config.Data.userInputFiles            = open('/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit/GJets_FlatPtHat_200GeV_MINIAOD.txt').readlines()
+config.Data.userInputFiles            = open('/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit/GJets_FlatPtHat_200GeV_MINIAOD.txt').readlines()
 config.Data.outputPrimaryDataset      = 'GJets_FlatPtHat_200'
 config.Data.publication               = False
 config.Data.allowNonValidInputDataset = True
 config.Data.outLFNDirBase             = '%s' % mainOutputDir
 config.Data.splitting                 = 'FileBased'
 config.Data.unitsPerJob               = 20
+config.Data.totalUnits = 10000000
 config.Data.ignoreLocality            = True
 config.Data.totalUnits                = 50000
 

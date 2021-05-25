@@ -14,9 +14,9 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 ### MC: 102X_mcRun2_asymptotic_v8 (2016), 102X_mc2017_realistic_v8 (2017), 102X_upgrade2018_realistic_v21 (2018)
 process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mc2017_realistic_v8')
 process.maxEvents = cms.untracked.PSet(
-    input=cms.untracked.int32(100))
-process.MessageLogger.cerr.FwkReport.reportEvery = 1000
-process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/mc/RunIISummer19UL17MiniAODv2/GJets_HT-600ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/106X_mc2017_realistic_v9-v1/40000/873B9891-348B-4344-ACFB-7D7F2271F6F6.root'))
+    input=cms.untracked.int32(-1))
+process.MessageLogger.cerr.FwkReport.reportEvery = 500
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/user/mwadud/aNTGC/crab/GJets_FlatPtHat_200_2021_05_12_v1_GEN/GJets_FlatPtHat_200_2021_05_19_v1_MINIAOD/210519_151730/0000/GJets_FlatPtHat_200_MINIAODSIM_100.root'))
 
 print(process.source)
 
@@ -28,7 +28,8 @@ process.TFileService = cms.Service("TFileService", fileName=cms.string("anTGCtre
 
 
 ##########################################################################
-from EgammaUser.EgammaPostRecoTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018
+from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
                        era='2017-UL',

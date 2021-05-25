@@ -1,19 +1,18 @@
 #!/bin/bash
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
-input_datasets=${scriptDir}/"mc_UL_2017.txt"
-
+# input_datasets=${scriptDir}/"mc_UL_2017.txt"
+input_datasets=${scriptDir}/"data_UL_2017.txt"
 jobsetName=jobsUL2017v1
 
 writedir=${scriptDir}/jobs//${jobsetName}/
 testDir=$(readlink -f ${scriptDir}"/../")
 psetname=${testDir}"/run_mc2017_106X.py"
 writeSite="T2_US_Wisconsin"
-mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
-# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
-maxFiles=50000
 inputDBS=global
 # inputDBS=phys03
 
@@ -51,10 +50,6 @@ do
 
 	jobDir=${writedir}/${jobName}/
 
-	# rm -rf $jobDir
-
-	# rm -rf crab_${jobName}/
-
 	echo "Submitting " ${jobName}
 	echo "Job directory: "${jobDir}
 	echo "Write site: " ${writeSite}
@@ -62,7 +57,6 @@ do
 	if [ -d "$jobDir" ]; then
 		echo "Error! Directory "$jobDir "exists!"
 		echo -e "\t\t\tSkipping!\n\n"
-		# exit
 		continue
 	fi
 
@@ -84,11 +78,7 @@ do
 
 	sed -i 's|#inputDBS|'$inputDBS'|g' ${crab_cfg_file}
 
-
-	sed -i 's|#config.Data.totalUnits|'config.Data.totalUnits'|g' ${crab_cfg_file}
-	sed -i 's|#totalUnits|'$maxFiles'|g' ${crab_cfg_file}
-
-	# sed -i 's|#config.Data.lumiMask|'config.Data.lumiMask'|g' ${crab_cfg_file}
+	sed -i 's|#config.Data.lumiMask|'config.Data.lumiMask'|g' ${crab_cfg_file}
 	sed -i 's|#lumiMaskFile|'${lumiMaskFile}'|g' ${crab_cfg_file}
 
 	python ${crab_cfg_file} | tee --append ${submit_log_file}
