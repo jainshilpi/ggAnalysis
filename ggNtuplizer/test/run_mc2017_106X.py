@@ -16,7 +16,7 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mc2017_realistic_v8')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(-1))
 process.MessageLogger.cerr.FwkReport.reportEvery = 500
-process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/user/mwadud/aNTGC/crab/GJets_FlatPtHat_200_2021_05_12_v1_GEN/GJets_FlatPtHat_200_2021_05_19_v1_MINIAOD/210519_151730/0000/GJets_FlatPtHat_200_MINIAODSIM_100.root'))
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(''))
 
 print(process.source)
 

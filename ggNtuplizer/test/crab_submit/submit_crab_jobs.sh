@@ -1,16 +1,28 @@
 #!/bin/bash
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
-# input_datasets=${scriptDir}/"mc_UL_2017.txt"
-input_datasets=${scriptDir}/"data_UL_2017.txt"
-jobsetName=jobsUL2017v1
+
+testDir=$(readlink -f ${scriptDir}"/../")
+
+# jobsetName=jobsUL2017v1
+# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+# psetname=${testDir}"/run_mc2017_106X.py"
+# units_perjob=4
+# splitting='FileBased'
+
+jobsetName=jobsUL2017v2Xsecs
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/"${jobsetName}
+psetname=${testDir}"/ana.py"
+units_perjob=10000
+splitting='FileBased'
+
 
 writedir=${scriptDir}/jobs//${jobsetName}/
-testDir=$(readlink -f ${scriptDir}"/../")
-psetname=${testDir}"/run_mc2017_106X.py"
 writeSite="T2_US_Wisconsin"
-# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
-mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+
+input_datasets=${scriptDir}/"mc_UL_2017.txt"
+
+# input_datasets=${scriptDir}/"data_UL_2017.txt"
 
 lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
 inputDBS=global
@@ -25,8 +37,6 @@ voms-proxy-init --voms cms
 
 
 crab_cfg_template=crab_submit.py
-units_perjob=4
-splitting='FileBased'
 blacklist="'T2_US_Purdue'"
 whitelist="'T3_US_UCR','T3_US_FNALLPC','T3_US_Rice','T3_US_Rutgers','T3_US_FIT','T3_US_PSC','T3_US_OSU','T3_US_TAMU','T3_US_UMD','T3_US_VC3_NotreDame','T3_US_SDSC','T3_US_Colorado','T3_US_OSG','T3_US_Princeton_ICSE','T3_US_NERSC','T3_US_Baylor','T2_US_Nebraska','T2_US_UCSD','T2_US_Wisconsin','T2_US_MIT','T3_US_TACC','T3_US_UMiss','T2_US_Caltech','T2_US_Florida','T2_US_Vanderbilt'"
 
@@ -44,9 +54,10 @@ echo "*************************************************************************"
 for dataset in `sed '/^$/d' ${input_datasets}`;
 do
 	jobName=$(echo ${dataset} | cut -f2,3 -d'/')
-	# jobName=$(echo ${dataset////_})
 	jobName=${jobName#"_"}
 	jobName=$(echo ${jobName} | sed 's/[^a-zA-Z0-9]//g')
+	jobName=${jobName%mc2017*}
+#	jobName=${jobName%RunII*}
 
 	jobDir=${writedir}/${jobName}/
 
@@ -78,8 +89,11 @@ do
 
 	sed -i 's|#inputDBS|'$inputDBS'|g' ${crab_cfg_file}
 
-	sed -i 's|#config.Data.lumiMask|'config.Data.lumiMask'|g' ${crab_cfg_file}
-	sed -i 's|#lumiMaskFile|'${lumiMaskFile}'|g' ${crab_cfg_file}
+	if [[ $psetname == *"data"* ]]; then
+		echo -e "Applying lumi mask "${lumiMaskFile}
+		sed -i 's|#config.Data.lumiMask|'config.Data.lumiMask'|g' ${crab_cfg_file}
+		sed -i 's|#lumiMaskFile|'${lumiMaskFile}'|g' ${crab_cfg_file}
+	fi
 
 	python ${crab_cfg_file} | tee --append ${submit_log_file}
 done

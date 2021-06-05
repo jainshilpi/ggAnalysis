@@ -7,24 +7,24 @@
 import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
 options = VarParsing.VarParsing('analysis')
-
-options.register('InFileList',
-				'',
-				VarParsing.VarParsing.multiplicity.list,
-				VarParsing.VarParsing.varType.string,
-				"InFileList")
-
-options.register('InputFileList',
-				'',
-				VarParsing.VarParsing.multiplicity.singleton,
-				VarParsing.VarParsing.varType.string,
-				"InFileList")
-
 options.parseArguments()
+# options.register('InFileList',
+# 				'',
+# 				VarParsing.VarParsing.multiplicity.list,
+# 				VarParsing.VarParsing.varType.string,
+# 				"InFileList")
 
-options.loadFromFile('InFileList', options.InputFileList)
+# options.register('InputFileList',
+# 				'',
+# 				VarParsing.VarParsing.multiplicity.singleton,
+# 				VarParsing.VarParsing.varType.string,
+# 				"InFileList")
 
-process = cms.Process('ANA')
+# options.parseArguments()
+
+# options.loadFromFile('InFileList', options.InputFileList)
+
+# process = cms.Process('ANA')
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
@@ -50,7 +50,8 @@ process.MessageLogger.cerr.FwkReport.reportEvery = 10000
 
 process.source = cms.Source(
 	"PoolSource",
-	fileNames  = cms.untracked.vstring(options.InFileList),
+	# fileNames  = cms.untracked.vstring(options.InFileList),
+	fileNames = cms.untracked.vstring(options.inputFiles), 
 	duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
 )
 
