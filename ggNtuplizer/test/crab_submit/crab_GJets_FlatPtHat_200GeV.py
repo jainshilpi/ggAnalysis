@@ -35,7 +35,7 @@ config.Site.blacklist                 = ['T2_US_Purdue']
 config.JobType.psetName               = '/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2017_106X.py'
 config.JobType.pluginName             = 'Analysis'
 config.JobType.maxMemoryMB             = 2600
-config.JobType.maxJobRuntimeMin        = 2500
+config.JobType.maxJobRuntimeMin        = 5000
 
 config.Data.userInputFiles            = open('/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit/GJets_FlatPtHat_200GeV_MINIAOD.txt').readlines()
 config.Data.outputPrimaryDataset      = 'GJets_FlatPtHat_200'

@@ -14,9 +14,9 @@ from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
 ### Data: 102X_dataRun2_v13 (2016, 2017, 2018 A-C), 102X_dataRun2_Prompt_v16 (2018 D)
 process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_v13')
 process.maxEvents = cms.untracked.PSet(
-    input=cms.untracked.int32(2000))
+    input=cms.untracked.int32(-1))
 process.MessageLogger.cerr.FwkReport.reportEvery = 500
-process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov///store/data/Run2017B/SinglePhoton/MINIAOD/UL2017_MiniAODv2-v1/280000/C7C4BD22-E226-FD4F-8197-A39C873FEA01.root'))
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(''))
 
 print(process.source)
 

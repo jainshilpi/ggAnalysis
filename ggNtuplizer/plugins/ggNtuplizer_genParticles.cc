@@ -80,30 +80,30 @@ PROMPT_STATUS_TYPE getPromptStatus(const reco::GenParticle& p, const edm::Handle
 
 
 Float_t getGenCalIso(edm::Handle<reco::GenParticleCollection> handle,
-	reco::GenParticleCollection::const_iterator thisPart,
-	Float_t dRMax, bool removeMu, bool removeNu) {
+                     reco::GenParticleCollection::const_iterator thisPart,
+                     Float_t dRMax, bool removeMu, bool removeNu) {
 
-  // Returns Et sum.
+	// Returns Et sum.
 	Float_t etSum = 0;
 
 	for (reco::GenParticleCollection::const_iterator p = handle->begin(); p != handle->end(); ++p) {
 		if (p == thisPart) continue;
 		if (p->status() != 1) continue;
 
-	// has to come from the same collision
+		// has to come from the same collision
 		if (thisPart->collisionId() != p->collisionId())
 			continue;
 
 		Int_t pdgCode = abs(p->pdgId());
 
-	// skip muons/neutrinos, if requested
+		// skip muons/neutrinos, if requested
 		if (removeMu && pdgCode == 13) continue;
 		if (removeNu && (pdgCode == 12 || pdgCode == 14 || pdgCode == 16)) continue;
 
-	// pass a minimum Et threshold
-	// if (p->et() < 0) continue;
+		// pass a minimum Et threshold
+		// if (p->et() < 0) continue;
 
-	// must be within deltaR cone
+		// must be within deltaR cone
 		Float_t dR = reco::deltaR(thisPart->momentum(), p->momentum());
 		if (dR > dRMax) continue;
 
@@ -114,28 +114,28 @@ Float_t getGenCalIso(edm::Handle<reco::GenParticleCollection> handle,
 }
 
 Float_t getGenTrkIso(edm::Handle<reco::GenParticleCollection> handle,
-	reco::GenParticleCollection::const_iterator thisPart, Float_t dRMax) {
+                     reco::GenParticleCollection::const_iterator thisPart, Float_t dRMax) {
 
-   // Returns pT sum without counting neutral particles.
+	// Returns pT sum without counting neutral particles.
 	Float_t ptSum = 0;
 
 	for (reco::GenParticleCollection::const_iterator p = handle->begin(); p != handle->end(); ++p) {
 		if (p == thisPart) continue;
 		if (p->status() != 1) continue;
-	  if (p->charge() == 0) continue;  // do not count neutral particles
+		if (p->charge() == 0) continue;  // do not count neutral particles
 
-	  // has to come from the same collision
-	  if (thisPart->collisionId() != p->collisionId())
-	  	continue;
+		// has to come from the same collision
+		if (thisPart->collisionId() != p->collisionId())
+			continue;
 
-	  // pass a minimum pt threshold
-	  // if (p->pt() < 0) continue;
+		// pass a minimum pt threshold
+		// if (p->pt() < 0) continue;
 
-	  // must be within deltaR cone
-	  Float_t dR = reco::deltaR(thisPart->momentum(), p->momentum());
-	  if (dR > dRMax) continue;
+		// must be within deltaR cone
+		Float_t dR = reco::deltaR(thisPart->momentum(), p->momentum());
+		if (dR > dRMax) continue;
 
-	  ptSum += p->pt();
+		ptSum += p->pt();
 	}
 
 	return ptSum;
@@ -215,7 +215,7 @@ void ggNtuplizer::branchesGenPart(TTree* tree) {
 
 void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 
-  	// cleanup from previous execution
+	// cleanup from previous execution
 
 	lhePID_.clear();
 	lhePt_.clear();
@@ -243,13 +243,13 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	if (genEventInfoHandle.isValid()) {
 
 		if (genEventInfoHandle->pdf()) {
-		  pdf_.push_back(genEventInfoHandle->pdf()->id.first);    // PDG ID of incoming parton #1
-		  pdf_.push_back(genEventInfoHandle->pdf()->id.second);   // PDG ID of incoming parton #2
-		  pdf_.push_back(genEventInfoHandle->pdf()->x.first);     // x value of parton #1
-		  pdf_.push_back(genEventInfoHandle->pdf()->x.second);    // x value of parton #2
-		  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.first);  // PDF weight for parton #1
-		  pdf_.push_back(genEventInfoHandle->pdf()->xPDF.second); // PDF weight for parton #2
-		  pdf_.push_back(genEventInfoHandle->pdf()->scalePDF);    // scale of the hard interaction
+			pdf_.push_back(genEventInfoHandle->pdf()->id.first);    // PDG ID of incoming parton #1
+			pdf_.push_back(genEventInfoHandle->pdf()->id.second);   // PDG ID of incoming parton #2
+			pdf_.push_back(genEventInfoHandle->pdf()->x.first);     // x value of parton #1
+			pdf_.push_back(genEventInfoHandle->pdf()->x.second);    // x value of parton #2
+			pdf_.push_back(genEventInfoHandle->pdf()->xPDF.first);  // PDF weight for parton #1
+			pdf_.push_back(genEventInfoHandle->pdf()->xPDF.second); // PDF weight for parton #2
+			pdf_.push_back(genEventInfoHandle->pdf()->scalePDF);    // scale of the hard interaction
 		}
 
 		if (genEventInfoHandle->hasBinningValues()) pthat_ = genEventInfoHandle->binningValues()[0];
@@ -264,7 +264,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 		alphaQED_ = genEventInfoHandle->alphaQED();
 		alphaQCD_ = genEventInfoHandle->alphaQCD();
 
-		for(UInt_t i =0; i < genEventInfoHandle->weights().size(); i++){
+		for (UInt_t i =0; i < genEventInfoHandle->weights().size(); i++) {
 			genWeights_.push_back(genEventInfoHandle->weights()[i]);
 		}
 	} else edm::LogWarning("ggNtuplizer") << "no GenEventInfoProduct in event";
@@ -273,7 +273,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 	e.getByToken(lheEventLabel_, lheEventProduct);
 
 	double lheHt   = 0.;
-	if (lheEventProduct.isValid()){
+	if (lheEventProduct.isValid()) {
 		////	https://cmssdt.cern.ch/lxr/source/SimDataFormats/GeneratorProducts/interface/LesHouches.h
 		const lhef::HEPEUP& lheEvent = lheEventProduct->hepeup();
 		std::vector<lhef::HEPEUP::FiveVector> lheParticles = lheEvent.PUP;
@@ -283,7 +283,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 
 			Int_t absPdgId = TMath::Abs(lheEvent.IDUP[idxParticle]);
 
-			if (lheEvent.ISTUP[idxParticle] == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21) ){// quarks and gluons
+			if (lheEvent.ISTUP[idxParticle] == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21) ) { // quarks and gluons
 				lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.));
 			}
 
@@ -293,17 +293,17 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 			lhePhi_.push_back(TMath::ATan2(lheParticles[idxParticle][1], lheParticles[idxParticle][0]));
 			lheE_.push_back(lheParticles[idxParticle][3]);
 			lheStatus_.push_back(lheEvent.ISTUP[idxParticle]);
+		}
 
-			for(UInt_t i =0; i < lheEventProduct->scales().size(); i++){
-				lheScales_.push_back(lheEventProduct->scales()[i]);
-			}
+		for (UInt_t i =0; i < lheEventProduct->scales().size(); i++) {
+			lheScales_.push_back(lheEventProduct->scales()[i]);
 		}
 
 		if (dumpPDFSystWeight_) {
-		  pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
-		  for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
-		  	pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
-		  }
+			pdfWeight_ = lheEventProduct->originalXWGTUP(); // PDF weight of this event !
+			for (unsigned i = 0; i < lheEventProduct->weights().size(); ++i) {
+				pdfSystWeight_.push_back(lheEventProduct->weights()[i].wgt);
+			}
 		}
 	}
 
@@ -334,7 +334,7 @@ void ggNtuplizer::fillGenInfo(const edm::Event& e) {
 
 void ggNtuplizer::fillGenPart(const edm::Event& e) {
 
-  // cleanup from previous execution
+	// cleanup from previous execution
 	mcPID       .clear();
 	mcVtx       .clear();
 	mcVty       .clear();
@@ -379,12 +379,12 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 		genIndex++;
 
 		bool photonOrLepton =
-		(ip->pdgId() == 22) ||
-		(abs(ip->pdgId()) == 11) ||
-		(abs(ip->pdgId()) == 13) ||
-		((abs(ip->pdgId()) == 12 || abs(ip->pdgId()) == 14 || abs(ip->pdgId()) == 16)) ||
-		(abs(ip->pdgId()) >= 11 && abs(ip->pdgId()) <= 16)  ||
-		(abs(ip->pdgId()) == 15);
+		  (ip->pdgId() == 22) ||
+		  (abs(ip->pdgId()) == 11) ||
+		  (abs(ip->pdgId()) == 13) ||
+		  ((abs(ip->pdgId()) == 12 || abs(ip->pdgId()) == 14 || abs(ip->pdgId()) == 16)) ||
+		  (abs(ip->pdgId()) >= 11 && abs(ip->pdgId()) <= 16)  ||
+		  (abs(ip->pdgId()) == 15);
 
 		const reco::Candidate *p = (const reco::Candidate*)&(*ip);
 		if (!runOnParticleGun_ && !p->mother()) continue;
@@ -407,13 +407,13 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 		if (ip->isPromptFinalState())        setbit(tmpStatusFlag, 1);
 		if (ip->isHardProcess())  setbit(tmpStatusFlag, 2);
 		if (ip->isLastCopy())  setbit(tmpStatusFlag, 3);
-		if(ip->fromHardProcessDecayed()) setbit(tmpStatusFlag, 4);
-		if(ip->isLastCopyBeforeFSR()) setbit(tmpStatusFlag, 5);
-		if(ip->fromHardProcessBeforeFSR()) setbit(tmpStatusFlag, 6);
-		if(ip->isPromptDecayed()) setbit(tmpStatusFlag, 7);
+		if (ip->fromHardProcessDecayed()) setbit(tmpStatusFlag, 4);
+		if (ip->isLastCopyBeforeFSR()) setbit(tmpStatusFlag, 5);
+		if (ip->fromHardProcessBeforeFSR()) setbit(tmpStatusFlag, 6);
+		if (ip->isPromptDecayed()) setbit(tmpStatusFlag, 7);
 
 
-	  	// if genParticle is W or Z, check its decay type
+		// if genParticle is W or Z, check its decay type
 		if ( ip->pdgId() == 23 || abs(ip->pdgId()) == 24 ) {
 			for (size_t k=0; k < p->numberOfDaughters(); ++k) {
 				const reco::Candidate *dp = p->daughter(k);
@@ -428,8 +428,8 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 
 		Char_t _mcPromptStatysType = getPromptStatus(*ip, genParticlesHandle);
 		mcPromptStatusType_.push_back(_mcPromptStatysType);
-		if((ip->pdgId() == 22) && (_mcPromptStatysType == DIRECTPROMPT)) setbit(mcHasDirectPromptPho_, 0);
-		if((ip->pdgId() == 22) && (ip->isPromptFinalState())) setbit(mcHasDirectPromptPho_, 1);
+		if ((ip->pdgId() == 22) && (_mcPromptStatysType == DIRECTPROMPT)) setbit(mcHasDirectPromptPho_, 0);
+		if ((ip->pdgId() == 22) && (ip->isPromptFinalState())) setbit(mcHasDirectPromptPho_, 1);
 
 		Int_t mcGMomPID_ = -999;
 		Int_t mcMomPID_  = -999;
@@ -440,15 +440,15 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 		UChar_t temp_mcParentage = 0;
 		if (!runOnSherpa_) {
 			Int_t pIndex= std::distance(genParticlesHandle->begin(),ip);
-			if(pIndex >= 0){
+			if (pIndex >= 0) {
 				reco::GenParticleRef partRef = reco::GenParticleRef(genParticlesHandle,pIndex);
 				genpartparentage::GenParticleParentage particleHistory(partRef);
 
-				if(particleHistory.hasLeptonParent()) setbit(temp_mcParentage, 0);
-				if(particleHistory.hasBosonParent()) setbit(temp_mcParentage, 1);
-				if(particleHistory.hasNonPromptParent()) setbit(temp_mcParentage, 2);
-				if(particleHistory.hasQCDParent()) setbit(temp_mcParentage, 3);
-				if(particleHistory.hasExoticParent()) setbit(temp_mcParentage, 4);
+				if (particleHistory.hasLeptonParent()) setbit(temp_mcParentage, 0);
+				if (particleHistory.hasBosonParent()) setbit(temp_mcParentage, 1);
+				if (particleHistory.hasNonPromptParent()) setbit(temp_mcParentage, 2);
+				if (particleHistory.hasQCDParent()) setbit(temp_mcParentage, 3);
+				if (particleHistory.hasExoticParent()) setbit(temp_mcParentage, 4);
 
 				if ( particleHistory.hasRealParent() ) {
 					reco::GenParticleRef momRef = particleHistory.parent();
@@ -459,7 +459,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 						mcMomEta_  = momRef->eta();
 						mcMomPhi_  = momRef->phi();
 
-							// get Granny
+						// get Granny
 						genpartparentage::GenParticleParentage motherParticle(momRef);
 						if ( motherParticle.hasRealParent() ) {
 							reco::GenParticleRef granny = motherParticle.parent();
@@ -492,7 +492,7 @@ void ggNtuplizer::fillGenPart(const edm::Event& e) {
 		}
 
 		nMC_++;
-	// } // save info on particles of interest
-  } // loop over gen-level particles
+		// } // save info on particles of interest
+	} // loop over gen-level particles
 
 }
