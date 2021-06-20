@@ -10,12 +10,12 @@ process.load("Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cf
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.g8b904a5927_2_0
-### Data: 102X_dataRun2_v13 (2016, 2017, 2018 A-C), 102X_dataRun2_Prompt_v16 (2018 D)
-process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_v13')
+### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.gdb258dcfc1_1_7
+### Data: 102X_dataRun2_v14 (2016, 2017, 2018 A-C), 102X_dataRun2_Prompt_v16 (2018 D)
+process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_v14')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(-1))
-process.MessageLogger.cerr.FwkReport.reportEvery = 500
+process.MessageLogger.cerr.FwkReport.reportEvery = 10000
 process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(''))
 
 print(process.source)
@@ -110,7 +110,7 @@ runMetCorAndUncFromMiniAOD(process,
                             recoMetFromPFCs=True,
                             jetFlavor="AK4PFPuppi",
                             reclusterJets = True,
-                            postfix="Puppi"
+                            postfix="PuppiUpdated"
                             )
 process.puppiNoLep.useExistingWeights = True
 process.puppi.useExistingWeights = True
@@ -127,7 +127,7 @@ process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(True)
 process.ggNtuplizer.getECALprefiringWeights = cms.bool(False)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedPFMET")
-process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppi")
+process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppiUpdated")
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak4PFJetsPUPPISrc =  cms.InputTag("selectedPatJetsAK4PFPuppiupdated")
@@ -182,7 +182,7 @@ process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAO
 ##########################################################################
 process.p = cms.Path(
     process.puppiMETSequence *
-    process.fullPatMetSequencePuppi *
+    process.fullPatMetSequencePuppiUpdated *
     process.fullPatMetSequenceModifiedPFMET *
     process.egammaPostRecoSeq *
     process.rerunMvaIsolationSequence *
