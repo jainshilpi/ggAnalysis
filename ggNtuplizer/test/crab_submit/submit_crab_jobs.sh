@@ -11,10 +11,10 @@ writeSite="T2_US_Wisconsin"
 # psetname=${testDir}"/run_mc2017_106X.py"
 # input_datasets=${scriptDir}/"mc_UL_2017.txt"
 
-jobsetName=jobsUL2017v2
-mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
-psetname=${testDir}"/run_data2017_106X.py"
-input_datasets=${scriptDir}/"data_UL_2017.txt"
+# jobsetName=jobsUL2017v2
+# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+# psetname=${testDir}"/run_data2017_106X.py"
+# input_datasets=${scriptDir}/"data_UL_2017.txt"
 
 # jobsetName=jobsUL2017v2Xsecs
 # mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/"${jobsetName}
@@ -28,10 +28,10 @@ input_datasets=${scriptDir}/"data_UL_2017.txt"
 # psetname=${testDir}"/run_data2016PreVFP_106X.py"
 # input_datasets=${scriptDir}/"data_UL_2016PreVFP.txt"
 
-# jobsetName=jobsUL2016PostVFPv1
-# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
-# psetname=${testDir}"/run_data2016PostVFP_106X.py"
-# input_datasets=${scriptDir}/"data_UL_2016PostVFP.txt"
+jobsetName=jobsUL2016PostVFPv1
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
+psetname=${testDir}"/run_data2016PostVFP_106X.py"
+input_datasets=${scriptDir}/"data_UL_2016PostVFP.txt"
 
 
 # jobsetName=jobsUL2018AtoC
@@ -55,8 +55,8 @@ writedir=${scriptDir}/jobs//${jobsetName}/
 writeSite="T2_US_Wisconsin"
 
 
-lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
-# lumiMaskFile=${scriptDir}/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
+# lumiMaskFile=${scriptDir}/Cert_294927-306462_13TeV_UL2017_Collisions17_GoldenJSON.txt
+lumiMaskFile=${scriptDir}/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
 # lumiMaskFile=${scriptDir}/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
 inputDBS=global
 # inputDBS=phys03
