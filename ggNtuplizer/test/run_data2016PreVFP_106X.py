@@ -10,7 +10,7 @@ process.load("Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cf
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.g8b904a5927_2_0
+### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.gdb258dcfc1_1_7
 ### Data: 102X_dataRun2_v14 (2016, 2017, 2018 A-C), 102X_dataRun2_Prompt_v16 (2018 D)
 process.GlobalTag = GlobalTag(process.GlobalTag, '102X_dataRun2_v14')
 process.maxEvents = cms.untracked.PSet(

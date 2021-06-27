@@ -23,15 +23,18 @@ writeSite="T2_US_Wisconsin"
 # splitting='FileBased'
 
 
-# jobsetName=jobsUL2016PreVFPv1
-# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
+jobsetName=jobsUL2016PreVFPv1
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
 # psetname=${testDir}"/run_data2016PreVFP_106X.py"
 # input_datasets=${scriptDir}/"data_UL_2016PreVFP.txt"
+psetname=${testDir}"/run_mc2016Pre_106X.py"
+input_datasets=${scriptDir}/"mc_UL_2016.txt"
 
-jobsetName=jobsUL2016PostVFPv1
-mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
-psetname=${testDir}"/run_data2016PostVFP_106X.py"
-input_datasets=${scriptDir}/"data_UL_2016PostVFP.txt"
+
+# jobsetName=jobsUL2016PostVFPv1
+# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
+# psetname=${testDir}"/run_data2016PostVFP_106X.py"
+# input_datasets=${scriptDir}/"data_UL_2016PostVFP.txt"
 
 
 # jobsetName=jobsUL2018AtoC
@@ -88,10 +91,16 @@ echo "*************************************************************************"
 
 for dataset in `sed '/^$/d' ${input_datasets}`;
 do
+	isPreVFP=$dataset
 	jobName=$(echo ${dataset} | cut -f2,3 -d'/')
 	jobName=${jobName#"_"}
 	jobName=$(echo ${jobName} | sed 's/[^a-zA-Z0-9]//g')
 	jobName=${jobName%mc201*}
+	jobName=${jobName%mcRun2*}
+
+	if [[ "$isPreVFP" == *"preVFP"* ]]; then
+		jobName=${jobName}"preVFP"
+	fi	
 
 	jobDir=${writedir}/${jobName}/
 
