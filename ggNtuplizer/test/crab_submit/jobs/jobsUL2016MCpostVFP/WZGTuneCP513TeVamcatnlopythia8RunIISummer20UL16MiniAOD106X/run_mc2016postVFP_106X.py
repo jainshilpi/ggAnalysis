@@ -10,14 +10,14 @@ process.load("Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cf
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.g8b904a5927_2_0
+### https://docs.google.com/presentation/d/1YTANRT_ZeL5VubnFq7lNGHKsiD7D3sDiOPNgXUYVI0I/edit#slide=id.gdb258dcfc1_1_7
 ### MC: 102X_mcRun2_asymptotic_v8 (2016), 102X_mc2017_realistic_v8 (2017), 102X_upgrade2018_realistic_v21 (2018)
-process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mc2017_realistic_v8')
+process.GlobalTag = GlobalTag(process.GlobalTag, '102X_mcRun2_asymptotic_v8')
 process.maxEvents = cms.untracked.PSet(
     input=cms.untracked.int32(-1))
-process.MessageLogger.cerr.FwkReport.reportEvery = 500
-process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring(''))
-# process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/mc/RunIISummer20UL17MiniAOD/ZNuNuGJets_MonoPhoton_PtG-130_TuneCP5_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/106X_mc2017_realistic_v6-v1/120000/FB8BC1E9-8578-B249-9F22-7E03D0330CB0.root'))
+    # input=cms.untracked.int32(100))
+process.MessageLogger.cerr.FwkReport.reportEvery = 5000
+process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring('file:test_2016PreVFPmc.root'))
 
 print(process.source)
 
@@ -30,10 +30,14 @@ process.TFileService = cms.Service("TFileService", fileName=cms.string("anTGCtre
 
 ##########################################################################
 ## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018
+# 2016ULpreVFP : era='2016preVFP-UL'
+# 2016ULpostVFP : era='2016postVFP-UL'
+# 2017 UL, era='2017-UL'
+# 2018 UL, era='2018-UL'
 from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
 setupEgammaPostRecoSeq(process,
                        runVID=True,
-                       era='2017-UL',
+                       era='2016postVFP-UL',
                        eleIDModules=['RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V2_cff',
                                      'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
                                      'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V2_cff',
@@ -103,7 +107,7 @@ runMetCorAndUncFromMiniAOD(process,
                             recoMetFromPFCs=True,
                             jetFlavor="AK4PFPuppi",
                             reclusterJets = True,
-                            postfix="Puppi"
+                            postfix="PuppiUpdated"
                             )
 process.puppiNoLep.useExistingWeights = True
 process.puppi.useExistingWeights = True
@@ -130,14 +134,14 @@ process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
 ##########################################################################
 process.load("ggAnalysis.ggNtuplizer.ggNtuplizer_miniAOD_cfi")
 
-process.ggNtuplizer.year = cms.int32(2017)
+process.ggNtuplizer.year = cms.int32(2016)
 process.ggNtuplizer.doGenParticles = cms.bool(True)
 process.ggNtuplizer.dumpPDFSystWeight = cms.bool(True)
 process.ggNtuplizer.dumpJets = cms.bool(True)
 process.ggNtuplizer.dumpTaus = cms.bool(True)
 process.ggNtuplizer.getECALprefiringWeights = cms.bool(True)
 process.ggNtuplizer.pfMETLabel=cms.InputTag("slimmedMETsModifiedPFMET")
-process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppi")
+process.ggNtuplizer.puppiMETLabel=cms.InputTag("slimmedMETsPuppiUpdated")
 process.ggNtuplizer.ak4PFJetsCHSSrc = cms.InputTag("selectedPatJetsAK4PFCHSupdated")
 process.ggNtuplizer.ak4PFJetsCHSGenJetLabel = cms.InputTag("selectedPatJetsAK4PFCHSupdated", "genJets", "ggKit")
 process.ggNtuplizer.ak4PFJetsPUPPISrc =  cms.InputTag("selectedPatJetsAK4PFPuppiupdated")
@@ -192,7 +196,7 @@ process.ggNtuplizer.ecalBadCalibFilter = cms.InputTag("ecalBadCalibReducedMINIAO
 ##########################################################################
 process.p = cms.Path(
     process.puppiMETSequence *
-    process.fullPatMetSequencePuppi *
+    process.fullPatMetSequencePuppiUpdated *
     process.fullPatMetSequenceModifiedPFMET *
     process.egammaPostRecoSeq *
     process.rerunMvaIsolationSequence *

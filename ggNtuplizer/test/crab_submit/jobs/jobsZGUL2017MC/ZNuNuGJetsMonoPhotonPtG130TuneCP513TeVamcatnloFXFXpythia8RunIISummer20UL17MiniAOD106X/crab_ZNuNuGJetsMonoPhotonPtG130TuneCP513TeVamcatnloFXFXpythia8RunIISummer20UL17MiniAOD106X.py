@@ -16,13 +16,13 @@ def submit(config):
         print "Failed submitting task: %s" % (cle)
 
 
-workarea='/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsUL2017v1//WZGTuneCP513TeVamcatnlopythia8RunIISummer20UL17MiniAOD106X/'
+workarea='/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsZGUL2017MC//ZNuNuGJetsMonoPhotonPtG130TuneCP513TeVamcatnloFXFXpythia8RunIISummer20UL17MiniAOD106X/'
 
-mainOutputDir = '/store/user/rusack/aNTGCmet/ntuples/UL2017/jobsUL2017v1'
+mainOutputDir = '/store/user/rusack/aNTGCmet/ntuples/UL2017/jobsZGUL2017MC'
 
 config                                = config()
 
-config.General.requestName = 'WZGTuneCP513TeVamcatnlopythia8RunIISummer20UL17MiniAOD106X'
+config.General.requestName = 'ZNuNuGJetsMonoPhotonPtG130TuneCP513TeVamcatnloFXFXpythia8RunIISummer20UL17MiniAOD106X'
 # config.General.transferLogs = True
 # config.General.transferOutputs = True
 config.General.workArea = '%s' % workarea
@@ -44,7 +44,7 @@ config.JobType.maxJobRuntimeMin        = 5000
 # config.JobType.inputFiles  =    ['/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/EcalTimeCalibConstants_2018_RunD_UL_Corr_v2.db']
 
 config.Data.inputDBS = 'global'
-config.Data.inputDataset = '/WZG_TuneCP5_13TeV-amcatnlo-pythia8/RunIISummer20UL17MiniAOD-106X_mc2017_realistic_v6-v2/MINIAODSIM'
+config.Data.inputDataset = '/ZNuNuGJets_MonoPhoton_PtG-130_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIISummer20UL17MiniAOD-106X_mc2017_realistic_v6-v1/MINIAODSIM'
 config.Data.publication = False
 config.Data.allowNonValidInputDataset = True
 config.Data.outLFNDirBase = '%s' % mainOutputDir
