@@ -16,24 +16,24 @@ def submit(config):
         print "Failed submitting task: %s" % (cle)
 
 
-workarea='#workarea'
+workarea='/afs/hep.wisc.edu/home/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsZGUL2016MCpostVFP//GJetsDR0p4HT400To600TuneCP513TeVmadgraphMLMpythia8RunIISummer20UL16MiniAODv2106X/'
 
 mainOutputDir = '#mainOutputDir'
 
 config                                = config()
 
-config.General.requestName = '#jobname'
+config.General.requestName = 'GJetsDR0p4HT400To600TuneCP513TeVmadgraphMLMpythia8RunIISummer20UL16MiniAODv2106X'
 # config.General.transferLogs = True
 # config.General.transferOutputs = True
 config.General.workArea = '%s' % workarea
 
 
-config.Site.storageSite = '#storageSite'
-config.Site.whitelist = [#whitelist]
+config.Site.storageSite = 'T2_US_Wisconsin'
+config.Site.whitelist = ['T3_US_UCR','T3_US_FNALLPC','T3_US_Rice','T3_US_Rutgers','T3_US_FIT','T3_US_PSC','T3_US_OSU','T3_US_TAMU','T3_US_UMD','T3_US_VC3_NotreDame','T3_US_SDSC','T3_US_Colorado','T3_US_OSG','T3_US_Princeton_ICSE','T3_US_NERSC','T3_US_Baylor','T2_US_Nebraska','T2_US_UCSD','T2_US_Wisconsin','T2_US_MIT','T3_US_TACC','T3_US_UMiss','T2_US_Caltech','T2_US_Florida','T2_US_Vanderbilt']
 config.Site.blacklist = [#blacklist]
 
 
-config.JobType.psetName  = '#psetname'
+config.JobType.psetName  = '/afs/hep.wisc.edu/user/rusack/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2016postVFP_106X.py'
 config.JobType.pluginName  = 'Analysis'
 config.JobType.maxMemoryMB             = 2600
 config.JobType.maxJobRuntimeMin        = 3000
@@ -44,7 +44,7 @@ config.JobType.maxJobRuntimeMin        = 3000
 # config.JobType.inputFiles  =    ['/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/EcalTimeCalibConstants_2018_RunD_UL_Corr_v2.db']
 
 config.Data.inputDBS = '#inputDBS'
-config.Data.inputDataset = '#inputDataset'
+config.Data.inputDataset = '/GJets_DR-0p4_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL16MiniAODv2-106X_mcRun2_asymptotic_v17-v2/MINIAODSIM'
 config.Data.publication = False
 config.Data.allowNonValidInputDataset = True
 config.Data.outLFNDirBase = '%s' % mainOutputDir

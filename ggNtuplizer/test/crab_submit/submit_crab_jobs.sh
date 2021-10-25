@@ -30,10 +30,10 @@ writeSite="T2_US_Wisconsin"
 # input_datasets=${scriptDir}/"mc_UL_2016.txt"
 
 
-# jobsetName=jobsUL2016MCpostVFP
-# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
-# psetname=${testDir}"/run_mc2016postVFP_106X.py"
-# input_datasets=${scriptDir}/"mc_UL_2016postVFP.txt"
+jobsetName=jobsUL2016MCpostVFP
+mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
+psetname=${testDir}"/run_mc2016postVFP_106X.py"
+input_datasets=${scriptDir}/"mc_UL_2016postVFP.txt"
 
 # jobsetName=jobsUL2016PostVFPv1
 # mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
@@ -70,10 +70,16 @@ writeSite="T2_US_Wisconsin"
 # psetname=${testDir}"/run_mc2017_106X.py"
 # input_datasets=${scriptDir}/"sigJobs.txt"
 
-jobsetName=jobsUL2018MC
-mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2018/"${jobsetName}
-psetname=${testDir}"/run_mc2018_106X.py"
-input_datasets=${scriptDir}/"mc_UL_2018.txt"
+# jobsetName=jobsUL2018MC
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2018/"${jobsetName}
+# psetname=${testDir}"/run_mc2018_106X.py"
+# input_datasets=${scriptDir}/"mc_UL_2018.txt"
+
+
+# jobsetName=jobsUL2016MCpreVFP
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
+# psetname=${testDir}"/run_mc2016preVFP_106X.py"
+# input_datasets=${scriptDir}/"mc_UL_2016preVFP.txt"
 
 
 units_perjob=3
