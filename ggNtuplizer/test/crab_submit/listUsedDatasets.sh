@@ -1,52 +1,36 @@
 #!/bin/bash
  
-jobDir=$1
+# for configFile in $(find jobs -mindepth 4 -maxdepth 4 -type f -name "crab*.log" | sort); do
 
-function getDatsetName(){
-	_pyFile=$1
-	DIR="$(dirname "${_pyFile}")"
-	DIR=${DIR#*crab_}
+# 	jobName=$(basename $(dirname ${configFile}))
+# 	jobName=${jobName##*crab_}
 
-	# datasetString=$(grep "config.Data.inputDataset" ${_pyFile})
+# 	datasetName=$(grep "inputDataset" ${configFile})
 
-	datasetString=$(grep "u'inputDataset': u'" ${_pyFile})
+# 	datasetName=${datasetName##*"inputDataset"}
+# 	datasetName=${datasetName%%"userWebDirURL"*}
+# 	datasetName=${datasetName#*"'"}
+# 	datasetName=${datasetName#*"u'"}
+# 	datasetName=${datasetName%%"'"*}
 
-	# echo $datasetString ${DIR}
+# 	echo $jobName, $datasetName
 
-	# if [[ -z "$datasetString" ]]
-	# then
-	# 	continue
-	# fi
-	
-	datasetString=${datasetString%, u\'userWebDirURL*}
-	datasetString=${datasetString#*"u'inputDataset': u'"}
-	# # datasetString=$(echo $datasetString | sed "s/config.Data.inputDataset//g")
-	# datasetString=$(echo $datasetString | sed "s/'//g")
-	# # datasetString=$(echo $datasetString | sed 's/=//g')
-	# # datasetString=$(echo $datasetString | sed 's/ //g')
-
-	echo ${DIR}, ${datasetString}
-
-	# # isPreVFP=$datasetString
-	# # _SampleName=$(echo ${datasetString} | cut -f2,3 -d'/')
-	# # _SampleName=${_SampleName#"_"}
-	# # _SampleName=$(echo ${_SampleName} | sed 's/[^a-zA-Z0-9]//g')
-	# # _SampleName=${_SampleName%mc201*}
-	# # _SampleName=${_SampleName%mcRun2*}
-
-	# # if [[ "$isPreVFP" == *"preVFP"* ]]; then
-	# # 	_SampleName=${_SampleName}"preVFP"
-	# # fi	
-
-	# # _SampleName=${_SampleName%upgrade2018*}
-
-	# # echo ${_SampleName}, ${datasetString}
-}
+# done
 
 
-for configFile in $(find "${jobDir}" -type f -name "crab.log" | sort); do
-	
-	# echo $configFile
-	getDatsetName $configFile
+for configFile in $(find jobs -mindepth 3 -maxdepth 3 -type f -name "crab*.py" | sort); do
+
+	jobName=$(basename $(dirname ${configFile}))
+	jobName=${jobName##*crab_}
+
+	datasetName=$(grep "inputDataset" ${configFile})
+
+	datasetName=${datasetName##*"inputDataset"}
+	datasetName=${datasetName%%"userWebDirURL"*}
+	datasetName=${datasetName#*"'"}
+	datasetName=${datasetName#*"u'"}
+	datasetName=${datasetName%%"'"*}
+
+	echo $jobName, $datasetName
 
 done
