@@ -18,7 +18,7 @@ def submit(config):
 
 workarea='/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/crab_submit//jobs//jobsUL2016MC//GJetsDR0p4HT600ToInfTuneCP513TeVmadgraphMLMpythia8RunIISummer20UL16MiniAODAPVv2106XpreVFP/'
 
-mainOutputDir = '/store/user/mwadud/aNTGCmet/ntuples/UL2016PreVFP/jobsUL2016MC'
+mainOutputDir = '#mainOutputDir'
 
 config                                = config()
 
@@ -36,14 +36,14 @@ config.Site.blacklist = ['T2_US_Purdue']
 config.JobType.psetName  = '/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/run_mc2016preVFP_106X.py'
 config.JobType.pluginName  = 'Analysis'
 config.JobType.maxMemoryMB             = 2600
-config.JobType.maxJobRuntimeMin        = 4000
+config.JobType.maxJobRuntimeMin        = 3000
 # config.JobType.maxMemoryMB             = 2600
 # config.JobType.maxJobRuntimeMin        = 5000
 # config.JobType.maxMemoryMB             = 1500
 # config.JobType.maxJobRuntimeMin        = 1000
 # config.JobType.inputFiles  =    ['/afs/hep.wisc.edu/user/wadud/private/CMSSW_10_6_24/src/ggAnalysis/ggNtuplizer/test/EcalTimeCalibConstants_2018_RunD_UL_Corr_v2.db']
 
-config.Data.inputDBS = 'global'
+config.Data.inputDBS = '#inputDBS'
 config.Data.inputDataset = '/GJets_DR-0p4_HT-600ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer20UL16MiniAODAPVv2-106X_mcRun2_asymptotic_preVFP_v11-v2/MINIAODSIM'
 config.Data.publication = False
 config.Data.allowNonValidInputDataset = True

@@ -4,12 +4,10 @@ scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"/
 testDir=$(readlink -f ${scriptDir}"/../")
 writeSite="T2_US_Wisconsin"
 
-# jobsetName=jobsUL2017v3
-# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
-
-# input_datasets=${scriptDir}/"mc_UL_2017.txt"
-# psetname=${testDir}"/run_mc2017_106X.py"
-# input_datasets=${scriptDir}/"mc_UL_2017.txt"
+jobsetName=jobsUL2017v3
+mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2017/"${jobsetName}
+psetname=${testDir}"/run_mc2017_106X.py"
+input_datasets=${scriptDir}/"mc_UL_2017.txt"
 
 # psetname=${testDir}"/run_data2017_106X.py"
 # input_datasets=${scriptDir}/"data_UL_2017.txt"
@@ -35,17 +33,16 @@ writeSite="T2_US_Wisconsin"
 
 # jobsetName=jobsUL2016MC
 # mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
-# # # psetname=${testDir}"/run_data2016PreVFP_106X.py"
-# # # input_datasets=${scriptDir}/"data_UL_2016PreVFP.txt"
+# # psetname=${testDir}"/run_data2016PreVFP_106X.py"
+# # input_datasets=${scriptDir}/"data_UL_2016PreVFP.txt"
 # psetname=${testDir}"/run_mc2016preVFP_106X.py"
 # input_datasets=${scriptDir}/"mc_UL_2016.txt"
 
 
-
-jobsetName=jobsUL2016MCpostVFP
-mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
-psetname=${testDir}"/run_mc2016postVFP_106X.py"
-input_datasets=${scriptDir}/"mc_UL_2016postVFP.txt"
+# jobsetName=jobsUL2016MCpostVFP
+# mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
+# psetname=${testDir}"/run_mc2016postVFP_106X.py"
+# input_datasets=${scriptDir}/"mc_UL_2016postVFP.txt"
 
 # jobsetName=jobsUL2016PostVFPv1
 # mainOutputDir="/store/user/mwadud/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
@@ -64,10 +61,37 @@ input_datasets=${scriptDir}/"mc_UL_2016postVFP.txt"
 # psetname=${testDir}"/run_data2018D_106X.py"
 # input_datasets=${scriptDir}/"data_UL_2018D.txt"
 
+# jobsetName=jobsZGUL2016MCpreVFP
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
+# psetname=${testDir}"/run_mc2016preVFP_106X.py"
+# input_datasets=${scriptDir}/"sigJobs.txt"
 
-units_perjob=4
+
+# jobsetName=jobsZGUL2016MCpostVFP
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PostVFP/"${jobsetName}
+# psetname=${testDir}"/run_mc2016postVFP_106X.py"
+# input_datasets=${scriptDir}/"sigJobs.txt"
+
+
+# jobsetName=jobsZGUL2017MC
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2017/"${jobsetName}
+# psetname=${testDir}"/run_mc2017_106X.py"
+# input_datasets=${scriptDir}/"sigJobs.txt"
+
+# jobsetName=jobsUL2018MC
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2018/"${jobsetName}
+# psetname=${testDir}"/run_mc2018_106X.py"
+# input_datasets=${scriptDir}/"mc_UL_2018.txt"
+
+
+# jobsetName=jobsUL2016MCpreVFP
+# mainOutputDir="/store/user/rusack/aNTGCmet/ntuples/UL2016PreVFP/"${jobsetName}
+# psetname=${testDir}"/run_mc2016preVFP_106X.py"
+# input_datasets=${scriptDir}/"mc_UL_2016preVFP.txt"
+
+
 splitting='FileBased'
-# units_perjob=4
+units_perjob=5
 # splitting='LumiBased'
 
 writedir=${scriptDir}/jobs//${jobsetName}/
@@ -114,6 +138,11 @@ do
 
 	if [[ "$isPreVFP" == *"preVFP"* ]]; then
 		jobName=${jobName}"preVFP"
+	fi	
+
+	isSignal=$dataset
+	if [[ "$isSignal" == *"aNTGC"* ]]; then
+		jobName=${jobName%mwadud*}
 	fi	
 
 	jobDir=${writedir}/${jobName}/
